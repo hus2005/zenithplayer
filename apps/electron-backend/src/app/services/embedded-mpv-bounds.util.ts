@@ -1,4 +1,4 @@
-import { EmbeddedMpvBounds } from '@iptvnator/shared/interfaces';
+import { EmbeddedMpvBounds } from '@zenithplayer/shared/interfaces';
 
 export interface NativeViewBoundsContext {
     platform: NodeJS.Platform;

@@ -3,7 +3,7 @@
  * Persists TMDB API responses so detail-view enrichment stays offline-fast
  */
 
-import type { TmdbCacheEntry, TmdbCacheMediaType } from '@iptvnator/shared/interfaces';
+import type { TmdbCacheEntry, TmdbCacheMediaType } from '@zenithplayer/shared/interfaces';
 import { handleWorkerRequest } from './worker-events.utils';
 
 handleWorkerRequest(

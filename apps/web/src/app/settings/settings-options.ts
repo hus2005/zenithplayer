@@ -4,7 +4,7 @@ import {
     StartupBehavior,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     CoverSizeOption,
     EpgViewModeOption,
@@ -137,7 +137,7 @@ export function buildSettingsSectionNavItems({
         {
             // Must match the section's HTML id (`remote-control`) so the
             // settings-section-scroll directive can resolve the anchor.
-            // Was previously '@iptvnator/ui/remote-control' (the NX lib
+            // Was previously '@zenithplayer/ui/remote-control' (the NX lib
             // name), which meant clicking the nav item silently no-op'd
             // because document.getElementById of that string returned null.
             id: 'remote-control',

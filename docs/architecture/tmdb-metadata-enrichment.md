@@ -202,7 +202,7 @@ Filmography has two scopes:
   over ALL imported Xtream playlists
   (`operations/title-match.operations.ts`), confirming candidates with
   the same two-tier normalized-title matching the renderer uses
-  (`normalizeTitle` now lives in `@iptvnator/shared/interfaces` so the
+  (`normalizeTitle` now lives in `@zenithplayer/shared/interfaces` so the
   worker and the renderer share it). Matches carry the playlist name
   (shown in the badge) and navigate into that playlist's detail view.
   This also works from Stalker actor pages — the one place the Stalker

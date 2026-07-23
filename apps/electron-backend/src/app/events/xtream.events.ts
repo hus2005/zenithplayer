@@ -9,8 +9,8 @@ import {
     PortalDebugEvent,
     XTREAM_CANCEL_SESSION,
     normalizeXtreamServerUrl,
-} from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+} from '@zenithplayer/shared/interfaces';
+import { redactSensitiveData } from '@zenithplayer/shared/logging';
 import { emitPortalDebugEvent } from './portal-debug.events';
 import { UnsafeUrlError } from './url-safety';
 import { requestWithValidatedRedirects } from '../util/validated-axios';

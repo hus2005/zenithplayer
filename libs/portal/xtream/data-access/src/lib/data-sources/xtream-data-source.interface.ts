@@ -6,8 +6,8 @@ import {
     XtreamLiveStream,
     XtreamSerieItem,
     XtreamVodStream,
-} from '@iptvnator/shared/interfaces';
-import type { DbOperationEvent } from '@iptvnator/services';
+} from '@zenithplayer/shared/interfaces';
+import type { DbOperationEvent } from '@zenithplayer/services';
 import {
     CategoryType,
     StreamType,

@@ -31,21 +31,21 @@ import {
     EpgProgram,
     XtreamCategory,
     XtreamItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     ChannelListItemComponent,
     ChannelListSkeletonComponent,
     EpgMappingDialogComponent,
-} from '@iptvnator/ui/components';
+} from '@zenithplayer/ui/components';
 import {
     PortalChannelSortMode,
     sortPortalChannelItems,
-} from '@iptvnator/portal/shared/util';
-import { EpgQueueService } from '@iptvnator/portal/xtream/data-access';
-import { XtreamCredentials } from '@iptvnator/portal/xtream/data-access';
-import { FavoritesService } from '@iptvnator/portal/xtream/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+} from '@zenithplayer/portal/shared/util';
+import { EpgQueueService } from '@zenithplayer/portal/xtream/data-access';
+import { XtreamCredentials } from '@zenithplayer/portal/xtream/data-access';
+import { FavoritesService } from '@zenithplayer/portal/xtream/data-access';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 
 export interface XtreamChannelListItem {
     readonly category_id?: string | number;

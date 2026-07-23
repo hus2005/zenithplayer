@@ -15,9 +15,9 @@ const electronElf = Buffer.from([
 
 async function createAfterPackFixture(targets) {
     const appOutDir = await fs.mkdtemp(
-        path.join(os.tmpdir(), 'iptvnator-linux-after-pack-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-after-pack-')
     );
-    const executablePath = path.join(appOutDir, 'iptvnator');
+    const executablePath = path.join(appOutDir, 'zenithplayer');
     await fs.writeFile(executablePath, electronElf, { mode: 0o755 });
 
     return {
@@ -28,9 +28,9 @@ async function createAfterPackFixture(targets) {
             electronPlatformName: 'linux',
             targets,
             packager: {
-                executableName: 'iptvnator',
+                executableName: 'zenithplayer',
                 appInfo: {
-                    productName: 'IPTVnator',
+                    productName: 'Zenith Player',
                 },
             },
         },
@@ -68,17 +68,17 @@ test('isolated Flatpak preserves the Electron ELF for Zypak', async (t) => {
 test('resolves normalized string and Target-like launcher layouts', () => {
     assert.deepEqual(resolveLinuxLauncherLayout([' FlatPak ']), {
         targetNames: ['flatpak'],
-        electronBinaryName: 'iptvnator',
+        electronBinaryName: 'zenithplayer',
         wrapperRequired: false,
     });
     assert.deepEqual(
         resolveLinuxLauncherLayout(
             [' AppImage ', { name: ' DEB ' }],
-            'iptvnator-player'
+            'zenithplayer-player'
         ),
         {
             targetNames: ['appimage', 'deb'],
-            electronBinaryName: 'iptvnator-player.bin',
+            electronBinaryName: 'zenithplayer-player.bin',
             wrapperRequired: true,
         }
     );
@@ -136,8 +136,8 @@ for (const targetName of ['appimage', 'deb', 'rpm', 'pacman', 'snap']) {
         assert.equal(
             await fs.readFile(fixture.executablePath, 'utf8'),
             createLoaderScript({
-                executableName: 'iptvnator',
-                productName: 'IPTVnator',
+                executableName: 'zenithplayer',
+                productName: 'Zenith Player',
             })
         );
         assert.deepEqual(

@@ -239,8 +239,8 @@ function createSourceBindingFixture() {
         compliance: sourceCompliance,
     };
     const snapPayloads = {
-        'IPTVnator-amd64.snap': {
-            assetName: 'IPTVnator-amd64.snap',
+        'Zenith Player-amd64.snap': {
+            assetName: 'Zenith Player-amd64.snap',
             architecture: 'x64',
             markerOnly: false,
             manifest: {
@@ -258,8 +258,8 @@ function createSourceBindingFixture() {
                 sourceRuntime,
             },
         },
-        'IPTVnator-arm64.snap': {
-            assetName: 'IPTVnator-arm64.snap',
+        'Zenith Player-arm64.snap': {
+            assetName: 'Zenith Player-arm64.snap',
             architecture: 'arm64',
             markerOnly: true,
             manifest: null,
@@ -278,13 +278,13 @@ test('binds source metadata and checksums to every selected Snap before publicat
     const helper = await loadHelper();
     const fixture = createSourceBindingFixture();
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-snap-source-binding-')
+        path.join(os.tmpdir(), 'zenithplayer-snap-source-binding-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const selection = {
         snapAssets: [
-            { id: 1, name: 'IPTVnator-amd64.snap' },
-            { id: 2, name: 'IPTVnator-arm64.snap' },
+            { id: 1, name: 'Zenith Player-amd64.snap' },
+            { id: 2, name: 'Zenith Player-arm64.snap' },
         ],
         sourceAsset: {
             id: 3,
@@ -322,7 +322,7 @@ test('publishes only a stable verified asset snapshot with an exact receipt', as
     const helper = await loadHelper();
     const fixture = createSourceBindingFixture();
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-snap-release-snapshot-')
+        path.join(os.tmpdir(), 'zenithplayer-snap-release-snapshot-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const downloadRoot = path.join(temporaryRoot, 'downloads');
@@ -330,8 +330,8 @@ test('publishes only a stable verified asset snapshot with an exact receipt', as
     fs.mkdirSync(downloadRoot);
     const selection = {
         snapAssets: [
-            { id: 1, name: 'IPTVnator-amd64.snap' },
-            { id: 2, name: 'IPTVnator-arm64.snap' },
+            { id: 1, name: 'Zenith Player-amd64.snap' },
+            { id: 2, name: 'Zenith Player-arm64.snap' },
         ],
         sourceAsset: {
             id: 3,
@@ -441,7 +441,7 @@ test('binds sealed inspection to the initially verified receipt across a mutuall
     const helper = await loadHelper();
     const fixture = createSourceBindingFixture();
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-snap-release-replacement-')
+        path.join(os.tmpdir(), 'zenithplayer-snap-release-replacement-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const downloadRoot = path.join(temporaryRoot, 'downloads');
@@ -451,7 +451,7 @@ test('binds sealed inspection to the initially verified receipt across a mutuall
     fs.mkdirSync(downloadRoot);
     fs.mkdirSync(replacementRoot);
     const selection = {
-        snapAssets: [{ id: 1, name: 'IPTVnator-amd64.snap' }],
+        snapAssets: [{ id: 1, name: 'Zenith Player-amd64.snap' }],
         sourceAsset: {
             id: 2,
             name: 'linux-frame-copy-runtime-sources.tar.xz',
@@ -554,14 +554,14 @@ test('removes a verified snapshot when an asset changes during inspection', asyn
     const helper = await loadHelper();
     const fixture = createSourceBindingFixture();
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-snap-release-race-')
+        path.join(os.tmpdir(), 'zenithplayer-snap-release-race-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const downloadRoot = path.join(temporaryRoot, 'downloads');
     const verifiedRoot = path.join(temporaryRoot, 'verified');
     fs.mkdirSync(downloadRoot);
     const selection = {
-        snapAssets: [{ id: 1, name: 'IPTVnator-amd64.snap' }],
+        snapAssets: [{ id: 1, name: 'Zenith Player-amd64.snap' }],
         sourceAsset: {
             id: 2,
             name: 'linux-frame-copy-runtime-sources.tar.xz',
@@ -628,7 +628,7 @@ test('fails closed for stale source identity, archive bytes, and x64 marker-only
     forgedSubmodules.sourceInspection.sourceIndex.sourcePackages =
         forgedSubmodules.sourceInspection.sourceRuntime.packages;
     forgedSubmodules.snapPayloads[
-        'IPTVnator-amd64.snap'
+        'Zenith Player-amd64.snap'
     ].manifest.sourceRuntime = forgedSubmodules.sourceInspection.sourceRuntime;
     assert.throws(
         () =>
@@ -668,7 +668,7 @@ test('fails closed for stale source identity, archive bytes, and x64 marker-only
 
     const staleSnapPayloads = structuredClone(fixture.snapPayloads);
     staleSnapPayloads[
-        'IPTVnator-amd64.snap'
+        'Zenith Player-amd64.snap'
     ].manifest.sourceRuntime.generatedAt = '2025-01-01T00:00:00.000Z';
     assert.throws(
         () =>
@@ -688,8 +688,8 @@ test('fails closed for stale source identity, archive bytes, and x64 marker-only
     );
 
     const markerOnlyX64 = structuredClone(fixture.snapPayloads);
-    markerOnlyX64['IPTVnator-amd64.snap'] = {
-        assetName: 'IPTVnator-amd64.snap',
+    markerOnlyX64['Zenith Player-amd64.snap'] = {
+        assetName: 'Zenith Player-amd64.snap',
         architecture: 'x64',
         markerOnly: true,
         manifest: null,
@@ -737,7 +737,7 @@ test('fails closed for stale source identity, archive bytes, and x64 marker-only
                     expectedRepositoryRevision: fixture.repositoryRevision,
                     sourceInspection: fixture.sourceInspection,
                     snapPayloads: [
-                        fixture.snapPayloads['IPTVnator-arm64.snap'],
+                        fixture.snapPayloads['Zenith Player-arm64.snap'],
                     ],
                 },
                 {
@@ -756,10 +756,10 @@ test('fails closed for stale source identity, archive bytes, and x64 marker-only
                     expectedRepositoryRevision: fixture.repositoryRevision,
                     sourceInspection: fixture.sourceInspection,
                     snapPayloads: [
-                        fixture.snapPayloads['IPTVnator-amd64.snap'],
+                        fixture.snapPayloads['Zenith Player-amd64.snap'],
                         {
-                            ...fixture.snapPayloads['IPTVnator-amd64.snap'],
-                            assetName: 'IPTVnator-second-amd64.snap',
+                            ...fixture.snapPayloads['Zenith Player-amd64.snap'],
+                            assetName: 'Zenith Player-second-amd64.snap',
                         },
                     ],
                 },
@@ -778,7 +778,7 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
     const sourceArchiveContract = await loadSourceArchiveContract();
     const fixture = createSourceBindingFixture();
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-snap-source-inspection-')
+        path.join(os.tmpdir(), 'zenithplayer-snap-source-inspection-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
 
@@ -877,7 +877,7 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
         `${JSON.stringify(sourceIndex)}\n`
     );
     fs.writeFileSync(
-        path.join(metadataRoot, 'iptvnator-git-revision.txt'),
+        path.join(metadataRoot, 'zenithplayer-git-revision.txt'),
         `${fixture.repositoryRevision}\n`
     );
     fs.writeFileSync(path.join(metadataRoot, 'local-changes.patch'), '');
@@ -1179,7 +1179,7 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
     fs.unlinkSync(oversizedMemberPath);
 
     const snapSourceRoot = path.join(temporaryRoot, 'snap-source');
-    const appRoot = path.join(snapSourceRoot, 'usr', 'lib', 'iptvnator');
+    const appRoot = path.join(snapSourceRoot, 'usr', 'lib', 'zenithplayer');
     const nativeRoot = path.join(
         appRoot,
         'resources',
@@ -1191,9 +1191,9 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
     const electronHeader = Buffer.alloc(20);
     electronHeader.set([0x7f, 0x45, 0x4c, 0x46, 2, 1]);
     electronHeader.writeUInt16LE(62, 18);
-    fs.writeFileSync(path.join(appRoot, 'iptvnator.bin'), electronHeader);
+    fs.writeFileSync(path.join(appRoot, 'zenithplayer.bin'), electronHeader);
     const packagedManifest = {
-        ...fixture.snapPayloads['IPTVnator-amd64.snap'].manifest,
+        ...fixture.snapPayloads['Zenith Player-amd64.snap'].manifest,
         sourceArchive,
         sourceRuntime,
     };
@@ -1204,12 +1204,12 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
     const snapYamlPath = path.join(snapSourceRoot, 'meta', 'snap.yaml');
     fs.mkdirSync(path.dirname(snapYamlPath), { recursive: true });
     const validSnapYaml = [
-        'name: iptvnator',
+        'name: zenithplayer',
         'base: core22',
         'confinement: strict',
         'apps:',
-        '  iptvnator:',
-        '    command: iptvnator',
+        '  zenithplayer:',
+        '    command: zenithplayer',
         '    environment:',
         '      SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform',
         '    plugs:',
@@ -1282,12 +1282,12 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
         schemaVersion: 1,
         errors: [],
     });
-    const snapPath = path.join(temporaryRoot, 'IPTVnator-amd64.snap');
+    const snapPath = path.join(temporaryRoot, 'Zenith Player-amd64.snap');
     fs.writeFileSync(snapPath, 'synthetic Snap bytes');
     const staticValidationCalls = [];
     const snapPayload = sourceBindingHelper.inspectSnapPayload(
         snapPath,
-        { id: 1, name: 'IPTVnator-amd64.snap' },
+        { id: 1, name: 'Zenith Player-amd64.snap' },
         {
             runCommand: (command, args) => {
                 assert.equal(command, 'unsquashfs');
@@ -1309,19 +1309,19 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
     );
     assert.deepEqual(snapPayload, {
         architecture: 'x64',
-        assetName: 'IPTVnator-amd64.snap',
+        assetName: 'Zenith Player-amd64.snap',
         manifest: packagedManifest,
         markerOnly: false,
     });
     assert.equal(staticValidationCalls.length, 1);
     assert.ok(
         staticValidationCalls[0].resourceDirectory.endsWith(
-            ['payload', 'usr', 'lib', 'iptvnator', 'resources'].join(path.sep)
+            ['payload', 'usr', 'lib', 'zenithplayer', 'resources'].join(path.sep)
         )
     );
     assert.deepEqual(staticValidationCalls[0].options, {
         artifactFormat: 'snap',
-        executableName: 'iptvnator',
+        executableName: 'zenithplayer',
         foreignArch: false,
         hostPlatform: 'linux',
         platform: 'linux',
@@ -1339,7 +1339,7 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
         () =>
             sourceBindingHelper.inspectSnapPayload(
                 snapPath,
-                { id: 1, name: 'IPTVnator-amd64.snap' },
+                { id: 1, name: 'Zenith Player-amd64.snap' },
                 {
                     runCommand: (command, args) => {
                         assert.equal(command, 'unsquashfs');
@@ -1376,7 +1376,7 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
         () =>
             sourceBindingHelper.inspectSnapPayload(
                 snapPath,
-                { id: 1, name: 'IPTVnator-amd64.snap' },
+                { id: 1, name: 'Zenith Player-amd64.snap' },
                 {
                     runCommand: (command, args) => {
                         assert.equal(command, 'unsquashfs');
@@ -1423,7 +1423,7 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
         () =>
             sourceBindingHelper.inspectSnapPayload(
                 snapPath,
-                { id: 1, name: 'IPTVnator-amd64.snap' },
+                { id: 1, name: 'Zenith Player-amd64.snap' },
                 {
                     runCommand: (command, args) => {
                         assert.equal(command, 'unsquashfs');
@@ -1451,7 +1451,7 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
         () =>
             sourceBindingHelper.inspectSnapPayload(
                 snapPath,
-                { id: 1, name: 'IPTVnator-amd64.snap' },
+                { id: 1, name: 'Zenith Player-amd64.snap' },
                 {
                     runCommand: (command, args) => {
                         assert.equal(command, 'unsquashfs');
@@ -1481,7 +1481,7 @@ test('hashes the final source archive bytes and reads the exact packaged Snap bi
         () =>
             sourceBindingHelper.inspectSnapPayload(
                 snapPath,
-                { id: 1, name: 'IPTVnator-amd64.snap' },
+                { id: 1, name: 'Zenith Player-amd64.snap' },
                 {
                     runCommand: (command, args) => {
                         assert.equal(command, 'unsquashfs');
@@ -1576,7 +1576,7 @@ test('publish workflow installs the source verifier and binds the release tag re
     assert.match(verifyStep.run, /chmod 0444/);
     assert.match(
         verifyStep.run,
-        /SEALED_ASSET_PARENT="\/var\/lib\/iptvnator-snap-release"/
+        /SEALED_ASSET_PARENT="\/var\/lib\/zenithplayer-snap-release"/
     );
     assert.match(
         verifyStep.run,
@@ -1614,7 +1614,7 @@ test('publish workflow installs the source verifier and binds the release tag re
     );
     assert.match(
         uploadStep.run,
-        /VERIFIED_ASSET_DIRECTORY="\/var\/lib\/iptvnator-snap-release\/assets"/
+        /VERIFIED_ASSET_DIRECTORY="\/var\/lib\/zenithplayer-snap-release\/assets"/
     );
     assert.doesNotMatch(uploadStep.run, /\bnode\b/);
     assert.doesNotMatch(uploadStep.run, /release-snap-assets\.cjs/);

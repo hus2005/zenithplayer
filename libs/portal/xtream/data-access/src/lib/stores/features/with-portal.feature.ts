@@ -14,8 +14,8 @@ import {
     XtreamCredentials,
 } from '../../services/xtream-api.service';
 import { PortalStatusType } from '../../xtream-state';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { resolveXtreamPortalStatus } from '@iptvnator/shared/interfaces';
+import { createLogger } from '@zenithplayer/portal/shared/util';
+import { resolveXtreamPortalStatus } from '@zenithplayer/shared/interfaces';
 
 /**
  * Portal state for managing playlist and portal status

@@ -10,7 +10,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     PortalRailLink,
     PortalRailSection,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import { WorkspaceShellRailLinksComponent } from '../workspace-shell-rail-links/workspace-shell-rail-links.component';
 
 @Component({

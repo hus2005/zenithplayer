@@ -22,24 +22,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Store } from '@ngrx/store';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
 import { firstValueFrom } from 'rxjs';
 import {
     DatabaseService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     normalizeXtreamServerUrl,
     Playlist,
     PlaylistMeta,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     normalizeEpgUrls,
     resolvePlaylistEpgSourceState,
-} from '@iptvnator/shared/m3u-utils';
+} from '@zenithplayer/shared/m3u-utils';
 
 type DesktopFileSaveBridge = Pick<
     typeof window.electron,

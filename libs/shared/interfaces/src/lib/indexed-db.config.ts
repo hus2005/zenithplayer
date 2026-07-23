@@ -9,7 +9,7 @@ export enum DbStores {
 
 /** Defines db tables and schema */
 export const dbConfig: DBConfig = {
-    name: 'iptvnator',
+    name: 'zenithplayer',
     version: 1,
     objectStoresMeta: [
         {

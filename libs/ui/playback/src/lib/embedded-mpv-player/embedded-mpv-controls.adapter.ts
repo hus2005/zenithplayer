@@ -13,7 +13,7 @@ import {
     EmbeddedMpvSession,
     EmbeddedMpvSupport,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { TranslateService } from '@ngx-translate/core';
 import { merge } from 'rxjs';
 import {

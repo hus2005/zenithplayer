@@ -3,7 +3,7 @@ import {
     ExternalPlayerName,
     parseExternalPlayerArguments,
     type ExternalPlayerArgumentsInput,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { existsSync, readdirSync } from 'fs';
 
 export type PathExists = (path: string) => boolean;

@@ -1,6 +1,6 @@
 import { ChildProcess, spawn } from 'child_process';
 import { AddressInfo, createConnection, createServer } from 'net';
-import { PlayerContentInfo } from '@iptvnator/shared/interfaces';
+import { PlayerContentInfo } from '@zenithplayer/shared/interfaces';
 import {
     VLC_PLAYER_ARGUMENTS,
     VLC_PLAYER_PATH,

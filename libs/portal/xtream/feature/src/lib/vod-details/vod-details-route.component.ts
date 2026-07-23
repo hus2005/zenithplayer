@@ -20,20 +20,20 @@ import {
     DetailMetaTemplateDirective,
     DetailTagsTemplateDirective,
     PortalDetailShellComponent,
-} from '@iptvnator/ui/components';
-import { SafePipe } from '@iptvnator/pipes';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/ui/components';
+import { SafePipe } from '@zenithplayer/pipes';
+import { createLogger } from '@zenithplayer/portal/shared/util';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
 import {
     type PlaybackFallbackRequest,
     PortalInlinePlayerComponent,
-} from '@iptvnator/ui/playback';
+} from '@zenithplayer/ui/playback';
 import {
     CrossPortalSimilarItem,
     CrossPortalSimilarService,
     DownloadsService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     getXtreamVodInfo,
     normalizeTitleKeys,
@@ -43,7 +43,7 @@ import {
     XtreamVodInfo,
     XtreamVodStream,
     youtubeEmbedUrl,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     SimilarCatalogItem,
     matchRecommendationsToCatalog,

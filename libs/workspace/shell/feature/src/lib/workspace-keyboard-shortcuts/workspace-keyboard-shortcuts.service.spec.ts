@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 import { WorkspaceKeyboardShortcutsService } from './workspace-keyboard-shortcuts.service';
 
 describe('WorkspaceKeyboardShortcutsService', () => {

@@ -8,26 +8,26 @@ import { of } from 'rxjs';
 import {
     PlaylistRefreshActionService,
     type XtreamRefreshPreparationState,
-} from '@iptvnator/playlist/shared/ui';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+} from '@zenithplayer/playlist/shared/ui';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     WorkspaceHeaderContextService,
     WorkspaceViewCommandService,
-} from '@iptvnator/portal/shared/util';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/shared/util';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
 import {
     DownloadsService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/services';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import {
     WorkspaceStartupPreferencesService,
     WORKSPACE_SHELL_ACTIONS,
-} from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/workspace/shell/util';
 import { RecentCommandsService } from '../../recent-commands';
 import { WorkspacePlayerCommandsContributor } from '../../workspace-player-commands';
 import { WorkspaceShellFacade } from './workspace-shell.facade';

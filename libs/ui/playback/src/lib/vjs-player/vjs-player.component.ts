@@ -13,7 +13,7 @@ import {
     viewChild,
 } from '@angular/core';
 import '@yangkghjh/videojs-aspect-ratio-panel';
-import { createDevLogger } from '@iptvnator/shared/interfaces';
+import { createDevLogger } from '@zenithplayer/shared/interfaces';
 import videoJs from 'video.js';
 import 'videojs-contrib-quality-levels';
 import 'videojs-quality-selector-hls';

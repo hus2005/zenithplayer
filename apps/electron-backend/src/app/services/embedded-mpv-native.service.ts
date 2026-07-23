@@ -26,7 +26,7 @@ import {
     EMBEDDED_MPV_FRAME_SOURCE_CHANGED,
     EMBEDDED_MPV_SESSION_UPDATE,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { toNativeViewBounds } from './embedded-mpv-bounds.util';
 import { EmbeddedMpvFrameCopyAdapter } from './embedded-mpv-frame-copy.adapter';
 import {
@@ -94,7 +94,7 @@ interface EmbeddedMpvRuntimeSession {
     lastStatus: EmbeddedMpvSessionStatus | null;
 }
 
-const EMBEDDED_MPV_FRAME_COPY_ENV = 'IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY';
+const EMBEDDED_MPV_FRAME_COPY_ENV = 'zenithplayer_ENABLE_EMBEDDED_MPV_FRAME_COPY';
 const SUPPORTED_EMBEDDED_MPV_PLATFORMS = new Set<NodeJS.Platform>([
     'darwin',
     'win32',
@@ -116,7 +116,7 @@ export class EmbeddedMpvNativeService {
      * Frame-copy engine: helper process + shm ring + renderer canvas.
      * Experimental, macOS Apple Silicon (owner decision 2026-07-10), Linux
      * x64 and Windows, opted into with
-     * IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY=1 on top of the regular
+     * zenithplayer_ENABLE_EMBEDDED_MPV_FRAME_COPY=1 on top of the regular
      * embedded MPV experiment flag.
      */
     private isFrameCopyEngineRequested(): boolean {
@@ -607,7 +607,7 @@ export class EmbeddedMpvNativeService {
 
         const targetPath = this.reserveRecordingTargetPath(
             directory,
-            options.title || session.title || 'IPTVnator recording'
+            options.title || session.title || 'Zenith Player recording'
         );
         try {
             addon.startRecording(sessionId, targetPath);
@@ -921,7 +921,7 @@ export class EmbeddedMpvNativeService {
         const windowHandle = App.mainWindow.getNativeWindowHandle();
         if (this.isInvalidLinuxWaylandWindowHandle(windowHandle)) {
             throw new Error(
-                'Embedded MPV on Linux requires Electron to run under X11 or Xwayland. Native Wayland embedding is not supported yet. Start IPTVnator with --ozone-platform=x11.'
+                'Embedded MPV on Linux requires Electron to run under X11 or Xwayland. Native Wayland embedding is not supported yet. Start Zenith Player with --ozone-platform=x11.'
             );
         }
 
@@ -982,7 +982,7 @@ export class EmbeddedMpvNativeService {
             .replace(/[<>:"/\\|?*\u0000-\u001f]/g, '_')
             .replace(/\s+/g, ' ')
             .trim();
-        return (normalized || 'IPTVnator recording').slice(0, 120);
+        return (normalized || 'Zenith Player recording').slice(0, 120);
     }
 
     private formatRecordingTimestamp(date: Date): string {
@@ -1046,7 +1046,7 @@ export class EmbeddedMpvNativeService {
             return 'Embedded MPV is not available in sandboxed Flatpak/Snap packages because they cannot access a system mpv executable. Use the built-in player, or install the .deb/.rpm/AppImage package to enable Embedded MPV.';
         }
 
-        return 'Embedded MPV on Linux requires the mpv executable on PATH. Install the mpv package for your distribution and restart IPTVnator.';
+        return 'Embedded MPV on Linux requires the mpv executable on PATH. Install the mpv package for your distribution and restart Zenith Player.';
     }
 
     private isInvalidLinuxWaylandWindowHandle(windowHandle: Buffer): boolean {

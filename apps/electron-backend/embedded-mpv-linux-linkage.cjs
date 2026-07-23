@@ -20,7 +20,7 @@ const LINUX_FRAME_COPY_ARTIFACTS = Object.freeze([
         mayLinkLibmpv: false,
     }),
     Object.freeze({
-        fileName: 'iptvnator_mpv_helper',
+        fileName: 'zenithplayer_mpv_helper',
         label: 'embedded MPV frame-copy helper',
         mayLinkLibmpv: true,
     }),

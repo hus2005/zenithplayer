@@ -8,20 +8,20 @@ import { firstValueFrom, startWith } from 'rxjs';
 import {
     PlaylistInfoComponent,
     PlaylistRefreshActionService,
-} from '@iptvnator/playlist/shared/ui';
+} from '@zenithplayer/playlist/shared/ui';
 import {
     WorkspaceHeaderAction,
     WorkspaceHeaderContextService,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { PlaylistsService } from '@iptvnator/services';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/shared/util';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
+import { PlaylistsService } from '@zenithplayer/services';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import {
     WorkspaceAccountInfoData,
     WorkspacePortalContext,
     WORKSPACE_SHELL_ACTIONS,
-} from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/workspace/shell/util';
 import {
     CLEAR_RECENTLY_VIEWED_ARIA,
     CLEAR_RECENTLY_VIEWED_TOOLTIP,

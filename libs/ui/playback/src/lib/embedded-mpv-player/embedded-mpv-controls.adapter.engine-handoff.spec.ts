@@ -5,7 +5,7 @@ import {
     EmbeddedMpvSession,
     EmbeddedMpvSupport,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { TranslateModule } from '@ngx-translate/core';
 import { EmbeddedMpvControlsAdapter } from './embedded-mpv-controls.adapter';
 import { EmbeddedMpvSessionController } from './embedded-mpv-session-controller';

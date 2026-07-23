@@ -1,13 +1,13 @@
 import { inject, Injectable, Provider } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { PORTAL_SHELL_ACTIONS } from '@iptvnator/portal/shared/util';
+import { PORTAL_SHELL_ACTIONS } from '@zenithplayer/portal/shared/util';
 import {
     WORKSPACE_SHELL_ACTIONS,
     WorkspaceAccountInfoData,
     WorkspacePlaylistType,
     WorkspaceShellActions,
-} from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/workspace/shell/util';
 
 @Injectable({ providedIn: 'root' })
 export class AppWorkspaceShellActionsService implements WorkspaceShellActions {
@@ -15,7 +15,7 @@ export class AppWorkspaceShellActionsService implements WorkspaceShellActions {
     private readonly router = inject(Router);
 
     openAddPlaylistDialog(type?: WorkspacePlaylistType): void {
-        void import('@iptvnator/playlist/import/feature').then(
+        void import('@zenithplayer/playlist/import/feature').then(
             ({ AddPlaylistDialogComponent }) => {
                 this.dialog.open(AddPlaylistDialogComponent, {
                     // Width sized for the 5-card method picker plus the
@@ -43,7 +43,7 @@ export class AppWorkspaceShellActionsService implements WorkspaceShellActions {
     }
 
     openAccountInfo(data: WorkspaceAccountInfoData): void {
-        void import('@iptvnator/portal/xtream/feature').then(
+        void import('@zenithplayer/portal/xtream/feature').then(
             ({ AccountInfoComponent }) => {
                 this.dialog.open(AccountInfoComponent, {
                     width: '80%',

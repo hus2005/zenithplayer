@@ -2,8 +2,8 @@ import {
     PortalDebugEvent,
     PortalDebugProvider,
     PortalDebugTransport,
-} from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+} from '@zenithplayer/shared/interfaces';
+import { redactSensitiveData } from '@zenithplayer/shared/logging';
 
 export interface Logger {
     debug: (...args: unknown[]) => void;

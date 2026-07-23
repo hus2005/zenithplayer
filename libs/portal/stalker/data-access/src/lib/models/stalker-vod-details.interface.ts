@@ -1,8 +1,8 @@
 /**
- * @deprecated Import from '@iptvnator/shared/interfaces' instead.
+ * @deprecated Import from '@zenithplayer/shared/interfaces' instead.
  * This re-export exists for backward compatibility.
  */
 export {
     StalkerVodDetails,
     StalkerVodInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';

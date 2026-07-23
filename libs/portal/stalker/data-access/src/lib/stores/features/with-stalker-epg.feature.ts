@@ -6,15 +6,15 @@ import {
     withMethods,
     withState,
 } from '@ngrx/signals';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { DataService, RuntimeCapabilitiesService } from '@iptvnator/services';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
+import { createLogger } from '@zenithplayer/portal/shared/util';
+import { DataService, RuntimeCapabilitiesService } from '@zenithplayer/services';
 import {
     buildStalkerEpgMappingKey,
     EpgItem,
     EpgProgram,
     StalkerPortalActions,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { normalizeStalkerEntityId } from '../../stalker-vod.utils';
 import { StalkerSessionService } from '../../stalker-session.service';
 import { StalkerEpgFeatureStoreContract } from '../stalker-store.contracts';

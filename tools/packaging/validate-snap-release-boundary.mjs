@@ -22,7 +22,7 @@ export function validateExtractedSnapReleaseBoundary(
         extractionRoot,
         'usr',
         'lib',
-        'iptvnator',
+        'zenithplayer',
         'resources',
         'app.asar'
     );

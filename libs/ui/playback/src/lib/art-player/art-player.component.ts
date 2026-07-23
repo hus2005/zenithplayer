@@ -12,7 +12,7 @@ import {
     viewChild,
 } from '@angular/core';
 import Artplayer from 'artplayer';
-import { Channel, createDevLogger } from '@iptvnator/shared/interfaces';
+import { Channel, createDevLogger } from '@zenithplayer/shared/interfaces';
 import type { PlaybackDiagnostic } from '../playback-diagnostics/playback-diagnostics.util';
 import {
     PlayerControlsComponent,

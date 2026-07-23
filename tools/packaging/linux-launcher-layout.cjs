@@ -13,7 +13,7 @@ function normalizedTargetName(target) {
     return value.trim().toLowerCase();
 }
 
-function resolveLinuxLauncherLayout(targets, executableName = 'iptvnator') {
+function resolveLinuxLauncherLayout(targets, executableName = 'zenithplayer') {
     if (!Array.isArray(targets)) {
         throw new TypeError('Linux launcher targets must be an array.');
     }

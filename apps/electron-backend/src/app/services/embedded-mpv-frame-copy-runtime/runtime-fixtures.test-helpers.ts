@@ -73,7 +73,7 @@ export function createFixture(
     profile: 'system' | 'portable' | 'flatpak' = 'system'
 ): RuntimeFixture {
     const nativeDir = path.join(rootDir, profile, 'native');
-    const helperPath = path.join(nativeDir, 'iptvnator_mpv_helper');
+    const helperPath = path.join(nativeDir, 'zenithplayer_mpv_helper');
     const manifestPath = path.join(nativeDir, 'embedded-mpv-runtime.json');
     mkdirSync(nativeDir, { recursive: true });
     writeFileSync(path.join(nativeDir, 'embedded_mpv.node'), 'addon', {
@@ -143,7 +143,7 @@ export function createFixture(
                 readable: true,
             },
             helper: {
-                name: 'iptvnator_mpv_helper',
+                name: 'zenithplayer_mpv_helper',
                 regularFile: true,
                 readable: true,
                 executable: true,
@@ -244,7 +244,7 @@ export function createDevelopmentFixture(
         artifacts: {
             addon: 'embedded_mpv.node',
             frameReader: 'embedded_mpv_frame_reader.node',
-            helper: 'iptvnator_mpv_helper',
+            helper: 'zenithplayer_mpv_helper',
         },
         processIsolation: {
             addonLoadsLibmpv: false,

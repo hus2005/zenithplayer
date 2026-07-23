@@ -1,7 +1,7 @@
 import { inject } from '@angular/core';
 import { Router, Routes } from '@angular/router';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { WorkspaceStartupPreferencesService } from '@iptvnator/workspace/shell/util';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
+import { WorkspaceStartupPreferencesService } from '@zenithplayer/workspace/shell/util';
 
 const settingsReadyResolver = () => inject(SettingsStore).loadSettings();
 
@@ -47,7 +47,7 @@ export const routes: Routes = [
             settingsReady: settingsReadyResolver,
         },
         loadComponent: () =>
-            import('@iptvnator/workspace/shell/feature').then(
+            import('@zenithplayer/workspace/shell/feature').then(
                 (c) => c.WorkspaceShellComponent
             ),
         children: [
@@ -60,21 +60,21 @@ export const routes: Routes = [
                 path: 'dashboard',
                 canActivate: [dashboardAccessGuard],
                 loadComponent: () =>
-                    import('@iptvnator/workspace/dashboard/feature').then(
+                    import('@zenithplayer/workspace/dashboard/feature').then(
                         (c) => c.WorkspaceDashboardRailsComponent
                     ),
             },
             {
                 path: 'sources',
                 loadComponent: () =>
-                    import('@iptvnator/workspace/shell/feature').then(
+                    import('@zenithplayer/workspace/shell/feature').then(
                         (c) => c.WorkspaceSourcesComponent
                     ),
             },
             {
                 path: 'playlists/:id',
                 loadChildren: () =>
-                    import('@iptvnator/playlist/m3u/feature-player').then((m) =>
+                    import('@zenithplayer/playlist/m3u/feature-player').then((m) =>
                         m.createM3uWorkspaceRoutes()
                     ),
             },
@@ -107,28 +107,28 @@ export const routes: Routes = [
                     isGlobalSearch: true,
                 },
                 loadComponent: () =>
-                    import('@iptvnator/portal/xtream/feature').then(
+                    import('@zenithplayer/portal/xtream/feature').then(
                         (c) => c.GlobalSearchResultsComponent
                     ),
             },
             {
                 path: 'downloads',
                 loadComponent: () =>
-                    import('@iptvnator/portal/downloads/feature').then(
+                    import('@zenithplayer/portal/downloads/feature').then(
                         (c) => c.DownloadsComponent
                     ),
             },
             {
                 path: '',
                 loadChildren: () =>
-                    import('@iptvnator/portal/xtream/feature').then((m) =>
+                    import('@zenithplayer/portal/xtream/feature').then((m) =>
                         m.createXtreamRoutes()
                     ),
             },
             {
                 path: '',
                 loadChildren: () =>
-                    import('@iptvnator/portal/stalker/feature').then((m) =>
+                    import('@zenithplayer/portal/stalker/feature').then((m) =>
                         m.createStalkerRoutes()
                     ),
             },

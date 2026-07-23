@@ -201,13 +201,13 @@ function createSystemBuildInputManifest() {
             mpvPackage: '0.40.0-3ubuntu2',
         },
         sourceDistribution:
-            'Linux CI build inputs come from Ubuntu runner packages. Runtime playback uses the system mpv executable; IPTVnator does not bundle or load libmpv in the Electron process on Linux.',
+            'Linux CI build inputs come from Ubuntu runner packages. Runtime playback uses the system mpv executable; Zenith Player does not bundle or load libmpv in the Electron process on Linux.',
     };
 }
 
 function createFixture(t, options = {}) {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-runtime-test-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-runtime-test-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
 

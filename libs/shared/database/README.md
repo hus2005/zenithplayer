@@ -1,18 +1,18 @@
 # Database
 
-Shared database library for IPTVnator providing Drizzle ORM schema and connection utilities.
+Shared database library for Zenith Player providing Drizzle ORM schema and connection utilities.
 
 ## Usage
 
 ```typescript
 // Full access (electron-backend)
-import { getDatabase, initDatabase } from '@iptvnator/shared/database';
+import { getDatabase, initDatabase } from '@zenithplayer/shared/database';
 
 // Read-only access (agent-backend)
-import { getReadOnlyDatabase } from '@iptvnator/shared/database';
+import { getReadOnlyDatabase } from '@zenithplayer/shared/database';
 
 // Schema and types
-import { content, categories, playlists, type Content } from '@iptvnator/shared/database';
+import { content, categories, playlists, type Content } from '@zenithplayer/shared/database';
 ```
 
 ## Exports
@@ -30,4 +30,4 @@ import { content, categories, playlists, type Content } from '@iptvnator/shared/
 
 ## Database Location
 
-The SQLite database is stored at: `~/.iptvnator/databases/iptvnator.db`
+The SQLite database is stored at: `~/.zenithplayer/databases/zenithplayer.db`

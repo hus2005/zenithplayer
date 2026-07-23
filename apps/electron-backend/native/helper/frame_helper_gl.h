@@ -630,7 +630,7 @@ public:
         windowClass.style = CS_OWNDC;
         windowClass.lpfnWndProc = DefWindowProcA;
         windowClass.hInstance = GetModuleHandleA(nullptr);
-        windowClass.lpszClassName = "iptvnator_mpv_helper_gl";
+        windowClass.lpszClassName = "zenithplayer_mpv_helper_gl";
         /* Re-registration fails harmlessly if a previous context leaked the
          * class; CreateWindow below is the real gate. */
         RegisterClassA(&windowClass);

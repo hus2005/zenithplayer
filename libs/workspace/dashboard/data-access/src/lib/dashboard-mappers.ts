@@ -2,7 +2,7 @@ import {
     GlobalFavoriteItem as DbGlobalFavoriteItem,
     GlobalRecentlyAddedItem as DbGlobalRecentlyAddedItem,
     GlobalRecentItem as DbGlobalRecentItem,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     PortalAddedItem,
     PlaylistMeta,
@@ -14,7 +14,7 @@ import {
     extractStalkerItemTitle,
     extractStalkerItemType,
     normalizeStalkerDate,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 // ────── Type / label helpers ──────
 

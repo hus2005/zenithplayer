@@ -1,6 +1,6 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { SettingsStore } from '@iptvnator/services';
+import { SettingsStore } from '@zenithplayer/services';
 import {
     DashboardRailCard,
     DashboardRailComponent,

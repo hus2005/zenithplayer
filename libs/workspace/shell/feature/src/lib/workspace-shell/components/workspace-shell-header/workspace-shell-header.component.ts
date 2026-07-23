@@ -10,8 +10,8 @@ import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
-import { PlaylistSwitcherComponent } from '@iptvnator/playlist/shared/ui';
-import { WorkspaceHeaderAction } from '@iptvnator/portal/shared/util';
+import { PlaylistSwitcherComponent } from '@zenithplayer/playlist/shared/ui';
+import { WorkspaceHeaderAction } from '@zenithplayer/portal/shared/util';
 import { WorkspaceHeaderBulkAction } from '../../services/helpers/workspace-shell-constants';
 
 @Component({

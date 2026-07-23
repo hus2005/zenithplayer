@@ -7,7 +7,7 @@
 ## Goal
 
 Ship a genuinely usable Embedded MPV frame-copy runtime in every official
-Linux x64 package format produced by IPTVnator: AppImage, DEB, RPM, Pacman,
+Linux x64 package format produced by Zenith Player: AppImage, DEB, RPM, Pacman,
 Snap, and Flatpak. Keep libmpv outside the Electron process, retain the
 existing native-view engine as a safe fallback, and never advertise
 frame-copy from artifact presence alone.
@@ -21,7 +21,7 @@ carry an explicit unavailable marker and must not contain x64 native binaries.
 
 - `apps/electron-backend/native/binding.gyp` builds three distinct artifacts:
   the native-view addon, the N-API shared-memory frame reader, and the
-  `iptvnator_mpv_helper` process. On Linux only the helper links `-lmpv`; the
+  `zenithplayer_mpv_helper` process. On Linux only the helper links `-lmpv`; the
   addon uses X11/Xext/dlopen and must remain free of libmpv linkage.
 - `tools/packaging/embedded-mpv-frame-copy-files.cjs` deliberately deletes the
   helper from every Linux package.
@@ -55,10 +55,10 @@ that the selected target set matches the runtime mode. It must fail closed if
 an official x64 package is requested with an absent, incomplete, or ambiguous
 profile.
 
-Flatpak is an isolated packaging pass and keeps `iptvnator` as the real
+Flatpak is an isolated packaging pass and keeps `zenithplayer` as the real
 Electron ELF so Electron Builder's `electron-wrapper` passes it directly to
-Zypak. Other Linux targets retain the conditional `iptvnator` wrapper and
-`iptvnator.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation.
+Zypak. Other Linux targets retain the conditional `zenithplayer` wrapper and
+`zenithplayer.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation.
 
 System package dependencies are:
 
@@ -70,7 +70,7 @@ These names match the current Debian, Fedora, and Arch package databases and
 cover every direct helper interface: libmpv, EGL, GL, and GBM. The helper
 links `libGL.so.1` rather than `libOpenGL.so.0`, matching both the distro
 contracts and Snap's graphics provider. System
-packages do not copy libmpv into IPTVnator. The helper keeps an `$ORIGIN/lib`
+packages do not copy libmpv into Zenith Player. The helper keeps an `$ORIGIN/lib`
 RUNPATH first for a consistent binary, but naturally resolves the system SONAME
 when the private directory is absent.
 
@@ -97,7 +97,7 @@ The strict Snap uses `base: core22`, a private `shared-memory` plug, and an
 exact `graphics-core22` content plug targeting a real empty mode-0755
 `$SNAP/graphics` with external `mesa-core22` as default provider. The graphics provider supplies
 EGL/GL/GLX/GBM/DRM/VA; Electron Builder's GNOME content runtime supplies
-ALSA/PulseAudio. Those shared providers are not copied into IPTVnator's Snap or
+ALSA/PulseAudio. Those shared providers are not copied into Zenith Player's Snap or
 source/notices archive. Because core22 does not synthesize `$SNAP` content
 targets, the package hook creates the empty directory and extracted-artifact
 validation checks its type and emptiness. The metadata also declares exactly
@@ -116,7 +116,7 @@ The x64 packaged native directory is:
 resources/app.asar.unpacked/electron-backend/native/
   embedded_mpv.node
   embedded_mpv_frame_reader.node
-  iptvnator_mpv_helper
+  zenithplayer_mpv_helper
   embedded-mpv-runtime.json
   lib/
     libmpv.so.2
@@ -136,10 +136,10 @@ the complete non-system dependency closure. ELF dependencies inside that
 closure and the helper use only SONAMEs plus `$ORIGIN`-relative RPATH/RUNPATH;
 they may not retain build-prefix paths.
 
-`embedded_mpv.node`, the Electron executable (`iptvnator` for Flatpak;
-`iptvnator.bin` for other Linux targets), and Electron's shipped libraries must
+`embedded_mpv.node`, the Electron executable (`zenithplayer` for Flatpak;
+`zenithplayer.bin` for other Linux targets), and Electron's shipped libraries must
 not have a direct `DT_NEEDED` entry for libmpv.
-`iptvnator_mpv_helper` must have one. Process isolation is an invariant, not a
+`zenithplayer_mpv_helper` must have one. Process isolation is an invariant, not a
 profile-specific choice. The source `electron-backend/native{,/**/*}` tree is
 excluded from `app.asar`; `afterPack` is the sole owner of the normalized
 unpacked native directory, and package checks reject every archived native

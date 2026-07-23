@@ -200,7 +200,7 @@ coverage.
 **Files:**
 - Verify only: `apps/web-e2e/src/xtream.e2e.ts`
 - Verify only: `apps/web-e2e/src/stalker.e2e.ts`
-- Verify only: `docs/architecture/iptvnator-ui-guidelines.md`
+- Verify only: `docs/architecture/zenithplayer-ui-guidelines.md`
 
 - [ ] **Step 1: Run the Xtream portal E2E target**
 
@@ -239,5 +239,5 @@ Expected:
 - the worktree contains only this implementation plan if it has not been
   committed separately;
 - no canonical documentation update is needed because
-  `docs/architecture/iptvnator-ui-guidelines.md` already directs contributors
+  `docs/architecture/zenithplayer-ui-guidelines.md` already directs contributors
   not to add redundant badges or secondary selection systems.

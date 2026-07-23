@@ -109,7 +109,7 @@ describe('Linux Embedded MPV linkage verification', () => {
 
     function temporaryDirectory(): string {
         const directory = mkdtempSync(
-            path.join(tmpdir(), 'iptvnator-mpv-linkage-')
+            path.join(tmpdir(), 'zenithplayer-mpv-linkage-')
         );
         temporaryDirectories.push(directory);
         return directory;
@@ -393,7 +393,7 @@ describe('Linux Embedded MPV linkage verification', () => {
         const outputs: Record<string, string> = {
             'embedded_mpv.node': readelfDynamic([['NEEDED', 'libX11.so.6']]),
             'embedded_mpv_frame_reader.node': readelfDynamic([]),
-            iptvnator_mpv_helper: readelfDynamic([
+            zenithplayer_mpv_helper: readelfDynamic([
                 ['NEEDED', 'libmpv.so.2'],
                 ['NEEDED', 'libEGL.so.1'],
                 ['RUNPATH', '$ORIGIN/lib'],
@@ -427,7 +427,7 @@ describe('Linux Embedded MPV linkage verification', () => {
         const { validateLinuxFrameCopyLinkage } = loadLinkageModule();
         const fixture = createArtifactFixture();
 
-        fixture.outputs.iptvnator_mpv_helper = readelfDynamic([
+        fixture.outputs.zenithplayer_mpv_helper = readelfDynamic([
             ['NEEDED', 'libmpv.so.3'],
             ['RUNPATH', '$ORIGIN/lib'],
         ]);
@@ -444,7 +444,7 @@ describe('Linux Embedded MPV linkage verification', () => {
     it('rejects helper RPATH and any RUNPATH other than $ORIGIN/lib', () => {
         const { validateLinuxFrameCopyLinkage } = loadLinkageModule();
         const rpathFixture = createArtifactFixture();
-        rpathFixture.outputs.iptvnator_mpv_helper = readelfDynamic([
+        rpathFixture.outputs.zenithplayer_mpv_helper = readelfDynamic([
             ['NEEDED', 'libmpv.so.2'],
             ['RPATH', '/host/lib'],
             ['RUNPATH', '$ORIGIN/lib'],
@@ -459,7 +459,7 @@ describe('Linux Embedded MPV linkage verification', () => {
         ).toThrow(/helper must not contain RPATH/i);
 
         const runpathFixture = createArtifactFixture();
-        runpathFixture.outputs.iptvnator_mpv_helper = readelfDynamic([
+        runpathFixture.outputs.zenithplayer_mpv_helper = readelfDynamic([
             ['NEEDED', 'libmpv.so.2'],
             ['RUNPATH', '$ORIGIN'],
         ]);

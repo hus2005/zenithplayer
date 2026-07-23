@@ -13,7 +13,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { AppUpdateReleaseNotesDialogComponent } from './settings/app-update-release-notes-dialog.component';
 
 @Component({

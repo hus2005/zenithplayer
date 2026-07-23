@@ -1,7 +1,7 @@
 ---
 services:
-  iptvnator:
-    image: 4gray/iptvnator:latest
+  zenithplayer:
+    image: hus2005/zenithplayer:latest
     build:
       context: ..
       dockerfile: docker/Dockerfile
@@ -12,7 +12,7 @@ services:
       BACKEND_URL: /api
       CLIENT_URL: http://localhost:4333
       PORT: "3000"
-      IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS: "0"
+      zenithplayer_PROXY_ALLOW_PRIVATE_NETWORKS: "0"
     healthcheck:
       test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/api/health >/dev/null || exit 1"]
       interval: 30s

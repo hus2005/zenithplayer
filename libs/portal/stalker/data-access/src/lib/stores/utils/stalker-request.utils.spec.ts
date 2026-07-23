@@ -1,4 +1,4 @@
-import { PlaylistMeta, STALKER_REQUEST } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta, STALKER_REQUEST } from '@zenithplayer/shared/interfaces';
 import {
     executeStalkerRequest,
     type StalkerRequestDeps,

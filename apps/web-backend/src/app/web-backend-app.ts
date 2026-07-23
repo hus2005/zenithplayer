@@ -7,7 +7,7 @@ import zlib from 'node:zlib';
 import axios from 'axios';
 import epgParser from 'epg-parser';
 import parser from 'iptv-playlist-parser';
-import { normalizeXtreamServerUrl } from '@iptvnator/shared/interfaces';
+import { normalizeXtreamServerUrl } from '@zenithplayer/shared/interfaces';
 
 export interface WebBackendHttpGetOptions {
     readonly headers?: Record<string, string>;
@@ -89,15 +89,15 @@ export function createWebBackendApp(
         optionsSuccessStatus: 200,
     });
 
-    app.get('/', (_req, res) => res.send('IPTVnator web backend'));
+    app.get('/', (_req, res) => res.send('Zenith Player web backend'));
     app.get('/health', (_req, res) =>
-        res.json({ status: 'ok', service: 'iptvnator-web-backend' })
+        res.json({ status: 'ok', service: 'zenithplayer-web-backend' })
     );
 
     app.get('/config.js', corsMiddleware, (_req, res) => {
         const config = JSON.stringify({ BACKEND_URL: runtimeBackendUrl });
         res.type('application/javascript').send(
-            `window.__IPTVNATOR_CONFIG__ = Object.assign({}, window.__IPTVNATOR_CONFIG__, ${config});\n`
+            `window.__zenithplayer_CONFIG__ = Object.assign({}, window.__zenithplayer_CONFIG__, ${config});\n`
         );
     });
 
@@ -345,7 +345,7 @@ function createProviderTargetId(url: URL): string {
 }
 
 function isPrivateNetworkProxyAllowed(): boolean {
-    const value = process.env['IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS'];
+    const value = process.env['zenithplayer_PROXY_ALLOW_PRIVATE_NETWORKS'];
     return value === '1' || value === 'true';
 }
 
@@ -362,7 +362,7 @@ function getClientOrigins(): string[] {
     return process.env['NODE_ENV'] === 'development' ||
         process.env['NODE_ENV'] === 'dev'
         ? ['http://localhost:4200']
-        : ['https://iptvnator.vercel.app'];
+        : ['https://zenithplayer.vercel.app'];
 }
 
 function getQueryString(req: Request, key: string): string | undefined {

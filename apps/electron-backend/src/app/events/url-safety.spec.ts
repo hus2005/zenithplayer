@@ -102,22 +102,22 @@ describe('url-safety', () => {
     });
 
     describe('isPrivateNetworkUrlAccessAllowed', () => {
-        const originalValue = process.env.IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS;
+        const originalValue = process.env.zenithplayer_ALLOW_PRIVATE_NETWORK_URLS;
 
         afterEach(() => {
             if (originalValue === undefined) {
-                delete process.env.IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS;
+                delete process.env.zenithplayer_ALLOW_PRIVATE_NETWORK_URLS;
             } else {
-                process.env.IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS =
+                process.env.zenithplayer_ALLOW_PRIVATE_NETWORK_URLS =
                     originalValue;
             }
         });
 
         it('requires an explicit environment opt-in', () => {
-            delete process.env.IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS;
+            delete process.env.zenithplayer_ALLOW_PRIVATE_NETWORK_URLS;
             expect(isPrivateNetworkUrlAccessAllowed()).toBe(false);
 
-            process.env.IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS = ' TRUE ';
+            process.env.zenithplayer_ALLOW_PRIVATE_NETWORK_URLS = ' TRUE ';
             expect(isPrivateNetworkUrlAccessAllowed()).toBe(true);
         });
     });

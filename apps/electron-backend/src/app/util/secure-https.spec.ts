@@ -10,7 +10,7 @@ jest.mock('node:https', () => ({
 }));
 
 describe('secure-https', () => {
-    const originalValue = process.env.IPTVNATOR_ALLOW_INSECURE_TLS;
+    const originalValue = process.env.zenithplayer_ALLOW_INSECURE_TLS;
     const agentConstructorMock = Agent as unknown as jest.Mock;
     const lookup = jest.fn() as unknown as LookupFunction;
 
@@ -20,14 +20,14 @@ describe('secure-https', () => {
 
     afterEach(() => {
         if (originalValue === undefined) {
-            delete process.env.IPTVNATOR_ALLOW_INSECURE_TLS;
+            delete process.env.zenithplayer_ALLOW_INSECURE_TLS;
         } else {
-            process.env.IPTVNATOR_ALLOW_INSECURE_TLS = originalValue;
+            process.env.zenithplayer_ALLOW_INSECURE_TLS = originalValue;
         }
     });
 
     it('validates certificates by default', () => {
-        delete process.env.IPTVNATOR_ALLOW_INSECURE_TLS;
+        delete process.env.zenithplayer_ALLOW_INSECURE_TLS;
 
         expect(isInsecureTlsAllowed()).toBe(false);
         createPlaylistAgentFactory().createHttpsAgent(
@@ -44,7 +44,7 @@ describe('secure-https', () => {
     it.each(['1', 'true', ' TRUE '])(
         'allows an explicit insecure TLS opt-in via %s',
         (value) => {
-            process.env.IPTVNATOR_ALLOW_INSECURE_TLS = value;
+            process.env.zenithplayer_ALLOW_INSECURE_TLS = value;
 
             expect(isInsecureTlsAllowed()).toBe(true);
             createPlaylistAgentFactory().createHttpsAgent(
@@ -60,13 +60,13 @@ describe('secure-https', () => {
     );
 
     it('does not accept unrelated truthy values', () => {
-        process.env.IPTVNATOR_ALLOW_INSECURE_TLS = 'yes';
+        process.env.zenithplayer_ALLOW_INSECURE_TLS = 'yes';
 
         expect(isInsecureTlsAllowed()).toBe(false);
     });
 
     it('preserves TLS policy when no pinned lookup is required', () => {
-        delete process.env.IPTVNATOR_ALLOW_INSECURE_TLS;
+        delete process.env.zenithplayer_ALLOW_INSECURE_TLS;
 
         createPlaylistAgentFactory().createHttpsAgent(
             undefined,
@@ -79,7 +79,7 @@ describe('secure-https', () => {
     });
 
     it('allows invalid certificates only for trusted hosts', () => {
-        delete process.env.IPTVNATOR_ALLOW_INSECURE_TLS;
+        delete process.env.zenithplayer_ALLOW_INSECURE_TLS;
 
         const factory = createPlaylistAgentFactory({
             trustedInsecureTlsHosts: ['playlist.local'],

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 import { EpgRuntimeBridgeService } from './epg-runtime-bridge.service';
 
 describe('EpgRuntimeBridgeService', () => {

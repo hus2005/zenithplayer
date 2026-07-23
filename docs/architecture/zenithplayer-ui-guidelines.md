@@ -1,6 +1,6 @@
-# IPTVnator UI Guidelines
+# Zenith Player UI Guidelines
 
-This document captures the current UI language used across IPTVnator, with emphasis on channel lists, EPG views, settings surfaces, and shared selection patterns.
+This document captures the current UI language used across Zenith Player, with emphasis on channel lists, EPG views, settings surfaces, and shared selection patterns.
 
 Use it when changing existing views or introducing new list-based UI in the workspace, Xtream, or Stalker flows.
 
@@ -175,7 +175,7 @@ The shared row should be reused instead of rebuilding channel markup per view.
   is `live` (Xtream) or `itv`/`radio` (Stalker); movies, series, favorites,
   and recent routes leave it untouched.
 - Collapsed state is owned by `LiveLayoutSidebarStateService`
-  (`providedIn: 'root'`) in `@iptvnator/portal/shared/util`. Every surface that
+  (`providedIn: 'root'`) in `@zenithplayer/portal/shared/util`. Every surface that
   participates injects the service and reads `isCollapsed`; any toggle calls
   `service.toggle()`. Persistence delegates to the existing
   `live-sidebar-state` helpers, so the localStorage key stays unchanged and
@@ -294,7 +294,7 @@ Before creating new markup or CSS:
 
 ## Implementation Workflow
 
-When updating IPTVnator UI:
+When updating Zenith Player UI:
 
 1. Inspect the current shared component first.
 2. Reuse the shared structure where possible.
@@ -319,6 +319,6 @@ A visual change is not done until:
 
 1. Shared component reuse was considered first.
 2. Light theme and dark theme both look intentional.
-3. Selection and progress states match existing IPTVnator patterns.
+3. Selection and progress states match existing Zenith Player patterns.
 4. Scroll behavior is correct.
 5. The result was checked in the running app for layout-sensitive work.

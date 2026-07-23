@@ -23,13 +23,13 @@ import {
     getPortalPlaybackProgressPercent,
     isPortalPlaybackInProgress,
     isPortalPlaybackWatched,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     PlaybackPositionData,
     XtreamSerieEpisode,
     XtreamSerieEpisodeInfo,
-} from '@iptvnator/shared/interfaces';
-import { DownloadsService } from '@iptvnator/services';
+} from '@zenithplayer/shared/interfaces';
+import { DownloadsService } from '@zenithplayer/services';
 import { ProgressCapsuleComponent } from '../progress-capsule/progress-capsule.component';
 import {
     buildXtreamEpisodeDownloadRequest,
@@ -48,7 +48,7 @@ import {
 import { SeasonTabsComponent } from './season-tabs.component';
 
 type EpisodeViewMode = 'grid' | 'list';
-const EPISODE_VIEW_MODE_KEY = 'iptvnator_episode_view_mode';
+const EPISODE_VIEW_MODE_KEY = 'zenithplayer_episode_view_mode';
 
 export interface SeasonContainerXtreamDownloadContext {
     serverUrl?: string;

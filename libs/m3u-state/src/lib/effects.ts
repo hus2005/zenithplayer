@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { EpgService } from '@iptvnator/epg/data-access';
-import { normalizeEpgUrls } from '@iptvnator/shared/m3u-utils';
+import { EpgService } from '@zenithplayer/epg/data-access';
+import { normalizeEpgUrls } from '@zenithplayer/shared/m3u-utils';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { StorageMap } from '@ngx-pwa/local-storage';
@@ -22,7 +22,7 @@ import {
     DataService,
     PlaylistsService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     OPEN_MPV_PLAYER,
     OPEN_VLC_PLAYER,
@@ -31,7 +31,7 @@ import {
     PlaylistMeta,
     STORE_KEY,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     ChannelActions,
     EpgActions,

@@ -45,7 +45,7 @@ export const defaultXtreamUsername = 'user1';
 export const defaultXtreamPassword = 'pass1';
 export const defaultStalkerMacAddress = '00:1A:79:00:00:01';
 const electronAppCloseTimeoutMs = Number(
-    process.env['IPTVNATOR_E2E_CLOSE_TIMEOUT_MS'] ?? '10000'
+    process.env['zenithplayer_E2E_CLOSE_TIMEOUT_MS'] ?? '10000'
 );
 const electronAppKillWaitMs = 2000;
 
@@ -121,7 +121,7 @@ export type LaunchedElectronApp = {
 export const test = base.extend<ElectronFixtures>({
     dataDir: async ({ browserName }, use) => {
         void browserName;
-        const dataDir = mkdtempSync(join(tmpdir(), 'iptvnator-electron-e2e-'));
+        const dataDir = mkdtempSync(join(tmpdir(), 'zenithplayer-electron-e2e-'));
 
         await use(dataDir);
 
@@ -153,11 +153,11 @@ export async function launchElectronApp(
         env: {
             ...process.env,
             // Electron E2E uses local mock HTTP servers for playlists, portals, and EPG sources.
-            IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS:
-                process.env['IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS'] ?? '1',
+            zenithplayer_ALLOW_PRIVATE_NETWORK_URLS:
+                process.env['zenithplayer_ALLOW_PRIVATE_NETWORK_URLS'] ?? '1',
             ...options.env,
             ELECTRON_IS_DEV: '0',
-            IPTVNATOR_E2E_DATA_DIR: dataDir,
+            zenithplayer_E2E_DATA_DIR: dataDir,
             NODE_ENV: 'test',
         },
     });
@@ -181,7 +181,7 @@ export async function launchElectronApp(
  * without relying on electron-builder's local output directory names.
  */
 export function resolvePackagedLinuxExecutable(
-    explicitPath = process.env['IPTVNATOR_E2E_PACKAGED_EXECUTABLE']
+    explicitPath = process.env['zenithplayer_E2E_PACKAGED_EXECUTABLE']
 ): string | undefined {
     if (explicitPath?.trim()) {
         return resolve(explicitPath.trim());
@@ -212,7 +212,7 @@ export function resolvePackagedLinuxExecutable(
         });
 
     for (const directory of unpackedDirectories) {
-        for (const executableName of ['IPTVnator', 'iptvnator']) {
+        for (const executableName of ['Zenith Player', 'zenithplayer']) {
             const candidate = join(
                 executablesRoot,
                 directory.name,
@@ -289,11 +289,11 @@ export async function launchPackagedElectronApp(
         args: resolvePackagedElectronLaunchArgs(process.getuid),
         env: {
             ...process.env,
-            IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS:
-                process.env['IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS'] ?? '1',
+            zenithplayer_ALLOW_PRIVATE_NETWORK_URLS:
+                process.env['zenithplayer_ALLOW_PRIVATE_NETWORK_URLS'] ?? '1',
             ...options.env,
             ELECTRON_IS_DEV: '0',
-            IPTVNATOR_E2E_DATA_DIR: dataDir,
+            zenithplayer_E2E_DATA_DIR: dataDir,
             NODE_ENV: 'test',
         },
     });

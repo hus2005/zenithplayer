@@ -4,7 +4,7 @@ Date: 2026-03-22
 
 ## Overview
 
-Evaluation of IPTVnator's navigation architecture — specifically the separation between **global actions in the top header** and **playlist-local actions in the left rail sidebar**, assessed from a user understanding perspective.
+Evaluation of Zenith Player's navigation architecture — specifically the separation between **global actions in the top header** and **playlist-local actions in the left rail sidebar**, assessed from a user understanding perspective.
 
 ## Current Architecture
 

@@ -10,17 +10,17 @@ import { MockPipe } from 'ng-mocks';
 import {
     ContentHeroComponent,
     SeasonContainerComponent,
-} from '@iptvnator/ui/components';
+} from '@zenithplayer/ui/components';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
     SeriesResumeTarget,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
-import { PortalInlinePlayerComponent } from '@iptvnator/ui/playback';
+} from '@zenithplayer/portal/shared/util';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
+import { PlaybackPositionRuntimeBridgeService } from '@zenithplayer/services';
+import { PlaybackPositionData } from '@zenithplayer/shared/interfaces';
+import { PortalInlinePlayerComponent } from '@zenithplayer/ui/playback';
 import { of } from 'rxjs';
 import { SerialDetailsComponent } from './serial-details.component';
 import { SerialDetailsPlaybackService } from './serial-details-playback.service';

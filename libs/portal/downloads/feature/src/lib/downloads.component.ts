@@ -14,24 +14,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { DialogService } from '@iptvnator/ui/components';
+import { DialogService } from '@zenithplayer/ui/components';
 import { firstValueFrom, map, startWith } from 'rxjs';
 import {
     DatabaseService,
     type DownloadItem,
     DownloadsService,
     PlaylistsService,
-} from '@iptvnator/services';
-import { EmptyStateComponent } from '@iptvnator/playlist/shared/ui';
-import { queryParamSignal } from '@iptvnator/portal/shared/util';
-import { createPortalCollectionContext } from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/services';
+import { EmptyStateComponent } from '@zenithplayer/playlist/shared/ui';
+import { queryParamSignal } from '@zenithplayer/portal/shared/util';
+import { createPortalCollectionContext } from '@zenithplayer/portal/shared/util';
 import {
     buildStandardCollectionCategories,
     filterCollectionBucket,
     PORTAL_SHELL_ACTIONS,
-} from '@iptvnator/portal/shared/util';
-import { PortalCollectionContextService } from '@iptvnator/portal/shared/util';
-import { Playlist } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/shared/util';
+import { PortalCollectionContextService } from '@zenithplayer/portal/shared/util';
+import { Playlist } from '@zenithplayer/shared/interfaces';
 
 type PortalSource = 'xtream' | 'stalker';
 const DOWNLOAD_COLLECTION_LABELS = {

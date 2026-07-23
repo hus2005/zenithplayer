@@ -1,7 +1,7 @@
 import type {
     DashboardRailsSettings,
     EpgProgram,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import type { DashboardRailCard } from './dashboard-rail.component';
 
 // EPG "now" data ticks every 30s: short enough that the progress bar moves

@@ -12,9 +12,9 @@ import {
     PORTAL_PLAYER,
     createLogger,
     getPortalPlaybackProgressPercent,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
+} from '@zenithplayer/portal/shared/util';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
+import { PlaybackPositionRuntimeBridgeService } from '@zenithplayer/services';
 import {
     PlaybackPositionData,
     PlayerContentInfo,
@@ -22,8 +22,8 @@ import {
     XtreamVodDetails,
     XtreamVodInfo,
     getXtreamVodInfo,
-} from '@iptvnator/shared/interfaces';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
+} from '@zenithplayer/shared/interfaces';
+import type { PlaybackFallbackRequest } from '@zenithplayer/ui/playback';
 
 export interface VodDetailsPlaybackBindings {
     /** Current vod id resolved from the route */

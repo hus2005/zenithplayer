@@ -12,7 +12,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     ActorFilmographyCredit,
     ActorProfile,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 
 /**
  * One filmography entry as rendered on the actor page. `available` marks a

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { DialogService } from '@iptvnator/ui/components';
+import { DialogService } from '@zenithplayer/ui/components';
 import {
     DataService,
     DatabaseService,
@@ -14,16 +14,16 @@ import {
     PlaylistRefreshService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import { ChannelActions, PlaylistActions } from '@iptvnator/m3u-state';
+} from '@zenithplayer/services';
+import { ChannelActions, PlaylistActions } from '@zenithplayer/m3u-state';
 import {
     ELECTRON_BRIDGE_SECURITY_ERROR_CODES,
     PLAYLIST_UPDATE,
     Playlist,
     PlaylistMeta,
     SECURITY_ERROR_PREFIX,
-} from '@iptvnator/shared/interfaces';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+} from '@zenithplayer/shared/interfaces';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import { PlaylistRefreshActionService } from './playlist-refresh-action.service';
 
 function createDeferred<T>() {

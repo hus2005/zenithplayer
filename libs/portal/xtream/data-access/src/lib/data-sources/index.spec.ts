@@ -4,7 +4,7 @@ import {
     PlaylistDeleteCleanup,
     PlaylistsService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import { XtreamApiService } from '../services/xtream-api.service';
 import {
     ElectronXtreamDataSource,

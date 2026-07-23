@@ -5,8 +5,8 @@ import {
     getKeyboardShortcutGroups,
     isKeyboardShortcutHelpTrigger,
     isTypingInInput,
-} from '@iptvnator/portal/shared/util';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+} from '@zenithplayer/portal/shared/util';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 import {
     WorkspaceKeyboardShortcutsDialogComponent,
     WorkspaceKeyboardShortcutsDialogData,

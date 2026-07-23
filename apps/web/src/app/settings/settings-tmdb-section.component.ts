@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
-import { TmdbApiService } from '@iptvnator/services';
+import { TmdbApiService } from '@zenithplayer/services';
 
 type TmdbKeyTestState = 'idle' | 'testing' | 'success' | 'error';
 

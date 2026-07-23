@@ -1,7 +1,7 @@
 # Stalker Portal EPG Architecture
 
 This document describes the current EPG implementation for Stalker/Ministra ITV
-channels in IPTVnator.
+channels in Zenith Player.
 
 Related architecture docs:
 

@@ -14,7 +14,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     EpgProgressService,
     EpgRuntimeBridgeService,
-} from '@iptvnator/epg/data-access';
+} from '@zenithplayer/epg/data-access';
 
 type BadgeStatus =
     | 'loading'

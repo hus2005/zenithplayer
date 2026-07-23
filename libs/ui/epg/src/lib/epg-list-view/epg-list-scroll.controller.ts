@@ -1,4 +1,4 @@
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
 import { programsFocusKey } from '../epg-timeline/epg-timeline-scroll.controller';
 
 export interface EpgListScrollDeps {

@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { DataService, PlaylistsService } from '@iptvnator/services';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+import { DataService, PlaylistsService } from '@zenithplayer/services';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
 import {
     buildStalkerEpgMappingKey,
     buildXtreamEpgMappingKey,
@@ -12,13 +12,13 @@ import {
     ResolvedPortalPlayback,
     STALKER_REQUEST,
     StalkerPortalActions,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     XtreamApiService,
     XtreamUrlService,
-} from '@iptvnator/portal/xtream/data-access';
-import { StalkerSessionService } from '@iptvnator/portal/stalker/data-access';
-import { UnifiedCollectionItem } from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/xtream/data-access';
+import { StalkerSessionService } from '@zenithplayer/portal/stalker/data-access';
+import { UnifiedCollectionItem } from '@zenithplayer/portal/shared/util';
 
 type PlaylistWithChannels = Playlist & {
     readonly playlist?: { readonly items?: Channel[] };

@@ -4,9 +4,9 @@ import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { PlaylistsService } from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
+import { PlaylistsService } from '@zenithplayer/services';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import { StalkerContentType } from '../stalker-store.contracts';
 import { withStalkerFavorites } from './with-stalker-favorites.feature';
 

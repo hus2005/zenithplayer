@@ -22,7 +22,7 @@ import { TranslateModule } from '@ngx-translate/core';
                         style="cursor: pointer"
                         (click)="
                             openUrl(
-                                'https://github.com/4gray/iptvnator/wiki/What-is-mpv-video-player-and-how-to-install-it-on-different-operating-systems%3F'
+                                'https://github.com/hus2005/zenithplayer/wiki/What-is-mpv-video-player-and-how-to-install-it-on-different-operating-systems%3F'
                             )
                         "
                         >installation instructions</a

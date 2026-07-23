@@ -2,7 +2,7 @@ import type {
     ExternalPlayerSession,
     PlaybackPositionData,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { SerialDetailsPlaybackPositionState } from './serial-details-playback-position-state';
 import type { XtreamSerieDetailsView } from './serial-details-playback.service';
 

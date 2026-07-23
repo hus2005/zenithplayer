@@ -4,7 +4,7 @@ import {
     StartupBehavior,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export interface SettingsSection {
     id: string;

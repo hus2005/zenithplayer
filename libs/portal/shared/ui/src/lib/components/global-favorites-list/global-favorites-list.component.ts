@@ -19,22 +19,22 @@ import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import {
     ChannelDetailsDialogComponent,
     ChannelListItemComponent,
-} from '@iptvnator/ui/components';
-import { SettingsStore } from '@iptvnator/services';
+} from '@zenithplayer/ui/components';
+import { SettingsStore } from '@zenithplayer/services';
 import {
     buildStalkerEpgMappingKey,
     buildXtreamEpgMappingKey,
     EpgProgram,
-} from '@iptvnator/shared/interfaces';
-import { resolveChannelEpgLookupKey } from '@iptvnator/m3u-state';
-import { EpgMappingDialogComponent } from '@iptvnator/ui/components';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+} from '@zenithplayer/shared/interfaces';
+import { resolveChannelEpgLookupKey } from '@zenithplayer/m3u-state';
+import { EpgMappingDialogComponent } from '@zenithplayer/ui/components';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
 import {
     DEFAULT_FAVORITES_CHANNEL_SORT_MODE,
     FavoritesChannelSortMode,
     sortFavoriteChannelItems,
     UnifiedFavoriteChannel,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import { TranslateModule } from '@ngx-translate/core';
 
 export interface EnrichedUnifiedFavorite extends UnifiedFavoriteChannel {

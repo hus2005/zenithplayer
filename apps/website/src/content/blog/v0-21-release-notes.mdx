@@ -1,10 +1,10 @@
 ---
 title: v0.21 - Release Notes
-description: IPTVnator v0.21 brings an experimental embedded MPV player on macOS, toggleable sidebars, a smarter command palette, faster loading, and a long list of fixes across M3U, Xtream and Stalker.
+description: Zenith Player v0.21 brings an experimental embedded MPV player on macOS, toggleable sidebars, a smarter command palette, faster loading, and a long list of fixes across M3U, Xtream and Stalker.
 featured: true
 pubDate: 2026-05-06
 author: 4gray
-heroImage: /iptvnator/blog/v0-21/wide-changelog.jpg
+heroImage: /zenithplayer/blog/v0-21/wide-changelog.jpg
 tags:
     - release
     - release-notes
@@ -20,7 +20,7 @@ import ReleaseMeta from '../../components/blog/ReleaseMeta.astro';
 import StatusPill from '../../components/blog/StatusPill.astro';
 import Spoiler from '../../components/blog/Spoiler.astro';
 
-IPTVnator **v0.21** is out.
+Zenith Player **v0.21** is out.
 
 This one is mostly about quality of life. After the big UI rework in v0.20, the focus shifted to the rough edges that show up once you actually live in the app every day — playback speed, navigation chrome that gets in the way, command palette habits, and a pile of small bugs that came out of the new shell.
 
@@ -34,7 +34,7 @@ There is also one bigger experimental change for macOS users: an **embedded MPV 
 
 ## Support the project
 
-If IPTVnator is useful to you and you’d like to keep it moving, the easiest way to help is via:
+If Zenith Player is useful to you and you’d like to keep it moving, the easiest way to help is via:
 
 - **GitHub Sponsors** — [github.com/sponsors/4gray](https://github.com/sponsors/4gray)
 - **Ko-fi** — [ko-fi.com/4gray](https://ko-fi.com/4gray)
@@ -55,7 +55,7 @@ If IPTVnator is useful to you and you’d like to keep it moving, the easiest wa
         },
         {
             label: 'Telegram group',
-            href: 'https://t.me/iptvnator',
+            href: 'https://t.me/zenithplayer',
             hint: 'Where most of this feedback comes from.',
             icon: 'telegram',
         },
@@ -98,31 +98,31 @@ If IPTVnator is useful to you and you’d like to keep it moving, the easiest wa
 
 <StatusPill type="new" />
 
-The single biggest change in v0.21. macOS builds now ship libmpv inside the app and render it into a Cocoa view embedded in the IPTVnator window — so MPV-quality playback is available without installing anything separately.
+The single biggest change in v0.21. macOS builds now ship libmpv inside the app and render it into a Cocoa view embedded in the Zenith Player window — so MPV-quality playback is available without installing anything separately.
 
 It’s deliberately marked **experimental** for this release. The feature is gated to macOS, the rendering path bypasses MPV’s usual `--wid` integration (so things like screensaver inhibition are wired up by the app itself), and there are still rough corners around fullscreen and edge codecs. If you hit something odd, please open an issue or ping the Telegram group.
 
-This was tracked in [#877](https://github.com/4gray/iptvnator/issues/877).
+This was tracked in [#877](https://github.com/hus2005/zenithplayer/issues/877).
 
 <BlogImageSlider
     images={[
         {
-            src: '/iptvnator/blog/v0-21/embedded-mpv.webp',
-            alt: 'Embedded MPV player rendering inside the IPTVnator window on macOS',
+            src: '/zenithplayer/blog/v0-21/embedded-mpv.webp',
+            alt: 'Embedded MPV player rendering inside the Zenith Player window on macOS',
             caption: 'Embedded MPV — runs inside the app window on macOS, no extra install.',
         },
         {
-            src: '/iptvnator/blog/v0-21/sidebar-spotlight.webp',
+            src: '/zenithplayer/blog/v0-21/sidebar-spotlight.webp',
             alt: 'Live TV view with channel sidebar shown vs hidden',
             caption: 'The Live TV sidebar (and EPG panel) can now be collapsed independently.',
         },
         {
-            src: '/iptvnator/blog/v0-21/feature-mosaic.webp',
+            src: '/zenithplayer/blog/v0-21/feature-mosaic.webp',
             alt: 'Feature mosaic for v0.21 — embedded MPV, toggleable sidebars, command palette, favorites, faster loading, module fixes',
             caption: 'A quick tour of what changed in this release.',
         },
         {
-            src: '/iptvnator/blog/v0-21/wide-changelog.webp',
+            src: '/zenithplayer/blog/v0-21/wide-changelog.webp',
             alt: 'Wide changelog overview for v0.21 with dashboard and command palette',
             caption: 'Dashboard, command palette, and the new player chrome side by side.',
         },
@@ -136,10 +136,10 @@ Not everyone is going to want the embedded MPV player, and a question that came 
 Turns out: **yes**, and a community member figured it out before I did. Huge thanks to them — credit where it’s due, even without naming them publicly.
 
 <Alert type="info" title="Using IINA as the external player on macOS">
-In **Settings → External player**, select MPV and point IPTVnator at IINA's executable path, for example `/Applications/IINA.app/Contents/MacOS/iina-cli` or `/Applications/IINA.app/Contents/MacOS/IINA`. Do not use `/Applications/IINA.app` directly: IPTVnator only resolves `.app` bundle paths for the real MPV and VLC apps. Streams can launch in IINA, but IPTVnator controls, position polling, and reuse-instance behavior are only guaranteed for MPV IPC.
+In **Settings → External player**, select MPV and point Zenith Player at IINA's executable path, for example `/Applications/IINA.app/Contents/MacOS/iina-cli` or `/Applications/IINA.app/Contents/MacOS/IINA`. Do not use `/Applications/IINA.app` directly: Zenith Player only resolves `.app` bundle paths for the real MPV and VLC apps. Streams can launch in IINA, but Zenith Player controls, position polling, and reuse-instance behavior are only guaranteed for MPV IPC.
 </Alert>
 
-This also retroactively closes the long-standing request in [#896](https://github.com/4gray/iptvnator/issues/896) — IINA support was effectively already there, it just wasn’t documented.
+This also retroactively closes the long-standing request in [#896](https://github.com/hus2005/zenithplayer/issues/896) — IINA support was effectively already there, it just wasn’t documented.
 
 ## Toggleable sidebars in Live TV
 
@@ -173,8 +173,8 @@ A handful of small fixes that together make the global lists behave the way they
 
 <StatusPill type="improved" />
 
-- **Manual refresh for file-based playlists** is back. v0.20 silently dropped this for M3U files imported from disk and that was a regression — see [#891](https://github.com/4gray/iptvnator/issues/891). It’s back, and the file path is now preserved correctly across refreshes.
-- **VLC reuse-instance setting.** VLC was unconditionally spawning a new window per stream because its built-in single-instance preference doesn’t play nicely with how IPTVnator launches it. There’s now an opt-in setting that mirrors the existing MPV “reuse instance” behavior — one VLC window, controlled via its RC interface — see [#893](https://github.com/4gray/iptvnator/issues/893).
+- **Manual refresh for file-based playlists** is back. v0.20 silently dropped this for M3U files imported from disk and that was a regression — see [#891](https://github.com/hus2005/zenithplayer/issues/891). It’s back, and the file path is now preserved correctly across refreshes.
+- **VLC reuse-instance setting.** VLC was unconditionally spawning a new window per stream because its built-in single-instance preference doesn’t play nicely with how Zenith Player launches it. There’s now an opt-in setting that mirrors the existing MPV “reuse instance” behavior — one VLC window, controlled via its RC interface — see [#893](https://github.com/hus2005/zenithplayer/issues/893).
 - **MPV/VLC custom path fallback** behaves correctly again when the configured path is empty or invalid.
 
 ## Module-level changes
@@ -184,7 +184,7 @@ A handful of small fixes that together make the global lists behave the way they
 ### M3U
 
 - New **cover size** setting (XL / L / M) for the channel grid.
-- **Sort “All Channels”** by name, or keep the original playlist order — handy for huge lists where alphabetical isn’t always what you want. This is a partial answer to the long-running [#738](https://github.com/4gray/iptvnator/issues/738).
+- **Sort “All Channels”** by name, or keep the original playlist order — handy for huge lists where alphabetical isn’t always what you want. This is a partial answer to the long-running [#738](https://github.com/hus2005/zenithplayer/issues/738).
 - Improved drag-and-drop ghost styling when reordering channels — the placeholder no longer looks like it’s stuck to the cursor.
 
 ### Xtream
@@ -240,20 +240,20 @@ If you reported a bug, sent a Ko-fi tip, contributed a translation string, or ju
     links={[
         {
             label: 'Download v0.21.0',
-            href: 'https://github.com/4gray/iptvnator/releases/tag/v0.21.0',
+            href: 'https://github.com/hus2005/zenithplayer/releases/tag/v0.21.0',
             hint: 'Official binaries for macOS, Windows and Linux.',
             icon: 'download',
         },
         {
             label: 'Full Changelog',
-            href: 'https://github.com/4gray/iptvnator/compare/v0.20.0...v0.21.0',
+            href: 'https://github.com/hus2005/zenithplayer/compare/v0.20.0...v0.21.0',
             hint: 'Every commit between v0.20.0 and v0.21.0.',
             icon: 'github',
         },
         {
             label: 'All Releases',
-            href: 'https://github.com/4gray/iptvnator/releases',
-            hint: 'Browse every IPTVnator release.',
+            href: 'https://github.com/hus2005/zenithplayer/releases',
+            hint: 'Browse every Zenith Player release.',
             icon: 'github',
         },
     ]}

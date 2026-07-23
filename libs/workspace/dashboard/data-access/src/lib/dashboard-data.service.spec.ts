@@ -5,16 +5,16 @@ import { TranslateService } from '@ngx-translate/core';
 import {
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import { of, Subject } from 'rxjs';
-import { DatabaseService, PlaylistsService } from '@iptvnator/services';
+import { DatabaseService, PlaylistsService } from '@zenithplayer/services';
 import {
     PlaybackPositionData,
     Playlist,
     PlaylistMeta,
-} from '@iptvnator/shared/interfaces';
-import { PORTAL_PLAYBACK_POSITIONS } from '@iptvnator/portal/shared/util';
-import { XTREAM_DATA_SOURCE } from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/shared/interfaces';
+import { PORTAL_PLAYBACK_POSITIONS } from '@zenithplayer/portal/shared/util';
+import { XTREAM_DATA_SOURCE } from '@zenithplayer/portal/xtream/data-access';
 import {
     DashboardDataService,
     DashboardFavoriteItem,

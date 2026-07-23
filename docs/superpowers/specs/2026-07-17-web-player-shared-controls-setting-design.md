@@ -139,7 +139,7 @@ Add one standard `setting-item` to the Playback section, using the existing
 Material checkbox and layout styles.
 
 - Label meaning: **Use unified controls for web players (experimental)**.
-- Description meaning: use IPTVnator's common controls in HTML5, Video.js, and
+- Description meaning: use Zenith Player's common controls in HTML5, Video.js, and
   ArtPlayer.
 - Visibility: selected player is `videojs`, `html5`, or `artplayer`.
 - Hidden for Embedded MPV, external MPV, and VLC.

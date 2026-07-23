@@ -2,11 +2,11 @@ import { Injectable, inject } from '@angular/core';
 import {
     PORTAL_PLAYBACK_POSITIONS,
     PortalPlaybackPositions,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     PlaybackPositionData,
     XTREAM_DATA_SOURCE,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
 
 @Injectable({
     providedIn: 'root',

@@ -291,7 +291,7 @@ test.describe('Electron Playlist Switcher', () => {
         ]);
         const app = await launchElectronApp(dataDir, {
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
+                zenithplayer_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
             },
         });
 

@@ -1,4 +1,4 @@
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
+import { XtreamSerieEpisode } from '@zenithplayer/shared/interfaces';
 
 /**
  * Pure helpers for mapping episodes (Xtream and Stalker-mapped) to the

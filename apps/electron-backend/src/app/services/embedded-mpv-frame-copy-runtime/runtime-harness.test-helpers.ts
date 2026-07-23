@@ -27,7 +27,7 @@ export interface RuntimeTestContext {
 }
 
 export function createRuntimeTestContext(): RuntimeTestContext {
-    const rootDir = mkdtempSync(path.join(tmpdir(), 'iptvnator-fc-runtime-'));
+    const rootDir = mkdtempSync(path.join(tmpdir(), 'zenithplayer-fc-runtime-'));
     const spawnRuntimeProbe = jest.fn(() => ({
         status: 0,
         signal: null,

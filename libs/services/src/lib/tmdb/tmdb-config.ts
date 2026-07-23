@@ -1,4 +1,4 @@
-import { Language } from '@iptvnator/shared/interfaces';
+import { Language } from '@zenithplayer/shared/interfaces';
 
 export const TMDB_API_BASE_URL = 'https://api.themoviedb.org/3';
 export const TMDB_IMAGE_BASE_URL = 'https://image.tmdb.org/t/p';

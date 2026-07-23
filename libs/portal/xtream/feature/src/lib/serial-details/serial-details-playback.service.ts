@@ -14,24 +14,24 @@ import {
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
     getSeriesQuickStartAction,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
+} from '@zenithplayer/portal/shared/util';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
+import { PlaybackPositionRuntimeBridgeService } from '@zenithplayer/services';
 import {
     PlaybackPositionData,
     PlayerContentInfo,
     ResolvedPortalPlayback,
     XtreamSerieDetails,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
-import { SeasonContainerPlaybackToggleRequest } from '@iptvnator/ui/components';
+} from '@zenithplayer/shared/interfaces';
+import { SeasonContainerPlaybackToggleRequest } from '@zenithplayer/ui/components';
 import {
     getSeriesEpisodeMetadata,
     getSeriesPlaybackNavigation,
     type PlaybackFallbackRequest,
     resolveSeriesPlaybackEpisodeState,
     type SeriesPlaybackEpisodeState,
-} from '@iptvnator/ui/playback';
+} from '@zenithplayer/ui/playback';
 import { XTREAM_SERIES_RESUME_TARGET } from './serial-details-resume-target.token';
 import { SerialDetailsPlaybackPositionState } from './serial-details-playback-position-state';
 

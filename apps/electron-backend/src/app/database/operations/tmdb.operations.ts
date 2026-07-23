@@ -1,6 +1,6 @@
 import { and, eq } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
-import type { TmdbCacheEntry, TmdbCacheMediaType } from '@iptvnator/shared/interfaces';
+import * as schema from '@zenithplayer/shared/database/schema';
+import type { TmdbCacheEntry, TmdbCacheMediaType } from '@zenithplayer/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 
 export async function getTmdbMetadata(

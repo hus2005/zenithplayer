@@ -9,8 +9,8 @@ import {
     APP_UPDATE_GET_STATUS,
     APP_UPDATE_INSTALL,
     APP_UPDATE_STATUS_CHANGED,
-} from '@iptvnator/shared/interfaces';
-import type { ElectronBridgeApi } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
+import type { ElectronBridgeApi } from '@zenithplayer/shared/interfaces';
 import {
     dbPreloadCases,
     epgPreloadCases,
@@ -145,7 +145,7 @@ describe('main preload DB IPC contract', () => {
             currentVersion: '0.22.0',
             latestVersion: '0.23.0',
             manualDownloadUrl:
-                'https://github.com/4gray/iptvnator/releases/latest',
+                'https://github.com/hus2005/zenithplayer/releases/latest',
             status: 'available',
             supportedSelfUpdate: true,
         };

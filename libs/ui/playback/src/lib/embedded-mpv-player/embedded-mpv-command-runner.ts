@@ -1,5 +1,5 @@
 import { Signal, WritableSignal } from '@angular/core';
-import { EmbeddedMpvSession } from '@iptvnator/shared/interfaces';
+import { EmbeddedMpvSession } from '@zenithplayer/shared/interfaces';
 
 type ElectronBridge = Window['electron'];
 

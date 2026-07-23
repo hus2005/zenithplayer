@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-import { DataService } from '@iptvnator/services';
-import { Playlist } from '@iptvnator/shared/interfaces';
+import { DataService } from '@zenithplayer/services';
+import { Playlist } from '@zenithplayer/shared/interfaces';
 import {
     STALKER_SERIAL_NUMBER,
     StalkerProfileResponse,

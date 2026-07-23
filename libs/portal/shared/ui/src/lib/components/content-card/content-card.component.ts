@@ -11,7 +11,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
-import { normalizeDateLocale } from '@iptvnator/pipes';
+import { normalizeDateLocale } from '@zenithplayer/pipes';
 import { TranslateService } from '@ngx-translate/core';
 import { startWith } from 'rxjs';
 

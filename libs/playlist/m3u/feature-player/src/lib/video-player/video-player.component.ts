@@ -20,13 +20,13 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ResizableDirective } from '@iptvnator/ui/components';
+import { ResizableDirective } from '@zenithplayer/ui/components';
 import {
     applyChannelNameStrip,
     getM3uArchiveDays,
     isM3uCatchupPlaybackSupported,
-} from '@iptvnator/shared/m3u-utils';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+} from '@zenithplayer/shared/m3u-utils';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     COMPONENT_OVERLAY_REF,
     EpgDateNavigationDirection,
@@ -36,8 +36,8 @@ import {
     getTodayEpgDateKey,
     MultiEpgContainerComponent,
     shiftEpgDateKey,
-} from '@iptvnator/ui/epg';
-import { EpgService } from '@iptvnator/epg/data-access';
+} from '@zenithplayer/ui/epg';
+import { EpgService } from '@zenithplayer/epg/data-access';
 import {
     ChannelActions,
     EpgActions,
@@ -50,7 +50,7 @@ import {
     selectChannels,
     selectChannelsLoading,
     selectCurrentEpgProgram,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import {
     firstValueFrom,
     Observable,
@@ -77,22 +77,22 @@ import {
     restoreLiveEpgPanelState,
     restoreLiveSidebarState,
     WorkspaceHeaderContextService,
-} from '@iptvnator/portal/shared/util';
-import { PortalEmptyStateComponent } from '@iptvnator/portal/shared/ui';
+} from '@zenithplayer/portal/shared/util';
+import { PortalEmptyStateComponent } from '@zenithplayer/portal/shared/ui';
 import {
     AudioPlayerComponent,
     type PlaybackFallbackRequest,
     SidebarComponent,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
-import { LiveEpgPanelSummary } from '@iptvnator/ui/shared-portals';
-import { ChannelListLoadingStateComponent } from '@iptvnator/ui/components';
+} from '@zenithplayer/ui/playback';
+import { LiveEpgPanelSummary } from '@zenithplayer/ui/shared-portals';
+import { ChannelListLoadingStateComponent } from '@zenithplayer/ui/components';
 import {
     DataService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     Channel,
     createDevLogger,
@@ -107,7 +107,7 @@ import {
     STORE_KEY,
     Settings,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { createM3uChannelPlaybackRequest } from './m3u-channel-playback-actions';
 
 const M3U_MULTI_EPG_HEADER_ACTION_ID = 'm3u-multi-epg';

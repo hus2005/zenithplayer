@@ -19,7 +19,7 @@ import {
     WorkspaceCommandGroup,
     WorkspaceCommandSelection,
     WorkspaceResolvedCommandItem,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 
 interface WorkspaceCommandPaletteData {
     commands: WorkspaceResolvedCommandItem[];

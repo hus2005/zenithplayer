@@ -25,7 +25,7 @@ jest.mock('drizzle-orm', () => ({
     ),
 }));
 
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@zenithplayer/shared/database/schema';
 import type { AppDatabase } from '../database.types';
 import { createDbMock } from './operations.test-helpers';
 import {

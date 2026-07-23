@@ -3,7 +3,7 @@ import {
     Playlist,
     PlaylistRefreshEvent,
     PlaylistRefreshPayload,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export interface PlaylistRefreshOptions {
     onEvent?: (event: PlaylistRefreshEvent) => void;

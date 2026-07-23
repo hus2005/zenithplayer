@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DialogService } from '@iptvnator/ui/components';
+import { DialogService } from '@zenithplayer/ui/components';
 import {
     DataService,
     DatabaseService,
@@ -14,16 +14,16 @@ import {
     RuntimeCapabilitiesService,
     SettingsStore,
     XtreamPendingRestoreService,
-} from '@iptvnator/services';
-import { ChannelActions, PlaylistActions } from '@iptvnator/m3u-state';
+} from '@zenithplayer/services';
+import { ChannelActions, PlaylistActions } from '@zenithplayer/m3u-state';
 import {
     ELECTRON_BRIDGE_SECURITY_ERROR_CODES,
     normalizeHost,
     parseSecurityPolicyError,
     PLAYLIST_UPDATE,
     PlaylistMeta,
-} from '@iptvnator/shared/interfaces';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+} from '@zenithplayer/shared/interfaces';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 
 export interface XtreamRefreshPreparationState {
     playlistId: string;
@@ -331,7 +331,7 @@ export class PlaylistRefreshActionService {
             ),
             message: this.translateWithFallback(
                 'HOME.URL_UPLOAD.TRUST_TLS_HOST_WARNING',
-                'Only continue if you trust this playlist host. IPTVnator will allow invalid TLS certificates for this host, but other hosts still require valid certificates.'
+                'Only continue if you trust this playlist host. Zenith Player will allow invalid TLS certificates for this host, but other hosts still require valid certificates.'
             ),
             confirmLabel: this.translateWithFallback(
                 'HOME.URL_UPLOAD.TRUST_TLS_HOST',

@@ -15,37 +15,37 @@ import {
     AudioPlayerComponent,
     type PlaybackFallbackRequest,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
+} from '@zenithplayer/ui/playback';
 import {
     EpgListViewComponent,
     EpgProgramActivationEvent,
     EpgTimelineComponent,
     getTodayEpgDateKey,
     shiftEpgDateKey,
-} from '@iptvnator/ui/epg';
+} from '@zenithplayer/ui/epg';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ResizableDirective } from '@iptvnator/ui/components';
+import { ResizableDirective } from '@zenithplayer/ui/components';
 import {
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     EpgItem,
     EpgProgram,
     ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     DEFAULT_FAVORITES_CHANNEL_SORT_MODE,
     PORTAL_PLAYER,
     FavoritesChannelSortMode,
     UnifiedCollectionItem,
     UnifiedFavoriteChannel,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     StreamResolverService,
     UnifiedRecentDataService,
-} from '@iptvnator/portal/shared/data-access';
+} from '@zenithplayer/portal/shared/data-access';
 
 @Directive({
     selector: '[appResizable]',

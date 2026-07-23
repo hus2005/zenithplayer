@@ -2,7 +2,7 @@ import {
     normalizeStalkerPortalIdentity as normalizeSharedStalkerPortalIdentity,
     type Playlist,
     type StalkerPortalIdentity,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export {
     buildStalkerSerialCfduid,
@@ -11,7 +11,7 @@ export {
     normalizeStalkerPortalIdentity,
     normalizeStalkerSerialNumber,
     type StalkerPortalIdentity,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export function getStalkerPortalIdentityFromPlaylist(
     playlist: Pick<

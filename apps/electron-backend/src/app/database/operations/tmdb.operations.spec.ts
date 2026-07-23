@@ -1,4 +1,4 @@
-import type { TmdbCacheEntry } from '@iptvnator/shared/interfaces';
+import type { TmdbCacheEntry } from '@zenithplayer/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 import { getTmdbMetadata, setTmdbMetadata } from './tmdb.operations';
 

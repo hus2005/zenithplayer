@@ -10,7 +10,7 @@ Merge the current-program strip and date navigator into one shared `app-live-epg
     - Add `[selectedDate]`, `(selectedDateChange)`, and `[showDateNavigator]`.
     - Rename its internal date signal to avoid API collision.
     - Keep existing standalone behavior by default, so non-live or external-player layouts still show the internal date row.
-- Add small shared EPG date helpers in `@iptvnator/ui/epg`:
+- Add small shared EPG date helpers in `@zenithplayer/ui/epg`:
     - Today date key.
     - Parse date key.
     - Shift date key by previous/next day.
@@ -34,7 +34,7 @@ Merge the current-program strip and date navigator into one shared `app-live-epg
 - Run build/type validation through Nx:
     - `pnpm nx build web --configuration=development`
 - Use the running Electron app via CDP `127.0.0.1:9222` with `agent-browser`:
-    - Verify the IPTVnator page target is selected.
+    - Verify the Zenith Player page target is selected.
     - Confirm the old `app-epg-list #channel-header` date row is absent when wrapped by `app-live-epg-panel`.
     - Confirm the program list starts immediately below the unified toolbar.
     - Click previous/next day in the unified toolbar and verify visible EPG programs change.

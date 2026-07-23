@@ -1,6 +1,6 @@
 ---
 name: xtream-electron
-description: IPTVnator's Electron-first Xtream implementation, including feature/data-access boundaries, worker-backed DB flows, and Xtream loading/progress UX.
+description: Zenith Player's Electron-first Xtream implementation, including feature/data-access boundaries, worker-backed DB flows, and Xtream loading/progress UX.
 ---
 
 # Xtream Electron

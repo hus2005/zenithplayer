@@ -22,7 +22,7 @@ import { merge } from 'rxjs';
 import {
     EmbeddedMpvAudioTrack,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { PlayerControlsComponent } from '../player-controls/player-controls.component';
 import type { SeriesPlaybackNavigation } from '../portal-inline-player/series-playback-navigation';
 import { EmbeddedMpvControlsAdapter } from './embedded-mpv-controls.adapter';

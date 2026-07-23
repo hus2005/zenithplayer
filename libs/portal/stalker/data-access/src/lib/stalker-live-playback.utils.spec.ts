@@ -1,4 +1,4 @@
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import { buildStalkerExternalPlaybackHeaders } from './stalker-live-playback.utils';
 import { STALKER_SERIAL_NUMBER } from './stalker-session.service';
 

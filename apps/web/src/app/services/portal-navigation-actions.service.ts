@@ -1,12 +1,12 @@
 import { inject, Injectable, Provider } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { PlaylistInfoComponent } from '@iptvnator/playlist/shared/ui';
+import { PlaylistInfoComponent } from '@zenithplayer/playlist/shared/ui';
 import {
     PORTAL_NAVIGATION_ACTIONS,
     PortalNavigationActions,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { Playlist } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/shared/util';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
+import { Playlist } from '@zenithplayer/shared/interfaces';
 import { SettingsComponent } from '../settings/settings.component';
 
 @Injectable({ providedIn: 'root' })
@@ -23,7 +23,7 @@ export class AppPortalNavigationActionsService
             seriesCount: this.xtreamStore.serialStreams().length,
         };
 
-        void import('@iptvnator/portal/xtream/feature').then(
+        void import('@zenithplayer/portal/xtream/feature').then(
             ({ AccountInfoComponent }) => {
                 this.dialog.open(AccountInfoComponent, {
                     width: '80%',

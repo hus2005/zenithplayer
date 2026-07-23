@@ -20,11 +20,11 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ResizableDirective } from '@iptvnator/ui/components';
+import { ResizableDirective } from '@zenithplayer/ui/components';
 import {
     GridListComponent,
     PortalEmptyStateComponent,
-} from '@iptvnator/portal/shared/ui';
+} from '@zenithplayer/portal/shared/ui';
 import {
     LiveLayoutSidebarStateService,
     PORTAL_PLAYER,
@@ -40,13 +40,13 @@ import {
     queryParamSignal,
     restoreLiveEpgPanelState,
     restorePortalChannelSortMode,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     FavoriteItem,
     FavoritesService,
     XtreamUrlService,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
 import {
     EpgDateNavigationDirection,
     EpgListViewComponent,
@@ -54,21 +54,21 @@ import {
     EpgTimelineComponent,
     getTodayEpgDateKey,
     shiftEpgDateKey,
-} from '@iptvnator/ui/epg';
+} from '@zenithplayer/ui/epg';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {
     type PlaybackFallbackRequest,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
-import { LiveEpgPanelSummary } from '@iptvnator/ui/shared-portals';
+} from '@zenithplayer/ui/playback';
+import { LiveEpgPanelSummary } from '@zenithplayer/ui/shared-portals';
 import {
     EpgItem,
     EpgProgram,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { PortalChannelsListComponent } from '../portal-channels-list/portal-channels-list.component';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
 import { LiveStreamAutoOpenStateService } from './live-stream-auto-open-state.service';
 
 const LIVE_CHANNEL_SORT_STORAGE_KEY = 'xtream-live-channel-sort-mode';

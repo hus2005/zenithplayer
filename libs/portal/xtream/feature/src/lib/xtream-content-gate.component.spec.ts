@@ -8,7 +8,7 @@ import { of } from 'rxjs';
 import {
     XtreamContentInitBlockReason,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
 import { XtreamCachedOfflineNoticeComponent } from './xtream-cached-offline-notice.component';
 import { XtreamContentGateComponent } from './xtream-content-gate.component';
 

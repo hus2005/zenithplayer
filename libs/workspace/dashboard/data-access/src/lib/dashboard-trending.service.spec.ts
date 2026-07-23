@@ -2,9 +2,9 @@ import { TestBed } from '@angular/core/testing';
 import {
     CatalogTitleMatchService,
     TmdbEnrichmentService,
-} from '@iptvnator/services';
-import type { TmdbTrendingEntry } from '@iptvnator/services';
-import { CatalogTitleMatch } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/services';
+import type { TmdbTrendingEntry } from '@zenithplayer/services';
+import { CatalogTitleMatch } from '@zenithplayer/shared/interfaces';
 import { DashboardTrendingService } from './dashboard-trending.service';
 
 describe('DashboardTrendingService', () => {

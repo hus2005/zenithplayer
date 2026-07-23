@@ -1,14 +1,14 @@
 import { Component, computed, effect, inject, input, output, signal, untracked } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
-import { SafePipe } from '@iptvnator/pipes';
-import { PORTAL_EXTERNAL_PLAYBACK } from '@iptvnator/portal/shared/util';
+import { SafePipe } from '@zenithplayer/pipes';
+import { PORTAL_EXTERNAL_PLAYBACK } from '@zenithplayer/portal/shared/util';
 import {
     DetailActionsTemplateDirective,
     DetailMetaTemplateDirective,
     DetailTagsTemplateDirective,
     PortalDetailShellComponent,
-} from '@iptvnator/ui/components';
+} from '@zenithplayer/ui/components';
 import { Router } from '@angular/router';
 import {
     ExternalPlayerSession,
@@ -18,12 +18,12 @@ import {
     getVodNumericId,
     normalizeVodDetails,
     youtubeEmbedUrl,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     CrossPortalSimilarItem,
     CrossPortalSimilarService,
     DownloadsService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import type { PlaybackFallbackRequest } from '../playback-diagnostics/playback-diagnostics.util';
 import { PortalInlinePlayerComponent } from '../portal-inline-player/portal-inline-player.component';
 

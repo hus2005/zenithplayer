@@ -112,7 +112,7 @@ describe('web backend app', () => {
 
             await expect(response.json()).resolves.toEqual({
                 status: 'ok',
-                service: 'iptvnator-web-backend',
+                service: 'zenithplayer-web-backend',
             });
         });
     });
@@ -129,7 +129,7 @@ describe('web backend app', () => {
                 expect(response.headers.get('content-type')).toContain(
                     'application/javascript'
                 );
-                expect(body).toContain('window.__IPTVNATOR_CONFIG__');
+                expect(body).toContain('window.__zenithplayer_CONFIG__');
                 expect(body).toContain('"BACKEND_URL":"/api"');
             }
         );

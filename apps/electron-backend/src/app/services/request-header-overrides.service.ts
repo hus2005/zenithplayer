@@ -22,7 +22,7 @@ const YOUTUBE_EMBED_HOSTS = new Set([
     'www.youtube-nocookie.com',
     'www.youtube.com',
 ]);
-const YOUTUBE_EMBED_REFERER = 'https://4gray.github.io/iptvnator/';
+const YOUTUBE_EMBED_REFERER = 'https://hus2005.github.io/zenithplayer/';
 
 let activeHeaderOverride: HeaderOverride | null = null;
 let activeScopedHeaderOverride: HeaderOverride | null = null;

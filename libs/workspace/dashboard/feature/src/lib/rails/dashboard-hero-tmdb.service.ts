@@ -3,8 +3,8 @@ import {
     TmdbEnrichmentService,
     extractYear,
     tmdbBackdropUrl,
-} from '@iptvnator/services';
-import type { GlobalRecentItem } from '@iptvnator/workspace/dashboard/data-access';
+} from '@zenithplayer/services';
+import type { GlobalRecentItem } from '@zenithplayer/workspace/dashboard/data-access';
 
 /** TMDB extras for the dashboard hero, patched in after first paint */
 export interface DashboardHeroTmdbExtras {

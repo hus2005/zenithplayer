@@ -3,16 +3,16 @@ import {
     formatSeriesEpisodeCode,
     getSeriesQuickStartAction,
     type SeriesQuickStartAction,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     getVodSeriesSeasonKey,
     getVodSeriesSeasonNumber,
     type VodSeriesSeasonVm,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@zenithplayer/portal/stalker/data-access';
 import type {
     PlaybackPositionData,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export interface StalkerQuickStartButton {
     labelKey: string;

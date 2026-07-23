@@ -2,10 +2,10 @@ import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { NavigationEnd, Router } from '@angular/router';
 import { EMPTY, Subject, of } from 'rxjs';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { PlaylistsService } from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
+import { PlaylistsService } from '@zenithplayer/services';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import { StalkerWorkspaceRouteSession } from './stalker-workspace-route-session.service';
 
 const PLAYLIST_ID = 'stalker-1';

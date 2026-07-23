@@ -5,7 +5,7 @@ import {
     runInInjectionContext,
 } from '@angular/core';
 import { of } from 'rxjs';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import { DatabaseService } from './database-electron.service';
 import { PlaylistDeleteActionService } from './playlist-delete-action.service';
 import { PlaylistsService } from './playlists.service';

@@ -7,15 +7,15 @@ import {
     XtreamLiveStream,
     XtreamSerieItem,
     XtreamVodStream,
-} from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/shared/interfaces';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 import {
     CategoryType,
     StreamType,
     XtreamApiService,
     XtreamCredentials,
 } from '../services/xtream-api.service';
-import { PlaylistsService } from '@iptvnator/services';
+import { PlaylistsService } from '@zenithplayer/services';
 import { firstValueFrom } from 'rxjs';
 import {
     DbCategoryType,

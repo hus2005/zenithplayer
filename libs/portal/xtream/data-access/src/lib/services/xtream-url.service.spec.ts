@@ -1,11 +1,11 @@
 import { signal, WritableSignal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { DatabaseService, SettingsStore } from '@iptvnator/services';
+import { DatabaseService, SettingsStore } from '@zenithplayer/services';
 import {
     StreamFormat,
     XtreamSerieEpisode,
     XtreamVodDetails,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { XtreamCredentials } from './xtream-api.service';
 import { XtreamUrlService } from './xtream-url.service';
 

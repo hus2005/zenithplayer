@@ -375,7 +375,7 @@ test('prepares identical VCS-free snapshots from equivalent clean checkouts', as
     const helper = await loadHelper();
     assert.ok(helper, 'the deterministic source snapshot helper must exist');
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-source-snapshot-')
+        path.join(os.tmpdir(), 'zenithplayer-source-snapshot-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const { commit, first, second } = createEquivalentCheckouts(root);
@@ -437,7 +437,7 @@ test('normalizes regular-file executable permissions in the canonical inventory'
     const helper = await loadHelper();
     assert.ok(helper, 'the deterministic source snapshot helper must exist');
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-source-modes-')
+        path.join(os.tmpdir(), 'zenithplayer-source-modes-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const first = path.join(root, 'first');
@@ -474,7 +474,7 @@ test('globally sorts prefix-colliding sibling paths before hashing', async (t) =
     const helper = await loadHelper();
     assert.ok(helper, 'the deterministic source snapshot helper must exist');
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-source-global-order-')
+        path.join(os.tmpdir(), 'zenithplayer-source-global-order-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     fs.mkdirSync(path.join(root, 'c'));
@@ -497,7 +497,7 @@ test('fails closed on VCS entries, unsafe symlinks, and special files', async (t
     const helper = await loadHelper();
     assert.ok(helper, 'the deterministic source snapshot helper must exist');
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-source-unsafe-entry-')
+        path.join(os.tmpdir(), 'zenithplayer-source-unsafe-entry-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
 
@@ -545,7 +545,7 @@ test('checks an optional expected digest atomically for direct callers', async (
     const helper = await loadHelper();
     assert.ok(helper, 'the deterministic source snapshot helper must exist');
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-source-expected-digest-')
+        path.join(os.tmpdir(), 'zenithplayer-source-expected-digest-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const { commit, first } = createEquivalentCheckouts(root);
@@ -591,7 +591,7 @@ test('production CLI always enforces the trusted pinned libplacebo digest', asyn
         '0db67c1523411255244186af437e9fbfe7ccac04a5ac1b3dc9275dd0806f6f0c'
     );
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-source-cli-digest-')
+        path.join(os.tmpdir(), 'zenithplayer-source-cli-digest-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const { commit, first } = createEquivalentCheckouts(root);
@@ -636,7 +636,7 @@ test('validates checkout cleanliness and exact commit/submodule identities befor
     const helper = await loadHelper();
     assert.ok(helper, 'the deterministic source snapshot helper must exist');
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-source-identity-')
+        path.join(os.tmpdir(), 'zenithplayer-source-identity-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const { commit, first, second } = createEquivalentCheckouts(root);
@@ -727,7 +727,7 @@ test('preserves recursive submodule sources while stripping every nested .git li
     const helper = await loadHelper();
     assert.ok(helper, 'the deterministic source snapshot helper must exist');
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-source-submodule-')
+        path.join(os.tmpdir(), 'zenithplayer-source-submodule-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const { checkout, expected } = createCheckoutWithSubmodule(root);
@@ -763,7 +763,7 @@ test('fails closed when a prepared snapshot contains any nested .git entry', asy
     const helper = await loadHelper();
     assert.ok(helper, 'the deterministic source snapshot helper must exist');
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-source-vcs-entry-')
+        path.join(os.tmpdir(), 'zenithplayer-source-vcs-entry-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     fs.mkdirSync(path.join(root, 'nested', '.git'), { recursive: true });

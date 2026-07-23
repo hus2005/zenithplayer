@@ -1,7 +1,7 @@
 import type {
     ExternalPlayerName,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export const PlaybackDiagnosticCode = {
     UnsupportedContainer: 'unsupported-container',

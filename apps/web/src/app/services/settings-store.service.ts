@@ -1,1 +1,1 @@
-export { SettingsStore } from '@iptvnator/services';
+export { SettingsStore } from '@zenithplayer/services';

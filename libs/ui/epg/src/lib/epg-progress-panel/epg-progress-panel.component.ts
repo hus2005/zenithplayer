@@ -12,8 +12,8 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import {
     EpgImportProgress,
     EpgProgressService,
-} from '@iptvnator/epg/data-access';
-import { ELECTRON_BRIDGE_SECURITY_ERROR_CODES } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/epg/data-access';
+import { ELECTRON_BRIDGE_SECURITY_ERROR_CODES } from '@zenithplayer/shared/interfaces';
 
 interface EpgTrustConfirmDialogData {
     confirmLabel: string;
@@ -160,7 +160,7 @@ export class EpgProgressPanelComponent {
                     ),
                     message: this.translateWithFallback(
                         'EPG.ALLOW_PRIVATE_SOURCE_WARNING',
-                        'Only allow this if you trust the EPG source. IPTVnator will let this exact EPG URL connect to private or local network addresses.'
+                        'Only allow this if you trust the EPG source. Zenith Player will let this exact EPG URL connect to private or local network addresses.'
                     ),
                     confirmLabel: this.translateWithFallback(
                         'EPG.ALLOW_PRIVATE_SOURCE',
@@ -184,7 +184,7 @@ export class EpgProgressPanelComponent {
                 ),
                 message: this.translateWithFallback(
                     'EPG.TRUST_TLS_HOST_WARNING',
-                    'Only continue if you trust this host. IPTVnator will allow invalid TLS certificates for this host, but other hosts still require valid certificates.'
+                    'Only continue if you trust this host. Zenith Player will allow invalid TLS certificates for this host, but other hosts still require valid certificates.'
                 ),
                 confirmLabel: this.translateWithFallback(
                     'EPG.TRUST_TLS_HOST',

@@ -1,4 +1,4 @@
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 
 type SearchablePlaylistMeta = Pick<
     PlaylistMeta,

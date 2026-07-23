@@ -16,8 +16,8 @@ import { MatIcon } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { SettingsStore } from '@iptvnator/services';
-import { applyChannelNameStrip } from '@iptvnator/shared/m3u-utils';
+import { SettingsStore } from '@zenithplayer/services';
+import { applyChannelNameStrip } from '@zenithplayer/shared/m3u-utils';
 
 export interface DashboardRailAction {
     id: string;

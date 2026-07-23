@@ -1,11 +1,11 @@
-# IPTVnator Website
+# Zenith Player Website
 
-The website is an Astro static site deployed to GitHub Pages at `https://4gray.github.io/iptvnator/`.
+The website is an Astro static site deployed to GitHub Pages at `https://hus2005.github.io/zenithplayer/`.
 
 ## Blog Comments
 
 Blog posts render Giscus comments from `apps/website/src/components/GiscusComments.astro`.
-Giscus stores comments in GitHub Discussions for `4gray/iptvnator` and maps each page to a discussion by `pathname`, including the GitHub Pages base path such as `/iptvnator/blog/why-external-players-help/`.
+Giscus stores comments in GitHub Discussions for `hus2005/zenithplayer` and maps each page to a discussion by `pathname`, including the GitHub Pages base path such as `/zenithplayer/blog/why-external-players-help/`.
 
 The embed is wired to the dedicated `Blog comments` discussion category:
 
@@ -19,7 +19,7 @@ If the category is recreated, query the new category id:
 ```bash
 gh api graphql \
   -f owner=4gray \
-  -f name=iptvnator \
+  -f name=zenithplayer \
   -f query='query($owner:String!, $name:String!) { repository(owner:$owner, name:$name) { discussionCategories(first:25) { nodes { id name slug isAnswerable } } } }'
 ```
 

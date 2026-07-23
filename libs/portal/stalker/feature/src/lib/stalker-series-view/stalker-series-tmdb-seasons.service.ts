@@ -3,8 +3,8 @@ import {
     TmdbEnrichmentService,
     mergeEpisodesWithTmdb,
     type TmdbEpisode,
-} from '@iptvnator/services';
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/services';
+import { XtreamSerieEpisode } from '@zenithplayer/shared/interfaces';
 
 /**
  * Component-scoped holder for lazily fetched TMDB season data (episode

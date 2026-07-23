@@ -10,7 +10,7 @@ import {
     StreamFormat,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { SettingsStore } from './settings-store.service';
 
 const expectedDashboardRails = (

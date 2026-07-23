@@ -19,17 +19,17 @@ import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { PlaylistEffects, playlistReducer } from '@iptvnator/m3u-state';
+import { PlaylistEffects, playlistReducer } from '@zenithplayer/m3u-state';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util';
-import { PLAYLIST_PLAYER_ACTIONS } from '@iptvnator/playlist/shared/util';
-import { provideXtreamDataSource } from '@iptvnator/portal/xtream/data-access';
-import { DataService } from '@iptvnator/services';
-import { dbConfig } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/shared/util';
+import { PLAYLIST_PLAYER_ACTIONS } from '@zenithplayer/playlist/shared/util';
+import { provideXtreamDataSource } from '@zenithplayer/portal/xtream/data-access';
+import { DataService } from '@zenithplayer/services';
+import { dbConfig } from '@zenithplayer/shared/interfaces';
 import { AppConfig } from '../environments/environment';
 import { routes } from './app.routes';
 import { ElectronService } from './services/electron.service';
@@ -78,7 +78,7 @@ const SUPPORTED_LANGS = new Set([
     'zh',
     'zhtw',
 ]);
-export const PREFERRED_LANGUAGE_STORAGE_KEY = 'iptvnator:preferred-language';
+export const PREFERRED_LANGUAGE_STORAGE_KEY = 'zenithplayer:preferred-language';
 export function getInitialLanguage(): string {
     try {
         const saved = localStorage.getItem(PREFERRED_LANGUAGE_STORAGE_KEY);

@@ -1,6 +1,6 @@
 import { Component, HostListener, inject, viewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ExternalPlaybackDockComponent } from '@iptvnator/ui/components';
+import { ExternalPlaybackDockComponent } from '@zenithplayer/ui/components';
 import {
     PlaylistDropOverlayComponent,
     PlaylistDropZoneDirective,

@@ -5,7 +5,7 @@ import { Worker } from 'worker_threads';
 import {
     ElectronBridgeSecurityErrorCode,
     ElectronBridgeTrustOptions,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { resolveWorkerRuntimeBootstrap } from '../workers/worker-runtime-paths';
 
 export type EpgProgressStatus = 'queued' | 'loading' | 'complete' | 'error';

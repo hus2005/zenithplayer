@@ -4,15 +4,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
 import {
     DatabaseService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import { Playlist } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/services';
+import { Playlist } from '@zenithplayer/shared/interfaces';
 import { PlaylistInfoComponent } from './playlist-info.component';
 
 describe('PlaylistInfoComponent', () => {

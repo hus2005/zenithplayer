@@ -2,7 +2,7 @@ import { existsSync, mkdirSync } from 'fs';
 import { homedir } from 'os';
 import { join } from 'path';
 
-export const IPTVNATOR_E2E_DATA_DIR_ENV = 'IPTVNATOR_E2E_DATA_DIR';
+export const zenithplayer_E2E_DATA_DIR_ENV = 'zenithplayer_E2E_DATA_DIR';
 
 function ensureDirectory(dirPath: string): string {
     if (!existsSync(dirPath)) {
@@ -12,26 +12,26 @@ function ensureDirectory(dirPath: string): string {
     return dirPath;
 }
 
-export function getIptvnatorDataRoot(): string {
-    const e2eDataDir = process.env[IPTVNATOR_E2E_DATA_DIR_ENV]?.trim();
+export function getzenithplayerDataRoot(): string {
+    const e2eDataDir = process.env[zenithplayer_E2E_DATA_DIR_ENV]?.trim();
 
     if (e2eDataDir) {
         return ensureDirectory(e2eDataDir);
     }
 
-    return ensureDirectory(join(homedir(), '.iptvnator'));
+    return ensureDirectory(join(homedir(), '.zenithplayer'));
 }
 
-export function getIptvnatorDatabaseDirectory(): string {
-    return ensureDirectory(join(getIptvnatorDataRoot(), 'databases'));
+export function getzenithplayerDatabaseDirectory(): string {
+    return ensureDirectory(join(getzenithplayerDataRoot(), 'databases'));
 }
 
-export function getIptvnatorDatabasePath(): string {
-    return join(getIptvnatorDatabaseDirectory(), 'iptvnator.db');
+export function getzenithplayerDatabasePath(): string {
+    return join(getzenithplayerDatabaseDirectory(), 'zenithplayer.db');
 }
 
 export function getElectronUserDataPath(): string | null {
-    const e2eDataDir = process.env[IPTVNATOR_E2E_DATA_DIR_ENV]?.trim();
+    const e2eDataDir = process.env[zenithplayer_E2E_DATA_DIR_ENV]?.trim();
 
     if (!e2eDataDir) {
         return null;
@@ -41,7 +41,7 @@ export function getElectronUserDataPath(): string | null {
 }
 
 export function getElectronConfigDirectory(): string | null {
-    const e2eDataDir = process.env[IPTVNATOR_E2E_DATA_DIR_ENV]?.trim();
+    const e2eDataDir = process.env[zenithplayer_E2E_DATA_DIR_ENV]?.trim();
 
     if (!e2eDataDir) {
         return null;

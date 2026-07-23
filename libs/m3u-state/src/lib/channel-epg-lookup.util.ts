@@ -1,4 +1,4 @@
-import { Channel } from '@iptvnator/shared/interfaces';
+import { Channel } from '@zenithplayer/shared/interfaces';
 
 export function resolveChannelEpgLookupKey(
     channel: Channel | null | undefined

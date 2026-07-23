@@ -2,8 +2,8 @@ import {
     TmdbEnrichmentService,
     extractYear,
     mergeStalkerInfoWithTmdb,
-} from '@iptvnator/services';
-import { StalkerVodInfo, TmdbMediaType } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/services';
+import { StalkerVodInfo, TmdbMediaType } from '@zenithplayer/shared/interfaces';
 import { StalkerVodSource } from '../models';
 import {
     isStalkerSeriesItem,

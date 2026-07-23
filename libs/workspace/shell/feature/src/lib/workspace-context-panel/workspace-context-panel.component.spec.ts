@@ -5,12 +5,12 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { WORKSPACE_CATEGORY_SORT_STORAGE_KEY } from '@iptvnator/portal/shared/util';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
+import { WORKSPACE_CATEGORY_SORT_STORAGE_KEY } from '@zenithplayer/portal/shared/util';
 import {
     XtreamContentLoadState,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
 import { WorkspaceContextPanelComponent } from './workspace-context-panel.component';
 
 const translations: Record<string, string> = {

@@ -3,7 +3,7 @@ import {
     normalizeXtreamServerUrl,
     resolveXtreamPortalStatus,
     XtreamPortalStatusResponseLike,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { DataService } from './data.service';
 
 export type PortalStatus =

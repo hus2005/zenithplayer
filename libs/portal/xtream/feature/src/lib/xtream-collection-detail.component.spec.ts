@@ -1,13 +1,13 @@
 import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { UnifiedCollectionItem } from '@iptvnator/portal/shared/util';
+import { UnifiedCollectionItem } from '@zenithplayer/portal/shared/util';
 import {
     XtreamPlaylistData,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { PlaylistsService } from '@iptvnator/services';
-import { Playlist } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/xtream/data-access';
+import { PlaylistsService } from '@zenithplayer/services';
+import { Playlist } from '@zenithplayer/shared/interfaces';
 import { firstValueFrom, of } from 'rxjs';
 import { SerialDetailsComponent } from './serial-details/serial-details.component';
 import { XTREAM_SERIES_RESUME_TARGET } from './serial-details/serial-details-resume-target.token';

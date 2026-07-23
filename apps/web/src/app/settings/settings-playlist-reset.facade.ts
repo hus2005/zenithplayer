@@ -2,13 +2,13 @@ import { inject, Injectable, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { firstValueFrom } from 'rxjs';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
 import {
     DatabaseService,
     DbOperationEvent,
     PlaylistsService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import { SettingsSnackbarService } from './settings-snackbar.service';
 
 @Injectable()

@@ -1,9 +1,9 @@
 ---
-name: iptvnator-theme-style
+name: zenithplayer-theme-style
 description: Theme architecture, design tokens, shared SCSS library, portal header/sidebar patterns, Electron drag regions, and cross-portal style consistency.
 ---
 
-# IPTVnator Theme Style
+# Zenith Player Theme Style
 
 Use this skill when changing SCSS tokens, shared layout mixins, portal headers, sidebars, detail views, or Electron draggable regions.
 
@@ -15,7 +15,7 @@ Use this skill when changing SCSS tokens, shared layout mixins, portal headers, 
 - `libs/ui/styles/_portal-sidebar.scss`
 - `libs/ui/styles/_panel-header.scss`
 - `libs/ui/styles/_detail-view-actions.scss`
-- `docs/architecture/iptvnator-ui-guidelines.md`
+- `docs/architecture/zenithplayer-ui-guidelines.md`
 
 ## Rules
 

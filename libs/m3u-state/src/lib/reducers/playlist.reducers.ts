@@ -1,6 +1,6 @@
 import { on } from '@ngrx/store';
-import { Channel } from '@iptvnator/shared/interfaces';
-import { resolvePlaylistEpgSourceState } from '@iptvnator/shared/m3u-utils';
+import { Channel } from '@zenithplayer/shared/interfaces';
+import { resolvePlaylistEpgSourceState } from '@zenithplayer/shared/m3u-utils';
 import { PlaylistActions } from '../actions';
 import { playlistsAdapter } from '../playlists.state';
 import { PlaylistState } from '../state';

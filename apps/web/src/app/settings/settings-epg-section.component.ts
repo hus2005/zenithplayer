@@ -7,8 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { EpgViewMode } from '@iptvnator/shared/interfaces';
-import { EpgSourceStatusComponent } from '@iptvnator/ui/epg';
+import { EpgViewMode } from '@zenithplayer/shared/interfaces';
+import { EpgSourceStatusComponent } from '@zenithplayer/ui/epg';
 import { TranslateModule } from '@ngx-translate/core';
 import { EpgViewModeOption } from './settings.models';
 

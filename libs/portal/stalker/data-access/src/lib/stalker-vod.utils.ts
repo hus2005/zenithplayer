@@ -4,13 +4,13 @@ import {
 } from '@angular/core';
 import { rxResource } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
-import { PlaylistsService } from '@iptvnator/services';
+import { PlaylistsService } from '@zenithplayer/services';
 import {
     createStalkerVodItem,
     StalkerVodDetails,
     StalkerVodInfo,
     VodDetailsItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     StalkerFavoriteItem,
     StalkerSelectedVodItem,

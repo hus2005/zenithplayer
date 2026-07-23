@@ -19,7 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { EpgRuntimeBridgeService, EpgService } from '@iptvnator/epg/data-access';
+import { EpgRuntimeBridgeService, EpgService } from '@zenithplayer/epg/data-access';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { debounceTime, from, Subject, switchMap } from 'rxjs';
 

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { DataService } from '@iptvnator/services';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { DataService } from '@zenithplayer/services';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 import {
     EpgItem,
     XtreamCategory,
@@ -12,7 +12,7 @@ import {
     XtreamVodStream,
     XTREAM_REQUEST,
     normalizeXtreamServerUrl,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { XtreamAccountInfo } from '../account-info/account-info.interface';
 
 /**

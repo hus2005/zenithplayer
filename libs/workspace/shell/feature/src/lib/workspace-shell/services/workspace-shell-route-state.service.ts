@@ -10,18 +10,18 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { filter, startWith } from 'rxjs';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     buildPortalRailLinks,
     PortalRailLink,
-} from '@iptvnator/portal/shared/util';
-import { selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+} from '@zenithplayer/portal/shared/util';
+import { selectAllPlaylistsMeta } from '@zenithplayer/m3u-state';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 import {
     parseWorkspaceShellRoute,
     WorkspacePortalContext,
     WorkspaceStartupPreferencesService,
-} from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/workspace/shell/util';
 import { getProviderFromPlaylist } from './helpers/workspace-shell-route-utils';
 import { translateRailLinks } from './helpers/workspace-shell-search-labels';
 

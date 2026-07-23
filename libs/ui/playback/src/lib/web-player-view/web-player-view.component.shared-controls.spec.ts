@@ -15,8 +15,8 @@ import { of } from 'rxjs';
 import {
     type ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+} from '@zenithplayer/shared/interfaces';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
 import type { WebPlayerViewComponent as WebPlayerViewComponentInstance } from './web-player-view.component';
 import { WEB_PLAYER_SHARED_CONTROLS } from '../player-controls';
 import {

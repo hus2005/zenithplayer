@@ -4,10 +4,10 @@ import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { PlaylistSwitcherComponent } from '@iptvnator/playlist/shared/ui';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { Channel } from '@iptvnator/shared/interfaces';
-import { ChannelListContainerComponent } from '@iptvnator/ui/components';
+import { PlaylistSwitcherComponent } from '@zenithplayer/playlist/shared/ui';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
+import { Channel } from '@zenithplayer/shared/interfaces';
+import { ChannelListContainerComponent } from '@zenithplayer/ui/components';
 
 @Component({
     selector: 'app-sidebar',

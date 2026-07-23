@@ -1,5 +1,5 @@
 /*
- * Linux/Windows frame-copy probe: spawns iptvnator_mpv_helper, attaches the
+ * Linux/Windows frame-copy probe: spawns zenithplayer_mpv_helper, attaches the
  * embedded_mpv_frame_reader addon to the announced shm generation, and
  * reports producer fps, copy latency (ageMs), copy wall time, torn reads
  * and pixel spread. Usage:
@@ -25,8 +25,8 @@ const reader = require(path.join(releaseDir, 'embedded_mpv_frame_reader.node'));
 const helperPath = path.join(
     releaseDir,
     process.platform === 'win32'
-        ? 'iptvnator_mpv_helper.exe'
-        : 'iptvnator_mpv_helper'
+        ? 'zenithplayer_mpv_helper.exe'
+        : 'zenithplayer_mpv_helper'
 );
 const shmBase = `/impv-probe-${process.pid}`;
 

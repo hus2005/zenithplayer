@@ -3,7 +3,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { SettingsAboutSectionComponent } from './settings-about-section.component';
 
 function getButton(fixture: ComponentFixture<SettingsAboutSectionComponent>, id: string) {
@@ -47,7 +47,7 @@ describe('SettingsAboutSectionComponent app updates', () => {
             currentVersion: '0.22.0',
             latestVersion: '0.23.0',
             manualDownloadUrl:
-                'https://github.com/4gray/iptvnator/releases/latest',
+                'https://github.com/hus2005/zenithplayer/releases/latest',
             status: ELECTRON_BRIDGE_APP_UPDATE_STATUSES.Available,
             supportedSelfUpdate: true,
         });
@@ -70,7 +70,7 @@ describe('SettingsAboutSectionComponent app updates', () => {
             currentVersion: '0.22.0',
             latestVersion: '0.23.0',
             manualDownloadUrl:
-                'https://github.com/4gray/iptvnator/releases/latest',
+                'https://github.com/hus2005/zenithplayer/releases/latest',
             status: ELECTRON_BRIDGE_APP_UPDATE_STATUSES.Downloaded,
             supportedSelfUpdate: true,
         });
@@ -88,7 +88,7 @@ describe('SettingsAboutSectionComponent app updates', () => {
             currentVersion: '0.22.0',
             latestVersion: '0.22.0',
             manualDownloadUrl:
-                'https://github.com/4gray/iptvnator/releases/latest',
+                'https://github.com/hus2005/zenithplayer/releases/latest',
             status: ELECTRON_BRIDGE_APP_UPDATE_STATUSES.NotAvailable,
             supportedSelfUpdate: true,
         });
@@ -106,7 +106,7 @@ describe('SettingsAboutSectionComponent app updates', () => {
             currentVersion: '0.22.0',
             latestVersion: '0.23.0',
             manualDownloadUrl:
-                'https://github.com/4gray/iptvnator/releases/latest',
+                'https://github.com/hus2005/zenithplayer/releases/latest',
             status: ELECTRON_BRIDGE_APP_UPDATE_STATUSES.Unsupported,
             supportedSelfUpdate: false,
         });
@@ -121,7 +121,7 @@ describe('SettingsAboutSectionComponent app updates', () => {
         configureComponent(fixture, {
             currentVersion: '0.22.0',
             manualDownloadUrl:
-                'https://github.com/4gray/iptvnator/releases/latest',
+                'https://github.com/hus2005/zenithplayer/releases/latest',
             status: ELECTRON_BRIDGE_APP_UPDATE_STATUSES.Unsupported,
             supportedSelfUpdate: false,
         });

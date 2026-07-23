@@ -5,7 +5,7 @@ import {
     WorkspaceCommandSelection,
     WorkspaceResolvedCommandItem,
     WorkspaceViewCommandService,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import { WorkspaceCommandPaletteComponent } from '../../workspace-command-palette/workspace-command-palette.component';
 import { RecentCommandsService } from '../../recent-commands';
 import { WorkspacePlayerCommandsContributor } from '../../workspace-player-commands';

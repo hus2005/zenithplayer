@@ -117,7 +117,7 @@ app.all('/streaming/timeshift.php', (_req, res) => {
 });
 
 // ─── PWA CORS proxy endpoint ────────────────────────────────────────────────────
-// IPTVnator PWA routes Xtream calls through:
+// Zenith Player PWA routes Xtream calls through:
 //   GET /xtream?url=<serverUrl>&action=<action>&username=X&password=Y
 // and expects: { payload: <data>, action: <action> }
 app.get('/xtream', async (req, res) => {

@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import {
     EmbeddedMpvSession,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { EmbeddedMpvSessionController } from './embedded-mpv-session-controller';
 
 /**

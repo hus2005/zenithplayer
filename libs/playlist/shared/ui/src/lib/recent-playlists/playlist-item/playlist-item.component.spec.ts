@@ -7,7 +7,7 @@ import { MockModule } from 'ng-mocks';
 import {
     PortalStatusService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import { PlaylistItemComponent } from './playlist-item.component';
 
 describe('PlaylistItemComponent', () => {

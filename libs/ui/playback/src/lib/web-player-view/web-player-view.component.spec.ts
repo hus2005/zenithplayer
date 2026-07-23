@@ -12,8 +12,8 @@ import { By } from '@angular/platform-browser';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { TranslateModule } from '@ngx-translate/core';
 import { of, Subject } from 'rxjs';
-import { VideoPlayer } from '@iptvnator/shared/interfaces';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { VideoPlayer } from '@zenithplayer/shared/interfaces';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 import type { WebPlayerViewComponent as WebPlayerViewComponentInstance } from './web-player-view.component';
 import {
     PlaybackDiagnostic,

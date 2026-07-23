@@ -20,7 +20,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Store } from '@ngrx/store';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ChannelActions } from '@iptvnator/m3u-state';
+import { ChannelActions } from '@zenithplayer/m3u-state';
 
 @Component({
     selector: 'app-audio-player',

@@ -1,7 +1,7 @@
 import {
     XtreamSerieEpisode,
     XtreamSerieEpisodeInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { tmdbStillUrl } from './tmdb-config';
 import { TmdbEpisode } from './tmdb.types';
 

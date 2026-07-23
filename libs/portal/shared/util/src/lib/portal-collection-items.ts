@@ -1,4 +1,4 @@
-import { XtreamCategory } from '@iptvnator/shared/interfaces';
+import { XtreamCategory } from '@zenithplayer/shared/interfaces';
 
 type StandardCollectionBucket = 'all' | 'movie' | 'live' | 'series';
 

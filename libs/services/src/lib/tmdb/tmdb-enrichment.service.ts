@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { TmdbMediaType } from '@iptvnator/shared/interfaces';
+import { TmdbMediaType } from '@zenithplayer/shared/interfaces';
 import { TmdbApiService } from './tmdb-api.service';
 import { TmdbCacheService } from './tmdb-cache.service';
 import {

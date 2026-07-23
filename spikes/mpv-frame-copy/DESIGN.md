@@ -22,7 +22,7 @@ normal `<canvas>`. This replaces, eventually:
 
 ## Process model
 
-- `iptvnator-mpv-helper` — a per-session process shipped with the app,
+- `zenithplayer-mpv-helper` — a per-session process shipped with the app,
   linking the bundled libmpv on **all three platforms**. In-process libmpv
   is forbidden on Linux (ffmpeg/GL symbol clash with Electron), but a
   helper process is exactly the isolation that makes it legal — so Linux
@@ -67,7 +67,7 @@ normal `<canvas>`. This replaces, eventually:
   above a canvas.
 - Resize: renderer reports new bounds (debounced ~100 ms) → helper
   recreates FBO/PBOs and a new shm generation
-  (`/iptvnator-mpv-<sessionId>-<gen>`); the viewer remaps on the control
+  (`/zenithplayer-mpv-<sessionId>-<gen>`); the viewer remaps on the control
   event announcing the new generation and keeps presenting the old frame
   (CSS-scaled) until the first new-generation frame lands.
 

@@ -103,7 +103,7 @@ jobs:
                   set -euo pipefail
 
                   export PATH="${HOME}/.local/bin:${PATH}"
-                  export IPTVNATOR_EMBEDDED_MPV_LINUX_BUILD_ROOT="${RUNNER_TEMP}/linux-frame-copy-runtime-build"
+                  export zenithplayer_EMBEDDED_MPV_LINUX_BUILD_ROOT="${RUNNER_TEMP}/linux-frame-copy-runtime-build"
                   export RUNTIME_PREFIX="${RUNNER_TEMP}/linux-frame-copy-runtime-prefix"
 
                   node tools/embedded-mpv/build-linux-runtime.mjs "${RUNTIME_PREFIX}"
@@ -115,15 +115,15 @@ jobs:
                       "${SOURCE_INPUT_ROOT}/archives" \
                       "${SOURCE_INPUT_ROOT}/git"
 
-                  git -C "${IPTVNATOR_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources/libplacebo" \
+                  git -C "${zenithplayer_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources/libplacebo" \
                       submodule foreach --recursive git clean -ffdqx
-                  git -C "${IPTVNATOR_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources/libplacebo" \
+                  git -C "${zenithplayer_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources/libplacebo" \
                       clean -ffdqx
-                  cp -a "${IPTVNATOR_EMBEDDED_MPV_LINUX_BUILD_ROOT}/archives/." "${SOURCE_INPUT_ROOT}/archives/"
-                  cp -a "${IPTVNATOR_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources/libplacebo" "${SOURCE_INPUT_ROOT}/git/libplacebo"
+                  cp -a "${zenithplayer_EMBEDDED_MPV_LINUX_BUILD_ROOT}/archives/." "${SOURCE_INPUT_ROOT}/archives/"
+                  cp -a "${zenithplayer_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources/libplacebo" "${SOURCE_INPUT_ROOT}/git/libplacebo"
                   node tools/embedded-mpv/generate-linux-runtime-notices.cjs collect \
                       --runtime-manifest "${RUNTIME_PREFIX}/runtime-manifest.json" \
-                      --source-root "${IPTVNATOR_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources" \
+                      --source-root "${zenithplayer_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources" \
                       --output-root "${SOURCE_INPUT_ROOT}/license-inputs"
 
             - name: Generate Linux runtime notices and assemble source compliance
@@ -175,7 +175,7 @@ jobs:
                       "${SOURCE_BUNDLE_ROOT}/tooling/"
                   test -f "${SOURCE_BUNDLE_ROOT}/notices/THIRD_PARTY_NOTICES.txt"
                   test -f "${SOURCE_BUNDLE_ROOT}/notices/embedded-mpv-notices.json"
-                  git rev-parse HEAD > "${SOURCE_BUNDLE_ROOT}/metadata/iptvnator-git-revision.txt"
+                  git rev-parse HEAD > "${SOURCE_BUNDLE_ROOT}/metadata/zenithplayer-git-revision.txt"
                   git diff --binary HEAD > "${SOURCE_BUNDLE_ROOT}/metadata/local-changes.patch"
                   node <<'NODE'
                   const crypto = require('node:crypto');
@@ -239,7 +239,7 @@ jobs:
                       path.join(
                         process.env.SOURCE_BUNDLE_ROOT,
                         'metadata',
-                        'iptvnator-git-revision.txt'
+                        'zenithplayer-git-revision.txt'
                       ),
                       'utf8'
                     )
@@ -424,8 +424,8 @@ jobs:
               id: embedded-mpv-runtime-cache-key
               shell: bash
               env:
-                  IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256: ${{ vars.IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 || secrets.IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 || '' }}
-                  IPTVNATOR_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256: 6014aa0e6d8e98cdba90f5288295a7105d7d14ab0ca906f51465eeb478d5fea0
+                  zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256: ${{ vars.zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 || secrets.zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 || '' }}
+                  zenithplayer_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256: 6014aa0e6d8e98cdba90f5288295a7105d7d14ab0ca906f51465eeb478d5fea0
               run: |
                   set -euo pipefail
 
@@ -470,8 +470,8 @@ jobs:
                   } else if (targetPlatform === 'win32') {
                     sourceHashFiles.push('tools/embedded-mpv/stage-windows-runtime-archive.mjs');
                     const windowsRuntimeSha256 =
-                      process.env.IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 ||
-                      process.env.IPTVNATOR_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 ||
+                      process.env.zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 ||
+                      process.env.zenithplayer_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 ||
                       'missing';
                     cacheKeyParts.push(
                       `runtime${hash(windowsRuntimeSha256)}`
@@ -534,28 +534,28 @@ jobs:
               if: matrix.os == 'windows' && steps.embedded-mpv-runtime-cache.outputs.cache-hit != 'true'
               shell: bash
               env:
-                  IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_URL: ${{ vars.IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_URL || secrets.IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_URL || '' }}
-                  IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256: ${{ vars.IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 || secrets.IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 || '' }}
-                  IPTVNATOR_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_URL: https://github.com/zhongfly/mpv-winbuild/releases/download/2026-07-17-94335ab87a/mpv-dev-lgpl-x86_64-20260717-git-94335ab87a.7z
-                  IPTVNATOR_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256: 6014aa0e6d8e98cdba90f5288295a7105d7d14ab0ca906f51465eeb478d5fea0
+                  zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_URL: ${{ vars.zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_URL || secrets.zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_URL || '' }}
+                  zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256: ${{ vars.zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 || secrets.zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 || '' }}
+                  zenithplayer_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_URL: https://github.com/zhongfly/mpv-winbuild/releases/download/2026-07-17-94335ab87a/mpv-dev-lgpl-x86_64-20260717-git-94335ab87a.7z
+                  zenithplayer_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256: 6014aa0e6d8e98cdba90f5288295a7105d7d14ab0ca906f51465eeb478d5fea0
               run: |
                   set -euo pipefail
 
-                  WINDOWS_RUNTIME_URL="${IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_URL}"
-                  WINDOWS_RUNTIME_SHA256="${IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256}"
+                  WINDOWS_RUNTIME_URL="${zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_URL}"
+                  WINDOWS_RUNTIME_SHA256="${zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256}"
                   if [ -z "${WINDOWS_RUNTIME_URL}" ] && [ -z "${WINDOWS_RUNTIME_SHA256}" ]; then
                       case "${GITHUB_REF}" in
                           refs/tags/v*)
                               ;;
                           *)
-                              WINDOWS_RUNTIME_URL="${IPTVNATOR_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_URL}"
-                              WINDOWS_RUNTIME_SHA256="${IPTVNATOR_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256}"
+                              WINDOWS_RUNTIME_URL="${zenithplayer_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_URL}"
+                              WINDOWS_RUNTIME_SHA256="${zenithplayer_DEFAULT_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256}"
                               ;;
                       esac
                   fi
 
                   if [ -z "${WINDOWS_RUNTIME_URL}" ] || [ -z "${WINDOWS_RUNTIME_SHA256}" ]; then
-                      echo "::error::Windows Embedded MPV CI requires IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_URL and IPTVNATOR_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 repository variables or secrets."
+                      echo "::error::Windows Embedded MPV CI requires zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_URL and zenithplayer_WINDOWS_EMBEDDED_MPV_RUNTIME_SHA256 repository variables or secrets."
                       exit 1
                   fi
 
@@ -563,10 +563,10 @@ jobs:
 
             - name: Build backend
               env:
-                  IPTVNATOR_EMBEDDED_MPV_PLATFORM: ${{ matrix.embedded_mpv_platform || '' }}
-                  IPTVNATOR_EMBEDDED_MPV_ARCH: ${{ matrix.embedded_mpv_arch || matrix.arch || '' }}
-                  IPTVNATOR_LINUX_FRAME_COPY_PROFILE: ${{ matrix.linux_profile || '' }}
-                  IPTVNATOR_REQUIRE_EMBEDDED_MPV: ${{ (matrix.os == 'linux' || matrix.os == 'windows' || (matrix.os == 'macos' && (startsWith(github.ref, 'refs/tags/v') || github.event_name == 'pull_request' || github.ref == 'refs/heads/master'))) && '1' || '0' }}
+                  zenithplayer_EMBEDDED_MPV_PLATFORM: ${{ matrix.embedded_mpv_platform || '' }}
+                  zenithplayer_EMBEDDED_MPV_ARCH: ${{ matrix.embedded_mpv_arch || matrix.arch || '' }}
+                  zenithplayer_LINUX_FRAME_COPY_PROFILE: ${{ matrix.linux_profile || '' }}
+                  zenithplayer_REQUIRE_EMBEDDED_MPV: ${{ (matrix.os == 'linux' || matrix.os == 'windows' || (matrix.os == 'macos' && (startsWith(github.ref, 'refs/tags/v') || github.event_name == 'pull_request' || github.ref == 'refs/heads/master'))) && '1' || '0' }}
               run: pnpm run build:backend
 
             - name: Verify embedded MPV build output
@@ -597,14 +597,14 @@ jobs:
                       # Frame-copy engine artifacts ship on Windows. The helper
                       # resolves the mpv DLL from its own directory, so the DLL
                       # must sit beside it at the native/ top level too.
-                      test -f dist/apps/electron-backend/native/iptvnator_mpv_helper.exe
+                      test -f dist/apps/electron-backend/native/zenithplayer_mpv_helper.exe
                       test -f dist/apps/electron-backend/native/embedded_mpv_frame_reader.node
                       find dist/apps/electron-backend/native -maxdepth 1 \( -name 'mpv-2.dll' -o -name 'libmpv-2.dll' -o -name 'mpv.dll' -o -name 'libmpv.dll' \) -print -quit | grep -q .
                       ;;
                     linux)
                       node -e "const { execFileSync } = require('node:child_process'); const manifest = require('./dist/apps/electron-backend/native/embedded-mpv-runtime.json'); const revision = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); if (manifest.origin !== 'linux-frame-copy-build' || manifest.sourceRuntimeValidated !== true || manifest.sourceArchive?.schemaVersion !== 1 || manifest.sourceArchive?.name !== 'linux-frame-copy-runtime-sources.tar.xz' || !/^[a-f0-9]{64}$/.test(manifest.sourceArchive?.sha256 ?? '') || manifest.sourceArchive?.repositoryRevision !== revision) { throw new Error('Linux embedded MPV build manifest must describe the validated source runtime and exact source archive.'); }"
                       test -f dist/apps/electron-backend/native/lib/libmpv.so.2
-                      test -f dist/apps/electron-backend/native/iptvnator_mpv_helper
+                      test -f dist/apps/electron-backend/native/zenithplayer_mpv_helper
                       test -f dist/apps/electron-backend/native/embedded_mpv_frame_reader.node
                       if readelf -d dist/apps/electron-backend/native/embedded_mpv.node | grep -Eq 'Shared library:.*libmpv\.so'; then
                           echo "::error::Linux embedded MPV addon must not link directly to libmpv"
@@ -616,7 +616,7 @@ jobs:
                           readelf -d dist/apps/electron-backend/native/embedded_mpv_frame_reader.node
                           exit 1
                       fi
-                      HELPER_DYNAMIC="$(readelf -d dist/apps/electron-backend/native/iptvnator_mpv_helper)"
+                      HELPER_DYNAMIC="$(readelf -d dist/apps/electron-backend/native/zenithplayer_mpv_helper)"
                       if ! printf '%s\n' "${HELPER_DYNAMIC}" | grep -Eq 'Shared library: \[libmpv\.so\.2\]'; then
                           echo "::error::Linux frame-copy helper must need libmpv.so.2"
                           printf '%s\n' "${HELPER_DYNAMIC}"
@@ -632,7 +632,7 @@ jobs:
 
             - name: Validate AppStream metadata
               if: matrix.os == 'linux'
-              run: appstreamcli validate --pedantic --no-net apps/electron-backend/linux/com.fourgray.iptvnator.metainfo.xml
+              run: appstreamcli validate --pedantic --no-net apps/electron-backend/linux/com.fourgray.zenithplayer.metainfo.xml
 
             - name: Build website
               if: matrix.os == 'linux'
@@ -769,11 +769,11 @@ jobs:
                   CSC_LINK: ${{ secrets.CSC_LINK }}
                   CSC_KEY_PASSWORD: ${{ secrets.CSC_KEY_PASSWORD }}
                   DEBUG: electron-builder,electron-notarize*
-                  IPTVNATOR_EMBEDDED_MPV_PLATFORM: ${{ matrix.embedded_mpv_platform }}
-                  IPTVNATOR_EMBEDDED_MPV_ARCH: ${{ matrix.embedded_mpv_arch }}
+                  zenithplayer_EMBEDDED_MPV_PLATFORM: ${{ matrix.embedded_mpv_platform }}
+                  zenithplayer_EMBEDDED_MPV_ARCH: ${{ matrix.embedded_mpv_arch }}
                   # TEMPORARY MASTER ARTIFACT TEST: remove `|| github.ref == 'refs/heads/master'`
                   # after the macOS Embedded MPV artifacts are built and manually tested.
-                  IPTVNATOR_REQUIRE_EMBEDDED_MPV: ${{ (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master') && '1' || '0' }}
+                  zenithplayer_REQUIRE_EMBEDDED_MPV: ${{ (startsWith(github.ref, 'refs/tags/v') || github.ref == 'refs/heads/master') && '1' || '0' }}
               run: pnpm run make:app -- --publishPolicy=never
 
             - name: Verify signed macOS app
@@ -784,10 +784,10 @@ jobs:
 
                   case "${{ matrix.arch }}" in
                       x64)
-                          APP_PATH="dist/executables/mac/IPTVnator.app"
+                          APP_PATH="dist/executables/mac/Zenith Player.app"
                           ;;
                       arm64)
-                          APP_PATH="dist/executables/mac-arm64/IPTVnator.app"
+                          APP_PATH="dist/executables/mac-arm64/Zenith Player.app"
                           ;;
                       *)
                           echo "::error::Unsupported macOS arch: ${{ matrix.arch }}"
@@ -828,12 +828,12 @@ jobs:
             - name: Make Electron app
               if: matrix.os != 'macos' || github.event_name == 'pull_request'
               env:
-                  IPTVNATOR_EMBEDDED_MPV_PLATFORM: ${{ matrix.embedded_mpv_platform || '' }}
-                  IPTVNATOR_EMBEDDED_MPV_ARCH: ${{ matrix.embedded_mpv_arch || matrix.arch || '' }}
-                  IPTVNATOR_LINUX_FRAME_COPY_PROFILE: ${{ matrix.linux_profile || '' }}
+                  zenithplayer_EMBEDDED_MPV_PLATFORM: ${{ matrix.embedded_mpv_platform || '' }}
+                  zenithplayer_EMBEDDED_MPV_ARCH: ${{ matrix.embedded_mpv_arch || matrix.arch || '' }}
+                  zenithplayer_LINUX_FRAME_COPY_PROFILE: ${{ matrix.linux_profile || '' }}
                   # TEMPORARY PR TEST: change this back to '0' after manually
                   # testing the macOS PR artifact with Embedded MPV included.
-                  IPTVNATOR_REQUIRE_EMBEDDED_MPV: ${{ (matrix.os == 'linux' || matrix.os == 'windows' || (matrix.os == 'macos' && github.event_name == 'pull_request')) && '1' || '0' }}
+                  zenithplayer_REQUIRE_EMBEDDED_MPV: ${{ (matrix.os == 'linux' || matrix.os == 'windows' || (matrix.os == 'macos' && github.event_name == 'pull_request')) && '1' || '0' }}
               run: pnpm run make:app -- --publishPolicy=never
 
             - name: Verify packaged worker layout
@@ -841,20 +841,20 @@ jobs:
               env:
                   PACKAGE_OS: ${{ matrix.os }}
                   PACKAGE_ARCH: ${{ matrix.arch || matrix.embedded_mpv_arch || '' }}
-                  IPTVNATOR_LINUX_FRAME_COPY_PROFILE: ${{ matrix.linux_profile || '' }}
+                  zenithplayer_LINUX_FRAME_COPY_PROFILE: ${{ matrix.linux_profile || '' }}
                   # TEMPORARY ARTIFACT TEST: remove `|| github.event_name == 'pull_request' || github.ref == 'refs/heads/master'`
                   # after the macOS Embedded MPV artifacts are built and manually tested.
-                  IPTVNATOR_REQUIRE_EMBEDDED_MPV: ${{ (matrix.os == 'linux' || matrix.os == 'windows' || (matrix.os == 'macos' && (startsWith(github.ref, 'refs/tags/v') || github.event_name == 'pull_request' || github.ref == 'refs/heads/master'))) && '1' || '0' }}
+                  zenithplayer_REQUIRE_EMBEDDED_MPV: ${{ (matrix.os == 'linux' || matrix.os == 'windows' || (matrix.os == 'macos' && (startsWith(github.ref, 'refs/tags/v') || github.event_name == 'pull_request' || github.ref == 'refs/heads/master'))) && '1' || '0' }}
               run: pnpm run verify:package-layout -- "$PACKAGE_OS" "$PACKAGE_ARCH"
 
             - name: Make marker-only foreign-architecture DEB packages
               if: matrix.os == 'linux' && matrix.linux_profile == 'system'
               shell: bash
               env:
-                  IPTVNATOR_EMBEDDED_MPV_PLATFORM: linux
-                  IPTVNATOR_EMBEDDED_MPV_ARCH: x64
-                  IPTVNATOR_LINUX_FRAME_COPY_PROFILE: ''
-                  IPTVNATOR_REQUIRE_EMBEDDED_MPV: '1'
+                  zenithplayer_EMBEDDED_MPV_PLATFORM: linux
+                  zenithplayer_EMBEDDED_MPV_ARCH: x64
+                  zenithplayer_LINUX_FRAME_COPY_PROFILE: ''
+                  zenithplayer_REQUIRE_EMBEDDED_MPV: '1'
               run: |
                   set -euo pipefail
 
@@ -1011,15 +1011,15 @@ jobs:
                   done
                   test "${found}" = true
                   test "${installed_x64}" = true
-                  sudo snap connect iptvnator:graphics-core22 mesa-core22:graphics-core22
-                  sudo snap connect iptvnator:gnome-3-28-1804 gnome-3-28-1804:gnome-3-28-1804
-                  sudo snap disconnect iptvnator:graphics-core22 mesa-core22:graphics-core22
-                  snap connections iptvnator | awk \
-                      '$2 == "iptvnator:graphics-core22" && $3 == "-" { found=1 } END { exit !found }'
+                  sudo snap connect zenithplayer:graphics-core22 mesa-core22:graphics-core22
+                  sudo snap connect zenithplayer:gnome-3-28-1804 gnome-3-28-1804:gnome-3-28-1804
+                  sudo snap disconnect zenithplayer:graphics-core22 mesa-core22:graphics-core22
+                  snap connections zenithplayer | awk \
+                      '$2 == "zenithplayer:graphics-core22" && $3 == "-" { found=1 } END { exit !found }'
                   set +e
                   disconnected_probe="$(
                       xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=1 \
-                          snap run iptvnator --embedded-mpv-runtime-probe 2>&1
+                          snap run zenithplayer --embedded-mpv-runtime-probe 2>&1
                   )"
                   disconnected_status=$?
                   set -e
@@ -1027,16 +1027,16 @@ jobs:
                   test "${disconnected_status}" -eq 1
                   printf '%s\n' "${disconnected_probe}" | \
                       grep -Fx '{"usable":false,"reason":"snap-graphics-provider-unavailable"}'
-                  sudo snap connect iptvnator:graphics-core22 mesa-core22:graphics-core22
-                  snap connections iptvnator | awk \
-                      '$2 == "iptvnator:graphics-core22" && $3 == "mesa-core22:graphics-core22" { found=1 } END { exit !found }'
-                  snap connections iptvnator | awk \
-                      '$2 == "iptvnator:gnome-3-28-1804" && $3 == "gnome-3-28-1804:gnome-3-28-1804" { found=1 } END { exit !found }'
-                  snap connections iptvnator | awk \
-                      '$1 == "shared-memory" && $2 == "iptvnator:shared-memory" && $3 == ":shared-memory" { found=1 } END { exit !found }'
+                  sudo snap connect zenithplayer:graphics-core22 mesa-core22:graphics-core22
+                  snap connections zenithplayer | awk \
+                      '$2 == "zenithplayer:graphics-core22" && $3 == "mesa-core22:graphics-core22" { found=1 } END { exit !found }'
+                  snap connections zenithplayer | awk \
+                      '$2 == "zenithplayer:gnome-3-28-1804" && $3 == "gnome-3-28-1804:gnome-3-28-1804" { found=1 } END { exit !found }'
+                  snap connections zenithplayer | awk \
+                      '$1 == "shared-memory" && $2 == "zenithplayer:shared-memory" && $3 == ":shared-memory" { found=1 } END { exit !found }'
                   xvfb-run -a env \
                       LIBGL_ALWAYS_SOFTWARE=1 \
-                      IPTVNATOR_TRACE_PLAYER=1 \
+                      zenithplayer_TRACE_PLAYER=1 \
                       EGL_LOG_LEVEL=debug \
                       LIBGL_DEBUG=verbose \
                       __EGL_VENDOR_LIBRARY_FILENAMES=/tmp/hostile-egl-vendor.json \
@@ -1054,13 +1054,13 @@ jobs:
                       XDG_CONFIG_DIRS=/tmp/hostile-xdg-config-dirs \
                       XDG_DATA_HOME=/tmp/hostile-xdg-data-home \
                       XDG_DATA_DIRS=/tmp/hostile-xdg-data-dirs \
-                      snap run iptvnator --embedded-mpv-runtime-probe
+                      snap run zenithplayer --embedded-mpv-runtime-probe
 
             - name: Run packaged x64 frame-copy and fallback smoke
               if: matrix.os == 'linux' && matrix.linux_profile == 'portable'
               env:
-                  IPTVNATOR_E2E_REQUIRE_PACKAGED_FRAME_COPY: '1'
-                  IPTVNATOR_E2E_PACKAGED_EXECUTABLE: ${{ github.workspace }}/dist/executables/linux-unpacked/iptvnator
+                  zenithplayer_E2E_REQUIRE_PACKAGED_FRAME_COPY: '1'
+                  zenithplayer_E2E_PACKAGED_EXECUTABLE: ${{ github.workspace }}/dist/executables/linux-unpacked/zenithplayer
                   LIBGL_ALWAYS_SOFTWARE: '1'
               run: |
                   xvfb-run -a pnpm nx run \
@@ -1071,8 +1071,8 @@ jobs:
               if: matrix.os == 'linux' && matrix.linux_profile == 'portable'
               continue-on-error: true
               env:
-                  IPTVNATOR_E2E_REQUIRE_PACKAGED_FRAME_COPY: '1'
-                  IPTVNATOR_E2E_PACKAGED_EXECUTABLE: ${{ github.workspace }}/dist/executables/linux-unpacked/iptvnator
+                  zenithplayer_E2E_REQUIRE_PACKAGED_FRAME_COPY: '1'
+                  zenithplayer_E2E_PACKAGED_EXECUTABLE: ${{ github.workspace }}/dist/executables/linux-unpacked/zenithplayer
               run: |
                   set -euo pipefail
 
@@ -1088,7 +1088,7 @@ jobs:
             - name: Save embedded MPV runtime cache
               # TEMPORARY ARTIFACT TEST: remove `|| github.ref == 'refs/heads/master'`
               # after the macOS Embedded MPV artifacts are built and manually tested.
-              if: matrix.embedded_mpv_platform && matrix.os != 'linux' && !startsWith(github.ref, 'refs/tags/v') && github.repository == '4gray/iptvnator' && github.event_name != 'pull_request' && github.ref == 'refs/heads/master' && steps.embedded-mpv-runtime-cache.outputs.cache-hit != 'true'
+              if: matrix.embedded_mpv_platform && matrix.os != 'linux' && !startsWith(github.ref, 'refs/tags/v') && github.repository == 'hus2005/zenithplayer' && github.event_name != 'pull_request' && github.ref == 'refs/heads/master' && steps.embedded-mpv-runtime-cache.outputs.cache-hit != 'true'
               uses: actions/cache/save@v4
               with:
                   path: |
@@ -1114,13 +1114,13 @@ jobs:
                           --artifact "${FLATPAK_BUNDLE}" --profile flatpak
                   flatpak install --user --noninteractive -y "${FLATPAK_BUNDLE}"
                   xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=1 \
-                      flatpak run --command=sh com.fourgray.iptvnator -c '
+                      flatpak run --command=sh com.fourgray.zenithplayer -c '
                       set -euo pipefail
 
-                      test -f /app/share/metainfo/com.fourgray.iptvnator.metainfo.xml
-                      test -L /app/bin/iptvnator
+                      test -f /app/share/metainfo/com.fourgray.zenithplayer.metainfo.xml
+                      test -L /app/bin/zenithplayer
 
-                      LAUNCHER_PATH="$(readlink -f /app/bin/iptvnator)"
+                      LAUNCHER_PATH="$(readlink -f /app/bin/zenithplayer)"
                       test -f "${LAUNCHER_PATH}"
                       test -x "${LAUNCHER_PATH}"
                       if [ -e "${LAUNCHER_PATH}.bin" ] || [ -L "${LAUNCHER_PATH}.bin" ]; then
@@ -1134,7 +1134,7 @@ jobs:
                   PROBE_OUTPUT="$(
                       xvfb-run -a dbus-run-session -- flatpak run \
                           --env=LIBGL_ALWAYS_SOFTWARE=1 \
-                          com.fourgray.iptvnator \
+                          com.fourgray.zenithplayer \
                           --embedded-mpv-runtime-probe 2>&1
                   )"
                   PROBE_STATUS=$?

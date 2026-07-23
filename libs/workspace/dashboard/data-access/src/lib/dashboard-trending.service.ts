@@ -3,13 +3,13 @@ import {
     CatalogTitleMatchService,
     TmdbEnrichmentService,
     buildTitleMatchIndex,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     CatalogTitleMatch,
     normalizeTitleKeys,
     titleYearsCompatible,
-} from '@iptvnator/shared/interfaces';
-import type { TmdbTrendingEntry } from '@iptvnator/services';
+} from '@zenithplayer/shared/interfaces';
+import type { TmdbTrendingEntry } from '@zenithplayer/services';
 
 /** One trending card: TMDB entry + optional library match for navigation */
 export interface DashboardTrendingItem extends TmdbTrendingEntry {

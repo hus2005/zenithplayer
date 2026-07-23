@@ -170,7 +170,7 @@ describe('EmbeddedMpvFrameCopyAdapter', () => {
         });
 
         it('uses a sanitized system environment for the real helper session', () => {
-            adapter = createAdapter('/opt/iptvnator/native/helper', {
+            adapter = createAdapter('/opt/zenithplayer/native/helper', {
                 runtimeMode: 'system',
                 environment: {
                     PATH: '/usr/bin',
@@ -193,7 +193,7 @@ describe('EmbeddedMpvFrameCopyAdapter', () => {
         });
 
         it('keeps trusted Snap GL roots ahead of generic Snap libraries for playback', () => {
-            const snapRoot = '/snap/iptvnator/42';
+            const snapRoot = '/snap/zenithplayer/42';
             const nativeDir = path.join(
                 snapRoot,
                 'resources',

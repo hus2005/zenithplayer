@@ -2,21 +2,21 @@ import { Component, input, output, signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { ContentHeroComponent } from '@iptvnator/ui/components';
+import { ContentHeroComponent } from '@zenithplayer/ui/components';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { PlaylistsService } from '@iptvnator/services';
+} from '@zenithplayer/portal/shared/util';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
+import { PlaylistsService } from '@zenithplayer/services';
 import {
     Playlist,
     ResolvedPortalPlayback,
     VodDetailsItem,
     createStalkerVodItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { of } from 'rxjs';
 import { StalkerCollectionDetailComponent } from './stalker-collection-detail.component';
 import { StalkerInlineDetailComponent } from './stalker-inline-detail/stalker-inline-detail.component';

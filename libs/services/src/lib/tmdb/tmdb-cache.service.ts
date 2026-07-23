@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TmdbCacheEntry, TmdbCacheMediaType } from '@iptvnator/shared/interfaces';
+import { TmdbCacheEntry, TmdbCacheMediaType } from '@zenithplayer/shared/interfaces';
 
 /** PWA in-memory cache ceiling — details payloads are a few KB each */
 const MEMORY_CACHE_MAX_ENTRIES = 300;

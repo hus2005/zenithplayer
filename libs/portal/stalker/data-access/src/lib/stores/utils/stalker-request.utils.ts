@@ -1,5 +1,5 @@
-import { DataService } from '@iptvnator/services';
-import { Playlist, PlaylistMeta, STALKER_REQUEST } from '@iptvnator/shared/interfaces';
+import { DataService } from '@zenithplayer/services';
+import { Playlist, PlaylistMeta, STALKER_REQUEST } from '@zenithplayer/shared/interfaces';
 import { StalkerSessionService } from '../../stalker-session.service';
 
 export interface StalkerRequestDeps {

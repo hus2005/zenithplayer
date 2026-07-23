@@ -21,22 +21,22 @@ import {
     PortalDetailShellComponent,
     SeasonContainerComponent,
     SeasonContainerPlaybackToggleRequest,
-} from '@iptvnator/ui/components';
+} from '@zenithplayer/ui/components';
 import {
     PlaybackPositionData,
     ResolvedPortalPlayback,
     TmdbEnrichedCastMember,
     XtreamSerieEpisode,
     youtubeEmbedUrl,
-} from '@iptvnator/shared/interfaces';
-import { SafePipe } from '@iptvnator/pipes';
+} from '@zenithplayer/shared/interfaces';
+import { SafePipe } from '@zenithplayer/pipes';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
     createLogger,
     getStalkerReturnToState,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     getVodSeriesSeasonKey,
     isVodSeriesItem,
@@ -52,7 +52,7 @@ import {
     StalkerSelectedVodItem,
     StalkerStore,
     StalkerVodSource,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@zenithplayer/portal/stalker/data-access';
 import {
     getSeriesEpisodeMetadata,
     getSeriesPlaybackNavigation,
@@ -60,13 +60,13 @@ import {
     PortalInlinePlayerComponent,
     resolveSeriesPlaybackEpisodeState,
     type SeriesPlaybackEpisodeState,
-} from '@iptvnator/ui/playback';
+} from '@zenithplayer/ui/playback';
 import {
     CrossPortalSimilarItem,
     CrossPortalSimilarService,
     DownloadsService,
     PlaybackPositionRuntimeBridgeService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import { StalkerSeriesTmdbSeasonsService } from './stalker-series-tmdb-seasons.service';
 import {
     getStalkerSeriesQuickStartButton,

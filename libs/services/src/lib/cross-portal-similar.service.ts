@@ -4,7 +4,7 @@ import {
     TmdbRecommendation,
     normalizeTitleKeys,
     titleYearsCompatible,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     CatalogTitleMatchService,
     buildTitleMatchIndex,

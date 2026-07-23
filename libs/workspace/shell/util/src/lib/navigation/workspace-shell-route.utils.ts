@@ -1,7 +1,7 @@
 import {
     PortalProvider,
     PortalRailSection,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 
 export type WorkspaceShellPageKind =
     | 'dashboard'

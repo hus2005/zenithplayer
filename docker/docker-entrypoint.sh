@@ -11,7 +11,7 @@ const fs = require('node:fs');
 
 fs.writeFileSync(
     '/usr/share/nginx/html/assets/app-config.js',
-    `window.__IPTVNATOR_CONFIG__ = ${JSON.stringify(
+    `window.__zenithplayer_CONFIG__ = ${JSON.stringify(
         { BACKEND_URL: process.env.BACKEND_URL || '/api' },
         null,
         2
@@ -19,7 +19,7 @@ fs.writeFileSync(
 );
 NODE
 
-node /opt/iptvnator/web-backend/main.cjs &
+node /opt/zenithplayer/web-backend/main.cjs &
 BACKEND_PID=$!
 
 cleanup_done=0
@@ -79,7 +79,7 @@ for _ in $(seq 1 30); do
 done
 
 if [ "$backend_ready" -ne 1 ]; then
-    echo "IPTVnator web backend did not become healthy on port ${PORT}."
+    echo "Zenith Player web backend did not become healthy on port ${PORT}."
     exit 1
 fi
 
@@ -92,7 +92,7 @@ while :; do
         wait "$BACKEND_PID"
         EXIT_STATUS=$?
         set -e
-        echo "IPTVnator web backend exited with status ${EXIT_STATUS}."
+        echo "Zenith Player web backend exited with status ${EXIT_STATUS}."
         exit "$EXIT_STATUS"
     fi
 

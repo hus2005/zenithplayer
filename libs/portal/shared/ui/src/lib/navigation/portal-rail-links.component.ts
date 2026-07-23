@@ -8,7 +8,7 @@ import {
     RouterLink,
     RouterLinkActive,
 } from '@angular/router';
-import { PortalRailLink, PortalRailSection } from '@iptvnator/portal/shared/util';
+import { PortalRailLink, PortalRailSection } from '@zenithplayer/portal/shared/util';
 
 @Component({
     selector: 'app-portal-rail-links',

@@ -1,4 +1,4 @@
-import { __databaseConnectionTestHooks } from '@iptvnator/shared/database';
+import { __databaseConnectionTestHooks } from '@zenithplayer/shared/database';
 
 function statementContaining(pattern: string): string {
     const statement =

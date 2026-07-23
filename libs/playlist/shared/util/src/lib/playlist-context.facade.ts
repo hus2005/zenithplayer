@@ -14,14 +14,14 @@ import {
     selectActivePlaylistId,
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import { filter } from 'rxjs';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import {
     PortalProvider,
     PortalRailSection,
-} from '@iptvnator/portal/shared/util';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+} from '@zenithplayer/portal/shared/util';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 
 export interface PlaylistRouteContext {
     inWorkspace: boolean;

@@ -1,8 +1,8 @@
 /**
- * Database connection and initialization for IPTVnator
+ * Database connection and initialization for Zenith Player
  * Uses Drizzle ORM with better-sqlite3
- * Stores database file under ~/.iptvnator/databases/ by default.
- * E2E tests can override the root with IPTVNATOR_E2E_DATA_DIR.
+ * Stores database file under ~/.zenithplayer/databases/ by default.
+ * E2E tests can override the root with zenithplayer_E2E_DATA_DIR.
  *
  * Provides two connection modes:
  * - Full access (for electron-backend): creates tables, read-write
@@ -13,7 +13,7 @@ import Database from 'better-sqlite3';
 import type { BetterSQLite3Database } from 'drizzle-orm/better-sqlite3';
 import { drizzle } from 'drizzle-orm/better-sqlite3';
 import * as schema from './schema';
-import { getIptvnatorDatabasePath } from './path-utils';
+import { getzenithplayerDatabasePath } from './path-utils';
 
 export type DatabaseInstance = BetterSQLite3Database<typeof schema>;
 
@@ -39,9 +39,9 @@ function readTraceFlag(name: string): boolean {
 
 function isSqlTraceEnabled(): boolean {
     return (
-        readTraceFlag('IPTVNATOR_TRACE_STARTUP') ||
-        readTraceFlag('IPTVNATOR_TRACE_DB') ||
-        readTraceFlag('IPTVNATOR_TRACE_SQL')
+        readTraceFlag('zenithplayer_TRACE_STARTUP') ||
+        readTraceFlag('zenithplayer_TRACE_DB') ||
+        readTraceFlag('zenithplayer_TRACE_SQL')
     );
 }
 
@@ -54,12 +54,12 @@ function compactSqlForTrace(sql: string): string {
 
 function traceSql(scope: string, message: string, payload?: unknown): void {
     if (payload === undefined) {
-        console.log(`[IPTVnator Trace][${scope}] ${message}`);
+        console.log(`[Zenith Player Trace][${scope}] ${message}`);
         return;
     }
 
     console.log(
-        `[IPTVnator Trace][${scope}] ${message} ${JSON.stringify(payload)}`
+        `[Zenith Player Trace][${scope}] ${message} ${JSON.stringify(payload)}`
     );
 }
 
@@ -67,7 +67,7 @@ function traceSql(scope: string, message: string, payload?: unknown): void {
  * Get the database file path
  */
 export function getDatabasePath(): string {
-    return getIptvnatorDatabasePath();
+    return getzenithplayerDatabasePath();
 }
 
 /**

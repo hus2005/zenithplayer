@@ -8,8 +8,8 @@ import { ipcMain } from 'electron';
 import {
     PortalDebugEvent,
     STALKER_REQUEST,
-} from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+} from '@zenithplayer/shared/interfaces';
+import { redactSensitiveData } from '@zenithplayer/shared/logging';
 import { rememberStalkerPlaybackContext } from '../services/stalker-playback-context.service';
 import { emitPortalDebugEvent } from './portal-debug.events';
 import { buildStalkerIdentityRequestContext } from './stalker-identity';

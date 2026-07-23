@@ -8,15 +8,15 @@ import {
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { PortalRailSection } from '@iptvnator/portal/shared/util';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
+import { PortalRailSection } from '@zenithplayer/portal/shared/util';
 import {
     XtreamCachedContentScope,
     PortalStatusType,
     XtreamPlaylistData,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/xtream/data-access';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 
 function normalizeOptionalConnectionValue(
     value: string | null | undefined

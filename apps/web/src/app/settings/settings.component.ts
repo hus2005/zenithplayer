@@ -23,17 +23,17 @@ import { Router } from '@angular/router';
 import {
     EpgRuntimeBridgeService,
     EpgService,
-} from '@iptvnator/epg/data-access';
-import { SettingsContextService } from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/epg/data-access';
+import { SettingsContextService } from '@zenithplayer/workspace/shell/util';
 import { Store } from '@ngrx/store';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { DialogService } from '@iptvnator/ui/components';
+import { DialogService } from '@zenithplayer/ui/components';
 import {
     selectAllPlaylistsMeta,
     selectIsEpgAvailable,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import { take } from 'rxjs';
-import { DataService, RuntimeCapabilitiesService } from '@iptvnator/services';
+import { DataService, RuntimeCapabilitiesService } from '@zenithplayer/services';
 import {
     EmbeddedMpvSupport,
     CoverSize,
@@ -44,7 +44,7 @@ import {
     StreamFormat,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { BUILD_COMMIT } from '../../environments/build-commit';
 import { SettingsStore } from '../services/settings-store.service';
 import { SettingsService } from './../services/settings.service';

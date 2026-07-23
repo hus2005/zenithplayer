@@ -22,7 +22,7 @@ import {
     XtreamBackupContentType,
     XtreamPlaylistBackupEntry,
     XtreamPendingRestoreState,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export interface PlaylistBackupExportPayload {
     defaultFileName: string;
@@ -81,7 +81,7 @@ export class PlaylistBackupService {
         };
 
         return {
-            defaultFileName: `iptvnator-playlist-backup-${exportedAt.slice(
+            defaultFileName: `zenithplayer-playlist-backup-${exportedAt.slice(
                 0,
                 10
             )}.json`,

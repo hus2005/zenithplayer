@@ -1,6 +1,6 @@
 # Stalker Mock Server
 
-A local mock implementation of the Stalker/Ministra portal API for development and end-to-end testing of IPTVnator.
+A local mock implementation of the Stalker/Ministra portal API for development and end-to-end testing of Zenith Player.
 
 ## Overview
 
@@ -23,7 +23,7 @@ nx run stalker-mock-server:serve-with-watch
 nx run-many --targets=serve --projects=stalker-mock-server,web
 ```
 
-Then in IPTVnator, add a new Stalker portal:
+Then in Zenith Player, add a new Stalker portal:
 
 - **Portal URL**: `http://localhost:3210/portal.php`
 - **MAC Address**: one of the predefined scenarios below (or any MAC for auto-generated data)

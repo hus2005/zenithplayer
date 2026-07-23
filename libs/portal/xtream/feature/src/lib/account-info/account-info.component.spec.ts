@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     XtreamApiService,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
 import { AccountInfoComponent } from './account-info.component';
 
 describe('AccountInfoComponent', () => {

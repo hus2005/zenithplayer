@@ -324,7 +324,7 @@ test('rejects extra CLI tokens across wrappers, YAML forms, quotes, and heredocs
         '- { run: snapcraft upload --release=stable package.snap }',
         '- run: echo "snapcraft upload --release=edge package.snap"',
         "- run: |\n    cat <<'EOF'\n    snapcraft upload --release=edge package.snap\n    EOF",
-        '- run: command snapcraft release iptvnator stable',
+        '- run: command snapcraft release zenithplayer stable',
     ]) {
         const mutatedWorkflow = insertFirstJobStep(workflowText, stepSource);
         assert.doesNotThrow(() => parse(mutatedWorkflow));
@@ -336,7 +336,7 @@ test('rejects continued uploads and release commands in the build workflow', () 
     const workflowText = fs.readFileSync(buildWorkflowPath, 'utf8');
     for (const stepSource of [
         '- run: |\n    if true; then command snapcraft \\\n        upload --release=edge package.snap; fi',
-        '- run: command snapcraft release iptvnator edge',
+        '- run: command snapcraft release zenithplayer edge',
     ]) {
         const mutatedWorkflow = insertFirstJobStep(workflowText, stepSource);
         assert.doesNotThrow(() => parse(mutatedWorkflow));
@@ -378,7 +378,7 @@ test('rejects job-level reusable workflow publication in both workflows', () => 
 });
 
 test('rejects command-bearing explicit shell templates in both workflows', () => {
-    const maliciousShell = '"snapcraft release iptvnator stable; bash {0}"';
+    const maliciousShell = '"snapcraft release zenithplayer stable; bash {0}"';
     for (const [workflowPath, assertPolicy] of [
         [publishWorkflowPath, assertPublishSnapWorkflowPolicy],
         [buildWorkflowPath, assertBuildSnapWorkflowPolicy],
@@ -403,7 +403,7 @@ test('rejects command-bearing explicit shell templates in both workflows', () =>
 
 test('ignores Snapcraft names in comments and allowlisted action uses', () => {
     const commentStep =
-        '- run: |\n    # snapcraft upload --release=stable package.snap\n    # snapcraft release iptvnator stable';
+        '- run: |\n    # snapcraft upload --release=stable package.snap\n    # snapcraft release zenithplayer stable';
     const publishWorkflow = insertFirstJobStep(
         fs.readFileSync(publishWorkflowPath, 'utf8'),
         commentStep
@@ -423,16 +423,16 @@ test('selects every exact Snap and exactly one compliance source asset', async (
     const helper = await loadReleaseAssetHelper();
     assert.ok(helper, 'the release asset selection helper must exist');
     const selected = helper.selectSnapReleaseAssets([
-        { id: 9, name: 'IPTVnator-1.0.0-amd64.snap' },
+        { id: 9, name: 'Zenith Player-1.0.0-amd64.snap' },
         { id: 3, name: 'linux-frame-copy-runtime-sources.tar.xz' },
-        { id: 8, name: 'IPTVnator-1.0.0-armhf.snap' },
-        { id: 7, name: 'IPTVnator-1.0.0.AppImage' },
+        { id: 8, name: 'Zenith Player-1.0.0-armhf.snap' },
+        { id: 7, name: 'Zenith Player-1.0.0.AppImage' },
     ]);
 
     assert.deepEqual(selected, {
         snapAssets: [
-            { id: 9, name: 'IPTVnator-1.0.0-amd64.snap' },
-            { id: 8, name: 'IPTVnator-1.0.0-armhf.snap' },
+            { id: 9, name: 'Zenith Player-1.0.0-amd64.snap' },
+            { id: 8, name: 'Zenith Player-1.0.0-armhf.snap' },
         ],
         sourceAsset: {
             id: 3,
@@ -456,13 +456,13 @@ test('rejects a release missing either exact asset class or containing ambiguous
     );
     assert.throws(
         () =>
-            helper.selectSnapReleaseAssets([{ id: 1, name: 'IPTVnator.snap' }]),
+            helper.selectSnapReleaseAssets([{ id: 1, name: 'Zenith Player.snap' }]),
         /exactly one linux-frame-copy-runtime-sources\.tar\.xz/
     );
     assert.throws(
         () =>
             helper.selectSnapReleaseAssets([
-                { id: 1, name: 'IPTVnator.snap' },
+                { id: 1, name: 'Zenith Player.snap' },
                 {
                     id: 2,
                     name: 'linux-frame-copy-runtime-sources.tar.xz',
@@ -480,18 +480,18 @@ test('verifies the complete selected download set before publication', async (t)
     const helper = await loadReleaseAssetHelper();
     assert.ok(helper, 'the release asset selection helper must exist');
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-snap-release-')
+        path.join(os.tmpdir(), 'zenithplayer-snap-release-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const manifest = {
-        snapAssets: [{ id: 1, name: 'IPTVnator.snap' }],
+        snapAssets: [{ id: 1, name: 'Zenith Player.snap' }],
         sourceAsset: {
             id: 2,
             name: 'linux-frame-copy-runtime-sources.tar.xz',
         },
     };
 
-    fs.writeFileSync(path.join(temporaryRoot, 'IPTVnator.snap'), 'snap');
+    fs.writeFileSync(path.join(temporaryRoot, 'Zenith Player.snap'), 'snap');
     assert.throws(
         () => helper.verifySnapReleaseDownloads(manifest, temporaryRoot),
         /missing or empty.*linux-frame-copy-runtime-sources\.tar\.xz/i

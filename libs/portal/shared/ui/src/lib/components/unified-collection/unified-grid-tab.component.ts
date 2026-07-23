@@ -10,7 +10,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 import {
     CollectionContentType,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import { ContentCardComponent } from '../content-card/content-card.component';
 
 @Component({

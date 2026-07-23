@@ -1,8 +1,8 @@
-import type { Playlist } from '@iptvnator/shared/interfaces';
+import type { Playlist } from '@zenithplayer/shared/interfaces';
 import {
     createPlaylistObject,
     getFilenameFromUrl,
-} from '@iptvnator/shared/m3u-utils';
+} from '@zenithplayer/shared/m3u-utils';
 import { parse } from 'iptv-playlist-parser';
 import { readFile } from 'node:fs/promises';
 import { basename } from 'node:path';

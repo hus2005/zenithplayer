@@ -79,7 +79,7 @@ export function normalizeDashboardRailsSettings(
 export interface Settings {
     player: VideoPlayer;
     /**
-     * Use IPTVnator's shared controls in HTML5, Video.js, and ArtPlayer.
+     * Use Zenith Player's shared controls in HTML5, Video.js, and ArtPlayer.
      * Missing values remain off for compatibility with older saved settings.
      */
     webPlayerSharedControls?: boolean;

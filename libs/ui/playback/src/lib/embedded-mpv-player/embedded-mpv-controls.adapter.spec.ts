@@ -4,7 +4,7 @@ import {
     EmbeddedMpvSession,
     EmbeddedMpvSupport,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
     DEFAULT_ASPECT_PRESETS,

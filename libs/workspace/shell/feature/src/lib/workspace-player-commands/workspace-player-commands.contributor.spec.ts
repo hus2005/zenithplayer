@@ -6,9 +6,9 @@ import { of } from 'rxjs';
 import {
     WorkspaceCommandContribution,
     WorkspaceViewCommandService,
-} from '@iptvnator/portal/shared/util';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { VideoPlayer } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/shared/util';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
+import { VideoPlayer } from '@zenithplayer/shared/interfaces';
 import { WorkspacePlayerCommandsContributor } from './workspace-player-commands.contributor';
 
 interface ViewCommandsMock {

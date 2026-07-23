@@ -9,8 +9,8 @@ import {
     EpgQueueService,
     FavoritesService,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+} from '@zenithplayer/portal/xtream/data-access';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
 import { PortalChannelsListComponent } from './portal-channels-list.component';
 
 function buildEpgItem(params: {

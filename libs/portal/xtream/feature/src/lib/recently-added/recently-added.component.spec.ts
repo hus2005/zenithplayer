@@ -3,10 +3,10 @@ import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
 import { RecentlyAddedComponent } from './recently-added.component';
 
-jest.mock('@iptvnator/portal/shared/ui', () => ({
+jest.mock('@zenithplayer/portal/shared/ui', () => ({
     ContentCardComponent: class {},
     ContentRailShellComponent: class {},
 }));

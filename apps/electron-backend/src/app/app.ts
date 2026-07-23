@@ -1,5 +1,5 @@
 import { app, BrowserWindow, Menu, screen, session, shell } from 'electron';
-import { WINDOW_STATE_CHANGED } from '@iptvnator/shared/interfaces';
+import { WINDOW_STATE_CHANGED } from '@zenithplayer/shared/interfaces';
 import { join, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { rendererAppName, rendererAppPort } from './constants';
@@ -89,7 +89,7 @@ export function getMainWindowWebPreferences(): Electron.BrowserWindowConstructor
     const frameCopyExperiment =
         isEmbeddedMpvFeatureEnabled() &&
         ['1', 'true', 'yes', 'on'].includes(
-            (process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY ?? '')
+            (process.env.zenithplayer_ENABLE_EMBEDDED_MPV_FRAME_COPY ?? '')
                 .trim()
                 .toLowerCase()
         ) && isFrameCopyRuntimeUsable();
@@ -344,7 +344,7 @@ export default class App {
 
         // Create the browser window.
         App.mainWindow = new BrowserWindow({
-            title: 'IPTVnator',
+            title: 'Zenith Player',
             width: width,
             height: height,
             show: false,

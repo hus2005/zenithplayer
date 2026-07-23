@@ -1,12 +1,12 @@
 import {
     ELECTRON_BRIDGE_SECURITY_ERROR_CODES,
     SECURITY_ERROR_PREFIX,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 export {
     parseSecurityPolicyError,
     SECURITY_ERROR_PREFIX,
-} from '@iptvnator/shared/interfaces';
-export type { SerializedSecurityError } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
+export type { SerializedSecurityError } from '@zenithplayer/shared/interfaces';
 
 const TLS_CERTIFICATE_ERROR_CODES = new Set([
     'CERT_HAS_EXPIRED',

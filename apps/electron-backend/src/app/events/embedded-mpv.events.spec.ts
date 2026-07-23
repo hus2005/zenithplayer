@@ -18,7 +18,7 @@ import { ipcMain } from 'electron';
 import {
     EMBEDDED_MPV_SET_PAUSED,
     EMBEDDED_MPV_SUPPORT,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import './embedded-mpv.events';
 
 function getIpcMainHandler(

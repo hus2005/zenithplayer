@@ -81,7 +81,7 @@ async function main(): Promise<void> {
 
     mkdirSync(outputRoot, { recursive: true });
     const managedMockServer = await ensureXtreamMockServer();
-    const dataDir = mkdtempSync(path.join(tmpdir(), 'iptvnator-v020-shots-'));
+    const dataDir = mkdtempSync(path.join(tmpdir(), 'zenithplayer-v020-shots-'));
     const m3uFixturePath = writeM3uPlaylistFixture(dataDir);
     let app: ElectronApplication | undefined;
 
@@ -195,7 +195,7 @@ async function launchApp(dataDir: string): Promise<ElectronApplication> {
         env: {
             ...process.env,
             ELECTRON_IS_DEV: '0',
-            IPTVNATOR_E2E_DATA_DIR: dataDir,
+            zenithplayer_E2E_DATA_DIR: dataDir,
             NODE_ENV: 'test',
         },
     });
@@ -812,7 +812,7 @@ async function createDesignedCopy(
             context.fillStyle = palette.muted;
             context.font = '600 28px Arial, Helvetica, sans-serif';
             context.fillText(
-                'IPTVnator v0.20 release preview using fictional demo content',
+                'Zenith Player v0.20 release preview using fictional demo content',
                 110,
                 278
             );
@@ -966,7 +966,7 @@ async function createHeroImage(page: Page): Promise<void> {
 
             context.fillStyle = '#49c6e5';
             context.font = '800 30px Arial, Helvetica, sans-serif';
-            context.fillText('IPTVNATOR V0.20', 86, 138);
+            context.fillText('zenithplayer V0.20', 86, 138);
             context.fillStyle = '#f8fafc';
             context.font = '900 78px Arial, Helvetica, sans-serif';
             context.fillText('Unified UI.', 86, 224);

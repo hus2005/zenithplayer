@@ -3,15 +3,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PORTAL_PLAYER } from '@iptvnator/portal/shared/util';
-import { DataService, PlaylistsService } from '@iptvnator/services';
+import { PORTAL_PLAYER } from '@zenithplayer/portal/shared/util';
+import { DataService, PlaylistsService } from '@zenithplayer/services';
 import { of } from 'rxjs';
-import { PlaylistMeta, StalkerPortalActions } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta, StalkerPortalActions } from '@zenithplayer/shared/interfaces';
 import { StalkerSessionService } from '../../stalker-session.service';
 import { withStalkerPlayer } from './with-stalker-player.feature';
 
-jest.mock('@iptvnator/portal/shared/util', () => ({
-    ...jest.requireActual('@iptvnator/portal/shared/util'),
+jest.mock('@zenithplayer/portal/shared/util', () => ({
+    ...jest.requireActual('@zenithplayer/portal/shared/util'),
     createLogger: () => ({
         debug: jest.fn(),
         info: jest.fn(),

@@ -7,11 +7,11 @@ import { TranslateService } from '@ngx-translate/core';
 import {
     EpgRuntimeBridgeService,
     EpgService,
-} from '@iptvnator/epg/data-access';
-import { WORKSPACE_SHELL_ACTIONS } from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/epg/data-access';
+import { WORKSPACE_SHELL_ACTIONS } from '@zenithplayer/workspace/shell/util';
 import { MockProvider } from 'ng-mocks';
 import { EMPTY, of } from 'rxjs';
-import { DataService, RuntimeCapabilitiesService } from '@iptvnator/services';
+import { DataService, RuntimeCapabilitiesService } from '@zenithplayer/services';
 import {
     Language,
     Settings,
@@ -20,8 +20,8 @@ import {
     StreamFormat,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+} from '@zenithplayer/shared/interfaces';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
 import { AppComponent } from './app.component';
 import { ElectronServiceStub } from './services/electron.service.stub';
 import { SettingsService } from './services/settings.service';

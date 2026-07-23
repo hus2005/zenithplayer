@@ -22,7 +22,7 @@ import {
     Theme,
     VideoPlayer,
     normalizeDashboardRailsSettings,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 const DEFAULT_SETTINGS: Settings = {
     player: VideoPlayer.VideoJs,

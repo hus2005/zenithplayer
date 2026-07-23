@@ -16,9 +16,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { resolveChannelEpgLookupKey } from '@iptvnator/m3u-state';
-import { Channel, EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
+import { resolveChannelEpgLookupKey } from '@zenithplayer/m3u-state';
+import { Channel, EpgProgram } from '@zenithplayer/shared/interfaces';
 import {
     PlaylistChannelSortMode,
     getPlaylistChannelSortModeLabel,

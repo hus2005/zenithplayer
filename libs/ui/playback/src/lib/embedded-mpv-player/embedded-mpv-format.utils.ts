@@ -1,7 +1,7 @@
 import {
     EmbeddedMpvAudioTrack,
     EmbeddedMpvBounds,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export const HIDDEN_BOUNDS: EmbeddedMpvBounds = Object.freeze({
     x: -100000,

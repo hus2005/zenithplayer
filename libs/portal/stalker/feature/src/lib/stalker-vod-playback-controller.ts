@@ -5,12 +5,12 @@ import type {
     Logger,
     PortalPlaybackPositions,
     PortalPlayer,
-} from '@iptvnator/portal/shared/util';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
+} from '@zenithplayer/portal/shared/util';
+import type { PlaybackFallbackRequest } from '@zenithplayer/ui/playback';
 import {
     PlaybackPositionData,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 interface StalkerVodPlaybackControllerConfig {
     inlinePlayback: WritableSignal<ResolvedPortalPlayback | null>;

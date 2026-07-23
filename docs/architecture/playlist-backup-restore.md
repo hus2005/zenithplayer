@@ -5,11 +5,11 @@ settings screen.
 
 ## Entry Points
 
-- UI: `/Users/4gray/Code/iptvnator/apps/web/src/app/settings/settings.component.ts`
-- Backup service: `/Users/4gray/Code/iptvnator/libs/services/src/lib/playlist-backup.service.ts`
-- Manifest types: `/Users/4gray/Code/iptvnator/libs/shared/interfaces/src/lib/playlist-backup.interface.ts`
+- UI: `/Users/4gray/Code/zenithplayer/apps/web/src/app/settings/settings.component.ts`
+- Backup service: `/Users/4gray/Code/zenithplayer/libs/services/src/lib/playlist-backup.service.ts`
+- Manifest types: `/Users/4gray/Code/zenithplayer/libs/shared/interfaces/src/lib/playlist-backup.interface.ts`
 - Xtream pending restore storage:
-  `/Users/4gray/Code/iptvnator/libs/services/src/lib/xtream-pending-restore.service.ts`
+  `/Users/4gray/Code/zenithplayer/libs/services/src/lib/xtream-pending-restore.service.ts`
 
 ## Manifest Contract
 
@@ -18,7 +18,7 @@ database snapshots.
 
 Top-level shape:
 
-- `kind: "iptvnator-playlist-backup"`
+- `kind: "zenithplayer-playlist-backup"`
 - `version: 1`
 - `exportedAt`
 - `includeSecrets`
@@ -163,7 +163,7 @@ The settings page now exports/imports “playlist backups” instead of the old
 raw JSON application dump.
 
 - Export filename:
-  `iptvnator-playlist-backup-YYYY-MM-DD.json`
+  `zenithplayer-playlist-backup-YYYY-MM-DD.json`
 - Import summary reports:
     - imported
     - merged

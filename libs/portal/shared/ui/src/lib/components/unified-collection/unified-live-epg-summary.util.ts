@@ -1,6 +1,6 @@
-import { ResolvedLiveCollectionDetail } from '@iptvnator/portal/shared/data-access';
-import { EpgItem, EpgProgram } from '@iptvnator/shared/interfaces';
-import { LiveEpgPanelSummary } from '@iptvnator/ui/shared-portals';
+import { ResolvedLiveCollectionDetail } from '@zenithplayer/portal/shared/data-access';
+import { EpgItem, EpgProgram } from '@zenithplayer/shared/interfaces';
+import { LiveEpgPanelSummary } from '@zenithplayer/ui/shared-portals';
 
 /**
  * Pure helpers for the unified live tab's collapsed EPG summary: pick the

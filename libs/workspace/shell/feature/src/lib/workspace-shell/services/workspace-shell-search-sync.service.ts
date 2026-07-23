@@ -2,9 +2,9 @@ import { DestroyRef, effect, inject, Injectable, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { parseWorkspaceShellRoute } from '@iptvnator/workspace/shell/util';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
+import { parseWorkspaceShellRoute } from '@zenithplayer/workspace/shell/util';
 import { SEARCH_INPUT_DEBOUNCE_MS } from './helpers/workspace-shell-constants';
 import {
     getRouteQueryParam,

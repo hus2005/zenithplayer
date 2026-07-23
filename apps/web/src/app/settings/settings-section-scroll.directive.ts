@@ -7,7 +7,7 @@ import {
     Injector,
     OnDestroy,
 } from '@angular/core';
-import { SettingsContextService } from '@iptvnator/workspace/shell/util';
+import { SettingsContextService } from '@zenithplayer/workspace/shell/util';
 import { ObservedSettingsSection } from './settings.models';
 
 @Directive({

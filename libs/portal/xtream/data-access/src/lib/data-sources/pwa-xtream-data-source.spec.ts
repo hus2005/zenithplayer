@@ -4,7 +4,7 @@ import {
     XtreamApiService,
     XtreamCredentials,
 } from '../services/xtream-api.service';
-import { PlaylistsService } from '@iptvnator/services';
+import { PlaylistsService } from '@zenithplayer/services';
 import { of } from 'rxjs';
 
 describe('PwaXtreamDataSource', () => {

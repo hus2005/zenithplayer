@@ -42,7 +42,7 @@ test.describe('Electron Xtream Responsiveness', () => {
 
         const app = await launchElectronApp(dataDir, {
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
+                zenithplayer_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
             },
         });
 
@@ -120,7 +120,7 @@ test.describe('Electron Xtream Responsiveness', () => {
 
         const app = await launchElectronApp(dataDir, {
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
+                zenithplayer_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
             },
         });
 
@@ -256,7 +256,7 @@ test.describe('Electron Xtream Responsiveness', () => {
 
         const app = await launchElectronApp(dataDir, {
             env: {
-                IPTVNATOR_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
+                zenithplayer_DB_WORKER_BATCH_DELAY_MS: dbWorkerBatchDelayMs,
             },
         });
 

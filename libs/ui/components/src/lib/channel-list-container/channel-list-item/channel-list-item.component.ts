@@ -15,10 +15,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
-import { EpgItemDescriptionComponent } from '@iptvnator/ui/epg';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
-import { SettingsStore } from '@iptvnator/services';
-import { applyChannelNameStrip } from '@iptvnator/shared/m3u-utils';
+import { EpgItemDescriptionComponent } from '@zenithplayer/ui/epg';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
+import { SettingsStore } from '@zenithplayer/services';
+import { applyChannelNameStrip } from '@zenithplayer/shared/m3u-utils';
 
 @Component({
     selector: 'app-channel-list-item',

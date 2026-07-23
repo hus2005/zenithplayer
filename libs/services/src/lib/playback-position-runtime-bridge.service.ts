@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import { PlaybackPositionData } from '@zenithplayer/shared/interfaces';
 import { RuntimeCapabilitiesService } from './runtime-capabilities.service';
 
 type PlaybackPositionContentType = 'vod' | 'episode';

@@ -1,4 +1,4 @@
-import type { TmdbEnrichmentService } from '@iptvnator/services';
+import type { TmdbEnrichmentService } from '@zenithplayer/services';
 import {
     enrichSerialSelectionWithTmdb,
     enrichVodSelectionWithTmdb,

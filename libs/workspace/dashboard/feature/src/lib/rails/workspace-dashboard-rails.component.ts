@@ -9,11 +9,11 @@ import {
 } from '@angular/core';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { interval, of, startWith, switchMap } from 'rxjs';
-import { EpgService } from '@iptvnator/epg/data-access';
+import { EpgService } from '@zenithplayer/epg/data-access';
 import {
     type EpgProgram,
     normalizeDashboardRailsSettings,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
@@ -25,18 +25,18 @@ import {
     EmptyStateComponent,
     PlaylistInfoComponent,
     PlaylistRefreshActionService,
-} from '@iptvnator/playlist/shared/ui';
+} from '@zenithplayer/playlist/shared/ui';
 import {
     WORKSPACE_SHELL_ACTIONS,
     WorkspacePlaylistType,
-} from '@iptvnator/workspace/shell/util';
-import { DialogService } from '@iptvnator/ui/components';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+} from '@zenithplayer/workspace/shell/util';
+import { DialogService } from '@zenithplayer/ui/components';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
 import {
     PlaylistDeleteActionService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     DashboardDataService,
     DashboardFavoriteItem,
@@ -44,7 +44,7 @@ import {
     DashboardTrendingItem,
     DashboardTrendingService,
     GlobalRecentItem,
-} from '@iptvnator/workspace/dashboard/data-access';
+} from '@zenithplayer/workspace/dashboard/data-access';
 import type { DashboardHeroTmdbExtras } from './dashboard-hero-tmdb.service';
 import { DashboardHeroTmdbService } from './dashboard-hero-tmdb.service';
 import { DashboardRailComponent } from './dashboard-rail.component';
@@ -52,7 +52,7 @@ import type {
     DashboardRailCard,
     DashboardRailActionSelection,
 } from './dashboard-rail.component';
-import type { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import type { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import type { DashboardHeroModel } from './dashboard-hero.utils';
 import { resolveDashboardHeroArtwork } from './dashboard-hero.utils';
 import {

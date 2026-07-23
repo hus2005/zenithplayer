@@ -2,7 +2,7 @@ import {
     EXTERNAL_PLAYER_SESSION_UPDATE,
     ExternalPlayerSession,
     PlayerContentInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import App from '../app';
 import { isExternalPlayerTraceEnabled, trace } from '../services/debug-trace';
 import { ExternalPlayerLaunchContext } from './external-player-launch-context';

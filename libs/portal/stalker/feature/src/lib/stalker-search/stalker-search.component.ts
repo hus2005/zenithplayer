@@ -13,8 +13,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { StalkerSessionService } from '@iptvnator/portal/stalker/data-access';
-import { DataService, PlaylistsService } from '@iptvnator/services';
+import { StalkerSessionService } from '@zenithplayer/portal/stalker/data-access';
+import { DataService, PlaylistsService } from '@zenithplayer/services';
 import {
     PlaybackPositionData,
     Playlist,
@@ -22,26 +22,26 @@ import {
     STALKER_REQUEST,
     StalkerPortalActions,
     VodDetailsItem,
-} from '@iptvnator/shared/interfaces';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
-import { ContentCardComponent } from '@iptvnator/portal/shared/ui';
-import { SearchLayoutComponent } from '@iptvnator/portal/shared/ui';
+} from '@zenithplayer/shared/interfaces';
+import type { PlaybackFallbackRequest } from '@zenithplayer/ui/playback';
+import { ContentCardComponent } from '@zenithplayer/portal/shared/ui';
+import { SearchLayoutComponent } from '@zenithplayer/portal/shared/ui';
 import { StalkerInlineDetailComponent } from '../stalker-inline-detail/stalker-inline-detail.component';
-import { StalkerContentTypes } from '@iptvnator/portal/stalker/data-access';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+import { StalkerContentTypes } from '@zenithplayer/portal/stalker/data-access';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     isWorkspaceLayoutRoute,
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
     queryParamSignal,
-} from '@iptvnator/portal/shared/util';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 import {
     StalkerSelectedVodItem,
     StalkerVodSource,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@zenithplayer/portal/stalker/data-access';
 import {
     buildStalkerSelectedVodItem,
     clearStalkerDetailViewState,
@@ -53,7 +53,7 @@ import {
     isStalkerSeriesFlag,
     normalizeStalkerEntityId,
     toggleStalkerVodFavorite,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@zenithplayer/portal/stalker/data-access';
 import { StalkerVodPlaybackController } from '../stalker-vod-playback-controller';
 
 interface StalkerFilter {

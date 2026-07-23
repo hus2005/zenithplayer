@@ -1,26 +1,26 @@
-# IPTVnator - IPTV Player Application
+# Zenith Player - IPTV Player Application
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/4gray/iptvnator/electron/src/assets/icons/favicon.256x256.png" alt="IPTVnator icon" title="Free IPTV player application" />
+  <img src="https://raw.githubusercontent.com/hus2005/zenithplayer/electron/src/assets/icons/favicon.256x256.png" alt="Zenith Player icon" title="Free IPTV player application" />
 </p>
 <p align="center">
-  <a href="https://github.com/4gray/iptvnator/releases"><img src="https://img.shields.io/github/release/4gray/iptvnator.svg?style=for-the-badge&logo=github" alt="Release"></a>
-  <a href="https://github.com/4gray/iptvnator/releases"><img src="https://img.shields.io/github/v/release/4gray/iptvnator?include_prereleases&label=pre-release&logo=github&style=for-the-badge" /></a>
- <a href="https://github.com/4gray/iptvnator/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/4gray/iptvnator/ci.yml?branch=master&style=for-the-badge&logo=github&label=CI"></a> <a href="https://github.com/4gray/iptvnator/releases"><img src="https://img.shields.io/github/downloads/4gray/iptvnator/total?style=for-the-badge&logo=github" alt="Releases"></a> <a href="https://app.codecov.io/gh/4gray/iptvnator"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/4gray/iptvnator?branch=master&style=for-the-badge&logo=codecov&logoColor=white"></a> <a href="https://t.me/iptvnator"><img src="https://img.shields.io/badge/telegram-iptvnator-blue?logo=telegram&style=for-the-badge" alt="Telegram"></a> <a href="https://bsky.app/profile/iptvnator.bsky.social"><img src="https://img.shields.io/badge/bluesky-iptvnator-darkblue?logo=bluesky&style=for-the-badge" alt="Bluesky"></a>
+  <a href="https://github.com/hus2005/zenithplayer/releases"><img src="https://img.shields.io/github/release/hus2005/zenithplayer.svg?style=for-the-badge&logo=github" alt="Release"></a>
+  <a href="https://github.com/hus2005/zenithplayer/releases"><img src="https://img.shields.io/github/v/release/hus2005/zenithplayer?include_prereleases&label=pre-release&logo=github&style=for-the-badge" /></a>
+ <a href="https://github.com/hus2005/zenithplayer/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/hus2005/zenithplayer/ci.yml?branch=master&style=for-the-badge&logo=github&label=CI"></a> <a href="https://github.com/hus2005/zenithplayer/releases"><img src="https://img.shields.io/github/downloads/hus2005/zenithplayer/total?style=for-the-badge&logo=github" alt="Releases"></a> <a href="https://app.codecov.io/gh/hus2005/zenithplayer"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/hus2005/zenithplayer?branch=master&style=for-the-badge&logo=codecov&logoColor=white"></a> <a href="https://t.me/zenithplayer"><img src="https://img.shields.io/badge/telegram-zenithplayer-blue?logo=telegram&style=for-the-badge" alt="Telegram"></a> <a href="https://bsky.app/profile/zenithplayer.bsky.social"><img src="https://img.shields.io/badge/bluesky-zenithplayer-darkblue?logo=bluesky&style=for-the-badge" alt="Bluesky"></a>
 </p>
 
-🌐 **[Website](https://4gray.github.io/iptvnator/)** | <a href="https://t.me/iptvnator">Telegram channel for discussions</a> | <a href="https://ko-fi.com/4gray" target="_blank">Buy me a coffee</a> | <a href="https://github.com/sponsors/4gray">GitHub Sponsors</a>
+🌐 **[Website](https://hus2005.github.io/zenithplayer/)** | <a href="https://t.me/zenithplayer">Telegram channel for discussions</a> | <a href="https://ko-fi.com/4gray" target="_blank">Buy me a coffee</a> | <a href="https://github.com/sponsors/4gray">GitHub Sponsors</a>
 
-**IPTVnator** is a video player application that provides support for IPTV playlist playback (m3u, m3u8). The application allows users to import playlists using remote URLs or by uploading files from the local file system. Additionally, it supports EPG information in XMLTV format which can be provided via URL.
+**Zenith Player** is a video player application that provides support for IPTV playlist playback (m3u, m3u8). The application allows users to import playlists using remote URLs or by uploading files from the local file system. Additionally, it supports EPG information in XMLTV format which can be provided via URL.
 
 The application is a cross-platform, open-source project built with Electron and Angular.
 
-⚠️ Note: IPTVnator does not provide any playlists or other digital content. The channels and pictures in the screenshots are for demonstration purposes only.
+⚠️ Note: Zenith Player does not provide any playlists or other digital content. The channels and pictures in the screenshots are for demonstration purposes only.
 
 > [!IMPORTANT]
-> **Official sources only.** IPTVnator is a free, open-source **player** — it never sells IPTV subscriptions, channels, or playlists. Websites offering "IPTVnator subscriptions/channels/premium/activated" builds are **not affiliated** with this project. Get the app only from the [official website](https://4gray.github.io/iptvnator/) or [GitHub Releases](https://github.com/4gray/iptvnator/releases). See [Beware of unofficial IPTVnator websites and IPTV services](https://4gray.github.io/iptvnator/blog/beware-unofficial-iptvnator-websites/) for details.
+> **Official sources only.** Zenith Player is a free, open-source **player** — it never sells IPTV subscriptions, channels, or playlists. Websites offering "Zenith Player subscriptions/channels/premium/activated" builds are **not affiliated** with this project. Get the app only from the [official website](https://hus2005.github.io/zenithplayer/) or [GitHub Releases](https://github.com/hus2005/zenithplayer/releases). See [Beware of unofficial Zenith Player websites and IPTV services](https://hus2005.github.io/zenithplayer/blog/beware-unofficial-zenithplayer-websites/) for details.
 
-![IPTVnator: Channels list, player and epg list](./apps/website/public/screenshots/screenshot-player.webp)
+![Zenith Player: Channels list, player and epg list](./apps/website/public/screenshots/screenshot-player.webp)
 
 ## Features
 
@@ -33,7 +33,7 @@ The application is a cross-platform, open-source project built with Electron and
 **Playback**
 
 - Built-in HTML5 player (HLS.js or Video.js) with a resizable, resumable inline view
-- Optional unified IPTVnator controls for HTML5, Video.js, and ArtPlayer, enabled in **Settings → Playback** _(experimental)_
+- Optional unified Zenith Player controls for HTML5, Video.js, and ArtPlayer, enabled in **Settings → Playback** _(experimental)_
 - External players — MPV, VLC, and IINA on macOS (`mpv.app` / `VLC.app` bundle paths supported) _(desktop)_
 - Embedded MPV — native mpv rendered inside the app window on macOS, Windows & Linux 🖥️ _(experimental · desktop)_
 - Dedicated radio player for `radio="true"` streams 📻
@@ -116,7 +116,7 @@ _Note: First version of the application which was developed as a PWA is availabl
 
 The Docker setup builds the Angular PWA and the monorepo web backend into one
 image. The backend handles remote M3U parsing plus Xtream and Stalker proxy
-requests under `/api`, so a separate `4gray/iptvnator-backend` container is not
+requests under `/api`, so a separate `hus2005/zenithplayer-backend` container is not
 required for the default self-hosted flow.
 
 ```bash
@@ -136,44 +136,44 @@ such as MPV, VLC, or IINA.
 
 ## Download
 
-Download the latest version of the application for macOS, Windows, and Linux from the [release page](https://github.com/4gray/iptvnator/releases).
+Download the latest version of the application for macOS, Windows, and Linux from the [release page](https://github.com/hus2005/zenithplayer/releases).
 
 Alternatively, you can install the application using one of the following package managers:
 
 ### Homebrew
 
 ```shell
-$ brew install iptvnator
+$ brew install zenithplayer
 ```
 
 ### Snap
 
 ```shell
-$ sudo snap install iptvnator
+$ sudo snap install zenithplayer
 ```
 
 ### Arch
 
-Also available as an Arch PKG, [iptvnator-bin](https://aur.archlinux.org/packages/iptvnator-bin/), in the AUR (using your favourite AUR-helper, .e.g. `yay`)
+Also available as an Arch PKG, [zenithplayer-bin](https://aur.archlinux.org/packages/zenithplayer-bin/), in the AUR (using your favourite AUR-helper, .e.g. `yay`)
 
 ```shell
-$ yay -S iptvnator-bin
+$ yay -S zenithplayer-bin
 ```
 
 ### Gentoo
 
-You can install IPTVnator from the [gentoo-zh overlay](https://github.com/microcai/gentoo-zh)
+You can install Zenith Player from the [gentoo-zh overlay](https://github.com/microcai/gentoo-zh)
 
 ```shell
 sudo eselect repository enable gentoo-zh
 sudo emerge --sync gentoo-zh
-sudo emerge iptvnator-bin
+sudo emerge zenithplayer-bin
 ```
 
 ### Linux Embedded MPV Support
 
 Embedded MPV on Linux is experimental and currently supports x64 desktop
-sessions where IPTVnator runs under X11 or Xwayland. Native Wayland embedding
+sessions where Zenith Player runs under X11 or Xwayland. Native Wayland embedding
 is not supported yet. Linux package launchers request X11 with
 `--ozone-platform=x11`, so Wayland desktops still need Xwayland available.
 
@@ -186,7 +186,7 @@ installed. Flatpak and Snap builds remain available, but embedded MPV is not
 announced as supported there yet because those sandboxed formats do not expose
 the host `mpv` executable to the embedded backend by default.
 
-[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/iptvnator)
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/zenithplayer)
 
 <a href="https://github.com/sponsors/4gray" target="_blank"><img src="https://img.shields.io/badge/GitHub%20Sponsors-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor on GitHub"></a>
 <a href="https://ko-fi.com/4gray" target="_blank"><img src="https://img.shields.io/badge/Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Support on Ko-fi"></a>
@@ -198,18 +198,18 @@ the host `mpv` executable to the embedded backend by default.
 Older unsigned macOS builds may require removing the quarantine flag from the downloaded application:
 
 ```bash
-xattr -c /Applications/IPTVnator.app
+xattr -c /Applications/Zenith Player.app
 ```
 
 Alternatively, if the app is located in a different directory:
 
 ```bash
-xattr -c ~/Downloads/IPTVnator.app
+xattr -c ~/Downloads/Zenith Player.app
 ```
 
 ### Linux: chrome-sandbox Issues
 
-If you encounter the following error when launching IPTVnator:
+If you encounter the following error when launching Zenith Player:
 
 ```
 The SUID sandbox helper binary was found, but is not configured correctly.
@@ -219,7 +219,7 @@ You need to make sure that chrome-sandbox is owned by root and has mode 4755.
 
 **Solution 1: Fix chrome-sandbox permissions (Recommended for .deb/.rpm installations)**
 
-Navigate to the IPTVnator installation directory and run:
+Navigate to the Zenith Player installation directory and run:
 
 ```bash
 sudo chown root:root chrome-sandbox
@@ -231,30 +231,30 @@ sudo chmod 4755 chrome-sandbox
 Edit the desktop launcher file to add the `--no-sandbox` flag:
 
 1. Find your desktop file location:
-    - **Ubuntu/Debian**: `~/.local/share/applications/iptvnator.desktop`
-    - **System-wide**: `/usr/share/applications/iptvnator.desktop`
+    - **Ubuntu/Debian**: `~/.local/share/applications/zenithplayer.desktop`
+    - **System-wide**: `/usr/share/applications/zenithplayer.desktop`
 
 2. Edit the file and modify the `Exec` line:
 
     ```
-    Exec=iptvnator --no-sandbox %U
+    Exec=zenithplayer --no-sandbox %U
     ```
 
 3. Save the file and relaunch the application from your application menu.
 
-Alternatively, you can launch IPTVnator from the terminal with the flag:
+Alternatively, you can launch Zenith Player from the terminal with the flag:
 
 ```bash
-iptvnator --no-sandbox
+zenithplayer --no-sandbox
 ```
 
 ### GNU/Linux: Wayland startup failure
 
-If IPTVnator exits on GNU/Linux with errors about failing to connect to
+If Zenith Player exits on GNU/Linux with errors about failing to connect to
 Wayland or initialize the Ozone platform, force X11/XWayland instead:
 
 ```bash
-iptvnator --ozone-platform=x11
+zenithplayer --ozone-platform=x11
 ```
 
 This workaround is mainly for older or problematic Linux graphics stacks. The
@@ -289,11 +289,11 @@ $ nx serve electron-backend
 ```
 
 To start Electron with an empty, isolated data directory instead of your normal
-`~/.iptvnator` folder, set `IPTVNATOR_E2E_DATA_DIR` for that run:
+`~/.zenithplayer` folder, set `zenithplayer_E2E_DATA_DIR` for that run:
 
 ```
-$ rm -rf .tmp/iptvnator-empty && mkdir -p .tmp/iptvnator-empty
-$ IPTVNATOR_E2E_DATA_DIR="$PWD/.tmp/iptvnator-empty" pnpm run serve:backend
+$ rm -rf .tmp/zenithplayer-empty && mkdir -p .tmp/zenithplayer-empty
+$ zenithplayer_E2E_DATA_DIR="$PWD/.tmp/zenithplayer-empty" pnpm run serve:backend
 ```
 
 This redirects the SQLite database, Electron user data, and local config under
@@ -304,7 +304,7 @@ If you need to debug renderer freezes or GPU/compositor issues in Electron, you
 can disable hardware acceleration for a run:
 
 ```
-$ IPTVNATOR_DISABLE_HARDWARE_ACCELERATION=1 pnpm run serve:backend
+$ zenithplayer_DISABLE_HARDWARE_ACCELERATION=1 pnpm run serve:backend
 ```
 
 If you need startup diagnostics for a white screen or a frozen route, you can
@@ -312,36 +312,36 @@ also turn on opt-in Electron tracing. These logs are written to the Electron
 terminal output so they still help when the renderer DevTools never open:
 
 ```
-$ IPTVNATOR_TRACE_STARTUP=1 pnpm run serve:backend
+$ zenithplayer_TRACE_STARTUP=1 pnpm run serve:backend
 ```
 
 Nx equivalent:
 
 ```
-$ IPTVNATOR_TRACE_STARTUP=1 nx serve electron-backend
+$ zenithplayer_TRACE_STARTUP=1 nx serve electron-backend
 ```
 
 Useful narrower flags:
 
-- `IPTVNATOR_TRACE_IPC=1` logs renderer `window.electron.*` calls reaching the
+- `zenithplayer_TRACE_IPC=1` logs renderer `window.electron.*` calls reaching the
   Electron bridge
-- `IPTVNATOR_TRACE_DB=1` logs DB worker requests and request-scoped DB events
-- `IPTVNATOR_TRACE_SQL=1` logs SQLite statements in both the main connection and
+- `zenithplayer_TRACE_DB=1` logs DB worker requests and request-scoped DB events
+- `zenithplayer_TRACE_SQL=1` logs SQLite statements in both the main connection and
   DB worker connection
-- `IPTVNATOR_TRACE_WINDOW=1` logs BrowserWindow load, navigation, and
+- `zenithplayer_TRACE_WINDOW=1` logs BrowserWindow load, navigation, and
   unresponsive events
-- `IPTVNATOR_TRACE_RENDERER_CONSOLE=1` mirrors renderer console messages into
+- `zenithplayer_TRACE_RENDERER_CONSOLE=1` mirrors renderer console messages into
   the Electron terminal output
 
 Security-sensitive network compatibility flags are opt-in:
 
-- `IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS=1` permits strict EPG fetches from
+- `zenithplayer_ALLOW_PRIVATE_NETWORK_URLS=1` permits strict EPG fetches from
   playlist metadata (`x-tvg-url`, `url-tvg`, or `tvg-url`) to resolve to
   localhost, LAN, or other private addresses. Directly configured
   Xtream/Stalker portals and private playlist servers remain supported without
   this flag. Prefer the in-app source-scoped “Allow source” action for a trusted
   EPG URL.
-- `IPTVNATOR_ALLOW_INSECURE_TLS=1` disables certificate validation for remote
+- `zenithplayer_ALLOW_INSECURE_TLS=1` disables certificate validation for remote
   playlist imports and refreshes for the whole Electron process. Prefer the
   in-app host-scoped trust action for a trusted provider with a self-signed or
   otherwise invalid certificate.
@@ -360,11 +360,11 @@ $ pnpm run serve:frontend
 
 ## Disclaimer
 
-**IPTVnator doesn't provide any playlists or other digital content.**
+**Zenith Player doesn't provide any playlists or other digital content.**
 
 ## Trademark
 
-The name **"IPTVnator"** and the IPTVnator logo are unregistered trademarks of the project owner. The MIT license covers the source code only — it does **not** grant rights to the name or logo. Forks and redistributions (including app-store submissions) must use a different name and their own icon. See [TRADEMARK.md](./TRADEMARK.md) for details.
+The name **"Zenith Player"** and the Zenith Player logo are unregistered trademarks of the project owner. The MIT license covers the source code only — it does **not** grant rights to the name or logo. Forks and redistributions (including app-store submissions) must use a different name and their own icon. See [TRADEMARK.md](./TRADEMARK.md) for details.
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 

@@ -5,7 +5,7 @@
 > superpowers:executing-plans to implement this plan task-by-task. Steps use
 > checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Keep the Flatpak `iptvnator` entry as the real Electron ELF so
+**Goal:** Keep the Flatpak `zenithplayer` entry as the real Electron ELF so
 Electron Builder passes it directly to Zypak, while preserving the existing
 Linux sandbox wrapper for every other package target.
 
@@ -57,15 +57,15 @@ Run:
 node --test tools/packaging/linux-after-pack.test.mjs
 ```
 
-Expected: FAIL because the current hook replaces `iptvnator` with a Bash
-script and creates `iptvnator.bin`.
+Expected: FAIL because the current hook replaces `zenithplayer` with a Bash
+script and creates `zenithplayer.bin`.
 
 - [ ] **Step 3: Add the pure launcher-layout resolver**
 
 Implement a strict resolver with this public contract:
 
 ```js
-function resolveLinuxLauncherLayout(targets, executableName = 'iptvnator') {
+function resolveLinuxLauncherLayout(targets, executableName = 'zenithplayer') {
     if (!Array.isArray(targets) || targets.length === 0) {
         throw new Error(
             'Linux launcher layout requires at least one Electron Builder target.'
@@ -184,7 +184,7 @@ test('keeps the sandbox wrapper for non-Flatpak targets', async (t) => {
         );
         assert.match(
             fs.readFileSync(fixture.executablePath, 'utf8'),
-            /exec "\$SCRIPT_DIR\/iptvnator\.bin"/
+            /exec "\$SCRIPT_DIR\/zenithplayer\.bin"/
         );
     }
 });
@@ -246,16 +246,16 @@ rename only the Flatpak fixture's Electron binary:
 
 ```js
 fs.renameSync(
-    join(flatpak.appOutDir, 'iptvnator.bin'),
-    join(flatpak.appOutDir, 'iptvnator')
+    join(flatpak.appOutDir, 'zenithplayer.bin'),
+    join(flatpak.appOutDir, 'zenithplayer')
 );
 ```
 
 Teach the test ELF inspector about both legitimate basenames:
 
 ```js
-['iptvnator', { needed: ['libc.so.6'], rpath: [], runpath: [] }],
-['iptvnator.bin', { needed: ['libc.so.6'], rpath: [], runpath: [] }],
+['zenithplayer', { needed: ['libc.so.6'], rpath: [], runpath: [] }],
+['zenithplayer.bin', { needed: ['libc.so.6'], rpath: [], runpath: [] }],
 ```
 
 Run:
@@ -265,7 +265,7 @@ node --test --test-name-pattern='prepares portable and Flatpak manifests' \
   tools/packaging/embedded-mpv-arch.test.mjs
 ```
 
-Expected: FAIL with a missing `iptvnator.bin` validation error.
+Expected: FAIL with a missing `zenithplayer.bin` validation error.
 
 - [ ] **Step 2: Resolve the pristine Electron ELF through the shared contract**
 
@@ -278,7 +278,7 @@ let launcherLayout;
 try {
     launcherLayout = resolveLinuxLauncherLayout(
         options.targetNames,
-        options.executableName ?? 'iptvnator'
+        options.executableName ?? 'zenithplayer'
     );
 } catch (error) {
     errors.push(
@@ -434,12 +434,12 @@ Allow the fixture helper to select the Electron filename:
 ```js
 function createSystemPayload({
     architecture = 'x64',
-    electronBinaryName = 'iptvnator.bin',
+    electronBinaryName = 'zenithplayer.bin',
 } = {}) {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-layout-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-layout-')
     );
-    const appDir = path.join(root, 'opt', 'IPTVnator');
+    const appDir = path.join(root, 'opt', 'Zenith Player');
     const resourceDir = path.join(appDir, 'resources');
     const nativeDir = path.join(
         resourceDir,
@@ -463,7 +463,7 @@ function createSystemPayload({
             { mode: 0o644 }
         );
         fs.writeFileSync(
-            path.join(nativeDir, 'iptvnator_mpv_helper'),
+            path.join(nativeDir, 'zenithplayer_mpv_helper'),
             'helper',
             { mode: 0o755 }
         );
@@ -490,7 +490,7 @@ selection without needing a bundled x64 manifest:
 test('validates a marker-only Flatpak with an unwrapped Electron ELF', () => {
     const fixture = createSystemPayload({
         architecture: 'arm64',
-        electronBinaryName: 'iptvnator',
+        electronBinaryName: 'zenithplayer',
     });
     try {
         assert.deepEqual(
@@ -521,7 +521,7 @@ node --test --test-name-pattern='marker-only Flatpak with an unwrapped' \
   tools/packaging/verify-linux-frame-copy-runtime.test.mjs
 ```
 
-Expected: FAIL because the verifier reads `iptvnator.bin`.
+Expected: FAIL because the verifier reads `zenithplayer.bin`.
 
 - [ ] **Step 2: Resolve every final-artifact Electron path consistently**
 
@@ -540,12 +540,12 @@ Use it in:
 - `verifyExtractedLinuxFrameCopyRuntime` architecture detection;
 - the architecture returned from `verifyLinuxFrameCopyArtifact`.
 
-Keep Snap/AppImage/DEB/RPM/Pacman expectations on `iptvnator.bin`.
+Keep Snap/AppImage/DEB/RPM/Pacman expectations on `zenithplayer.bin`.
 
 - [ ] **Step 3: Add an outer artifact-verifier Flatpak regression**
 
 Create a temporary `.flatpak` file, inject an extractor that writes
-`iptvnator` ELF and the marker-only native directory under its supplied
+`zenithplayer` ELF and the marker-only native directory under its supplied
 destination, and assert:
 
 ```js
@@ -558,7 +558,7 @@ assert.deepEqual(
                 destination,
                 'files',
                 'lib',
-                'com.fourgray.iptvnator'
+                'com.fourgray.zenithplayer'
             );
             const resourceDir = path.join(appDir, 'resources');
             const nativeDir = path.join(
@@ -569,7 +569,7 @@ assert.deepEqual(
             );
             fs.mkdirSync(nativeDir, { recursive: true });
             fs.writeFileSync(
-                path.join(appDir, 'iptvnator'),
+                path.join(appDir, 'zenithplayer'),
                 elfHeader('arm64')
             );
             fs.writeFileSync(
@@ -601,7 +601,7 @@ assert.deepEqual(
 Inside the existing sandbox shell check:
 
 ```bash
-LAUNCHER_PATH="$(readlink -f /app/bin/iptvnator)"
+LAUNCHER_PATH="$(readlink -f /app/bin/zenithplayer)"
 test -f "${LAUNCHER_PATH}"
 test ! -e "${LAUNCHER_PATH}.bin"
 ELF_MAGIC="$(od -An -tx1 -N4 "${LAUNCHER_PATH}" | tr -d "[:space:]")"
@@ -615,7 +615,7 @@ diagnostics:
 PROBE_OUTPUT="$(
     xvfb-run -a dbus-run-session -- flatpak run \
         --env=LIBGL_ALWAYS_SOFTWARE=1 \
-        com.fourgray.iptvnator \
+        com.fourgray.zenithplayer \
         --embedded-mpv-runtime-probe 2>&1
 )"
 printf '%s\n' "${PROBE_OUTPUT}"
@@ -635,15 +635,15 @@ greps.
 Document the exact invariant in all listed documentation:
 
 ```text
-Flatpak is an isolated packaging pass and keeps `iptvnator` as the real
+Flatpak is an isolated packaging pass and keeps `zenithplayer` as the real
 Electron ELF so Electron Builder's `electron-wrapper` passes it directly to
-Zypak. Other Linux targets retain the conditional `iptvnator` wrapper and
-`iptvnator.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation.
+Zypak. Other Linux targets retain the conditional `zenithplayer` wrapper and
+`zenithplayer.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation.
 ```
 
 In the earlier frame-copy design, replace the unconditional
-`Electron executable (iptvnator.bin)` wording with
-`iptvnator for Flatpak; iptvnator.bin for other Linux targets`.
+`Electron executable (zenithplayer.bin)` wording with
+`zenithplayer for Flatpak; zenithplayer.bin for other Linux targets`.
 
 - [ ] **Step 6: Run targeted tests and formatting**
 

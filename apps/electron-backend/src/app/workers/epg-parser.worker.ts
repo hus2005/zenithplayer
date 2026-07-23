@@ -3,7 +3,7 @@ import {
     ELECTRON_BRIDGE_SECURITY_ERROR_CODES,
     ElectronBridgeSecurityErrorCode,
     ElectronBridgeTrustOptions,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { Readable } from 'stream';
 import { parentPort, workerData } from 'worker_threads';
 import {

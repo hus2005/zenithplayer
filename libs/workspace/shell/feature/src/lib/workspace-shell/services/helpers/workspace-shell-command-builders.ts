@@ -3,11 +3,11 @@ import {
     PortalRailSection,
     WorkspaceCommandContribution,
     WorkspaceResolvedCommandItem,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     WorkspacePortalContext,
     WorkspaceShellRoute,
-} from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/workspace/shell/util';
 import { TranslateFn } from './workspace-shell-search-labels';
 
 export interface CommandBuilderActions {

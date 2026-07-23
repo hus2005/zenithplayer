@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
 import {
     ActorFilmographyCredit,
     ActorProfile,
@@ -18,17 +18,17 @@ import {
     buildTitleMatchIndex,
     mapPersonFilmography,
     mapPersonProfile,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     CatalogTitleMatch,
     normalizeTitleKeys,
     titleYearsCompatible,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     ActorViewComponent,
     ActorViewItem,
     ActorViewScope,
-} from '@iptvnator/ui/shared-portals';
+} from '@zenithplayer/ui/shared-portals';
 import {
     buildCatalogTitleIndex,
     lookupCatalogTitle,

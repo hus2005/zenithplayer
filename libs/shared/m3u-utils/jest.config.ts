@@ -1,5 +1,5 @@
 export default {
-    displayName: '@iptvnator/shared/m3u-utils',
+    displayName: '@zenithplayer/shared/m3u-utils',
     preset: '../../../jest.preset.js',
     testEnvironment: 'node',
     transform: {

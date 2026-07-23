@@ -9,7 +9,7 @@ This document records the current contract for embedded playback in portal detai
 - Controlled external players are `mpv` and `vlc`.
 - macOS `.app` bundle paths are resolved only for real MPV/VLC apps. IINA may
   launch through the MPV path field when the user supplies an executable path
-  such as `/Applications/IINA.app/Contents/MacOS/iina-cli`, but IPTVnator
+  such as `/Applications/IINA.app/Contents/MacOS/iina-cli`, but Zenith Player
   controls, position polling, and instance reuse are not guaranteed for IINA.
 - Flatpak launches external players on the host via `flatpak-spawn --host`.
 - Live playback stays inline in dedicated live layouts.
@@ -43,29 +43,29 @@ create embedded UI.
 The repository now contains a first-pass native embedded MPV harness for Electron:
 
 - shared setting id: `embedded-mpv`
-- native addon owner: `/Users/4gray/Code/iptvnator/apps/electron-backend/src/app/services/embedded-mpv-native.service.ts`
-- IPC bridge: `/Users/4gray/Code/iptvnator/apps/electron-backend/src/app/events/embedded-mpv.events.ts`
-- renderer host: `/Users/4gray/Code/iptvnator/libs/ui/playback/src/lib/embedded-mpv-player/embedded-mpv-player.component.ts`
-- native architecture and release-readiness details: `/Users/4gray/Code/iptvnator/docs/architecture/embedded-mpv-native.md`
+- native addon owner: `/Users/4gray/Code/zenithplayer/apps/electron-backend/src/app/services/embedded-mpv-native.service.ts`
+- IPC bridge: `/Users/4gray/Code/zenithplayer/apps/electron-backend/src/app/events/embedded-mpv.events.ts`
+- renderer host: `/Users/4gray/Code/zenithplayer/libs/ui/playback/src/lib/embedded-mpv-player/embedded-mpv-player.component.ts`
+- native architecture and release-readiness details: `/Users/4gray/Code/zenithplayer/docs/architecture/embedded-mpv-native.md`
 
 Current contract:
 
 - desktop only: macOS, Windows x64, and Linux x64 under X11/Xwayland
 - experimental opt-in
-- enabled in local development only when `IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT=1`
-- Linux Wayland sessions must start Electron through Xwayland, for example with `pnpm nx run electron-backend:serve-electron --args=--ozone-platform=x11` during local development or `iptvnator --ozone-platform=x11` for a packaged app
+- enabled in local development only when `zenithplayer_ENABLE_EMBEDDED_MPV_EXPERIMENT=1`
+- Linux Wayland sessions must start Electron through Xwayland, for example with `pnpm nx run electron-backend:serve-electron --args=--ozone-platform=x11` during local development or `zenithplayer --ozone-platform=x11` for a packaged app
 - enabled in packaged desktop builds only when the bundled native addon/runtime prerequisites are present; Linux additionally requires an `mpv` executable on `PATH`
-- uses IPTVnator-owned controls and `ResolvedPortalPlayback` payloads
-- uses the libmpv render API on macOS and renders through an IPTVnator-owned native `NSView`
-- uses mpv `wid` embedding on Windows and Linux through IPTVnator-owned native child windows
+- uses Zenith Player-owned controls and `ResolvedPortalPlayback` payloads
+- uses the libmpv render API on macOS and renders through an Zenith Player-owned native `NSView`
+- uses mpv `wid` embedding on Windows and Linux through Zenith Player-owned native child windows
 - Linux starts `mpv --wid=<x11-window>` out of process so MPV does not share Electron's FFmpeg or graphics symbols
 - Linux controls that out-of-process MPV instance through a private JSON IPC socket so duration, position, pause, volume, and seek state come from MPV instead of renderer guesses
 - Linux starts that MPV process with `WAYLAND_DISPLAY` removed, `XDG_SESSION_TYPE=x11`, and X11 video output options; otherwise MPV can pick Wayland inside a Wayland desktop session, ignore `--wid`, and open a separate window instead of embedding
 - macOS/Windows default to libmpv's OpenGL render backend with `hwdec=auto-safe`
-- keeps the previous software renderer as a debug fallback via `IPTVNATOR_EMBEDDED_MPV_RENDERER=sw`
-- emits lightweight native diagnostics when `IPTVNATOR_TRACE_EMBEDDED_MPV=1` is set; Linux also writes MPV's own trace log to `/tmp/iptvnator-embedded-mpv.log`
-- exposes an IPTVnator-owned fullscreen button that uses the renderer fullscreen API and resyncs the native MPV view bounds after fullscreen transitions
-- auto-hides IPTVnator-owned controls while playback is active and restores them on pointer/focus interaction
+- keeps the previous software renderer as a debug fallback via `zenithplayer_EMBEDDED_MPV_RENDERER=sw`
+- emits lightweight native diagnostics when `zenithplayer_TRACE_EMBEDDED_MPV=1` is set; Linux also writes MPV's own trace log to `/tmp/zenithplayer-embedded-mpv.log`
+- exposes an Zenith Player-owned fullscreen button that uses the renderer fullscreen API and resyncs the native MPV view bounds after fullscreen transitions
+- auto-hides Zenith Player-owned controls while playback is active and restores them on pointer/focus interaction
 - exposes audio-track metadata from MPV and switches tracks through the `aid` property without reloading the stream
 - passes VOD/episode resume offsets to MPV through the `loadfile` options map; live catchup URLs are treated as already-positioned streams
 - applies the initial volume during session creation and uses async libmpv control calls after startup where the in-process libmpv backend is active
@@ -137,23 +137,23 @@ or `TmdbEnrichmentService.getSeason` (Stalker).
 
 Shared detail layout shell:
 
-- `/Users/4gray/Code/iptvnator/libs/ui/components/src/lib/portal-detail-shell/portal-detail-shell.component.ts`
+- `/Users/4gray/Code/zenithplayer/libs/ui/components/src/lib/portal-detail-shell/portal-detail-shell.component.ts`
 
 Shared inline player shell:
 
-- `/Users/4gray/Code/iptvnator/libs/ui/playback/src/lib/portal-inline-player/portal-inline-player.component.ts`
+- `/Users/4gray/Code/zenithplayer/libs/ui/playback/src/lib/portal-inline-player/portal-inline-player.component.ts`
 
 Xtream detail hosts:
 
-- `/Users/4gray/Code/iptvnator/libs/portal/xtream/feature/src/lib/vod-details/vod-details-route.component.ts`
-- `/Users/4gray/Code/iptvnator/libs/portal/xtream/feature/src/lib/serial-details/serial-details.component.ts`
+- `/Users/4gray/Code/zenithplayer/libs/portal/xtream/feature/src/lib/vod-details/vod-details-route.component.ts`
+- `/Users/4gray/Code/zenithplayer/libs/portal/xtream/feature/src/lib/serial-details/serial-details.component.ts`
 
 Stalker detail hosts:
 
-- `/Users/4gray/Code/iptvnator/libs/portal/stalker/feature/src/lib/stalker-catalog-detail/stalker-catalog-detail.component.ts`
-- `/Users/4gray/Code/iptvnator/libs/portal/stalker/feature/src/lib/stalker-series-view/stalker-series-view.component.ts`
-- `/Users/4gray/Code/iptvnator/libs/portal/stalker/feature/src/lib/stalker-collection-detail.component.ts`
-- `/Users/4gray/Code/iptvnator/libs/portal/stalker/feature/src/lib/stalker-search/stalker-search.component.ts`
+- `/Users/4gray/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-catalog-detail/stalker-catalog-detail.component.ts`
+- `/Users/4gray/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-series-view/stalker-series-view.component.ts`
+- `/Users/4gray/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-collection-detail.component.ts`
+- `/Users/4gray/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-search/stalker-search.component.ts`
 
 Embedded playback does not have a fallback dialog path.
 `PlayerService.openResolvedPlayback(...)` remains the MPV/VLC external launch
@@ -161,8 +161,8 @@ entry point; for embedded players it returns without creating UI.
 
 Diagnostics and fallback UI:
 
-- `/Users/4gray/Code/iptvnator/libs/ui/playback/src/lib/playback-diagnostics/playback-diagnostics.util.ts`
-- `/Users/4gray/Code/iptvnator/libs/ui/playback/src/lib/web-player-view/web-player-view.component.ts`
+- `/Users/4gray/Code/zenithplayer/libs/ui/playback/src/lib/playback-diagnostics/playback-diagnostics.util.ts`
+- `/Users/4gray/Code/zenithplayer/libs/ui/playback/src/lib/web-player-view/web-player-view.component.ts`
 
 ## Playback Decision Rule
 
@@ -285,12 +285,12 @@ path-only setting; extra flags are stored separately as `mpvPlayerArguments` and
 `vlcPlayerArguments`.
 
 Argument fields are line-oriented: one non-empty trimmed line becomes one argv
-entry. IPTVnator prepends those custom entries before its stream-specific runtime
+entry. Zenith Player prepends those custom entries before its stream-specific runtime
 arguments, then keeps the stream URL last. This avoids shell parsing, keeps paths
 with spaces safe, and preserves existing settings for users who never configured
 extra arguments.
 
-The arguments apply only when IPTVnator spawns a new external player process. If
+The arguments apply only when Zenith Player spawns a new external player process. If
 MPV or VLC instance reuse is active and an existing process is reused, subsequent
 streams are loaded through MPV IPC or VLC RC commands and new process arguments
 are not re-applied until a fresh process starts.
@@ -337,7 +337,7 @@ This keeps non-Flatpak behavior unchanged while allowing Flatpak builds to open 
 
 Shared playback payloads live in:
 
-- `/Users/4gray/Code/iptvnator/libs/shared/interfaces/src/lib/portal-playback.interface.ts`
+- `/Users/4gray/Code/zenithplayer/libs/shared/interfaces/src/lib/portal-playback.interface.ts`
 
 Types introduced:
 

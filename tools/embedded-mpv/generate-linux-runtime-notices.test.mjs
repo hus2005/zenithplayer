@@ -54,7 +54,7 @@ function runtimeManifest() {
 
 function createSourceFixture() {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-license-sources-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-license-sources-')
     );
     for (const sourcePackage of SOURCE_PACKAGES) {
         const licensePaths = LICENSE_PATHS_BY_PACKAGE[sourcePackage.id];
@@ -101,7 +101,7 @@ function fileTree(root) {
 test('collects verbatim pinned licenses and generates deterministic exact notices', (t) => {
     const sourceRoot = createSourceFixture();
     const fixtureRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-notices-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-notices-')
     );
     const inputRoot = path.join(fixtureRoot, 'inputs');
     const firstOutput = path.join(fixtureRoot, 'first');
@@ -188,7 +188,7 @@ test('collects verbatim pinned licenses and generates deterministic exact notice
 test('rejects symlinked license sources and path escapes', (t) => {
     const sourceRoot = createSourceFixture();
     const outputRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-license-inputs-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-license-inputs-')
     );
     const outsidePath = path.join(outputRoot, 'outside-license');
     fs.writeFileSync(outsidePath, 'outside\n');
@@ -219,7 +219,7 @@ test('rejects symlinked license sources and path escapes', (t) => {
 test('rejects missing, tampered, and undeclared cached license inputs', (t) => {
     const sourceRoot = createSourceFixture();
     const fixtureRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-license-cache-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-license-cache-')
     );
     const inputRoot = path.join(fixtureRoot, 'inputs');
     t.after(() => {
@@ -288,7 +288,7 @@ test('rejects missing, tampered, and undeclared cached license inputs', (t) => {
 test('CLI collects immutable inputs and regenerates the packaged notice bundle', (t) => {
     const sourceRoot = createSourceFixture();
     const fixtureRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-notices-cli-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-notices-cli-')
     );
     const manifestPath = path.join(fixtureRoot, 'runtime-manifest.json');
     const inputRoot = path.join(fixtureRoot, 'inputs');

@@ -1,5 +1,5 @@
-import { isPortalPlaybackWatched } from '@iptvnator/portal/shared/util';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import { isPortalPlaybackWatched } from '@zenithplayer/portal/shared/util';
+import { PlaybackPositionData } from '@zenithplayer/shared/interfaces';
 
 /** Pure helpers for episode duration parsing and progress-text formatting. */
 

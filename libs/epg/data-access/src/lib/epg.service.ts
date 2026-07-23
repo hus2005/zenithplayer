@@ -15,14 +15,14 @@ import {
     createDevLogger,
     EpgChannelMetadata,
     EpgProgram,
-} from '@iptvnator/shared/interfaces';
-import { SettingsStore } from '@iptvnator/services';
+} from '@zenithplayer/shared/interfaces';
+import { SettingsStore } from '@zenithplayer/services';
 import {
     EpgLookupOptions,
     EpgRuntimeBridgeService,
 } from './epg-runtime-bridge.service';
 import { normalizeEpgPrograms } from './epg-program-normalization.util';
-import { normalizeEpgUrls } from '@iptvnator/shared/m3u-utils';
+import { normalizeEpgUrls } from '@zenithplayer/shared/m3u-utils';
 
 interface CachedProgram {
     program: EpgProgram | null;

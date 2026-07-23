@@ -622,7 +622,7 @@ type CapturedExternalPlayerLaunch = {
 };
 
 const externalPlayerLaunchCaptureKey =
-    '__iptvnatorE2eExternalPlayerLaunches';
+    '__zenithplayerE2eExternalPlayerLaunches';
 
 async function installExternalPlayerLaunchCapture(
     app: LaunchedElectronApp

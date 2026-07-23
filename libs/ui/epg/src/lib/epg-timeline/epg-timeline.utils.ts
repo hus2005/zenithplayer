@@ -1,4 +1,4 @@
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
 import { addDays, addMinutes, startOfDay } from 'date-fns';
 import { parseEpgDateKey } from '../epg-date';
 import { getProgramDateKey, getProgramTimeMs } from '../epg-program.utils';

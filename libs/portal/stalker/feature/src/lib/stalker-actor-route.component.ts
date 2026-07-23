@@ -17,17 +17,17 @@ import {
     buildTitleMatchIndex,
     mapPersonFilmography,
     mapPersonProfile,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     CatalogTitleMatch,
     normalizeTitleKeys,
     titleYearsCompatible,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     ActorViewComponent,
     ActorViewItem,
     ActorViewScope,
-} from '@iptvnator/ui/shared-portals';
+} from '@zenithplayer/ui/shared-portals';
 
 /**
  * Actor page inside a Stalker portal. The portal catalog is

@@ -4,14 +4,14 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
     ElectronBridgeAppUpdateStatus,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { AppUpdateNotificationPanelComponent } from './app-update-notification-panel.component';
 import { AppUpdateReleaseNotesDialogComponent } from './settings/app-update-release-notes-dialog.component';
 
 const availableStatus: ElectronBridgeAppUpdateStatus = {
     currentVersion: '0.22.0',
     latestVersion: '0.23.0',
-    manualDownloadUrl: 'https://github.com/4gray/iptvnator/releases/latest',
+    manualDownloadUrl: 'https://github.com/hus2005/zenithplayer/releases/latest',
     status: ELECTRON_BRIDGE_APP_UPDATE_STATUSES.Available,
     supportedSelfUpdate: true,
 };

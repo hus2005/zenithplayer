@@ -13,12 +13,12 @@ import {
     XtreamAccountInfo,
     XtreamApiService,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/xtream/data-access';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 import {
     resolveXtreamPortalStatus,
     type XtreamAccountInfoDialogData,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 type AccountLoadState = 'loading' | 'ready' | 'error';
 

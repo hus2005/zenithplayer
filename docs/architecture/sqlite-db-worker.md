@@ -437,8 +437,8 @@ renderer can actually paint the loading state instead of freezing.
 
 The worker build also aliases:
 
-1. `@iptvnator/shared/database/schema`
-2. `@iptvnator/shared/database/path-utils`
+1. `@zenithplayer/shared/database/schema`
+2. `@zenithplayer/shared/database/path-utils`
 
 These aliases avoid importing the shared database barrel from inside the worker,
 which would otherwise pull in runtime code that assumes the main Electron
@@ -588,7 +588,7 @@ covers:
 For deterministic E2E timing, tests may set:
 
 ```bash
-IPTVNATOR_DB_WORKER_BATCH_DELAY_MS=20
+zenithplayer_DB_WORKER_BATCH_DELAY_MS=20
 ```
 
 This delay is test-only and disabled by default.
@@ -632,27 +632,27 @@ When a renderer route freezes before DevTools become usable, start Electron with
 one of these opt-in trace flags and inspect the terminal output:
 
 ```bash
-IPTVNATOR_TRACE_STARTUP=1 pnpm run serve:backend
+zenithplayer_TRACE_STARTUP=1 pnpm run serve:backend
 ```
 
 Available trace flags:
 
-1. `IPTVNATOR_TRACE_STARTUP=1`
+1. `zenithplayer_TRACE_STARTUP=1`
    Enables the broad startup trace set: BrowserWindow lifecycle, renderer
    bridge calls, DB worker requests/events, and SQL tracing.
-2. `IPTVNATOR_TRACE_IPC=1`
+2. `zenithplayer_TRACE_IPC=1`
    Logs `window.electron.*` method calls crossing the preload bridge so you can
    see whether the renderer is still reaching Electron main.
-3. `IPTVNATOR_TRACE_DB=1`
+3. `zenithplayer_TRACE_DB=1`
    Logs `DatabaseWorkerClient` request dispatch, completion timing, and emitted
    `DB_OPERATION_EVENT` payloads.
-4. `IPTVNATOR_TRACE_SQL=1`
+4. `zenithplayer_TRACE_SQL=1`
    Logs SQLite statements for the shared main-process connection and the DB
    worker connection using `better-sqlite3` verbose hooks.
-5. `IPTVNATOR_TRACE_WINDOW=1`
+5. `zenithplayer_TRACE_WINDOW=1`
    Logs BrowserWindow loading, navigation, `unresponsive`, and
    `render-process-gone` transitions.
-6. `IPTVNATOR_TRACE_RENDERER_CONSOLE=1`
+6. `zenithplayer_TRACE_RENDERER_CONSOLE=1`
    Mirrors renderer console messages into the Electron terminal output when the
    renderer itself is the thing getting wedged.
 

@@ -2,9 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { DialogService } from '@iptvnator/ui/components';
-import { DataService, SettingsStore } from '@iptvnator/services';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
+import { DialogService } from '@zenithplayer/ui/components';
+import { DataService, SettingsStore } from '@zenithplayer/services';
 import {
     AUTO_UPDATE_PLAYLISTS,
     ELECTRON_BRIDGE_SECURITY_ERROR_CODES,
@@ -18,13 +18,13 @@ import {
     XTREAM_REQUEST,
     XTREAM_RESPONSE,
     XtreamCodeActions,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { AppConfig } from '../../environments/environment';
 import {
     createLogger,
     createPortalDebugRequestContext,
     logPortalDebugEvent,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 
 interface PlayerLaunchPayload {
     readonly headers?: Record<string, string>;
@@ -511,7 +511,7 @@ export class ElectronService extends DataService {
             ),
             message: this.translateWithFallback(
                 'HOME.URL_UPLOAD.TRUST_TLS_HOST_WARNING',
-                'Only continue if you trust this playlist host. IPTVnator will allow invalid TLS certificates for this host, but other hosts still require valid certificates.'
+                'Only continue if you trust this playlist host. Zenith Player will allow invalid TLS certificates for this host, but other hosts still require valid certificates.'
             ),
             confirmLabel: this.translateWithFallback(
                 'HOME.URL_UPLOAD.TRUST_TLS_HOST',

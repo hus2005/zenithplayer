@@ -1,6 +1,6 @@
 import { ipcMain } from 'electron';
-import { normalizeExternalPlayerArguments } from '@iptvnator/shared/interfaces';
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+import { normalizeExternalPlayerArguments } from '@zenithplayer/shared/interfaces';
+import { redactSensitiveData } from '@zenithplayer/shared/logging';
 import {
     EMBEDDED_MPV_FRAME_COPY,
     MPV_PLAYER_ARGUMENTS,

@@ -69,7 +69,7 @@ ALTER TABLE categories ADD COLUMN hidden INTEGER DEFAULT 0
 - `libs/workspace/shell/feature/src/lib/workspace-context-panel/workspace-context-panel.component.ts`
   renders the tune icon button for Xtream Live TV, Movies, and Series sidebars.
 - The workspace context panel lazy-loads `CategoryManagementDialogComponent`
-  from `@iptvnator/portal/xtream/feature`, opens it with playlist ID, content
+  from `@zenithplayer/portal/xtream/feature`, opens it with playlist ID, content
   type, and item counts, then calls `xtreamStore.reloadCategories()` after a
   successful dialog save.
 

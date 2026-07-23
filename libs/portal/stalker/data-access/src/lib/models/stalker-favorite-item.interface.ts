@@ -1,7 +1,7 @@
 import {
     StalkerVodDetails,
     StalkerVodInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export type StalkerSeriesFlag = true | 1 | '1';
 

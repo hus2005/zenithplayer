@@ -19,15 +19,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     PlaylistActions,
     selectActiveTypeFilters,
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import { BehaviorSubject, combineLatest, map } from 'rxjs';
-import { DialogService } from '@iptvnator/ui/components';
+import { DialogService } from '@zenithplayer/ui/components';
 import {
     DatabaseService,
     DataService,
@@ -40,12 +40,12 @@ import {
     SortBy,
     SortService,
     XtreamPendingRestoreService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     PLAYLIST_UPDATE,
     PlaylistMeta,
     PlaylistRefreshEvent,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 import { EmptyStateComponent } from './empty-state/empty-state.component';
 import type { PlaylistType } from '../add-playlist-menu/playlist-type';

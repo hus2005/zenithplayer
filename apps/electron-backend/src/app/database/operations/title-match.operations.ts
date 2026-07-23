@@ -2,7 +2,7 @@ import { sql } from 'drizzle-orm';
 import {
     CatalogTitleMatch,
     normalizeTitleKeys,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 
 /**

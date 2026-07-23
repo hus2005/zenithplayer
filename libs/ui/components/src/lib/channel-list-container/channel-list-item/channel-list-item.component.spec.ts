@@ -4,8 +4,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
-import { SettingsStore } from '@iptvnator/services';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { SettingsStore } from '@zenithplayer/services';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
 import { ChannelListItemComponent } from './channel-list-item.component';
 
 describe('ChannelListItemComponent', () => {

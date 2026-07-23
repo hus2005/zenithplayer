@@ -16,7 +16,7 @@ import {
     Playlist,
     PlaylistRefreshEvent,
     PlaylistRefreshPayload,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { resolveWorkerRuntimeBootstrap } from '../workers/worker-runtime-paths';
 import type {
     PlaylistRefreshWorkerMessage,

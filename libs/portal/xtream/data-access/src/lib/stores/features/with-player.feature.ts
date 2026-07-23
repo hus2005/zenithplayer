@@ -5,11 +5,11 @@ import {
     withMethods,
     withState,
 } from '@ngrx/signals';
-import { PORTAL_PLAYER } from '@iptvnator/portal/shared/util';
+import { PORTAL_PLAYER } from '@zenithplayer/portal/shared/util';
 import {
     XtreamSerieEpisode,
     XtreamVodDetails,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { XtreamCredentials } from '../../services/xtream-api.service';
 import { XtreamUrlService } from '../../services/xtream-url.service';
 

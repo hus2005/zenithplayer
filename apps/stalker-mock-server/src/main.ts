@@ -39,11 +39,11 @@ app.use((req, _res, next) => {
 app.use('/portal.php', portalRouter);
 
 /**
- * CORS proxy compatibility endpoint — mirrors the IPTVnator backend API shape:
+ * CORS proxy compatibility endpoint — mirrors the Zenith Player backend API shape:
  *   GET /stalker?url=<portal_url>&macAddress=<mac>&action=<action>&...
  *   → { payload: <stalker_response> }
  *
- * The IPTVnator PWA sends Stalker requests to AppConfig.BACKEND_URL/stalker.
+ * The Zenith Player PWA sends Stalker requests to AppConfig.BACKEND_URL/stalker.
  * Playwright tests redirect those calls to this endpoint using page.route(),
  * so no app code changes are required.
  */

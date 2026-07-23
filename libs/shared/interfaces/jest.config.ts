@@ -1,5 +1,5 @@
 export default {
-    displayName: '@iptvnator/shared/interfaces',
+    displayName: '@zenithplayer/shared/interfaces',
     preset: '../../../jest.preset.js',
     testEnvironment: 'node',
     transform: {

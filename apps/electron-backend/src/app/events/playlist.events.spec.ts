@@ -2,13 +2,13 @@ import type {
     Playlist,
     PlaylistRefreshEvent,
     PlaylistRefreshPayload,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     AUTO_UPDATE_PLAYLISTS,
     PLAYLIST_CANCEL_REFRESH,
     PLAYLIST_REFRESH,
     PLAYLIST_REFRESH_EVENT,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { resolve } from 'node:path';
 
 type IpcHandler = (event: MockIpcEvent, ...args: unknown[]) => Promise<unknown>;
@@ -66,7 +66,7 @@ jest.mock('iptv-playlist-parser', () => ({
     parse: (...args: unknown[]) => mockParse(...args),
 }));
 
-jest.mock('@iptvnator/shared/m3u-utils', () => ({
+jest.mock('@zenithplayer/shared/m3u-utils', () => ({
     createPlaylistObject: (...args: unknown[]) =>
         mockCreatePlaylistObject(...args),
     getFilenameFromUrl: (...args: unknown[]) => mockGetFilenameFromUrl(...args),

@@ -27,12 +27,12 @@ import {
     ChannelListSkeletonComponent,
     EpgMappingDialogComponent,
     ResizableDirective,
-} from '@iptvnator/ui/components';
+} from '@zenithplayer/ui/components';
 import {
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     buildStalkerEpgMappingKey,
     Channel,
@@ -40,21 +40,21 @@ import {
     EpgProgram,
     ResolvedPortalPlayback,
     StalkerPortalItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     EpgDateNavigationDirection,
     EpgListViewComponent,
     EpgTimelineComponent,
     getTodayEpgDateKey,
     shiftEpgDateKey,
-} from '@iptvnator/ui/epg';
+} from '@zenithplayer/ui/epg';
 import {
     AudioPlayerComponent,
     type PlaybackFallbackRequest,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
-import { LiveEpgPanelSummary } from '@iptvnator/ui/shared-portals';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+} from '@zenithplayer/ui/playback';
+import { LiveEpgPanelSummary } from '@zenithplayer/ui/shared-portals';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
 import {
     LiveLayoutSidebarStateService,
     PORTAL_PLAYER,
@@ -65,14 +65,14 @@ import {
     LiveEpgPanelState,
     persistLiveEpgPanelState,
     restoreLiveEpgPanelState,
-} from '@iptvnator/portal/shared/util';
-import { PortalEmptyStateComponent } from '@iptvnator/portal/shared/ui';
+} from '@zenithplayer/portal/shared/util';
+import { PortalEmptyStateComponent } from '@zenithplayer/portal/shared/ui';
 import {
     StalkerFavoriteItem,
     StalkerItvChannel,
     StalkerStore,
     normalizeStalkerEntityId,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@zenithplayer/portal/stalker/data-access';
 
 type StalkerPlayableChannel = StalkerPortalItem & {
     cmd?: string;

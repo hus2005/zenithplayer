@@ -13,7 +13,7 @@ import type {
     XtreamBackupHiddenCategory,
     XtreamBackupRecentlyViewedItem,
     XtreamCategory,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export interface XCategoryFromDb {
     id: number;

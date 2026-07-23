@@ -1,5 +1,5 @@
 import { and, asc, desc, eq, inArray, or, sql, type SQL } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@zenithplayer/shared/database/schema';
 import {
     Channel,
     GLOBAL_SEARCH_CONTENT_TYPES,
@@ -12,7 +12,7 @@ import {
     getXtreamRecentlyAddedMaxEpochSeconds,
     toXtreamRecentlyAddedEpochSeconds,
     XtreamGlobalSearchResult,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 import {
     checkpointOperation,

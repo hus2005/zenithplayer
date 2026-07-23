@@ -24,29 +24,29 @@ import {
     selectChannels,
     selectChannelsLoading,
     selectCurrentEpgProgram,
-} from '@iptvnator/m3u-state';
-import { EpgService } from '@iptvnator/epg/data-access';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+} from '@zenithplayer/m3u-state';
+import { EpgService } from '@zenithplayer/epg/data-access';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     LIVE_EPG_PANEL_STATE_STORAGE_KEY,
     WorkspaceHeaderContextService,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     DataService,
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     Channel,
     EpgProgram,
     Settings,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import { LiveEpgPanelSummary } from '@iptvnator/ui/shared-portals';
+} from '@zenithplayer/shared/interfaces';
+import { LiveEpgPanelSummary } from '@zenithplayer/ui/shared-portals';
 import { Overlay } from '@angular/cdk/overlay';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
+import type { PlaybackFallbackRequest } from '@zenithplayer/ui/playback';
 import type { VideoPlayerComponent as VideoPlayerComponentInstance } from './video-player.component';
 
 jest.unstable_mockModule('video.js', () => ({
@@ -558,7 +558,7 @@ describe('VideoPlayerComponent', () => {
         syncStoreState({
             ...sampleChannel,
             http: {
-                'user-agent': 'IPTVnator Test',
+                'user-agent': 'Zenith Player Test',
                 referrer: 'https://referrer.example.com',
                 origin: 'https://origin.example.com',
             },
@@ -586,7 +586,7 @@ describe('VideoPlayerComponent', () => {
             expect.objectContaining({
                 url: 'https://archive.example.com/live.m3u8?utc=1',
                 title: 'Sample TV',
-                'user-agent': 'IPTVnator Test',
+                'user-agent': 'Zenith Player Test',
                 referer: 'https://referrer.example.com',
                 origin: 'https://origin.example.com',
             })

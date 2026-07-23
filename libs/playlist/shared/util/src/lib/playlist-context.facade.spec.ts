@@ -7,10 +7,10 @@ import {
     selectActivePlaylistId,
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import { Subject } from 'rxjs';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 import {
     PlaylistContextFacade,
     PlaylistRouteContext,

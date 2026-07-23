@@ -1,11 +1,11 @@
 import { signal } from '@angular/core';
-import type { SeriesResumeTarget } from '@iptvnator/portal/shared/util';
+import type { SeriesResumeTarget } from '@zenithplayer/portal/shared/util';
 import type {
     ExternalPlayerSession,
     PlaybackPositionData,
     ResolvedPortalPlayback,
     XtreamSerieEpisode,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import type { XtreamSerieDetailsView } from './serial-details-playback.service';
 
 interface ResumeEpisodeRequest {

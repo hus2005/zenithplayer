@@ -21,7 +21,7 @@ import {
     EmbeddedMpvBounds,
     EmbeddedMpvRecordingStartOptions,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     EmbeddedMpvNativeService,
     embeddedMpvNativeService,

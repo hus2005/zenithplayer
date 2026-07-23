@@ -6,7 +6,7 @@ Add a shared, persisted live-TV EPG collapse state across M3U, Xtream, and Stalk
 
 ## Key Changes
 
-- Add shared state helpers in `@iptvnator/portal/shared/util`:
+- Add shared state helpers in `@zenithplayer/portal/shared/util`:
     - storage key: `live-epg-panel-state`
     - states: `expanded | collapsed`
     - restore invalid/missing values to `expanded`

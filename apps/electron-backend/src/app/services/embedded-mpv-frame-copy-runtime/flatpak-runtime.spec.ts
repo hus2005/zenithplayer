@@ -8,7 +8,7 @@ import {
 } from './runtime-harness.test-helpers';
 
 const FLATPAK_NATIVE_DIR =
-    '/app/iptvnator/resources/app.asar.unpacked/electron-backend/native';
+    '/app/zenithplayer/resources/app.asar.unpacked/electron-backend/native';
 const FREEDESKTOP_EGL_EXTERNAL_PLATFORM_CONFIG_DIRS = [
     '/etc/egl/egl_external_platform.d',
     '/usr/lib/x86_64-linux-gnu/GL/egl/egl_external_platform.d',
@@ -21,7 +21,7 @@ describe('Flatpak embedded MPV frame-copy runtime', () => {
             createLinuxFrameCopyHelperEnvironment(
                 {
                     PATH: '/app/bin:/usr/bin',
-                    FLATPAK_ID: 'com.fourgray.iptvnator',
+                    FLATPAK_ID: 'com.fourgray.zenithplayer',
                     __EGL_EXTERNAL_PLATFORM_CONFIG_DIRS:
                         '/tmp/hostile-egl-platform',
                     __EGL_EXTERNAL_PLATFORM_CONFIG_FILENAMES:
@@ -37,7 +37,7 @@ describe('Flatpak embedded MPV frame-copy runtime', () => {
             )
         ).toEqual({
             PATH: '/app/bin:/usr/bin',
-            FLATPAK_ID: 'com.fourgray.iptvnator',
+            FLATPAK_ID: 'com.fourgray.zenithplayer',
             __EGL_EXTERNAL_PLATFORM_CONFIG_DIRS:
                 FREEDESKTOP_EGL_EXTERNAL_PLATFORM_CONFIG_DIRS,
             LD_LIBRARY_PATH: path.join(FLATPAK_NATIVE_DIR, 'lib'),
@@ -45,11 +45,11 @@ describe('Flatpak embedded MPV frame-copy runtime', () => {
     });
 
     it.each([
-        ['wrong app id', 'com.example.other', '/app/iptvnator/native'],
+        ['wrong app id', 'com.example.other', '/app/zenithplayer/native'],
         [
             'helper outside /app',
-            'com.fourgray.iptvnator',
-            '/opt/iptvnator/native',
+            'com.fourgray.zenithplayer',
+            '/opt/zenithplayer/native',
         ],
     ])(
         'does not reconstruct Flatpak GL metadata for %s',
@@ -86,7 +86,7 @@ describe('Flatpak embedded MPV frame-copy runtime', () => {
             const fixture = createFixture(context.rootDir, 'flatpak');
             const virtualHelperPath = path.join(
                 FLATPAK_NATIVE_DIR,
-                'iptvnator_mpv_helper'
+                'zenithplayer_mpv_helper'
             );
             const translatePath = (candidatePath: string): string => {
                 if (
@@ -103,7 +103,7 @@ describe('Flatpak embedded MPV frame-copy runtime', () => {
             const probeRuntime = context.createProbe({
                 env: {
                     PATH: '/app/bin:/usr/bin',
-                    FLATPAK_ID: 'com.fourgray.iptvnator',
+                    FLATPAK_ID: 'com.fourgray.zenithplayer',
                     __EGL_EXTERNAL_PLATFORM_CONFIG_DIRS:
                         '/tmp/hostile-egl-platform',
                     __EGL_EXTERNAL_PLATFORM_CONFIG_FILENAMES:
@@ -136,7 +136,7 @@ describe('Flatpak embedded MPV frame-copy runtime', () => {
                 expect.objectContaining({
                     env: {
                         PATH: '/app/bin:/usr/bin',
-                        FLATPAK_ID: 'com.fourgray.iptvnator',
+                        FLATPAK_ID: 'com.fourgray.zenithplayer',
                         __EGL_EXTERNAL_PLATFORM_CONFIG_DIRS:
                             FREEDESKTOP_EGL_EXTERNAL_PLATFORM_CONFIG_DIRS,
                         LD_LIBRARY_PATH: path.join(FLATPAK_NATIVE_DIR, 'lib'),

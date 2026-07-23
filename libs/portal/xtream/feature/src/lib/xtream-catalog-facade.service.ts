@@ -5,8 +5,8 @@ import {
     PortalCatalogPlaylistMeta,
     PortalCatalogSortMode,
     PORTAL_CATALOG_FACADE,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/shared/util';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
 
 const SORT_STORAGE_KEY = 'xtream-category-sort-mode';
 

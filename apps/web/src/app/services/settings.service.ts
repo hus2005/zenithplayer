@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { catchError, map, Observable } from 'rxjs';
-import { STORE_KEY, Theme } from '@iptvnator/shared/interfaces';
+import { STORE_KEY, Theme } from '@zenithplayer/shared/interfaces';
 
 const PRERELEASE_KEYWORDS = [
     'beta',
@@ -180,7 +180,7 @@ export class SettingsService {
         return this.http
             .get<
                 { created_at: string; name: string }[]
-            >('https://api.github.com/repos/4gray/iptvnator/releases')
+            >('https://api.github.com/repos/hus2005/zenithplayer/releases')
             .pipe(
                 map((response) => {
                     // Filter out pre-release versions (beta, alpha, rc, etc.)

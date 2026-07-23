@@ -5,7 +5,7 @@ import {
     TmdbRecommendation,
     XtreamSerieInfo,
     XtreamVodInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { tmdbBackdropUrl, tmdbPosterUrl, tmdbProfileUrl } from './tmdb-config';
 import { extractYear } from './tmdb-matcher';
 import {

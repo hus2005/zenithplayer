@@ -171,7 +171,7 @@ describe('embedded-mpv frame-copy runtime probe orchestration', () => {
             mode: 0o755,
         });
 
-        const virtualSnapRoot = '/snap/iptvnator/42';
+        const virtualSnapRoot = '/snap/zenithplayer/42';
         const linuxTriplet = 'x86_64-linux-gnu';
         const snapLibraries = (...relativePaths: string[]): string[] =>
             relativePaths.map((relativePath) =>
@@ -186,7 +186,7 @@ describe('embedded-mpv frame-copy runtime probe orchestration', () => {
         );
         const virtualHelperPath = path.join(
             virtualNativeDir,
-            'iptvnator_mpv_helper'
+            'zenithplayer_mpv_helper'
         );
         const virtualGraphicsRoot = path.join(virtualSnapRoot, 'graphics');
         const virtualProviderWrapper = path.join(
@@ -292,7 +292,7 @@ describe('embedded-mpv frame-copy runtime probe orchestration', () => {
         const actualGraphicsRoot = path.join(actualSnapRoot, 'graphics');
         mkdirSync(actualGraphicsRoot, { recursive: true });
 
-        const virtualSnapRoot = '/snap/iptvnator/42';
+        const virtualSnapRoot = '/snap/zenithplayer/42';
         const virtualNativeDir = path.join(
             virtualSnapRoot,
             'resources',
@@ -337,7 +337,7 @@ describe('embedded-mpv frame-copy runtime probe orchestration', () => {
         });
 
         expect(
-            probeRuntime(path.join(virtualNativeDir, 'iptvnator_mpv_helper'))
+            probeRuntime(path.join(virtualNativeDir, 'zenithplayer_mpv_helper'))
         ).toEqual({
             usable: false,
             reason: 'snap-graphics-provider-unavailable',

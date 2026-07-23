@@ -10,13 +10,13 @@ This document describes the browser PWA and self-hosted Docker path.
 - `docker/` owns the production self-hosted image that bundles the PWA and
   `web-backend` into one container.
 
-The old external `4gray/iptvnator-backend` repository is not required for the
+The old external `hus2005/zenithplayer-backend` repository is not required for the
 default self-hosted deployment. Sync behavior from that repository only when a
 change intentionally restores or imports missing backend capabilities.
 
 ## Runtime Backend Configuration
 
-The PWA reads `window.__IPTVNATOR_CONFIG__.BACKEND_URL` through
+The PWA reads `window.__zenithplayer_CONFIG__.BACKEND_URL` through
 `apps/web/src/app/services/runtime-config.ts`. The static placeholder lives at
 `apps/web/src/assets/app-config.js` and keeps hosted builds working without
 Docker-specific values.
@@ -78,7 +78,7 @@ runtime. Electron routes remain owned by the Electron backend and preload
 bridge.
 
 Renderer code that needs to branch by runtime should use
-`RuntimeCapabilitiesService` from `@iptvnator/services` instead of adding new
+`RuntimeCapabilitiesService` from `@zenithplayer/services` instead of adding new
 direct `window.electron` or `DataService.getAppEnvironment()` checks. Keep
 feature decisions expressed as capabilities such as `supportsEpg`,
 `supportsSqlite`, `supportsXtreamSqliteDataSource`, `supportsDownloads`, or
@@ -87,9 +87,9 @@ from one shared boundary. `supportsSqlite` requires the complete playlist
 storage preload API surface used by `PlaylistsService`, `supportsDownloads`
 requires the complete downloads preload API surface used by `DownloadsService`,
 and EPG renderer code should use `EpgRuntimeBridgeService` from
-`@iptvnator/epg/data-access` instead of calling `window.electron` directly.
+`@zenithplayer/epg/data-access` instead of calling `window.electron` directly.
 Playback-position renderer code should use `PlaybackPositionRuntimeBridgeService`
-from `@iptvnator/services` for Electron SQLite persistence and external-player
+from `@zenithplayer/services` for Electron SQLite persistence and external-player
 position update events; `supportsPlaybackPositionStorage` and
 `supportsPlaybackPositionUpdates` describe those surfaces independently so PWA
 and partial Electron bridges can degrade without direct preload checks.
@@ -136,7 +136,7 @@ before any outbound request:
 - URL credentials are rejected
 - loopback, private, link-local, and reserved network targets are blocked by
   default
-- `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS=1` explicitly enables trusted
+- `zenithplayer_PROXY_ALLOW_PRIVATE_NETWORKS=1` explicitly enables trusted
   local/LAN targets for development, mock servers, or private deployments
 
 Do not disable TLS certificate validation in the backend proxy. For private
@@ -164,7 +164,7 @@ type, and category IDs after navigation or a page reload without relying on the
 Electron SQLite content table.
 
 Shared collection services that need Xtream favorites or recent data should use
-`XTREAM_DATA_SOURCE` from `@iptvnator/portal/xtream/data-access` from a
+`XTREAM_DATA_SOURCE` from `@zenithplayer/portal/xtream/data-access` from a
 `type:data-access` or `type:feature` boundary. UI libraries in the M3U domain
 must not import Xtream data-access directly; use `PlaylistsService` for source
 metadata changes and let app-level cleanup providers handle portal-specific
@@ -187,12 +187,12 @@ Default runtime values:
 - `BACKEND_URL=/api`
 - `CLIENT_URL=http://localhost:4333`
 - `PORT=3000`
-- `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS=0`
+- `zenithplayer_PROXY_ALLOW_PRIVATE_NETWORKS=0`
 - `NODE_EXTRA_CA_CERTS` unset
 
 When hosting behind another domain, set `CLIENT_URL` to the browser origin and
 keep `BACKEND_URL=/api` unless the reverse proxy exposes the backend elsewhere.
-Only set `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS=1` when the self-hosted
+Only set `zenithplayer_PROXY_ALLOW_PRIVATE_NETWORKS=1` when the self-hosted
 instance is restricted to trusted users and intentionally needs private network
 IPTV targets. For providers using private certificate authorities, mount the CA
 bundle into the container and set `NODE_EXTRA_CA_CERTS` to that mounted path.
@@ -210,7 +210,7 @@ pnpm nx run web-e2e:e2e -- --project=chromium --grep @self-hosted
 docker compose -f docker/docker-compose.yml config
 ```
 
-Run `docker build -t iptvnator:self-hosted-test -f docker/Dockerfile .` when a
+Run `docker build -t zenithplayer:self-hosted-test -f docker/Dockerfile .` when a
 Docker daemon is available.
 
 For manual Docker smoke testing, run the Xtream and Stalker mock servers plus a

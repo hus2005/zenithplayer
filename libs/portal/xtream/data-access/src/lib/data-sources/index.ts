@@ -2,7 +2,7 @@ import { inject, Provider } from '@angular/core';
 import {
     PLAYLIST_DELETE_CLEANUP,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import { ElectronXtreamDataSource } from './electron-xtream-data-source';
 import { PwaXtreamDataSource } from './pwa-xtream-data-source';
 import {

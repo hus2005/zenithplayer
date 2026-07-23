@@ -548,7 +548,7 @@ function inspectLibplaceboSourceSnapshot(
         );
     }
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-libplacebo-source-verifier-')
+        path.join(os.tmpdir(), 'zenithplayer-libplacebo-source-verifier-')
     );
     try {
         const memberListPath = path.join(
@@ -728,7 +728,7 @@ function assertExactSourceArchiveLayout(members, archiveFiles, compliance) {
             ({ path: relativePath }) => `license-inputs/${relativePath}`
         ),
         'metadata/archive-sha256.txt',
-        'metadata/iptvnator-git-revision.txt',
+        'metadata/zenithplayer-git-revision.txt',
         'metadata/local-changes.patch',
         'metadata/runtime-manifest.json',
         'metadata/source-index.json',
@@ -837,7 +837,7 @@ function inspectSourceArchive(
         'metadata/source-index.json'
     );
     const repositoryRevision = readMetadata(
-        'metadata/iptvnator-git-revision.txt'
+        'metadata/zenithplayer-git-revision.txt'
     )
         .toString('utf8')
         .trim();
@@ -1091,7 +1091,7 @@ function inspectSnapPayload(
     }
     inspectSquashfsListing(snapPath, runCommand);
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-snap-source-verifier-')
+        path.join(os.tmpdir(), 'zenithplayer-snap-source-verifier-')
     );
     try {
         const extractionRoot = path.join(temporaryRoot, 'payload');
@@ -1109,7 +1109,7 @@ function inspectSnapPayload(
             extractionRoot,
             'usr',
             'lib',
-            'iptvnator',
+            'zenithplayer',
             'resources',
             'app.asar.unpacked',
             'electron-backend',
@@ -1143,15 +1143,15 @@ function inspectSnapPayload(
             extractionRoot,
             'usr',
             'lib',
-            'iptvnator',
+            'zenithplayer',
             'resources'
         );
         const electronPath = path.join(
             extractionRoot,
             'usr',
             'lib',
-            'iptvnator',
-            'iptvnator.bin'
+            'zenithplayer',
+            'zenithplayer.bin'
         );
         const electronStat = fs.lstatSync(electronPath);
         if (
@@ -1179,7 +1179,7 @@ function inspectSnapPayload(
         }
         const staticErrors = validatePackaged(resourcesDirectory, {
             artifactFormat: 'snap',
-            executableName: 'iptvnator',
+            executableName: 'zenithplayer',
             foreignArch: architecture !== 'x64',
             hostPlatform: 'linux',
             platform: 'linux',

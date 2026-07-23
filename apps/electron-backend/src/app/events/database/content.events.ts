@@ -11,7 +11,7 @@ import {
 import type {
     GlobalSearchPaginationOptions,
     GlobalSearchResultSource,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 handleWorkerRequest(
     'DB_HAS_CONTENT',

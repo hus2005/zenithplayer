@@ -1,6 +1,6 @@
 # Nx Workspace Boundaries
 
-This document records the current monorepo boundary conventions for IPTVnator.
+This document records the current monorepo boundary conventions for Zenith Player.
 
 ## Fresh Worktree Bootstrap
 
@@ -34,14 +34,14 @@ is clear from the start.
 
 ## Import Aliases
 
-Use scoped `@iptvnator/*` aliases from `tsconfig.base.json`.
+Use scoped `@zenithplayer/*` aliases from `tsconfig.base.json`.
 
 Examples:
 
 ```ts
-import { SettingsStore } from '@iptvnator/services';
-import { Playlist } from '@iptvnator/shared/interfaces';
-import { DialogService } from '@iptvnator/ui/components';
+import { SettingsStore } from '@zenithplayer/services';
+import { Playlist } from '@zenithplayer/shared/interfaces';
+import { DialogService } from '@zenithplayer/ui/components';
 ```
 
 Do not introduce legacy bare aliases such as:
@@ -85,7 +85,7 @@ provider-specific collection services without creating cycles.
 
 Note: `workspace-shell-util` (`libs/workspace/shell/util`) is tagged
 `type:data-access` despite its path. It exports injectable services such as
-`WorkspaceStartupPreferencesService` that depend on `@iptvnator/services`, and
+`WorkspaceStartupPreferencesService` that depend on `@zenithplayer/services`, and
 it must stay eagerly importable from `apps/web/src/app/app.routes.ts` without
 pulling the lazy-loaded workspace shell feature bundle into the initial chunk.
 

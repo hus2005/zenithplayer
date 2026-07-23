@@ -1,4 +1,4 @@
-import { EmbeddedMpvBounds } from '@iptvnator/shared/interfaces';
+import { EmbeddedMpvBounds } from '@zenithplayer/shared/interfaces';
 import {
     NativeViewBoundsContext,
     toNativeViewBounds,

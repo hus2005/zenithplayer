@@ -1,14 +1,14 @@
 {
-  "name": "IPTVnator",
-  "short_name": "IPTVnator",
+  "name": "Zenith Player",
+  "short_name": "Zenith Player",
   "icons": [
     {
-      "src": "/iptvnator/android-chrome-192x192.png",
+      "src": "/zenithplayer/android-chrome-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/iptvnator/android-chrome-512x512.png",
+      "src": "/zenithplayer/android-chrome-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
     }

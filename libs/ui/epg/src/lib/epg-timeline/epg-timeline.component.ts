@@ -16,8 +16,8 @@ import {
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
-import { normalizeDateLocale } from '@iptvnator/pipes';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { normalizeDateLocale } from '@zenithplayer/pipes';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { startWith } from 'rxjs';
 import {

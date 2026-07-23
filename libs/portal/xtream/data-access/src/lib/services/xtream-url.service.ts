@@ -4,8 +4,8 @@ import {
     StreamFormat,
     XtreamSerieEpisode,
     XtreamVodDetails,
-} from '@iptvnator/shared/interfaces';
-import { DatabaseService, SettingsStore } from '@iptvnator/services';
+} from '@zenithplayer/shared/interfaces';
+import { DatabaseService, SettingsStore } from '@zenithplayer/services';
 import { XtreamCredentials } from './xtream-api.service';
 
 /**

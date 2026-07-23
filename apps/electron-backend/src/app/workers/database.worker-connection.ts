@@ -1,6 +1,6 @@
 import type BetterSqlite3 from 'better-sqlite3';
-import * as schema from '@iptvnator/shared/database/schema';
-import { getIptvnatorDatabasePath } from '@iptvnator/shared/database/path-utils';
+import * as schema from '@zenithplayer/shared/database/schema';
+import { getzenithplayerDatabasePath } from '@zenithplayer/shared/database/path-utils';
 import { workerData } from 'worker_threads';
 import type { AppDatabase } from '../database/database.types';
 import {
@@ -67,7 +67,7 @@ export async function getWorkerDatabase(): Promise<AppDatabase> {
         return db;
     }
 
-    const filePath = getIptvnatorDatabasePath();
+    const filePath = getzenithplayerDatabasePath();
     sqlite = new Database(filePath, {
         verbose: isSqlTraceEnabled()
             ? (sql: string) => {

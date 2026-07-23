@@ -3,7 +3,7 @@ import {
     ParsedPlaylist,
     ParsedPlaylistItem,
     Playlist,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { v4 as uuidv4 } from 'uuid';
 
 /**
@@ -434,7 +434,7 @@ export const getStreamExtensionFromUrl = (url: string): string | undefined => {
 
 const getExtensionFromUrlQuery = (url: string): string | undefined => {
     try {
-        const parsedUrl = new URL(url, 'http://iptvnator.local');
+        const parsedUrl = new URL(url, 'http://zenithplayer.local');
         return normalizeExtensionToken(parsedUrl.searchParams.get('extension'));
     } catch {
         return undefined;

@@ -11,13 +11,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
 import {
     StalkerPortalIdentity,
     StalkerSessionService,
     normalizeStalkerPortalIdentity,
-} from '@iptvnator/portal/stalker/data-access';
-import { Playlist } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/stalker/data-access';
+import { Playlist } from '@zenithplayer/shared/interfaces';
 import { v4 as uuid } from 'uuid';
 
 @Component({

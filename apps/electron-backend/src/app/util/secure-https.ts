@@ -1,15 +1,15 @@
 import { Agent } from 'node:https';
 import type { LookupFunction } from 'node:net';
-import { normalizeHost } from '@iptvnator/shared/interfaces';
+import { normalizeHost } from '@zenithplayer/shared/interfaces';
 import type { ValidatedRequestAgentFactory } from './validated-axios';
 
-const INSECURE_TLS_ENV = 'IPTVNATOR_ALLOW_INSECURE_TLS';
+const INSECURE_TLS_ENV = 'zenithplayer_ALLOW_INSECURE_TLS';
 
 /**
  * Whether TLS certificate validation is disabled for remote playlist fetches.
  *
  * Secure by default. Validation is only disabled when the operator explicitly
- * opts in via `IPTVNATOR_ALLOW_INSECURE_TLS=1` (or `=true`). Some IPTV
+ * opts in via `zenithplayer_ALLOW_INSECURE_TLS=1` (or `=true`). Some IPTV
  * providers serve self-signed or otherwise invalid certificates, so the
  * opt-out exists — but it must never be the default, otherwise every playlist
  * fetch is silently exposed to network MITM.

@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
-import { normalizeDateLocale } from '@iptvnator/pipes';
+import { normalizeDateLocale } from '@zenithplayer/pipes';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { addDays, differenceInMinutes, format, parse, subDays } from 'date-fns';
 import { Observable, Subscription, startWith } from 'rxjs';
@@ -28,8 +28,8 @@ import {
     ElectronBridgeEpgChannelWithPrograms,
     EpgChannel,
     EpgProgram,
-} from '@iptvnator/shared/interfaces';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+} from '@zenithplayer/shared/interfaces';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
 import { EpgItemDescriptionComponent } from '../epg-item-description/epg-item-description.component';
 import { COMPONENT_OVERLAY_REF } from './overlay-ref.token';
 

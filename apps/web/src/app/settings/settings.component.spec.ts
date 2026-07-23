@@ -21,18 +21,18 @@ import { RouterTestingModule } from '@angular/router/testing';
 import {
     EpgRuntimeBridgeService,
     EpgService,
-} from '@iptvnator/epg/data-access';
+} from '@zenithplayer/epg/data-access';
 import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { DialogService } from '@iptvnator/ui/components';
+import { DialogService } from '@zenithplayer/ui/components';
 import { MockModule, MockProvider } from 'ng-mocks';
 import {
     DatabaseService,
     DataService,
     PlaylistBackupService,
     PlaylistsService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     EmbeddedMpvSupport,
     ELECTRON_BRIDGE_APP_UPDATE_STATUSES,
@@ -43,17 +43,17 @@ import {
     StreamFormat,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { SettingsComponent } from './settings.component';
 import { AppUpdateReleaseNotesDialogComponent } from './app-update-release-notes-dialog.component';
 
 import { signal } from '@angular/core';
-import { SettingsContextService } from '@iptvnator/workspace/shell/util';
+import { SettingsContextService } from '@zenithplayer/workspace/shell/util';
 import {
     PlaylistActions,
     selectAllPlaylistsMeta,
     selectIsEpgAvailable,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { from, of } from 'rxjs';
 import { ElectronServiceStub } from '../services/electron.service.stub';
@@ -114,7 +114,7 @@ const DEFAULT_SETTINGS = {
 
 const DEFAULT_APP_UPDATE_STATUS: ElectronBridgeAppUpdateStatus = {
     currentVersion: '0.22.0',
-    manualDownloadUrl: 'https://github.com/4gray/iptvnator/releases/latest',
+    manualDownloadUrl: 'https://github.com/hus2005/zenithplayer/releases/latest',
     status: ELECTRON_BRIDGE_APP_UPDATE_STATUSES.Idle,
     supportedSelfUpdate: true,
 };
@@ -267,10 +267,10 @@ describe('SettingsComponent', () => {
                 MockProvider(PlaylistBackupService, {
                     exportBackup: jest.fn().mockResolvedValue({
                         defaultFileName:
-                            'iptvnator-playlist-backup-2026-04-21.json',
+                            'zenithplayer-playlist-backup-2026-04-21.json',
                         json: '{}',
                         manifest: {
-                            kind: 'iptvnator-playlist-backup',
+                            kind: 'zenithplayer-playlist-backup',
                             version: 1,
                             exportedAt: '2026-04-21T00:00:00.000Z',
                             includeSecrets: true,
@@ -1164,10 +1164,10 @@ describe('SettingsComponent', () => {
         expect(component.isExportingData()).toBe(true);
 
         resolveExport({
-            defaultFileName: 'iptvnator-playlist-backup-2026-04-21.json',
+            defaultFileName: 'zenithplayer-playlist-backup-2026-04-21.json',
             json: '{}',
             manifest: {
-                kind: 'iptvnator-playlist-backup',
+                kind: 'zenithplayer-playlist-backup',
                 version: 1,
                 exportedAt: '2026-04-21T00:00:00.000Z',
                 includeSecrets: true,
@@ -1178,7 +1178,7 @@ describe('SettingsComponent', () => {
         await exportPromise;
 
         expect(window.electron.saveFileDialog).toHaveBeenCalledWith(
-            'iptvnator-playlist-backup-2026-04-21.json',
+            'zenithplayer-playlist-backup-2026-04-21.json',
             [
                 {
                     extensions: ['json'],

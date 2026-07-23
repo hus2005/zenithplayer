@@ -5,7 +5,7 @@
 > superpowers:executing-plans to implement this plan task-by-task. Steps use
 > checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add one capability-gated Picture-in-Picture action to IPTVnator's
+**Goal:** Add one capability-gated Picture-in-Picture action to Zenith Player's
 shared controls for HTML5, Video.js, and ArtPlayer while keeping Embedded MPV,
 AirPlay, Cast, and the legacy controls paths unchanged.
 

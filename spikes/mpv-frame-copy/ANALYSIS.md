@@ -12,13 +12,13 @@ A fresh agent/developer session should be able to continue from this file alone.
 ## Context
 
 - Contributor **larsemig** proposed a unified player-controls architecture in
-  [PR #1105](https://github.com/4gray/iptvnator/pull/1105) (docs-only, direction
+  [PR #1105](https://github.com/hus2005/zenithplayer/pull/1105) (docs-only, direction
   approved) and implemented it as a stacked 7-PR series:
-  [#1148](https://github.com/4gray/iptvnator/pull/1148) shared controls layer,
-  [#1149](https://github.com/4gray/iptvnator/pull/1149) session-controller decompose,
-  [#1150](https://github.com/4gray/iptvnator/pull/1150) immersive overlay (macOS),
-  [#1151](https://github.com/4gray/iptvnator/pull/1151) native macOS fullscreen,
-  [#1152](https://github.com/4gray/iptvnator/pull/1152)–[#1154](https://github.com/4gray/iptvnator/pull/1154)
+  [#1148](https://github.com/hus2005/zenithplayer/pull/1148) shared controls layer,
+  [#1149](https://github.com/hus2005/zenithplayer/pull/1149) session-controller decompose,
+  [#1150](https://github.com/hus2005/zenithplayer/pull/1150) immersive overlay (macOS),
+  [#1151](https://github.com/hus2005/zenithplayer/pull/1151) native macOS fullscreen,
+  [#1152](https://github.com/hus2005/zenithplayer/pull/1152)–[#1154](https://github.com/hus2005/zenithplayer/pull/1154)
   HTML5/Video.js/ArtPlayer on shared controls (flag `WEB_PLAYER_SHARED_CONTROLS`, default OFF).
 - All 7 PRs are OPEN (as of 2026-07-10). Master still has the pre-series
   ("docked controls") approach documented in `docs/architecture/embedded-mpv-native.md`.
@@ -43,7 +43,7 @@ The series is really **two independent things**:
 
 ## Next step: frame-copy prototype (larsemig's own follow-up idea)
 
-Idea from [his comment on #1154](https://github.com/4gray/iptvnator/pull/1154#issuecomment-4932807350):
+Idea from [his comment on #1154](https://github.com/hus2005/zenithplayer/pull/1154#issuecomment-4932807350):
 render natively in the background, copy frames into the web UI, drop the
 transparent window entirely. Assessment: correct direction — trades
 unpredictable compositor bugs for a predictable performance tax, and it is the

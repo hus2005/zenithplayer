@@ -3,15 +3,15 @@ import { of } from 'rxjs';
 import {
     XtreamApiService,
     XtreamUrlService,
-} from '@iptvnator/portal/xtream/data-access';
-import { StalkerSessionService } from '@iptvnator/portal/stalker/data-access';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
+import { StalkerSessionService } from '@zenithplayer/portal/stalker/data-access';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
 import {
     DataService,
     PlaylistsService,
-} from '@iptvnator/services';
-import { Playlist } from '@iptvnator/shared/interfaces';
-import { UnifiedCollectionItem } from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/services';
+import { Playlist } from '@zenithplayer/shared/interfaces';
+import { UnifiedCollectionItem } from '@zenithplayer/portal/shared/util';
 import {
     ResolvedLiveCollectionDetail,
     StreamResolverService,
@@ -87,7 +87,7 @@ describe('StreamResolverService', () => {
                             },
                             http: {
                                 referrer: 'https://ref.example.com',
-                                'user-agent': 'IPTVnator',
+                                'user-agent': 'Zenith Player',
                                 origin: 'https://origin.example.com',
                             },
                             radio: 'false',
@@ -129,7 +129,7 @@ describe('StreamResolverService', () => {
             }),
             playback: expect.objectContaining({
                 streamUrl: 'https://example.com/live.m3u8',
-                userAgent: 'IPTVnator',
+                userAgent: 'Zenith Player',
                 referer: 'https://ref.example.com',
                 origin: 'https://origin.example.com',
             }),
@@ -158,7 +158,7 @@ describe('StreamResolverService', () => {
                             },
                             http: {
                                 referrer: 'https://ref.example.com',
-                                'user-agent': 'IPTVnator',
+                                'user-agent': 'Zenith Player',
                                 origin: 'https://origin.example.com',
                             },
                             radio: 'false',
@@ -649,7 +649,7 @@ describe('StreamResolverService', () => {
                 portalUrl: 'https://stalker.example.com/portal.php',
                 macAddress: '00:11:22:33:44:55',
                 isFullStalkerPortal: false,
-                userAgent: 'IPTVnator',
+                userAgent: 'Zenith Player',
                 referrer: 'https://ref.example.com',
                 origin: 'https://origin.example.com',
             } satisfies Partial<Playlist>)
@@ -681,7 +681,7 @@ describe('StreamResolverService', () => {
                     url: 'https://media.example.com/direct-radio.mp3',
                     http: expect.objectContaining({
                         referrer: 'https://ref.example.com',
-                        'user-agent': 'IPTVnator',
+                        'user-agent': 'Zenith Player',
                         origin: 'https://origin.example.com',
                     }),
                 }),
@@ -689,7 +689,7 @@ describe('StreamResolverService', () => {
                     streamUrl: 'https://media.example.com/direct-radio.mp3',
                     title: 'Direct Radio',
                     thumbnail: 'direct-radio.png',
-                    userAgent: 'IPTVnator',
+                    userAgent: 'Zenith Player',
                     referer: 'https://ref.example.com',
                     origin: 'https://origin.example.com',
                 }),

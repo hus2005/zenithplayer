@@ -6,7 +6,7 @@ Selected as the first follow-up to the shared web-player controls rollout.
 
 ## Goal
 
-Restore Picture-in-Picture (PiP) in IPTVnator's shared controls for the three
+Restore Picture-in-Picture (PiP) in Zenith Player's shared controls for the three
 `<video>`-backed web engines:
 
 - HTML5/hls.js;
@@ -21,7 +21,7 @@ gating, and lifecycle rules in all three engines.
 - Do not add PiP, a popup, or an always-on-top mini-player for Embedded MPV.
 - Do not add AirPlay or Cast.
 - Do not implement Document Picture-in-Picture.
-- Do not move IPTVnator's Angular controls into the operating-system PiP
+- Do not move Zenith Player's Angular controls into the operating-system PiP
   window.
 - Do not add a PiP keyboard shortcut.
 - Do not change the default-off rollout behavior of shared web controls.
@@ -117,7 +117,7 @@ The request call starts synchronously inside the button click so browser user
 activation is preserved.
 
 Fullscreen and PiP remain separate browser-managed presentation modes.
-IPTVnator does not await one transition before requesting the other, because
+Zenith Player does not await one transition before requesting the other, because
 that can consume the initiating user activation. The adapter and fullscreen
 helper reconcile the browser's resulting events.
 
@@ -171,7 +171,7 @@ Both translation keys are added to every locale file. No shortcut is added in
 this change.
 
 Standard element PiP displays video frames in an OS/browser-managed window. It
-does not display IPTVnator's Angular control bar or other DOM overlays.
+does not display Zenith Player's Angular control bar or other DOM overlays.
 Subtitle display inside PiP remains dependent on browser support for the
 active native text track.
 

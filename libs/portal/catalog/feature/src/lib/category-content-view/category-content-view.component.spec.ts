@@ -14,7 +14,7 @@ import {
     PORTAL_CATALOG_DETAIL_COMPONENT,
     PORTAL_CATALOG_FACADE,
     PortalCatalogSortMode,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import { CategoryContentViewComponent } from './category-content-view.component';
 
 @Component({

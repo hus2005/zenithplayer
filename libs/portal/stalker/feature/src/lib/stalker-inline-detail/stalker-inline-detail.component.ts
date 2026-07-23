@@ -4,16 +4,16 @@ import {
     input,
     output,
 } from '@angular/core';
-import { StalkerSelectedVodItem } from '@iptvnator/portal/stalker/data-access';
+import { StalkerSelectedVodItem } from '@zenithplayer/portal/stalker/data-access';
 import {
     type PlaybackFallbackRequest,
     VodDetailsComponent,
-} from '@iptvnator/ui/playback';
+} from '@zenithplayer/ui/playback';
 import {
     ExternalPlayerSession,
     ResolvedPortalPlayback,
     VodDetailsItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { StalkerSeriesViewComponent } from '../stalker-series-view/stalker-series-view.component';
 
 @Component({

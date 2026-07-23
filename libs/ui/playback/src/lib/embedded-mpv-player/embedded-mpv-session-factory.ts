@@ -1,7 +1,7 @@
 import {
     EmbeddedMpvSession,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 /**
  * Pure snapshot factories for the placeholder {@link EmbeddedMpvSession} states

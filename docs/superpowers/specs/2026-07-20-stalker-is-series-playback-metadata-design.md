@@ -3,7 +3,7 @@
 ## Context
 
 Some Stalker/Ministra portals expose series inside the VOD catalog by setting
-`is_series=1`. IPTVnator already normalizes this provider-specific shape and
+`is_series=1`. Zenith Player already normalizes this provider-specific shape and
 loads its seasons and episodes lazily, but two cross-surface contracts are
 incomplete:
 

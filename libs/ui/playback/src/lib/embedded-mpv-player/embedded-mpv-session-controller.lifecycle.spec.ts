@@ -3,7 +3,7 @@ import {
     EmbeddedMpvEngine,
     EmbeddedMpvSession,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { EmbeddedMpvSessionController } from './embedded-mpv-session-controller';
 
 describe('EmbeddedMpvSessionController (lifecycle & support edges)', () => {

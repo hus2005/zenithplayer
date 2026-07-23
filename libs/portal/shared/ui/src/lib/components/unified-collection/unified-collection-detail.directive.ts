@@ -2,7 +2,7 @@ import { Directive, inject, TemplateRef } from '@angular/core';
 import {
     SeriesResumeTarget,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 
 export interface UnifiedCollectionDetailContext {
     $implicit: UnifiedCollectionItem;

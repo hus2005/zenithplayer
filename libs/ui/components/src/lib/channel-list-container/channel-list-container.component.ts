@@ -20,12 +20,12 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { StorageMap } from '@ngx-pwa/local-storage';
 import { TranslatePipe } from '@ngx-translate/core';
-import { EpgService } from '@iptvnator/epg/data-access';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+import { EpgService } from '@zenithplayer/epg/data-access';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     isWorkspaceLayoutRoute,
     queryParamSignal,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     ChannelActions,
     FavoritesActions,
@@ -33,7 +33,7 @@ import {
     resolveChannelEpgLookupKey,
     selectActive,
     selectFavorites,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import {
     BehaviorSubject,
     combineLatest,
@@ -48,7 +48,7 @@ import {
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     Channel,
     EpgProgram,
@@ -58,8 +58,8 @@ import {
     PlaylistRecentlyViewedItem,
     Settings,
     STORE_KEY,
-} from '@iptvnator/shared/interfaces';
-import { normalizeEpgUrls } from '@iptvnator/shared/m3u-utils';
+} from '@zenithplayer/shared/interfaces';
+import { normalizeEpgUrls } from '@zenithplayer/shared/m3u-utils';
 import { AllChannelsViewComponent } from './all-channels-view/all-channels-view.component';
 import { FavoritesViewComponent } from './favorites-view/favorites-view.component';
 import { GroupsViewComponent } from './groups-view/groups-view.component';

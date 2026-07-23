@@ -8,21 +8,21 @@ import { isEmbeddedMpvFeatureEnabled } from './embedded-mpv-runtime-policy.util'
 
 describe('embedded-mpv-runtime-policy.util', () => {
     const originalExperiment =
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT;
+        process.env.zenithplayer_ENABLE_EMBEDDED_MPV_EXPERIMENT;
 
     afterEach(() => {
         mockElectronApp.isPackaged = false;
         if (originalExperiment === undefined) {
-            delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT;
+            delete process.env.zenithplayer_ENABLE_EMBEDDED_MPV_EXPERIMENT;
         } else {
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT =
+            process.env.zenithplayer_ENABLE_EMBEDDED_MPV_EXPERIMENT =
                 originalExperiment;
         }
     });
 
     it('enables embedded MPV for packaged apps', () => {
         mockElectronApp.isPackaged = true;
-        delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT;
+        delete process.env.zenithplayer_ENABLE_EMBEDDED_MPV_EXPERIMENT;
 
         expect(isEmbeddedMpvFeatureEnabled()).toBe(true);
     });
@@ -31,7 +31,7 @@ describe('embedded-mpv-runtime-policy.util', () => {
         'enables embedded MPV for a truthy development opt-in: %s',
         (value) => {
             mockElectronApp.isPackaged = false;
-            process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT = value;
+            process.env.zenithplayer_ENABLE_EMBEDDED_MPV_EXPERIMENT = value;
 
             expect(isEmbeddedMpvFeatureEnabled()).toBe(true);
         }
@@ -42,9 +42,9 @@ describe('embedded-mpv-runtime-policy.util', () => {
         (value) => {
             mockElectronApp.isPackaged = false;
             if (value === undefined) {
-                delete process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT;
+                delete process.env.zenithplayer_ENABLE_EMBEDDED_MPV_EXPERIMENT;
             } else {
-                process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT = value;
+                process.env.zenithplayer_ENABLE_EMBEDDED_MPV_EXPERIMENT = value;
             }
 
             expect(isEmbeddedMpvFeatureEnabled()).toBe(false);

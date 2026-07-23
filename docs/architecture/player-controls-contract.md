@@ -1,6 +1,6 @@
 # Player-Controls Contract
 
-This document is the canonical reference for IPTVnator's additive,
+This document is the canonical reference for Zenith Player's additive,
 engine-agnostic player-controls contract and shared default controls.
 Embedded MPV rendering and native-view bounds behavior remain documented in
 [embedded-mpv-native.md](./embedded-mpv-native.md).

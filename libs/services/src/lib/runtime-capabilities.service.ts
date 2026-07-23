@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ElectronBridgeApi } from '@iptvnator/shared/interfaces';
+import { ElectronBridgeApi } from '@zenithplayer/shared/interfaces';
 
 export type RuntimeEnvironment = 'electron' | 'pwa';
 

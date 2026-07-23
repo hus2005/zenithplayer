@@ -2,7 +2,7 @@ import {
     ExternalPlayerName,
     ExternalPlayerSession,
     PlayerContentInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 interface CreateExternalPlayerSessionOptions {
     player: ExternalPlayerName;

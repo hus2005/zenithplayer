@@ -5,19 +5,19 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { MockPipe } from 'ng-mocks';
-import { SeasonContainerComponent } from '@iptvnator/ui/components';
+import { SeasonContainerComponent } from '@zenithplayer/ui/components';
 import {
     PORTAL_EXTERNAL_PLAYBACK,
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     StalkerStore,
     StalkerVodSource,
-} from '@iptvnator/portal/stalker/data-access';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
-import { PortalInlinePlayerComponent } from '@iptvnator/ui/playback';
-import { DownloadsService, TmdbEnrichmentService } from '@iptvnator/services';
+} from '@zenithplayer/portal/stalker/data-access';
+import { PlaybackPositionData } from '@zenithplayer/shared/interfaces';
+import { PortalInlinePlayerComponent } from '@zenithplayer/ui/playback';
+import { DownloadsService, TmdbEnrichmentService } from '@zenithplayer/services';
 import { EMPTY, of } from 'rxjs';
 import { FavoritesButtonComponent } from '../stalker-favorites-button/stalker-favorites-button.component';
 import { StalkerSeriesViewComponent } from './stalker-series-view.component';

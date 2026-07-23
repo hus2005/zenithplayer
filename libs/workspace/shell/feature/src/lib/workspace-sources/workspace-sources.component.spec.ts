@@ -11,9 +11,9 @@ import { of } from 'rxjs';
 import {
     selectActiveTypeFilters,
     selectAllPlaylistsMeta,
-} from '@iptvnator/m3u-state';
-import { SortBy, SortOrder, SortService } from '@iptvnator/services';
-import { WORKSPACE_SHELL_ACTIONS } from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/m3u-state';
+import { SortBy, SortOrder, SortService } from '@zenithplayer/services';
+import { WORKSPACE_SHELL_ACTIONS } from '@zenithplayer/workspace/shell/util';
 import { WorkspaceSourcesComponent } from './workspace-sources.component';
 
 @Component({

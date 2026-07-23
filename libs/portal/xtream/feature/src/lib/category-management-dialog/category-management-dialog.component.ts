@@ -17,8 +17,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslatePipe } from '@ngx-translate/core';
-import { DatabaseService, XCategoryFromDb } from '@iptvnator/services';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { DatabaseService, XCategoryFromDb } from '@zenithplayer/services';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 
 export interface CategoryManagementDialogData {
     playlistId: string;

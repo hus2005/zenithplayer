@@ -347,7 +347,7 @@ For x64:
 - `system`: remove private runtime and write normalized system manifest;
 - `portable`/`flatpak`: retain only manifest-declared closure and write bundled
   manifest;
-- reject missing `IPTVNATOR_LINUX_FRAME_COPY_PROFILE` when Embedded MPV is
+- reject missing `zenithplayer_LINUX_FRAME_COPY_PROFILE` when Embedded MPV is
   required.
 
 For foreign architectures, keep the current unavailable marker behavior and
@@ -494,7 +494,7 @@ Expected: FAIL because the verifier does not exist.
 
 Provide `--artifact <path> --profile <name>`. Extract/mount into a temp
 directory, find the native layout, run manifest/mode/ELF checks, and execute
-`iptvnator_mpv_helper --runtime-probe` in the package's intended environment.
+`zenithplayer_mpv_helper --runtime-probe` in the package's intended environment.
 Always clean temporary mounts/directories.
 
 - [ ] **Step 4: Split and harden CI**
@@ -511,7 +511,7 @@ Change Linux matrix entries to:
 ```
 
 Filter targets exactly per profile and set
-`IPTVNATOR_LINUX_FRAME_COPY_PROFILE`. Build/cache the pinned runtime once per
+`zenithplayer_LINUX_FRAME_COPY_PROFILE`. Build/cache the pinned runtime once per
 source/tool hash. Add format-specific extraction/installation tools and invoke
 the verifier for every produced artifact.
 

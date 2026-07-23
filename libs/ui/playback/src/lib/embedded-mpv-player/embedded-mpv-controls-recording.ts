@@ -1,7 +1,7 @@
 import type {
     EmbeddedMpvSession,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     RECORDING_FEEDBACK,
     RECORDING_TRANSLATION,

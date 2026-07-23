@@ -28,8 +28,8 @@ Linux package profiles consume that one staged x64 source runtime differently:
   notice manifest, aggregate notice, and `licenses/**` tree beside it.
 - The strict Snap resolves the helper's remaining graphics interfaces through
   the external `mesa-core22` content provider at `$SNAP/graphics`; that shared
-  provider is not staged below `vendor/embedded-mpv/`, bundled into IPTVnator,
-  or included in IPTVnator's source/notices archive.
+  provider is not staged below `vendor/embedded-mpv/`, bundled into Zenith Player,
+  or included in Zenith Player's source/notices archive.
 - DEB/RPM/Pacman and marker-only packages do not retain bundled-runtime
   notices or license files.
 - Non-x64 Linux packages retain no native artifacts and ship only the
@@ -41,7 +41,7 @@ Linux package profiles consume that one staged x64 source runtime differently:
 The DEB dependency is specifically `libmpv2` (verified on Ubuntu 24.04+).
 Ubuntu 22.04 provides `libmpv1`; use the x64 AppImage there.
 
-Only `iptvnator_mpv_helper` may link libmpv. Electron,
+Only `zenithplayer_mpv_helper` may link libmpv. Electron,
 `embedded_mpv.node`, and `embedded_mpv_frame_reader.node` must remain free of
 direct libmpv dependencies. See `tools/embedded-mpv/README.md` and
 `docs/architecture/embedded-mpv-native.md`.

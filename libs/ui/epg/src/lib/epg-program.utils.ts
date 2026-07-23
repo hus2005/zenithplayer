@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import type { EpgProgram } from '@iptvnator/shared/interfaces';
+import type { EpgProgram } from '@zenithplayer/shared/interfaces';
 import { EPG_DATE_KEY_FORMAT } from './epg-date';
 
 export function getProgramTimeMs(

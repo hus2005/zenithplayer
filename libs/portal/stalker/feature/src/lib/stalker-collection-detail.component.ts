@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { PortalDetailShellComponent } from '@iptvnator/ui/components';
+import { PortalDetailShellComponent } from '@zenithplayer/ui/components';
 import {
     buildStalkerStateItem,
     createLogger,
@@ -20,7 +20,7 @@ import {
     PORTAL_PLAYER,
     toStalkerCategoryId,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     buildStalkerSelectedVodItem,
     clearStalkerDetailViewState,
@@ -35,16 +35,16 @@ import {
     StalkerSelectedVodItem,
     StalkerStore,
     toggleStalkerVodFavorite,
-} from '@iptvnator/portal/stalker/data-access';
-import type { PlaybackFallbackRequest } from '@iptvnator/ui/playback';
-import { PlaylistsService } from '@iptvnator/services';
+} from '@zenithplayer/portal/stalker/data-access';
+import type { PlaybackFallbackRequest } from '@zenithplayer/ui/playback';
+import { PlaylistsService } from '@zenithplayer/services';
 import {
     PlaybackPositionData,
     Playlist,
     ResolvedPortalPlayback,
     StalkerPortalItem,
     VodDetailsItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { firstValueFrom } from 'rxjs';
 import { StalkerInlineDetailComponent } from './stalker-inline-detail/stalker-inline-detail.component';
 import { StalkerVodPlaybackController } from './stalker-vod-playback-controller';

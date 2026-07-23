@@ -3,13 +3,13 @@ import { Component, inject, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject, map, of, switchMap } from 'rxjs';
-import { PlaylistsService } from '@iptvnator/services';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
+import { PlaylistsService } from '@zenithplayer/services';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
 import {
     matchesFavoriteById,
     normalizeStalkerSeriesFlag,
     StalkerSelectedVodItem,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@zenithplayer/portal/stalker/data-access';
 
 type FavoriteButtonItem = StalkerSelectedVodItem & {
     name?: string;

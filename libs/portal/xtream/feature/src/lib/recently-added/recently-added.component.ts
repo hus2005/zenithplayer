@@ -11,10 +11,10 @@ import { startWith } from 'rxjs';
 import {
     ContentCardComponent,
     ContentRailShellComponent,
-} from '@iptvnator/portal/shared/ui';
-import { toXtreamRecentlyAddedTimestamp } from '@iptvnator/shared/interfaces';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
-import { ContentType } from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/shared/ui';
+import { toXtreamRecentlyAddedTimestamp } from '@zenithplayer/shared/interfaces';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
+import { ContentType } from '@zenithplayer/portal/xtream/data-access';
 
 interface RecentlyAddedItem {
     readonly added?: string;

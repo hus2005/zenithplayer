@@ -1,7 +1,7 @@
 import {
     buildStalkerSerialCfduid,
     normalizeStalkerSerialNumber,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 const STALKER_MAG_USER_AGENT =
     'Mozilla/5.0 (QtEmbedded; U; Linux; C) AppleWebKit/533.3 (KHTML, like Gecko) MAG250';

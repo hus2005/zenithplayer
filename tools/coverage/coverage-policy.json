@@ -178,10 +178,10 @@
                 "e2eTags": ["@epg"]
             },
             {
-                "name": "@iptvnator/pipes",
+                "name": "@zenithplayer/pipes",
                 "root": "libs/ui/pipes",
                 "sourceRoot": "libs/ui/pipes/src",
-                "validationCommand": "pnpm nx test @iptvnator/pipes",
+                "validationCommand": "pnpm nx test @zenithplayer/pipes",
                 "e2eTags": ["@epg", "@settings"]
             },
             {

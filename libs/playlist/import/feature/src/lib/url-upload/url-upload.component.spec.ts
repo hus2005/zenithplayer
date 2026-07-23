@@ -4,7 +4,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { MockModule } from 'ng-mocks';
-import { RuntimeCapabilitiesService } from '@iptvnator/services';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 import { UrlUploadComponent } from './url-upload.component';
 
 describe('UrlUploadComponent', () => {

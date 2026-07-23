@@ -19,7 +19,7 @@ import {
     getM3uArchiveDays,
     isM3uCatchupPlaybackSupported,
     resolveM3uCatchupUrl,
-} from '@iptvnator/shared/m3u-utils';
+} from '@zenithplayer/shared/m3u-utils';
 import {
     DEFAULT_FAVORITES_CHANNEL_SORT_MODE,
     FavoritesChannelSortMode,
@@ -31,12 +31,12 @@ import {
     restoreLiveEpgPanelState,
     UnifiedCollectionItem,
     UnifiedFavoriteChannel,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     ResolvedLiveCollectionDetail,
     StreamResolverService,
     UnifiedRecentDataService,
-} from '@iptvnator/portal/shared/data-access';
+} from '@zenithplayer/portal/shared/data-access';
 import {
     EpgDateNavigationDirection,
     EpgListViewComponent,
@@ -44,7 +44,7 @@ import {
     EpgTimelineComponent,
     getTodayEpgDateKey,
     shiftEpgDateKey,
-} from '@iptvnator/ui/epg';
+} from '@zenithplayer/ui/epg';
 import {
     getLiveEpgPanelSummary,
     toEpgProgram,
@@ -57,10 +57,10 @@ import {
     AudioPlayerComponent,
     type PlaybackFallbackRequest,
     WebPlayerViewComponent,
-} from '@iptvnator/ui/playback';
-import { ResizableDirective } from '@iptvnator/ui/components';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/ui/playback';
+import { ResizableDirective } from '@zenithplayer/ui/components';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
 
 @Component({
     selector: 'app-unified-live-tab',

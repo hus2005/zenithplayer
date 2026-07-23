@@ -14,10 +14,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     PlayerContentInfo,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import type { PlaybackFallbackRequest } from '../playback-diagnostics/playback-diagnostics.util';
-import { SettingsStore } from '@iptvnator/services';
-import { applyChannelNameStrip } from '@iptvnator/shared/m3u-utils';
+import { SettingsStore } from '@zenithplayer/services';
+import { applyChannelNameStrip } from '@zenithplayer/shared/m3u-utils';
 import { WebPlayerViewComponent } from '../web-player-view/web-player-view.component';
 import type {
     SeriesEpisodeMetadata,

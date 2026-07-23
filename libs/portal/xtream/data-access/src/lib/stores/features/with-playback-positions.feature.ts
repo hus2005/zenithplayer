@@ -6,8 +6,8 @@ import {
     withMethods,
     withState,
 } from '@ngrx/signals';
-import { XtreamSerieEpisode } from '@iptvnator/shared/interfaces';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
+import { XtreamSerieEpisode } from '@zenithplayer/shared/interfaces';
+import { PlaybackPositionRuntimeBridgeService } from '@zenithplayer/services';
 import {
     PlaybackPositionData,
     XTREAM_DATA_SOURCE,

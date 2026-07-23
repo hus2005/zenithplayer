@@ -1,13 +1,13 @@
-import { redactSensitiveData } from '@iptvnator/shared/logging';
+import { redactSensitiveData } from '@zenithplayer/shared/logging';
 
 const TRACE_ENV_TRUE_VALUES = new Set(['1', 'true', 'yes', 'on']);
-const TRACE_PREFIX = '[IPTVnator Trace]';
+const TRACE_PREFIX = '[Zenith Player Trace]';
 const MAX_TRACE_ARRAY_ITEMS = 5;
 const MAX_TRACE_OBJECT_KEYS = 8;
 const MAX_TRACE_STRING_LENGTH = 180;
 const MAX_TRACE_DEPTH = 2;
 
-export const DEBUG_TRACE_EVENT_CHANNEL = 'IPTVNATOR_DEBUG_TRACE_EVENT';
+export const DEBUG_TRACE_EVENT_CHANNEL = 'zenithplayer_DEBUG_TRACE_EVENT';
 
 function readFlag(name: string): boolean {
     const value = process.env[name]?.trim().toLowerCase();
@@ -45,35 +45,35 @@ function summarizeObject(
 }
 
 export function isStartupTraceEnabled(): boolean {
-    return readFlag('IPTVNATOR_TRACE_STARTUP');
+    return readFlag('zenithplayer_TRACE_STARTUP');
 }
 
 export function isRendererApiTraceEnabled(): boolean {
-    return isStartupTraceEnabled() || readFlag('IPTVNATOR_TRACE_IPC');
+    return isStartupTraceEnabled() || readFlag('zenithplayer_TRACE_IPC');
 }
 
 export function isDbTraceEnabled(): boolean {
-    return isStartupTraceEnabled() || readFlag('IPTVNATOR_TRACE_DB');
+    return isStartupTraceEnabled() || readFlag('zenithplayer_TRACE_DB');
 }
 
 export function isSqlTraceEnabled(): boolean {
     return (
         isStartupTraceEnabled() ||
-        readFlag('IPTVNATOR_TRACE_DB') ||
-        readFlag('IPTVNATOR_TRACE_SQL')
+        readFlag('zenithplayer_TRACE_DB') ||
+        readFlag('zenithplayer_TRACE_SQL')
     );
 }
 
 export function isWindowTraceEnabled(): boolean {
-    return isStartupTraceEnabled() || readFlag('IPTVNATOR_TRACE_WINDOW');
+    return isStartupTraceEnabled() || readFlag('zenithplayer_TRACE_WINDOW');
 }
 
 export function isRendererConsoleTraceEnabled(): boolean {
-    return readFlag('IPTVNATOR_TRACE_RENDERER_CONSOLE');
+    return readFlag('zenithplayer_TRACE_RENDERER_CONSOLE');
 }
 
 export function isExternalPlayerTraceEnabled(): boolean {
-    return isStartupTraceEnabled() || readFlag('IPTVNATOR_TRACE_PLAYER');
+    return isStartupTraceEnabled() || readFlag('zenithplayer_TRACE_PLAYER');
 }
 
 export function roundTraceDuration(durationMs: number): number {

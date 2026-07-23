@@ -4,7 +4,7 @@ import {
     input,
 } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { LiveLayoutSidebarStateService } from '@iptvnator/portal/shared/util';
+import { LiveLayoutSidebarStateService } from '@zenithplayer/portal/shared/util';
 import { WorkspaceShellContextSidebarComponent } from './workspace-shell-context-sidebar.component';
 
 @Directive({

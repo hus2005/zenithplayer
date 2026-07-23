@@ -286,7 +286,7 @@ describe('embedded-mpv frame-copy helper failures', () => {
             context.createProbe({
                 env: {
                     PATH: '/usr/bin',
-                    IPTVNATOR_TRACE_PLAYER: '1',
+                    zenithplayer_TRACE_PLAYER: '1',
                 },
             })(fixture.helperPath)
         ).toEqual({
@@ -320,7 +320,7 @@ describe('embedded-mpv frame-copy helper failures', () => {
         context.createProbe({
             env: {
                 PATH: '/usr/bin',
-                IPTVNATOR_TRACE_PLAYER: '1',
+                zenithplayer_TRACE_PLAYER: '1',
             },
         })(fixture.helperPath);
 

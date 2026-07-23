@@ -20,7 +20,7 @@ import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import {
     GridListComponent,
     PlaylistErrorViewComponent,
-} from '@iptvnator/portal/shared/ui';
+} from '@zenithplayer/portal/shared/ui';
 import {
     clearNavigationStateKeys,
     getOpenStalkerItemState,
@@ -29,7 +29,7 @@ import {
     PORTAL_CATALOG_DETAIL_COMPONENT,
     PORTAL_CATALOG_FACADE,
     PortalCatalogSortMode,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 
 interface CategoryContentItem {
     id?: number | string;

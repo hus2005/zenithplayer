@@ -12,9 +12,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ExternalPlayerSession } from '@iptvnator/shared/interfaces';
-import { SettingsStore } from '@iptvnator/services';
-import { applyChannelNameStrip } from '@iptvnator/shared/m3u-utils';
+import { ExternalPlayerSession } from '@zenithplayer/shared/interfaces';
+import { SettingsStore } from '@zenithplayer/services';
+import { applyChannelNameStrip } from '@zenithplayer/shared/m3u-utils';
 
 @Component({
     selector: 'app-external-playback-dock',

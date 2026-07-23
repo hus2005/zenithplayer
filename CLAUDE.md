@@ -41,7 +41,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-IPTVnator is a cross-platform IPTV player application built with Angular and Electron, supporting M3U/M3U8 playlists, Xtream Codes API, and Stalker portals.
+Zenith Player is a cross-platform IPTV player application built with Angular and Electron, supporting M3U/M3U8 playlists, Xtream Codes API, and Stalker portals.
 
 **Dual Environment Support**: The application is designed to work in both Electron and as a Progressive Web App (PWA). The architecture uses a factory pattern to inject environment-specific services at runtime, ensuring the same codebase works in both contexts.
 
@@ -55,7 +55,7 @@ pnpm nx show projects
 ```
 
 - Run the install step in a fresh worktree before relying on Nx discovery, lint, test, or build commands. Without `node_modules`, local Nx modules are unavailable.
-- Use scoped path aliases from `tsconfig.base.json` such as `@iptvnator/services`, `@iptvnator/shared/interfaces`, and `@iptvnator/ui/components`.
+- Use scoped path aliases from `tsconfig.base.json` such as `@zenithplayer/services`, `@zenithplayer/shared/interfaces`, and `@zenithplayer/ui/components`.
 - Do not add new imports from legacy bare aliases such as `services`, `shared-interfaces`, `components`, `m3u-state`, or `database`.
 - Every Nx project should keep `scope:*`, `domain:*`, and `type:*` tags in `project.json`.
 - See `docs/architecture/nx-workspace-boundaries.md` for the current Nx tag and alias policy.
@@ -113,31 +113,31 @@ nx run electron-backend:make
 - Use CDP clients (Chrome DevTools Protocol tools) against: `127.0.0.1:9222`
 - When the task is Electron automation/debugging, use the `electron` skill
 - Do not auto-open DevTools during normal CDP automation. In development, DevTools is opt-in via `ELECTRON_OPEN_DEVTOOLS=1`.
-- If DevTools is open, `agent-browser --cdp 9222 ...` may attach to the DevTools page instead of the IPTVnator window (symptoms: `tab list` shows `about:blank`, empty snapshots, black screenshots). Inspect targets with `curl http://127.0.0.1:9222/json/list` and connect directly to the app page's `webSocketDebuggerUrl`.
+- If DevTools is open, `agent-browser --cdp 9222 ...` may attach to the DevTools page instead of the Zenith Player window (symptoms: `tab list` shows `about:blank`, empty snapshots, black screenshots). Inspect targets with `curl http://127.0.0.1:9222/json/list` and connect directly to the app page's `webSocketDebuggerUrl`.
 
 For startup tracing or white-screen debugging:
 
 ```bash
-IPTVNATOR_TRACE_STARTUP=1 nx serve electron-backend
+zenithplayer_TRACE_STARTUP=1 nx serve electron-backend
 ```
 
 Useful narrower flags:
 
-- `IPTVNATOR_TRACE_IPC=1` traces renderer `window.electron.*` bridge calls
-- `IPTVNATOR_TRACE_DB=1` traces DB worker requests and DB progress events
-- `IPTVNATOR_TRACE_SQL=1` traces SQLite statements in both main and worker connections
-- `IPTVNATOR_TRACE_WINDOW=1` traces BrowserWindow navigation/load lifecycle
-- `IPTVNATOR_TRACE_PLAYER=1` traces external-player activity and bounded Embedded MPV runtime-probe stderr
-- `IPTVNATOR_TRACE_RENDERER_CONSOLE=1` mirrors renderer console logs into the Electron terminal
+- `zenithplayer_TRACE_IPC=1` traces renderer `window.electron.*` bridge calls
+- `zenithplayer_TRACE_DB=1` traces DB worker requests and DB progress events
+- `zenithplayer_TRACE_SQL=1` traces SQLite statements in both main and worker connections
+- `zenithplayer_TRACE_WINDOW=1` traces BrowserWindow navigation/load lifecycle
+- `zenithplayer_TRACE_PLAYER=1` traces external-player activity and bounded Embedded MPV runtime-probe stderr
+- `zenithplayer_TRACE_RENDERER_CONSOLE=1` mirrors renderer console logs into the Electron terminal
 
 Settings, portal request/response, and trace payloads must use
-`@iptvnator/shared/logging` or the redacting portal logger before reaching
+`@zenithplayer/shared/logging` or the redacting portal logger before reaching
 `console.*`; never log raw credentials while debugging.
 
 For GPU/compositor debugging:
 
 ```bash
-IPTVNATOR_DISABLE_HARDWARE_ACCELERATION=1 nx serve electron-backend
+zenithplayer_DISABLE_HARDWARE_ACCELERATION=1 nx serve electron-backend
 ```
 
 If the Nx daemon gets into a bad state before rerunning Electron:
@@ -157,10 +157,10 @@ agent-browser --cdp 9222 tab 1
 agent-browser --cdp 9222 snapshot -i -c -d 4
 
 # Capture debug artifacts
-agent-browser --cdp 9222 screenshot /tmp/iptvnator-cdp.png
-agent-browser --cdp 9222 trace start /tmp/iptvnator.trace.zip
+agent-browser --cdp 9222 screenshot /tmp/zenithplayer-cdp.png
+agent-browser --cdp 9222 trace start /tmp/zenithplayer.trace.zip
 agent-browser --cdp 9222 wait 1500
-agent-browser --cdp 9222 trace stop /tmp/iptvnator.trace.zip
+agent-browser --cdp 9222 trace stop /tmp/zenithplayer.trace.zip
 ```
 
 If `agent-browser` is not in PATH, use:
@@ -455,7 +455,7 @@ See `docs/architecture/m3u-playlist-module.md` for complete documentation.
 **Data Storage (Environment-Specific)**:
 
 - **Electron**: SQLite database via Drizzle ORM (`better-sqlite3` driver)
-    - Location: `~/.iptvnator/databases/iptvnator.db`
+    - Location: `~/.zenithplayer/databases/zenithplayer.db`
     - Full-featured relational database with foreign keys and indexes
     - Canonical schema and connection live in `libs/shared/database`
 - **PWA (Web)**: IndexedDB via `ngx-indexed-db`
@@ -570,7 +570,7 @@ This project uses modern Angular signal-based APIs and patterns. **ALWAYS** use 
 **Database**:
 
 - **ORM**: Drizzle ORM with `better-sqlite3` (local SQLite file)
-- **Location**: `~/.iptvnator/databases/iptvnator.db` (avoids spaces in path)
+- **Location**: `~/.zenithplayer/databases/zenithplayer.db` (avoids spaces in path)
 - **Schema** (`libs/shared/database/src/lib/schema.ts` — canonical; `apps/electron-backend/src/app/database/schema.ts` is a backwards-compat re-export shim):
     - `playlists` - Playlist metadata (M3U, Xtream, Stalker)
     - `categories` - Content categories (live, movies, series)
@@ -625,13 +625,13 @@ This project uses modern Angular signal-based APIs and patterns. **ALWAYS** use 
 - Embedded MPV frame-copy engine (experimental, macOS Apple Silicon + Linux
   x64 + Windows; enabled via `Settings > Playback > Embedded MPV: frame-copy
 engine` (restart required) or
-  `IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY=1` on top of the embedded MPV
+  `zenithplayer_ENABLE_EMBEDDED_MPV_FRAME_COPY=1` on top of the embedded MPV
   experiment flag): a per-session helper renders mpv offscreen (CGL on macOS,
   EGL on Linux, WGL on Windows), publishes BGRA frames into a shm ring, and the
   preload frame pump uploads them to
   `<canvas data-embedded-mpv-frame>`. Shared `app-player-controls` owns the DOM
   UI; native-view retains the legacy dock. On Linux, only
-  `iptvnator_mpv_helper` may link libmpv; Electron, its shipped libraries, the
+  `zenithplayer_mpv_helper` may link libmpv; Electron, its shipped libraries, the
   addon, and frame reader must not. Pristine afterPack/unpacked layouts scan
   Electron libraries recursively; extracted Snap payloads exclude only the
   package-manager `lib/**` and `usr/lib/**` trees overlaid into the same root.
@@ -645,9 +645,9 @@ engine` (restart required) or
   DEB/RPM/Pacman depend on system libmpv plus the helper's direct
   EGL/GL/GBM interfaces, AppImage/Snap bundle the pinned LGPL closure, and
   Flatpak bundles the same closure. Flatpak is an isolated packaging pass and
-  keeps `iptvnator` as the real Electron ELF so Electron Builder's
+  keeps `zenithplayer` as the real Electron ELF so Electron Builder's
   `electron-wrapper` passes it directly to Zypak. Other Linux targets retain the
-  conditional `iptvnator` wrapper and `iptvnator.bin`. Mixed
+  conditional `zenithplayer` wrapper and `zenithplayer.bin`. Mixed
   Flatpak/non-Flatpak target sets fail before mutation. Exact system
   dependencies are DEB=`libmpv2,libegl1,libgl1,libgbm1`,
   RPM=`mpv-libs,libglvnd-egl,libglvnd-glx,mesa-libgbm`, and
@@ -684,7 +684,7 @@ engine` (restart required) or
   reason, and its optional `helperDetail` must be 1–1024 printable ASCII
   characters. Invalid detail suppresses both helper fields. Every probe uses
   an explicit 16 MiB aggregate captured-output ceiling independent of tracing.
-  With `IPTVNATOR_TRACE_PLAYER=1`, non-empty helper stderr is emitted separately
+  With `zenithplayer_TRACE_PLAYER=1`, non-empty helper stderr is emitted separately
   as one JSON-escaped stderr line with a 16,384-character `stderr` limit and an
   explicit `truncated` field; trace-write failure cannot change availability.
   Installed-Snap CI enables Mesa EGL/GL diagnostics through this bounded
@@ -839,7 +839,7 @@ window.electron; // truthy in Electron, undefined in browser
 ```
 
 **Why Dual Mode?**
-IPTVnator supports both Electron (desktop app) and PWA (web browser) to provide flexibility:
+Zenith Player supports both Electron (desktop app) and PWA (web browser) to provide flexibility:
 
 - **Electron**: Full-featured desktop experience with local database, external player support (MPV/VLC), and native file system access
 - **PWA**: Lightweight web version that runs in any browser without installation
@@ -849,7 +849,7 @@ IPTVnator supports both Electron (desktop app) and PWA (web browser) to provide 
 - `app.config.ts` - `DataFactory()` selects DataService implementation based on environment
 - `app.routes.ts` - Same `/workspace/...` route tree in both environments; guards keep Electron-only routes (e.g. global search) out of the PWA
 - Storage layer switches automatically:
-    - Electron → SQLite/Drizzle ORM → `~/.iptvnator/databases/iptvnator.db`
+    - Electron → SQLite/Drizzle ORM → `~/.zenithplayer/databases/zenithplayer.db`
     - PWA → IndexedDB → Browser storage
 - External player support (MPV/VLC) only available in Electron
 - File system operations only available in Electron (uploading playlists from disk)

@@ -7,7 +7,7 @@ import {
     inject,
     signal,
 } from '@angular/core';
-import { ElectronBridgeWindowState } from '@iptvnator/shared/interfaces';
+import { ElectronBridgeWindowState } from '@zenithplayer/shared/interfaces';
 
 /**
  * Renderer-drawn window-management buttons (minimize / maximize-restore /

@@ -23,25 +23,25 @@ import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { DatabaseService } from '@iptvnator/services';
-import { ContentCardComponent } from '@iptvnator/portal/shared/ui';
-import { SearchLayoutComponent } from '@iptvnator/portal/shared/ui';
+import { DatabaseService } from '@zenithplayer/services';
+import { ContentCardComponent } from '@zenithplayer/portal/shared/ui';
+import { SearchLayoutComponent } from '@zenithplayer/portal/shared/ui';
 import {
     buildXtreamNavigationTarget,
     isWorkspaceLayoutRoute,
     queryParamSignal,
-} from '@iptvnator/portal/shared/util';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { SearchFilters } from '@iptvnator/portal/xtream/data-access';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/shared/util';
+import { createLogger } from '@zenithplayer/portal/shared/util';
+import { SearchFilters } from '@zenithplayer/portal/xtream/data-access';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
 import {
     ContentType,
     XtreamSearchResultItem,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
 import {
     GlobalSearchResult,
     isM3uGlobalSearchResult,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 interface SearchResultsData {
     isGlobalSearch: boolean;

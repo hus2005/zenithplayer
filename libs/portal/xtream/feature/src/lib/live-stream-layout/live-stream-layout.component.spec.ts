@@ -17,24 +17,24 @@ import {
     LiveLayoutSidebarStateService,
     PORTAL_PLAYER,
     ResizableDirective,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     FavoritesService,
     XtreamStore,
     XtreamUrlService,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
 import {
     EpgListViewComponent,
     EpgProgramActivationEvent,
     EpgTimelineComponent,
     EpgTimelineSummary,
-} from '@iptvnator/ui/epg';
-import { WebPlayerViewComponent } from '@iptvnator/ui/playback';
-import { EpgItem, EpgProgram } from '@iptvnator/shared/interfaces';
-import { GridListComponent } from '@iptvnator/portal/shared/ui';
+} from '@zenithplayer/ui/epg';
+import { WebPlayerViewComponent } from '@zenithplayer/ui/playback';
+import { EpgItem, EpgProgram } from '@zenithplayer/shared/interfaces';
+import { GridListComponent } from '@zenithplayer/portal/shared/ui';
 import { PortalChannelsListComponent } from '../portal-channels-list/portal-channels-list.component';
 import { LiveStreamLayoutComponent } from './live-stream-layout.component';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
 import { PageEvent } from '@angular/material/paginator';
 
 const LIVE_CHANNEL_SORT_STORAGE_KEY = 'xtream-live-channel-sort-mode';

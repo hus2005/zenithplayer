@@ -1,5 +1,5 @@
 import { setupZoneTestEnv } from 'jest-preset-angular/setup-env/zone/index.mjs';
-import { installDuplicateVideoJsQualityLevelsWarnFilter } from '@iptvnator/shared/testing';
+import { installDuplicateVideoJsQualityLevelsWarnFilter } from '@zenithplayer/shared/testing';
 
 Object.defineProperty(globalThis, 'jest', {
     configurable: true,

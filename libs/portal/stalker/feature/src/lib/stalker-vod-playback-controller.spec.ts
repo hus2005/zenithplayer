@@ -5,8 +5,8 @@ import type {
     Logger,
     PortalPlaybackPositions,
     PortalPlayer,
-} from '@iptvnator/portal/shared/util';
-import type { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/shared/util';
+import type { PlaybackPositionData } from '@zenithplayer/shared/interfaces';
 import { StalkerVodPlaybackController } from './stalker-vod-playback-controller';
 
 interface Deferred<T> {

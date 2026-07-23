@@ -1,12 +1,12 @@
 {
-    "appId": "com.fourgray.iptvnator",
-    "productName": "IPTVnator",
+    "appId": "com.fourgray.zenithplayer",
+    "productName": "Zenith Player",
     "artifactName": "${name}-${version}-${os}-${arch}.${ext}",
     "publish": [
         {
             "provider": "github",
-            "owner": "4gray",
-            "repo": "iptvnator"
+            "owner": "hus2005",
+            "repo": "zenithplayer"
         }
     ],
     "directories": {
@@ -36,8 +36,8 @@
         "**/embedded-mpv-runtime.json"
     ],
     "extraMetadata": {
-        "name": "iptvnator",
-        "productName": "IPTVnator",
+        "name": "zenith-player",
+        "productName": "Zenith Player",
         "main": "electron-backend/main.js"
     },
     "extraResources": ["dist/apps/electron-backend/workers"],
@@ -63,11 +63,11 @@
     },
     "linux": {
         "category": "Video",
-        "executableName": "iptvnator",
+        "executableName": "zenithplayer",
         "executableArgs": ["--ozone-platform=x11"],
         "desktop": {
             "entry": {
-                "StartupWMClass": "iptvnator"
+                "StartupWMClass": "zenithplayer"
             }
         },
         "target": [
@@ -119,8 +119,8 @@
         ],
         "files": [
             [
-                "apps/electron-backend/linux/com.fourgray.iptvnator.metainfo.xml",
-                "/share/metainfo/com.fourgray.iptvnator.metainfo.xml"
+                "apps/electron-backend/linux/com.fourgray.zenithplayer.metainfo.xml",
+                "/share/metainfo/com.fourgray.zenithplayer.metainfo.xml"
             ]
         ]
     },

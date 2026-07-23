@@ -1,11 +1,11 @@
-# Self-hosted IPTVnator
+# Self-hosted Zenith Player
 
 The self-hosted image contains both pieces required for the browser PWA:
 
 - Angular PWA static files served by nginx
 - The monorepo `web-backend` Express app proxied under `/api`
 
-The historical standalone `4gray/iptvnator-backend` image is no longer needed
+The historical standalone `hus2005/zenithplayer-backend` image is no longer needed
 for the default Docker deployment.
 
 ## PWA Limitations And Playback Troubleshooting
@@ -39,7 +39,7 @@ container are required for the default local deployment.
 ## Build The Image
 
 ```bash
-docker build -t 4gray/iptvnator -f docker/Dockerfile .
+docker build -t hus2005/zenithplayer -f docker/Dockerfile .
 ```
 
 The image build runs:
@@ -75,13 +75,13 @@ secrets.
 
 Use `latest` for the simplest self-hosted setup. Pin `sha-<sha>` or
 `<version>-pwa-<sha>` when you need reproducible deployments. Use release tags
-when you want the Docker image to track a tagged IPTVnator release rather than
+when you want the Docker image to track a tagged Zenith Player release rather than
 every merge to `master`.
 
 ## Runtime Configuration
 
 The container writes `/usr/share/nginx/html/assets/app-config.js` on startup.
-That file sets `window.__IPTVNATOR_CONFIG__.BACKEND_URL`, which the PWA reads
+That file sets `window.__zenithplayer_CONFIG__.BACKEND_URL`, which the PWA reads
 before it creates `PwaService`.
 
 These variables are supported by the Docker image. The compose file sets the
@@ -92,7 +92,7 @@ safe local defaults shown below.
 | `BACKEND_URL`                            | `/api`                  | Browser-facing backend URL used by the PWA. Keep `/api` for the bundled nginx proxy.                                                         |
 | `CLIENT_URL`                             | `http://localhost:4333` | Allowed browser origin for backend CORS. Use the public URL when hosting behind a reverse proxy. Multiple origins can be comma-separated.    |
 | `PORT`                                   | `3000`                  | Internal Express backend port. nginx proxy config is rendered from the template to match it at startup.                                      |
-| `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS` | `0`                     | Set to `1` or `true` only for trusted local/LAN deployments that intentionally proxy private network IPTV or mock endpoints.                 |
+| `zenithplayer_PROXY_ALLOW_PRIVATE_NETWORKS` | `0`                     | Set to `1` or `true` only for trusted local/LAN deployments that intentionally proxy private network IPTV or mock endpoints.                 |
 | `NODE_EXTRA_CA_CERTS`                    | unset                   | Optional Node.js CA bundle path for providers using private certificate authorities. Mount the CA file into the container and set this path. |
 
 The web backend proxy accepts only `http` and `https` provider URLs. The PWA
@@ -100,7 +100,7 @@ first registers provider URLs through `/provider-targets`, then uses the
 returned `targetId` for playlist, Xtream, and Stalker proxy calls. The backend
 blocks loopback, private, link-local, and reserved network targets by default so
 a publicly exposed instance cannot be used as a generic internal-network
-fetcher. If you enable `IPTVNATOR_PROXY_ALLOW_PRIVATE_NETWORKS=1`, keep the
+fetcher. If you enable `zenithplayer_PROXY_ALLOW_PRIVATE_NETWORKS=1`, keep the
 instance restricted to trusted users.
 
 For providers that use private certificate authorities, keep TLS validation
@@ -108,7 +108,7 @@ enabled and pass the CA bundle to Node:
 
 ```yaml
 services:
-    iptvnator:
+    zenithplayer:
         volumes:
             - ./ca.pem:/etc/ssl/private/provider-ca.pem:ro
         environment:

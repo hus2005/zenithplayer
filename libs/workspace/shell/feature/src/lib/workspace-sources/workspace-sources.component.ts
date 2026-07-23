@@ -5,15 +5,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { RecentPlaylistsComponent } from '@iptvnator/playlist/shared/ui';
+import { RecentPlaylistsComponent } from '@zenithplayer/playlist/shared/ui';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { selectActiveTypeFilters, selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
+import { selectActiveTypeFilters, selectAllPlaylistsMeta } from '@zenithplayer/m3u-state';
 import { map, startWith } from 'rxjs';
-import { SortBy, SortOrder, SortService } from '@iptvnator/services';
+import { SortBy, SortOrder, SortService } from '@zenithplayer/services';
 import {
     WORKSPACE_SHELL_ACTIONS,
     WorkspacePlaylistType,
-} from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/workspace/shell/util';
 
 interface SortOption {
     by: SortBy;

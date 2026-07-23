@@ -1,6 +1,6 @@
 import { ChildProcess, spawn } from 'child_process';
 import { createConnection } from 'net';
-import { PlayerContentInfo } from '@iptvnator/shared/interfaces';
+import { PlayerContentInfo } from '@zenithplayer/shared/interfaces';
 import {
     MPV_PLAYER_ARGUMENTS,
     MPV_PLAYER_PATH,

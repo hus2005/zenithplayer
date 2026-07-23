@@ -1,4 +1,4 @@
-import { StalkerPortalActions } from '@iptvnator/shared/interfaces';
+import { StalkerPortalActions } from '@zenithplayer/shared/interfaces';
 
 export const StalkerContentTypes = {
     stb: {

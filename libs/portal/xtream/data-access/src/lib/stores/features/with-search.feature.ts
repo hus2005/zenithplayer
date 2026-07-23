@@ -5,12 +5,12 @@ import {
     withMethods,
     withState,
 } from '@ngrx/signals';
-import { GlobalSearchResult } from '@iptvnator/shared/interfaces';
+import { GlobalSearchResult } from '@zenithplayer/shared/interfaces';
 import {
     XTREAM_DATA_SOURCE,
     XtreamContentItem,
 } from '../../data-sources/xtream-data-source.interface';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 import { XtreamSearchResultItem } from '../../xtream-state';
 
 /**

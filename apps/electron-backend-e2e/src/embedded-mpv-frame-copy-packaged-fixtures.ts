@@ -1,7 +1,7 @@
 import type {
     EmbeddedMpvSession,
     EmbeddedMpvSupport,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { spawnSync } from 'child_process';
 import { createServer, type Server } from 'http';
 import sharp = require('sharp');

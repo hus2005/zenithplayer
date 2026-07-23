@@ -31,21 +31,21 @@ describe('worker-runtime-paths', () => {
             isPackaged: true,
             workerFilename: 'epg-parser.worker.js',
             developmentWorkerDir: '/unused',
-            resourcesPath: '/Applications/IPTVnator.app/Contents/Resources',
+            resourcesPath: '/Applications/Zenith Player.app/Contents/Resources',
             appPath:
-                '/Applications/IPTVnator.app/Contents/Resources/app.asar',
+                '/Applications/Zenith Player.app/Contents/Resources/app.asar',
             fileExists: (filePath) =>
                 filePath ===
-                '/Applications/IPTVnator.app/Contents/Resources/dist/apps/electron-backend/workers/epg-parser.worker.js',
+                '/Applications/Zenith Player.app/Contents/Resources/dist/apps/electron-backend/workers/epg-parser.worker.js',
         });
 
         expect(bootstrap.workerPath).toBe(
-            '/Applications/IPTVnator.app/Contents/Resources/dist/apps/electron-backend/workers/epg-parser.worker.js'
+            '/Applications/Zenith Player.app/Contents/Resources/dist/apps/electron-backend/workers/epg-parser.worker.js'
         );
         expect(bootstrap.nativeModuleSearchPaths).toEqual([
-            '/Applications/IPTVnator.app/Contents/Resources/app.asar.unpacked/node_modules',
-            '/Applications/IPTVnator.app/Contents/Resources/app.asar.unpacked/electron-backend/node_modules',
-            '/Applications/IPTVnator.app/Contents/Resources/app.asar.unpacked/dist/apps/electron-backend/node_modules',
+            '/Applications/Zenith Player.app/Contents/Resources/app.asar.unpacked/node_modules',
+            '/Applications/Zenith Player.app/Contents/Resources/app.asar.unpacked/electron-backend/node_modules',
+            '/Applications/Zenith Player.app/Contents/Resources/app.asar.unpacked/dist/apps/electron-backend/node_modules',
         ]);
     });
 
@@ -55,18 +55,18 @@ describe('worker-runtime-paths', () => {
             workerFilename: 'database.worker.js',
             developmentWorkerDir: '/unused',
             resourcesPath: '/tmp/runtime-resources',
-            appPath: '/opt/IPTVnator/resources/app.asar',
+            appPath: '/opt/Zenith Player/resources/app.asar',
             fileExists: (filePath) =>
                 filePath ===
-                '/opt/IPTVnator/resources/dist/apps/electron-backend/workers/database.worker.js',
+                '/opt/Zenith Player/resources/dist/apps/electron-backend/workers/database.worker.js',
         });
 
         expect(bootstrap.workerPath).toBe(
-            '/opt/IPTVnator/resources/dist/apps/electron-backend/workers/database.worker.js'
+            '/opt/Zenith Player/resources/dist/apps/electron-backend/workers/database.worker.js'
         );
         expect(bootstrap.workerPathCandidates).toEqual([
             '/tmp/runtime-resources/dist/apps/electron-backend/workers/database.worker.js',
-            '/opt/IPTVnator/resources/dist/apps/electron-backend/workers/database.worker.js',
+            '/opt/Zenith Player/resources/dist/apps/electron-backend/workers/database.worker.js',
         ]);
     });
 
@@ -77,7 +77,7 @@ describe('worker-runtime-paths', () => {
                 workerFilename: 'database.worker.js',
                 developmentWorkerDir: '/unused',
                 resourcesPath: '/resources',
-                appPath: '/opt/IPTVnator/resources/app.asar',
+                appPath: '/opt/Zenith Player/resources/app.asar',
                 fileExists: () => false,
             })
         ).toThrow(
@@ -85,7 +85,7 @@ describe('worker-runtime-paths', () => {
                 'Unable to resolve worker "database.worker.js".',
                 'Tried:',
                 '- /resources/dist/apps/electron-backend/workers/database.worker.js',
-                '- /opt/IPTVnator/resources/dist/apps/electron-backend/workers/database.worker.js',
+                '- /opt/Zenith Player/resources/dist/apps/electron-backend/workers/database.worker.js',
             ].join('\n')
         );
     });

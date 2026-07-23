@@ -15,15 +15,15 @@ import { MatIcon } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTooltip } from '@angular/material/tooltip';
-import { normalizeDateLocale } from '@iptvnator/pipes';
+import { normalizeDateLocale } from '@zenithplayer/pipes';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { startWith } from 'rxjs';
 import {
     PortalStatus,
     PortalStatusService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/services';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 
 @Component({
     selector: 'app-playlist-item',

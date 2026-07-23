@@ -1,5 +1,5 @@
 import type BetterSqlite3 from 'better-sqlite3';
-import { getIptvnatorDatabasePath } from '@iptvnator/shared/database/path-utils';
+import { getzenithplayerDatabasePath } from '@zenithplayer/shared/database/path-utils';
 import type { ParsedChannel, ParsedProgram } from './epg-streaming-parser';
 
 /**
@@ -15,7 +15,7 @@ export class EpgDatabase {
     private readonly deleteTodayAndFutureStmt: BetterSqlite3.Statement;
 
     constructor(Database: typeof BetterSqlite3) {
-        this.db = new Database(getIptvnatorDatabasePath());
+        this.db = new Database(getzenithplayerDatabasePath());
         this.db.pragma('foreign_keys = ON');
         this.db.pragma('journal_mode = WAL');
         this.db.pragma('busy_timeout = 5000');
@@ -214,7 +214,7 @@ export class EpgDatabaseClearOperation {
     private readonly db: BetterSqlite3.Database;
 
     constructor(Database: typeof BetterSqlite3) {
-        this.db = new Database(getIptvnatorDatabasePath());
+        this.db = new Database(getzenithplayerDatabasePath());
         this.db.pragma('busy_timeout = 5000');
     }
 
@@ -241,7 +241,7 @@ export class EpgDatabaseSourceClearOperation {
     private readonly deleteOrphanChannelsForSourceStmt: BetterSqlite3.Statement;
 
     constructor(Database: typeof BetterSqlite3) {
-        this.db = new Database(getIptvnatorDatabasePath());
+        this.db = new Database(getzenithplayerDatabasePath());
         this.db.pragma('busy_timeout = 5000');
 
         this.deleteProgramsForSourceStmt = this.db.prepare(`

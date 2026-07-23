@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { StalkerSessionService } from '@iptvnator/portal/stalker/data-access';
+import { StalkerSessionService } from '@zenithplayer/portal/stalker/data-access';
 import { StalkerPortalImportComponent } from './stalker-portal-import.component';
 
 describe('StalkerPortalImportComponent identity handling', () => {

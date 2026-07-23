@@ -6,9 +6,9 @@ import {
     withProps,
     withState,
 } from '@ngrx/signals';
-import { PlaylistMeta, STALKER_REQUEST } from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { DataService, RuntimeCapabilitiesService } from '@iptvnator/services';
+import { PlaylistMeta, STALKER_REQUEST } from '@zenithplayer/shared/interfaces';
+import { createLogger } from '@zenithplayer/portal/shared/util';
+import { DataService, RuntimeCapabilitiesService } from '@zenithplayer/services';
 import { StalkerSessionService } from '../../stalker-session.service';
 import { toStalkerSessionPlaylist } from '../utils';
 

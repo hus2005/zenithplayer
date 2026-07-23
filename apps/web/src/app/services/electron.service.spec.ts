@@ -3,13 +3,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { DialogService } from '@iptvnator/ui/components';
-import { SettingsStore } from '@iptvnator/services';
+import { DialogService } from '@zenithplayer/ui/components';
+import { SettingsStore } from '@zenithplayer/services';
 import {
     ELECTRON_BRIDGE_SECURITY_ERROR_CODES,
     PLAYLIST_PARSE_BY_URL,
     SECURITY_ERROR_PREFIX,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { ElectronService } from './electron.service';
 
 describe('ElectronService', () => {

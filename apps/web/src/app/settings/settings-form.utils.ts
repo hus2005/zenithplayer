@@ -17,7 +17,7 @@ import {
     StreamFormat,
     Theme,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export const EPG_URL_PATTERN = /^(http|https|file):\/\/[^ "]+$/;
 

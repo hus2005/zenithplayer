@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 
 export enum SortBy {
     DATE_ADDED = 'date',
@@ -18,7 +18,7 @@ export interface SortOptions {
     order: SortOrder;
 }
 
-const SORT_OPTIONS_STORAGE_KEY = 'iptvnator-sort-options';
+const SORT_OPTIONS_STORAGE_KEY = 'zenithplayer-sort-options';
 
 @Injectable({
     providedIn: 'root',

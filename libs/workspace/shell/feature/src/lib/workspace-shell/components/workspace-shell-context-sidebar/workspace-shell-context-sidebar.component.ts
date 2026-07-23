@@ -5,15 +5,15 @@ import {
     inject,
     input,
 } from '@angular/core';
-import { ResizableDirective } from '@iptvnator/ui/components';
+import { ResizableDirective } from '@zenithplayer/ui/components';
 import {
     LiveLayoutSidebarStateService,
     PortalRailSection,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     WorkspacePortalContext,
     WorkspaceShellContextPanel,
-} from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/workspace/shell/util';
 import { WorkspaceCollectionContextPanelComponent } from '../../../workspace-context-panel/workspace-collection-context-panel.component';
 import { WorkspaceContextPanelComponent } from '../../../workspace-context-panel/workspace-context-panel.component';
 import { WorkspaceSettingsContextPanelComponent } from '../../../workspace-context-panel/workspace-settings-context-panel.component';

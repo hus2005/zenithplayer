@@ -35,7 +35,7 @@ const {
     resolveLinuxFrameCopyPackagingContext,
 } = require('./electron-after-pack.cjs');
 
-const X64_ADDON_ENV = { IPTVNATOR_EMBEDDED_MPV_ARCH: 'x64' };
+const X64_ADDON_ENV = { zenithplayer_EMBEDDED_MPV_ARCH: 'x64' };
 const SYSTEM_PACKAGE_DEPENDENCIES = {
     deb: ['libmpv2', 'libegl1', 'libgl1', 'libgbm1'],
     rpm: ['mpv-libs', 'libglvnd-egl', 'libglvnd-glx', 'mesa-libgbm'],
@@ -44,7 +44,7 @@ const SYSTEM_PACKAGE_DEPENDENCIES = {
 const FRAME_COPY_ARTIFACTS = {
     addon: 'embedded_mpv.node',
     frameReader: 'embedded_mpv_frame_reader.node',
-    helper: 'iptvnator_mpv_helper',
+    helper: 'zenithplayer_mpv_helper',
 };
 
 function sha256(contents) {
@@ -218,7 +218,7 @@ function createNativeFixture({
     buildManifest = createBuildManifest(runtimeContents),
 } = {}) {
     const fixtureRoot = fs.mkdtempSync(
-        join(os.tmpdir(), 'iptvnator-embedded-mpv-layout-')
+        join(os.tmpdir(), 'zenithplayer-embedded-mpv-layout-')
     );
     const appOutDir = join(fixtureRoot, 'linux-unpacked');
     const resourceDir = join(appOutDir, 'resources');
@@ -249,7 +249,7 @@ function createNativeFixture({
         buildManifest.sourceRuntime
     );
     fs.cpSync(noticeSourceDir, nativeDir, { recursive: true });
-    fs.writeFileSync(join(appOutDir, 'iptvnator.bin'), 'electron');
+    fs.writeFileSync(join(appOutDir, 'zenithplayer.bin'), 'electron');
     return {
         buildManifest,
         fixtureRoot,
@@ -279,8 +279,8 @@ function pureValidationOptions(options = {}) {
 function validElfInspector(nativeDir, manifest, overrides = {}) {
     const libDir = join(nativeDir, 'lib');
     const records = new Map([
-        ['iptvnator', { needed: ['libc.so.6'], rpath: [], runpath: [] }],
-        ['iptvnator.bin', { needed: ['libc.so.6'], rpath: [], runpath: [] }],
+        ['zenithplayer', { needed: ['libc.so.6'], rpath: [], runpath: [] }],
+        ['zenithplayer.bin', { needed: ['libc.so.6'], rpath: [], runpath: [] }],
         [
             FRAME_COPY_ARTIFACTS.addon,
             { needed: ['libX11.so.6'], rpath: [], runpath: [] },
@@ -334,8 +334,8 @@ test('resolves the required Linux profile from afterPack targets before mutation
             {
                 required: true,
                 environment: {
-                    IPTVNATOR_LINUX_FRAME_COPY_PROFILE: 'system',
-                    IPTVNATOR_EMBEDDED_MPV_ARCH: 'x64',
+                    zenithplayer_LINUX_FRAME_COPY_PROFILE: 'system',
+                    zenithplayer_EMBEDDED_MPV_ARCH: 'x64',
                 },
             }
         ),
@@ -363,8 +363,8 @@ test('keeps every non-x64 Linux target marker-only even when the configured addo
         {
             required: true,
             environment: {
-                IPTVNATOR_LINUX_FRAME_COPY_PROFILE: 'system',
-                IPTVNATOR_EMBEDDED_MPV_ARCH: 'arm64',
+                zenithplayer_LINUX_FRAME_COPY_PROFILE: 'system',
+                zenithplayer_EMBEDDED_MPV_ARCH: 'arm64',
             },
         }
     );
@@ -384,7 +384,7 @@ test('rejects missing, mixed, and unknown required Linux packaging context', () 
         () =>
             resolveLinuxFrameCopyPackagingContext(baseParams, {
                 required: true,
-                environment: { IPTVNATOR_EMBEDDED_MPV_ARCH: 'x64' },
+                environment: { zenithplayer_EMBEDDED_MPV_ARCH: 'x64' },
             }),
         /Linux frame-copy profile is required/
     );
@@ -398,8 +398,8 @@ test('rejects missing, mixed, and unknown required Linux packaging context', () 
                 {
                     required: true,
                     environment: {
-                        IPTVNATOR_LINUX_FRAME_COPY_PROFILE: 'system',
-                        IPTVNATOR_EMBEDDED_MPV_ARCH: 'x64',
+                        zenithplayer_LINUX_FRAME_COPY_PROFILE: 'system',
+                        zenithplayer_EMBEDDED_MPV_ARCH: 'x64',
                     },
                 }
             ),
@@ -412,7 +412,7 @@ test('rejects missing, mixed, and unknown required Linux packaging context', () 
                 {
                     required: true,
                     environment: {
-                        IPTVNATOR_LINUX_FRAME_COPY_PROFILE: 'system',
+                        zenithplayer_LINUX_FRAME_COPY_PROFILE: 'system',
                     },
                 }
             ),
@@ -425,7 +425,7 @@ test('rejects missing, mixed, and unknown required Linux packaging context', () 
                 {
                     required: true,
                     environment: {
-                        IPTVNATOR_LINUX_FRAME_COPY_PROFILE: 'system',
+                        zenithplayer_LINUX_FRAME_COPY_PROFILE: 'system',
                     },
                 }
             ),
@@ -436,7 +436,7 @@ test('rejects missing, mixed, and unknown required Linux packaging context', () 
             resolveLinuxFrameCopyPackagingContext(baseParams, {
                 required: true,
                 environment: {
-                    IPTVNATOR_EMBEDDED_MPV_ARCH: 'arm64',
+                    zenithplayer_EMBEDDED_MPV_ARCH: 'arm64',
                 },
             }),
         /Linux frame-copy profile is required/
@@ -455,8 +455,8 @@ test('validates a provided Linux profile even when embedded MPV is optional', ()
                 {
                     required: false,
                     environment: {
-                        IPTVNATOR_LINUX_FRAME_COPY_PROFILE: 'portable',
-                        IPTVNATOR_EMBEDDED_MPV_ARCH: 'x64',
+                        zenithplayer_LINUX_FRAME_COPY_PROFILE: 'portable',
+                        zenithplayer_EMBEDDED_MPV_ARCH: 'x64',
                     },
                 }
             ),
@@ -466,7 +466,7 @@ test('validates a provided Linux profile even when embedded MPV is optional', ()
 
 test('creates an exact empty Snap graphics content mount directory', (t) => {
     const fixtureRoot = fs.mkdtempSync(
-        join(os.tmpdir(), 'iptvnator-snap-graphics-mount-')
+        join(os.tmpdir(), 'zenithplayer-snap-graphics-mount-')
     );
     t.after(() => fs.rmSync(fixtureRoot, { recursive: true, force: true }));
 
@@ -497,7 +497,7 @@ test('creates an exact empty Snap graphics content mount directory', (t) => {
 
 test('rejects a non-empty or redirected Snap graphics content mount', (t) => {
     const fixtureRoot = fs.mkdtempSync(
-        join(os.tmpdir(), 'iptvnator-snap-graphics-invalid-')
+        join(os.tmpdir(), 'zenithplayer-snap-graphics-invalid-')
     );
     t.after(() => fs.rmSync(fixtureRoot, { recursive: true, force: true }));
     const mountPath = join(fixtureRoot, 'graphics');
@@ -532,7 +532,7 @@ test('prepares a normalized system profile with no private runtime', (t) => {
         fs.rmSync(fixture.fixtureRoot, { recursive: true, force: true })
     );
     fs.writeFileSync(
-        join(fixture.nativeDir, 'iptvnator_mpv_helper.exe'),
+        join(fixture.nativeDir, 'zenithplayer_mpv_helper.exe'),
         'stale'
     );
     fs.writeFileSync(
@@ -570,7 +570,7 @@ test('prepares a normalized system profile with no private runtime', (t) => {
         0o644
     );
     assert.equal(
-        fs.existsSync(join(fixture.nativeDir, 'iptvnator_mpv_helper.exe')),
+        fs.existsSync(join(fixture.nativeDir, 'zenithplayer_mpv_helper.exe')),
         false
     );
     assert.equal(
@@ -600,8 +600,8 @@ test('prepares portable and Flatpak manifests with the exact bundled closure', (
     const portable = createNativeFixture();
     const flatpak = createNativeFixture();
     fs.renameSync(
-        join(flatpak.appOutDir, 'iptvnator.bin'),
-        join(flatpak.appOutDir, 'iptvnator')
+        join(flatpak.appOutDir, 'zenithplayer.bin'),
+        join(flatpak.appOutDir, 'zenithplayer')
     );
     t.after(() => {
         for (const fixture of [portable, flatpak]) {
@@ -1346,7 +1346,7 @@ test('flags every non-x64 Linux package regardless of configured build arch', ()
     );
     assert.equal(
         isForeignLinuxEmbeddedMpvArch('linux', 'arm64', {
-            IPTVNATOR_EMBEDDED_MPV_ARCH: 'arm64',
+            zenithplayer_EMBEDDED_MPV_ARCH: 'arm64',
         }),
         true
     );
@@ -1398,7 +1398,7 @@ test('derives the exact selected Linux targets for each configured architecture'
 
 function createResourceDir(files) {
     const resourceDir = fs.mkdtempSync(
-        join(os.tmpdir(), 'iptvnator-embedded-mpv-arch-')
+        join(os.tmpdir(), 'zenithplayer-embedded-mpv-arch-')
     );
     const nativeDir = join(
         resourceDir,

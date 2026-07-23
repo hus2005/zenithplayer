@@ -48,14 +48,14 @@ test('collectEmbeddedMpvNativeArchiveEntries finds stale native payloads on ever
         collectEmbeddedMpvNativeArchiveEntries(
             [
                 '/electron-backend/main.js',
-                '/electron-backend/native/iptvnator_mpv_helper',
+                '/electron-backend/native/zenithplayer_mpv_helper',
                 '/electron-backend/native/lib/libmpv.so.2',
                 '/web/index.html',
             ],
             '/'
         ),
         [
-            '/electron-backend/native/iptvnator_mpv_helper',
+            '/electron-backend/native/zenithplayer_mpv_helper',
             '/electron-backend/native/lib/libmpv.so.2',
         ]
     );
@@ -73,7 +73,7 @@ test('collectEmbeddedMpvNativeArchiveEntries finds stale native payloads on ever
 
 test('listAsarPackageEntries matches Electron ASAR listings from a bounded header', async (t) => {
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-asar-header-')
+        path.join(os.tmpdir(), 'zenithplayer-asar-header-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const sourceRoot = path.join(temporaryRoot, 'source');
@@ -101,7 +101,7 @@ test('listAsarPackageEntries matches Electron ASAR listings from a bounded heade
 
 test('listAsarPackageEntries rejects an unbounded declared header before allocation', (t) => {
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-asar-header-')
+        path.join(os.tmpdir(), 'zenithplayer-asar-header-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const archivePath = path.join(temporaryRoot, 'oversized.asar');
@@ -118,7 +118,7 @@ test('listAsarPackageEntries rejects an unbounded declared header before allocat
 
 test('listAsarPackageEntries traverses untrusted directory mappings without bulk Object.entries allocation', (t) => {
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-asar-header-')
+        path.join(os.tmpdir(), 'zenithplayer-asar-header-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const archivePath = path.join(temporaryRoot, 'wide.asar');
@@ -145,7 +145,7 @@ test('listAsarPackageEntries traverses untrusted directory mappings without bulk
 
 test('listAsarPackageEntries bounds cumulative paths under a wide long prefix', (t) => {
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-asar-header-')
+        path.join(os.tmpdir(), 'zenithplayer-asar-header-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const archivePath = path.join(temporaryRoot, 'wide-prefix.asar');
@@ -170,7 +170,7 @@ test('listAsarPackageEntries bounds cumulative paths under a wide long prefix', 
 
 test('listAsarPackageEntries fails closed on malformed pickle, padding, and UTF-8', (t) => {
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-asar-header-')
+        path.join(os.tmpdir(), 'zenithplayer-asar-header-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
     const validArchivePath = path.join(temporaryRoot, 'valid.asar');
@@ -215,7 +215,7 @@ test('listAsarPackageEntries fails closed on malformed pickle, padding, and UTF-
 
 test('listAsarPackageEntries rejects unsafe archive path segments', (t) => {
     const temporaryRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-asar-header-')
+        path.join(os.tmpdir(), 'zenithplayer-asar-header-')
     );
     t.after(() => fs.rmSync(temporaryRoot, { recursive: true, force: true }));
 

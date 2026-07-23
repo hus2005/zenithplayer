@@ -23,9 +23,9 @@ import {
     Settings,
     STORE_KEY,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import type { ExternalPlayerName } from '@iptvnator/shared/interfaces';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+} from '@zenithplayer/shared/interfaces';
+import type { ExternalPlayerName } from '@zenithplayer/shared/interfaces';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
 import { ArtPlayerComponent } from '../art-player/art-player.component';
 import { EmbeddedMpvPlayerComponent } from '../embedded-mpv-player/embedded-mpv-player.component';
 import { HtmlVideoPlayerComponent } from '../html-video-player/html-video-player.component';

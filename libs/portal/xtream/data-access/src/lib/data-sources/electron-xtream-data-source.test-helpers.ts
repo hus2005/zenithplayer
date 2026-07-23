@@ -3,7 +3,7 @@ import {
     DatabaseService,
     PlaybackPositionService,
     XtreamPendingRestoreService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     XtreamApiService,
     XtreamCredentials,

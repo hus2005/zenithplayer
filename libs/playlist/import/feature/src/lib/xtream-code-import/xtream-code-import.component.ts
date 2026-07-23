@@ -13,13 +13,13 @@ import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Store } from '@ngrx/store';
 import { TranslatePipe } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { PortalStatus, PortalStatusService } from '@iptvnator/services';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
+import { PortalStatus, PortalStatusService } from '@zenithplayer/services';
 import {
     extractXtreamCredentialsFromUrl,
     normalizeXtreamServerUrl,
     Playlist,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { v4 as uuid } from 'uuid';
 
 function xtreamServerUrlValidator(

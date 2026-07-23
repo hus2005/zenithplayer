@@ -14,7 +14,7 @@ import {
     EMBEDDED_MPV_FRAME_SOURCE_CHANGED,
     EMBEDDED_MPV_GET_FRAME_SOURCE,
     EmbeddedMpvFrameSource,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 interface FrameReaderInfo {
     width: number;

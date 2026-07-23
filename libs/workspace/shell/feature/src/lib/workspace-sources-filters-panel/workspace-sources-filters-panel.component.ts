@@ -11,7 +11,7 @@ import {
     FilterActions,
     selectActiveTypeFilters,
     selectAllPlaylistsMeta,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import { TranslatePipe } from '@ngx-translate/core';
 
 type PlaylistFilterId = 'all' | 'm3u' | 'xtream' | 'stalker';

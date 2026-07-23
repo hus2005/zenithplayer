@@ -134,7 +134,7 @@ Render rules:
 5. Navigation state + deep-link targets come from the existing
    `getRecentItemLink()` / `getGlobalFavoriteLink()` / `getPlaylistLink()`
    helpers on `DashboardDataService` and reuse the workspace navigation
-   helpers in `@iptvnator/portal/shared/util`.
+   helpers in `@zenithplayer/portal/shared/util`.
 6. Xtream VOD and series detail pages opportunistically backfill
    `content.backdrop_url` when metadata exposes a backdrop, but that write
    must not refresh recently viewed ordering by itself.

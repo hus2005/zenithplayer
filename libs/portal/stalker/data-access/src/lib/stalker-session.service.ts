@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
-import { Playlist, STALKER_REQUEST } from '@iptvnator/shared/interfaces';
-import { DataService } from '@iptvnator/services';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { Playlist, STALKER_REQUEST } from '@zenithplayer/shared/interfaces';
+import { DataService } from '@zenithplayer/services';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 import {
     getStalkerPortalIdentityFromPlaylist,
     LEGACY_DEFAULT_STALKER_SERIAL,

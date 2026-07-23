@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import { getElectronUserDataPath } from '@iptvnator/shared/database';
+import { getElectronUserDataPath } from '@zenithplayer/shared/database';
 import { autoUpdater } from 'electron-updater';
 import fixPath from 'fix-path';
 import App from './app/app';
@@ -39,7 +39,7 @@ import { isEmbeddedMpvFeatureEnabled } from './app/services/embedded-mpv-runtime
 import { runEmbeddedMpvRuntimeDiagnosticOrContinue } from './app/services/embedded-mpv-runtime-diagnostic';
 import { EMBEDDED_MPV_FRAME_COPY, store } from './app/services/store.service';
 
-app.setName('iptvnator');
+app.setName('zenithplayer');
 
 // Packaged Linux launchers force X11 via the .desktop entry
 // (electron-builder `executableArgs`), but direct binary/AppImage launches
@@ -71,11 +71,11 @@ if (
     isEmbeddedMpvFeatureEnabled() &&
     shouldPromotePersistedFrameCopyOptIn(
         store.get(EMBEDDED_MPV_FRAME_COPY, false),
-        process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY,
+        process.env.zenithplayer_ENABLE_EMBEDDED_MPV_FRAME_COPY,
         isFrameCopyRuntimeUsable
     )
 ) {
-    process.env.IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
+    process.env.zenithplayer_ENABLE_EMBEDDED_MPV_FRAME_COPY = '1';
 }
 
 let fixPathScheduled = false;

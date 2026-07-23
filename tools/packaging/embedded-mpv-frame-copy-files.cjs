@@ -21,8 +21,8 @@ const {
     validateLinuxProfileTargets,
 } = require('./linux-frame-copy-profile.cjs');
 
-const FRAME_COPY_HELPER = 'iptvnator_mpv_helper';
-const WINDOWS_FRAME_COPY_HELPER = 'iptvnator_mpv_helper.exe';
+const FRAME_COPY_HELPER = 'zenithplayer_mpv_helper';
+const WINDOWS_FRAME_COPY_HELPER = 'zenithplayer_mpv_helper.exe';
 const FRAME_COPY_READER = 'embedded_mpv_frame_reader.node';
 const EMBEDDED_MPV_ADDON = 'embedded_mpv.node';
 const RUNTIME_MANIFEST = 'embedded-mpv-runtime.json';

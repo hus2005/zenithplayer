@@ -1,6 +1,6 @@
 # Remote Control Architecture
 
-This document describes the current remote control implementation in IPTVnator, including:
+This document describes the current remote control implementation in Zenith Player, including:
 
 - HTTP API exposed by Electron main process
 - IPC bridge between Electron main and Angular renderer

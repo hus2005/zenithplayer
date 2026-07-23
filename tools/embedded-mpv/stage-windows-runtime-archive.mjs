@@ -291,7 +291,7 @@ function extractArchive(archivePath, extractRoot) {
 async function main() {
     const expectedSha256 = normalizeSha256(rawExpectedSha256);
     const tempRoot = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-windows-embedded-mpv-')
+        path.join(os.tmpdir(), 'zenithplayer-windows-embedded-mpv-')
     );
     const archivePath = isHttpsUrl(archiveSource)
         ? path.join(tempRoot, archiveNameForSource(archiveSource))

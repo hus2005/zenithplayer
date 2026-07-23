@@ -14,7 +14,7 @@ jobs:
         runs-on: ${{ matrix.os }}
         timeout-minutes: 45
         env:
-            IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS: '1'
+            zenithplayer_ALLOW_PRIVATE_NETWORK_URLS: '1'
             NX_SKIP_NX_CACHE: true
         strategy:
             fail-fast: false

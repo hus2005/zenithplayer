@@ -1,10 +1,10 @@
 ---
 title: Experimental embedded MPV support on macOS
-description: "A closer look at IPTVnator's experimental embedded MPV player for macOS: why it exists, how it is wired into Electron, and where to share feedback."
+description: "A closer look at Zenith Player's experimental embedded MPV player for macOS: why it exists, how it is wired into Electron, and where to share feedback."
 featured: false
 pubDate: 2026-05-11
 author: 4gray
-heroImage: /iptvnator/blog/v0-21/embedded-mpv.webp
+heroImage: /zenithplayer/blog/v0-21/embedded-mpv.webp
 tags:
     - macos
     - mpv
@@ -18,25 +18,25 @@ import BlogImageSlider from '../../components/blog/BlogImageSlider.astro';
 import LinkCards from '../../components/blog/LinkCards.astro';
 import StatusPill from '../../components/blog/StatusPill.astro';
 
-IPTVnator **v0.21** introduced the first public experiment with an **embedded MPV player for macOS**.
+Zenith Player **v0.21** introduced the first public experiment with an **embedded MPV player for macOS**.
 
-The short version: on supported macOS builds, IPTVnator can use MPV-quality playback without requiring a separate MPV app installation, a custom executable path, or an external player window.
+The short version: on supported macOS builds, Zenith Player can use MPV-quality playback without requiring a separate MPV app installation, a custom executable path, or an external player window.
 
 The feature is still marked **experimental**. Real-world feedback is especially useful for different Mac models, macOS versions, display setups, and media formats.
 
 <BlogImageSlider
     images={[
         {
-            src: '/iptvnator/blog/v0-21/embedded-mpv.webp',
-            alt: 'Embedded MPV player rendering inside the IPTVnator window on macOS',
+            src: '/zenithplayer/blog/v0-21/embedded-mpv.webp',
+            alt: 'Embedded MPV player rendering inside the Zenith Player window on macOS',
             caption:
-                'Embedded MPV runs inside the IPTVnator window on macOS — no separate MPV installation required.',
+                'Embedded MPV runs inside the Zenith Player window on macOS — no separate MPV installation required.',
         },
     ]}
 />
 
-<Alert type="info" title="IPTVnator is a player, not a content provider">
-    IPTVnator does not provide, host, sell, curate, or recommend TV channels,
+<Alert type="info" title="Zenith Player is a player, not a content provider">
+    Zenith Player does not provide, host, sell, curate, or recommend TV channels,
     playlists, streams, EPG data, portals, subscriptions, or any other media
     content. The app is a general-purpose IPTV player for user-provided sources.
     Users are responsible for making sure they have the legal right to access
@@ -47,14 +47,14 @@ The feature is still marked **experimental**. Real-world feedback is especially 
 
 Playback sources vary a lot in the real world. Some media works fine in browser-based players, while other files or streams need specific headers, containers, codecs, subtitle handling, or timing behavior that native playback engines often handle better.
 
-IPTVnator has supported external MPV and VLC playback for a long time, and that remains useful. But the external-player flow has trade-offs:
+Zenith Player has supported external MPV and VLC playback for a long time, and that remains useful. But the external-player flow has trade-offs:
 
 - users need to install MPV or VLC separately;
 - the app needs to know the correct executable path;
 - playback opens in another window;
 - controls, focus, fullscreen, and progress tracking have to cross process boundaries.
 
-The embedded MPV experiment tries a different approach: keep MPV's playback engine, but render it **inside IPTVnator**.
+The embedded MPV experiment tries a different approach: keep MPV's playback engine, but render it **inside Zenith Player**.
 
 ## How it works
 
@@ -62,15 +62,15 @@ The embedded MPV experiment tries a different approach: keep MPV's playback engi
 
 The macOS embedded player does **not** launch the normal `mpv` application. It also does not use MPV's classic `--wid` window embedding path.
 
-Instead, IPTVnator bundles `libmpv` and loads it through a native Node addon in the Electron backend. When playback starts, the app creates an MPV session and renders frames into an IPTVnator-owned native macOS view inside the Electron window.
+Instead, Zenith Player bundles `libmpv` and loads it through a native Node addon in the Electron backend. When playback starts, the app creates an MPV session and renders frames into an Zenith Player-owned native macOS view inside the Electron window.
 
 The simplified flow looks like this:
 
-1. The Angular UI receives the same resolved playback payload used by the rest of IPTVnator.
+1. The Angular UI receives the same resolved playback payload used by the rest of Zenith Player.
 2. The renderer asks Electron's preload bridge to create an embedded MPV session.
 3. The Electron main process loads the native addon and owns the MPV session lifecycle.
 4. The native addon creates an `mpv_handle`, configures `vo=libmpv`, and renders through MPV's render API into a macOS `NSOpenGLView`.
-5. IPTVnator keeps its own controls in Angular: play/pause, seek, volume, fullscreen, audio track selection, subtitles, speed, aspect ratio, and live recording where supported.
+5. Zenith Player keeps its own controls in Angular: play/pause, seek, volume, fullscreen, audio track selection, subtitles, speed, aspect ratio, and live recording where supported.
 6. Resize, scroll, fullscreen changes, and modal dialogs are measured by the UI and sent back to the native layer so the MPV view stays aligned with the app layout.
 
 The renderer never talks to the native module directly. Everything goes through a controlled IPC surface: create session, load playback, set bounds, pause/resume, seek, volume, track selection, recording, and cleanup.
@@ -79,19 +79,19 @@ The renderer never talks to the native module directly. Everything goes through 
 
 This first version is intentionally narrow. The current native integration is macOS-only because it uses AppKit and an app-owned native view inside the Electron window.
 
-The older `--wid`-style approach was not reliable enough on macOS: it could produce audio with a black video surface inside Electron. The current path avoids that by rendering through `libmpv` directly, but it also means IPTVnator has to handle more details itself.
+The older `--wid`-style approach was not reliable enough on macOS: it could produce audio with a black video surface inside Electron. The current path avoids that by rendering through `libmpv` directly, but it also means Zenith Player has to handle more details itself.
 
-For example, because MPV is not owning the normal player window, IPTVnator explicitly keeps the display awake while an embedded MPV session is playing and releases that blocker when playback is paused, disposed, or the app shuts down.
+For example, because MPV is not owning the normal player window, Zenith Player explicitly keeps the display awake while an embedded MPV session is playing and releases that blocker when playback is paused, disposed, or the app shuts down.
 
 ## What is already included
 
-The experimental macOS player is designed to feel like part of IPTVnator, not like a separate app glued on the side.
+The experimental macOS player is designed to feel like part of Zenith Player, not like a separate app glued on the side.
 
 Current capabilities include:
 
-- playback inside the IPTVnator window;
+- playback inside the Zenith Player window;
 - no standalone MPV app required in packaged macOS builds;
-- IPTVnator-owned controls and fullscreen button;
+- Zenith Player-owned controls and fullscreen button;
 - resume offsets for VOD and series;
 - volume control and keyboard shortcuts;
 - audio track selection through MPV's `aid` property;
@@ -110,19 +110,19 @@ Current capabilities include:
 
 ## Content and copyright notes
 
-IPTVnator is only playback software. It does not include any built-in channel catalog, playlist marketplace, paid content access, hosted streams, or recommendations for where to obtain media.
+Zenith Player is only playback software. It does not include any built-in channel catalog, playlist marketplace, paid content access, hosted streams, or recommendations for where to obtain media.
 
 Embedded MPV does not change that model. It only changes how user-provided media is rendered inside the app on supported macOS builds.
 
-Please use IPTVnator only with content and sources that are authorized for your use. Do not share private playlist URLs, credentials, tokens, portals, or subscription details in public bug reports, screenshots, GitHub issues, Telegram messages, or Reddit posts.
+Please use Zenith Player only with content and sources that are authorized for your use. Do not share private playlist URLs, credentials, tokens, portals, or subscription details in public bug reports, screenshots, GitHub issues, Telegram messages, or Reddit posts.
 
 ## Packaging and safety notes
 
-For release builds, IPTVnator is intended to ship a bundled `libmpv` runtime instead of depending on Homebrew or a user-installed MPV app.
+For release builds, Zenith Player is intended to ship a bundled `libmpv` runtime instead of depending on Homebrew or a user-installed MPV app.
 
 That runtime has to be staged for both Apple Silicon and Intel macOS builds, linked app-relatively, code-signed, notarized, and checked so packaged apps do not accidentally depend on `/opt/homebrew` or `/usr/local` libraries from a developer machine.
 
-If the bundled addon or `libmpv` runtime is missing or fails support detection, IPTVnator hides the embedded MPV option and keeps the normal player choices available.
+If the bundled addon or `libmpv` runtime is missing or fails support detection, Zenith Player hides the embedded MPV option and keeps the normal player choices available.
 
 ## Useful links
 
@@ -130,13 +130,13 @@ If the bundled addon or `libmpv` runtime is missing or fails support detection, 
     links={[
         {
             label: 'Download v0.21.0',
-            href: 'https://github.com/4gray/iptvnator/releases/tag/v0.21.0',
+            href: 'https://github.com/hus2005/zenithplayer/releases/tag/v0.21.0',
             hint: 'Official binaries for macOS, Windows and Linux.',
             icon: 'download',
         },
         {
             label: 'Full changelog',
-            href: 'https://github.com/4gray/iptvnator/compare/v0.20.0...v0.21.0',
+            href: 'https://github.com/hus2005/zenithplayer/compare/v0.20.0...v0.21.0',
             hint: 'Every commit between v0.20.0 and v0.21.0.',
             icon: 'github',
         },
@@ -161,7 +161,7 @@ Real-world testing matters more than a single local setup. If embedded MPV has b
 
 - Mac model and CPU — Apple Silicon or Intel;
 - macOS version;
-- IPTVnator version;
+- Zenith Player version;
 - selected player setting;
 - media type tested — live TV, VOD, series, catch-up, HLS, MPEG-TS, MP4;
 - whether playback starts reliably;
@@ -179,26 +179,26 @@ Even short feedback like “works on M1 + macOS 15 with an authorized HLS source
     links={[
         {
             label: 'GitHub issue tracker',
-            href: 'https://github.com/4gray/iptvnator/issues',
+            href: 'https://github.com/hus2005/zenithplayer/issues',
             hint: 'Best for reproducible bugs, crash reports, and feature requests.',
             icon: 'github',
         },
         {
             label: 'Telegram group',
-            href: 'https://t.me/iptvnator',
+            href: 'https://t.me/zenithplayer',
             hint: 'Best for quick feedback and community discussion.',
             icon: 'telegram',
         },
         {
             label: 'Embedded MPV tracking issue',
-            href: 'https://github.com/4gray/iptvnator/issues/877',
+            href: 'https://github.com/hus2005/zenithplayer/issues/877',
             hint: 'Original GitHub issue for the macOS embedded MPV experiment.',
             icon: 'github',
         },
     ]}
 />
 
-When reporting a problem, include the Mac model/CPU, macOS version, IPTVnator version, selected player setting, and what happened. Please do **not** share private playlist URLs or credentials publicly.
+When reporting a problem, include the Mac model/CPU, macOS version, Zenith Player version, selected player setting, and what happened. Please do **not** share private playlist URLs or credentials publicly.
 
 ## Closing thoughts
 
@@ -206,4 +206,4 @@ Embedded MPV is a bigger architectural change than it may look from the UI. Unde
 
 That is why the feature is rolling out carefully as an experiment first.
 
-If it works well across more macOS setups, embedded MPV could become the easiest way to get stronger playback compatibility in IPTVnator without losing the integrated app experience.
+If it works well across more macOS setups, embedded MPV could become the easiest way to get stronger playback compatibility in Zenith Player without losing the integrated app experience.

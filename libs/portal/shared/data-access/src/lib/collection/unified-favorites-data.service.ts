@@ -1,13 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistActions, selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
+import { PlaylistActions, selectAllPlaylistsMeta } from '@zenithplayer/m3u-state';
 import { firstValueFrom, map } from 'rxjs';
 import {
     DatabaseService,
     PlaylistsService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     Channel,
     extractStalkerItemId,
@@ -19,7 +19,7 @@ import {
     Playlist,
     PlaylistMeta,
     StalkerPortalItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     buildCollectionUid,
     buildXtreamCollectionUid,
@@ -28,11 +28,11 @@ import {
     UnifiedCollectionItem,
     xtreamContentType,
     XtreamFavoriteRow,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     XTREAM_DATA_SOURCE,
     XtreamContentItem,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
 
 const GLOBAL_FAVORITES_ORDER_KEY = 'global-favorites-channel-order-v1';
 

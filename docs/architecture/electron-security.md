@@ -25,7 +25,7 @@ The canonical renderer bridge type is
 
 Keep these surfaces in sync when adding or changing a preload method:
 
-1. `ElectronBridgeApi` in `@iptvnator/shared/interfaces`
+1. `ElectronBridgeApi` in `@zenithplayer/shared/interfaces`
 2. `apps/electron-backend/src/app/api/main.preload.ts`
 3. the owning `ipcMain.handle(...)` event module
 4. renderer capability checks or runtime bridge services that consume the method
@@ -51,7 +51,7 @@ arbitrary `file:` URLs. External web navigations are denied in the app window
 and opened in the operating system browser.
 
 Do not add broad protocol allow-lists for renderer navigation. If a new
-desktop-only flow needs to open a URL outside IPTVnator, route it through the
+desktop-only flow needs to open a URL outside Zenith Player, route it through the
 default browser unless the app window is deliberately meant to host that URL.
 
 ## Desktop Auto Updates
@@ -167,7 +167,7 @@ EPG URLs are strict by default because an M3U playlist can supply them through
 `url-tvg`. Operators who intentionally use a LAN-hosted EPG source should prefer
 the renderer's source-scoped “Allow source” action, which persists the exact EPG
 URL in settings and retries that source only. The
-`IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS=1` environment flag remains an
+`zenithplayer_ALLOW_PRIVATE_NETWORK_URLS=1` environment flag remains an
 emergency/development process-wide override for strict EPG fetches. Directly
 configured Xtream, Stalker, and playlist providers retain private-network
 support, but still require HTTP(S), reject embedded credentials, and validate
@@ -184,7 +184,7 @@ redirect hops.
 
 Remote playlist TLS certificates are validated by default. The
 renderer can persist a host-scoped invalid-certificate trust decision for a
-playlist or EPG source host. The `IPTVNATOR_ALLOW_INSECURE_TLS=1` escape hatch
+playlist or EPG source host. The `zenithplayer_ALLOW_INSECURE_TLS=1` escape hatch
 is only for explicitly trusted providers with invalid or self-signed
 certificates when the host-scoped UI path is not available.
 
@@ -193,7 +193,7 @@ certificates when the host-scoped UI path is not available.
 Settings, portal requests/responses, IPC trace payloads, and remote-request
 errors can contain provider credentials. Code at those boundaries must pass
 structured values through `redactSensitiveData` from
-`@iptvnator/shared/logging`, or through the portal `createLogger`/portal-debug
+`@zenithplayer/shared/logging`, or through the portal `createLogger`/portal-debug
 helpers that apply it. Do not send a raw settings object, request params,
 response, or `Error` directly to `console.*`.
 
@@ -222,5 +222,5 @@ Renderer IPC payloads are not filesystem authorization.
   returned by `DOWNLOADS_GET_DEFAULT_FOLDER`, so renderer-managed settings
   cannot substitute an arbitrary host path.
 - Downloads do not overwrite an existing destination file.
-- Reveal and playback handlers accept only file paths recorded in IPTVnator's
+- Reveal and playback handlers accept only file paths recorded in Zenith Player's
   downloads database.

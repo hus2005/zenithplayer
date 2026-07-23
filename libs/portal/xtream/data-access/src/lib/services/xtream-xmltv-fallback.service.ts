@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { EpgItem, EpgProgram } from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { EpgItem, EpgProgram } from '@zenithplayer/shared/interfaces';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 
 type ElectronEpgBridge = {
     getChannelPrograms?: (channelId: string) => Promise<EpgProgram[]>;

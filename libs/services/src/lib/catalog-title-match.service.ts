@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
     CatalogTitleMatch,
     normalizeTitleKeys,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 /**
  * Index of matches keyed by `type:exactNormalizedTitle` for O(1) lookups

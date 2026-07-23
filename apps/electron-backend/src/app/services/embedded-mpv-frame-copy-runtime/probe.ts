@@ -139,7 +139,7 @@ function traceHelperProbeStderr(
     dependencies: EmbeddedMpvFrameCopyRuntimeDependencies
 ): void {
     if (
-        dependencies.env.IPTVNATOR_TRACE_PLAYER !== '1' ||
+        dependencies.env.zenithplayer_TRACE_PLAYER !== '1' ||
         typeof stderr !== 'string' ||
         stderr.length === 0
     ) {

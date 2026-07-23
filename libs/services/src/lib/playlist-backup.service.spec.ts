@@ -4,7 +4,7 @@ import {
     PlaylistBackupManifestV1,
     PLAYLIST_BACKUP_KIND,
     PLAYLIST_BACKUP_VERSION,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     PlaylistBackupError,
     PlaylistBackupService,
@@ -131,7 +131,7 @@ describe('PlaylistBackupService', () => {
 
         expect(backup.defaultFileName).toEqual(
             expect.stringMatching(
-                /^iptvnator-playlist-backup-\d{4}-\d{2}-\d{2}\.json$/
+                /^zenithplayer-playlist-backup-\d{4}-\d{2}-\d{2}\.json$/
             )
         );
         expect(backup.manifest.settings).toEqual({

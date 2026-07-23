@@ -7,7 +7,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslatePipe } from '@ngx-translate/core';
-import { KeyboardShortcutDisplayGroup } from '@iptvnator/portal/shared/util';
+import { KeyboardShortcutDisplayGroup } from '@zenithplayer/portal/shared/util';
 
 export interface WorkspaceKeyboardShortcutsDialogData {
     groups: readonly KeyboardShortcutDisplayGroup[];

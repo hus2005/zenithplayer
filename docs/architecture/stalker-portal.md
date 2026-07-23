@@ -1,6 +1,6 @@
 # Stalker Portal Architecture
 
-This document describes the Stalker portal implementation in IPTVnator and where each feature is integrated.
+This document describes the Stalker portal implementation in Zenith Player and where each feature is integrated.
 
 ## Related Docs
 
@@ -115,7 +115,7 @@ blank fields are not generated or forwarded to `get_profile`.
   values are trimmed, persisted under the canonical `stalker*` playlist fields,
   and reused for initial auth, token refresh, retry auth, normal API requests,
   and same-origin playback headers.
-- Empty optional identity fields remain absent. IPTVnator must not generate a
+- Empty optional identity fields remain absent. Zenith Player must not generate a
   device ID from the MAC address or duplicate `device_id2` from `device_id1`.
 - The legacy default serial value `BEDACD4569BAF` is treated as absent at
   runtime so older blank imports do not keep sending a synthetic serial number.

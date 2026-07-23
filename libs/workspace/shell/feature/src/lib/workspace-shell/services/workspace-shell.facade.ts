@@ -7,12 +7,12 @@ import {
     PORTAL_EXTERNAL_PLAYBACK,
     WorkspaceHeaderContextService,
     WorkspaceResolvedCommandItem,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     DownloadsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     CommandBuilderActions,
     CommandBuilderContext,

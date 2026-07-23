@@ -1,6 +1,6 @@
 import { computed, inject } from '@angular/core';
 import { signalStore, withComputed, withMethods } from '@ngrx/signals';
-import { XtreamSerieDetails, XtreamVodDetails } from '@iptvnator/shared/interfaces';
+import { XtreamSerieDetails, XtreamVodDetails } from '@zenithplayer/shared/interfaces';
 
 // Import existing features that are already separate
 import { withFavorites } from '../with-favorites.feature';
@@ -11,8 +11,8 @@ import { XTREAM_DATA_SOURCE } from '../data-sources/xtream-data-source.interface
 import { XtreamApiService } from '../services/xtream-api.service';
 
 // Import new feature stores
-import { TmdbEnrichmentService } from '@iptvnator/services';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { TmdbEnrichmentService } from '@zenithplayer/services';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 import {
     withContent,
     withEpg,

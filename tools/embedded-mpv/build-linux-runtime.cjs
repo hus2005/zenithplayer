@@ -567,9 +567,9 @@ const RUNTIME_EXTERNAL_CONFIGURATION = Object.freeze({
     }),
 });
 
-const OUTPUT_OWNERSHIP_MARKER = '.iptvnator-linux-runtime-owner';
+const OUTPUT_OWNERSHIP_MARKER = '.zenithplayer-linux-runtime-owner';
 const OUTPUT_OWNERSHIP_MARKER_CONTENT =
-    'iptvnator-embedded-mpv-linux-runtime-v1\n';
+    'zenithplayer-embedded-mpv-linux-runtime-v1\n';
 
 const PORTABLE_ABI_BASELINE = Object.freeze({
     distribution: 'Ubuntu 22.04',
@@ -762,7 +762,7 @@ function assertOwnedOutputDestination(outputPrefix, fileSystem = fs) {
     }
     if (!outputStat.isDirectory() || outputStat.isSymbolicLink()) {
         throw new Error(
-            `Existing output ${outputPrefix} must be a non-symbolic-link directory carrying the IPTVnator ownership marker.`
+            `Existing output ${outputPrefix} must be a non-symbolic-link directory carrying the Zenith Player ownership marker.`
         );
     }
 
@@ -776,7 +776,7 @@ function assertOwnedOutputDestination(outputPrefix, fileSystem = fs) {
             OUTPUT_OWNERSHIP_MARKER_CONTENT
     ) {
         throw new Error(
-            `Existing output ${outputPrefix} is missing the valid IPTVnator ownership marker.`
+            `Existing output ${outputPrefix} is missing the valid Zenith Player ownership marker.`
         );
     }
 }
@@ -784,7 +784,7 @@ function assertOwnedOutputDestination(outputPrefix, fileSystem = fs) {
 function ownedStagingPrefixPath(outputPrefix, token) {
     return path.join(
         path.dirname(outputPrefix),
-        `.${path.basename(outputPrefix)}.iptvnator-stage-${token}`
+        `.${path.basename(outputPrefix)}.zenithplayer-stage-${token}`
     );
 }
 
@@ -832,7 +832,7 @@ function publishOwnedOutput({
 
     const backupPrefix = path.join(
         path.dirname(outputPrefix),
-        `.${path.basename(outputPrefix)}.iptvnator-backup-${token}`
+        `.${path.basename(outputPrefix)}.zenithplayer-backup-${token}`
     );
     if (lstatIfExists(fileSystem, backupPrefix)) {
         throw new Error(
@@ -886,7 +886,7 @@ function joinEnvironmentParts(parts, separator = ' ') {
 
 function resolveSystemPkgConfigDirs(environment = {}) {
     const explicitDirectories =
-        environment.IPTVNATOR_EMBEDDED_MPV_SYSTEM_PKG_CONFIG_DIRS;
+        environment.zenithplayer_EMBEDDED_MPV_SYSTEM_PKG_CONFIG_DIRS;
     if (!explicitDirectories) {
         return [...DEFAULT_SYSTEM_PKG_CONFIG_DIRS];
     }
@@ -900,7 +900,7 @@ function resolveSystemPkgConfigDirs(environment = {}) {
         directories.some((directory) => !path.isAbsolute(directory))
     ) {
         throw new Error(
-            'IPTVNATOR_EMBEDDED_MPV_SYSTEM_PKG_CONFIG_DIRS must contain only absolute paths.'
+            'zenithplayer_EMBEDDED_MPV_SYSTEM_PKG_CONFIG_DIRS must contain only absolute paths.'
         );
     }
     return [

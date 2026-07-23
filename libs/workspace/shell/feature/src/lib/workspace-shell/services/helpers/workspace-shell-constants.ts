@@ -1,4 +1,4 @@
-import { PortalRailSection } from '@iptvnator/portal/shared/util';
+import { PortalRailSection } from '@zenithplayer/portal/shared/util';
 
 export const SEARCH_INPUT_DEBOUNCE_MS = 350;
 

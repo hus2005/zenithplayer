@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ExternalPlayerInfoDialogComponent } from '@iptvnator/ui/playback/external-player-info-dialog';
-import { DataService } from '@iptvnator/services';
+import { ExternalPlayerInfoDialogComponent } from '@zenithplayer/ui/playback/external-player-info-dialog';
+import { DataService } from '@zenithplayer/services';
 import {
     ExternalPlayerSession,
     OPEN_MPV_PLAYER,
@@ -9,8 +9,8 @@ import {
     PlayerContentInfo,
     ResolvedPortalPlayback,
     VideoPlayer,
-} from '@iptvnator/shared/interfaces';
-import type { ExternalPlayerName } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
+import type { ExternalPlayerName } from '@zenithplayer/shared/interfaces';
 import { SettingsStore } from './settings-store.service';
 
 @Injectable({

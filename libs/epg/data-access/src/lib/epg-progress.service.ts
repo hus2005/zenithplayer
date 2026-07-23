@@ -2,8 +2,8 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import {
     ELECTRON_BRIDGE_SECURITY_ERROR_CODES,
     normalizeHost,
-} from '@iptvnator/shared/interfaces';
-import { SettingsStore } from '@iptvnator/services';
+} from '@zenithplayer/shared/interfaces';
+import { SettingsStore } from '@zenithplayer/services';
 import {
     EpgImportProgress,
     EpgRuntimeBridgeService,

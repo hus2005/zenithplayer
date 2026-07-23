@@ -2,16 +2,16 @@ import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { ActivatedRoute, Router, convertToParamMap } from '@angular/router';
 import { of } from 'rxjs';
-import { DatabaseService } from '@iptvnator/services';
+import { DatabaseService } from '@zenithplayer/services';
 import { SearchResultsComponent } from './search-results.component';
 import {
     SearchFilters,
     XtreamContentItem,
     XtreamStore,
-} from '@iptvnator/portal/xtream/data-access';
-import { GlobalSearchResult } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/xtream/data-access';
+import { GlobalSearchResult } from '@zenithplayer/shared/interfaces';
 
-jest.mock('@iptvnator/portal/shared/ui', () => ({
+jest.mock('@zenithplayer/portal/shared/ui', () => ({
     ContentCardComponent: class {},
     SearchLayoutComponent: class {},
 }));

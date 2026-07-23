@@ -1,4 +1,4 @@
-import { createDevLogger } from '@iptvnator/shared/interfaces';
+import { createDevLogger } from '@zenithplayer/shared/interfaces';
 import type { PlayerTrack } from '../player-controls/player-controls.model';
 import type {
     VideoJsAudioTrack,

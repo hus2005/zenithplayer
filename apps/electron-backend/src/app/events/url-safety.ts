@@ -1,7 +1,7 @@
 import { lookup } from 'node:dns/promises';
 import { isIP } from 'node:net';
 
-const PRIVATE_NETWORK_URLS_ENV = 'IPTVNATOR_ALLOW_PRIVATE_NETWORK_URLS';
+const PRIVATE_NETWORK_URLS_ENV = 'zenithplayer_ALLOW_PRIVATE_NETWORK_URLS';
 
 /**
  * Raised when a renderer-supplied remote URL is rejected by the SSRF guard.

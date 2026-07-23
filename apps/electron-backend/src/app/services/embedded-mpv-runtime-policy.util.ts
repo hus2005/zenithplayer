@@ -1,7 +1,7 @@
 import { app } from 'electron';
 
 export const EMBEDDED_MPV_EXPERIMENT_ENV =
-    'IPTVNATOR_ENABLE_EMBEDDED_MPV_EXPERIMENT';
+    'zenithplayer_ENABLE_EMBEDDED_MPV_EXPERIMENT';
 
 function isTruthy(value: string | undefined): boolean {
     return ['1', 'true', 'yes', 'on'].includes(

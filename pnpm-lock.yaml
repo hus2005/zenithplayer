@@ -126,8 +126,8 @@ importers:
         specifier: 1.6.13
         version: 1.6.13
       iptv-playlist-parser:
-        specifier: github:4gray/iptv-playlist-parser#v0.15.2-iptvnator.1
-        version: https://codeload.github.com/4gray/iptv-playlist-parser/tar.gz/33f5e9c09539524d758901c02a6f29302833c0a4
+        specifier: github:hus2005/zenithplayer-playlist-parser#v0.15.2-zenithplayer.1
+        version: https://codeload.github.com/hus2005/zenithplayer-playlist-parser/tar.gz/a385a86c29c23dec23ec996f3486bd1682c5cac1
       marked:
         specifier: 18.0.5
         version: 18.0.5
@@ -7594,9 +7594,9 @@ packages:
     resolution: {integrity: sha512-Zv/pA+ciVFbCSBBjGfaKUya/CcGmUHzTydLMaTwrUUEM2DIEO3iZvueGxmacvmN50fGpGVKeTXpb2LcYQxeVdg==}
     engines: {node: '>= 10'}
 
-  iptv-playlist-parser@https://codeload.github.com/4gray/iptv-playlist-parser/tar.gz/33f5e9c09539524d758901c02a6f29302833c0a4:
-    resolution: {tarball: https://codeload.github.com/4gray/iptv-playlist-parser/tar.gz/33f5e9c09539524d758901c02a6f29302833c0a4}
-    version: 0.15.2-iptvnator.1
+  iptv-playlist-parser@https://codeload.github.com/hus2005/zenithplayer-playlist-parser/tar.gz/a385a86c29c23dec23ec996f3486bd1682c5cac1:
+    resolution: {tarball: https://codeload.github.com/hus2005/zenithplayer-playlist-parser/tar.gz/a385a86c29c23dec23ec996f3486bd1682c5cac1}
+    version: 0.15.2-zenithplayer.1
     engines: {node: '>=18'}
 
   iron-webcrypto@1.2.1:
@@ -20591,7 +20591,7 @@ snapshots:
 
   ipaddr.js@2.3.0: {}
 
-  iptv-playlist-parser@https://codeload.github.com/4gray/iptv-playlist-parser/tar.gz/33f5e9c09539524d758901c02a6f29302833c0a4: {}
+  iptv-playlist-parser@https://codeload.github.com/hus2005/zenithplayer-playlist-parser/tar.gz/a385a86c29c23dec23ec996f3486bd1682c5cac1: {}
 
   iron-webcrypto@1.2.1: {}
 

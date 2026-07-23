@@ -1,4 +1,4 @@
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import { resolvePlaylistScopedEpgFetchPlan } from './playlist-scoped-epg-fetch.util';
 
 function createPlaylistMeta(

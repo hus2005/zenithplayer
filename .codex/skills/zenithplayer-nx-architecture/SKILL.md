@@ -1,9 +1,9 @@
 ---
-name: iptvnator-nx-architecture
+name: zenithplayer-nx-architecture
 description: Repository-specific Nx monorepo structure, library placement rules, scoped path aliases, and migration guardrails for portal/workspace/app code.
 ---
 
-# IPTVnator Nx Architecture
+# Zenith Player Nx Architecture
 
 Use this skill when deciding where code belongs, extracting libraries, changing imports, editing project tags, or refactoring portal/workspace/app boundaries.
 
@@ -21,7 +21,7 @@ Use this skill when deciding where code belongs, extracting libraries, changing 
 
 ## Import Policy
 
-- Use scoped aliases from `tsconfig.base.json`, for example `@iptvnator/services` and `@iptvnator/shared/interfaces`.
+- Use scoped aliases from `tsconfig.base.json`, for example `@zenithplayer/services` and `@zenithplayer/shared/interfaces`.
 - Do not reintroduce legacy bare aliases such as `services`, `components`, or `shared-interfaces`.
 - Prefer library public APIs (`src/index.ts`) over deep imports unless a sub-entrypoint is explicitly configured.
 - Keep app-only code in `apps/*`; shared behavior belongs in a domain library.

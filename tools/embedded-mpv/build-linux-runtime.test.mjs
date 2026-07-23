@@ -367,7 +367,7 @@ test('defines shared-only source recipes with font discovery before playback', (
 
 test('stages pinned hwdata and excludes host pkg-config fallback', (t) => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-pinned-hwdata-')
+        path.join(os.tmpdir(), 'zenithplayer-pinned-hwdata-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const sourcePath = path.join(root, 'sources', 'hwdata');
@@ -566,7 +566,7 @@ test('constructs a prefix-only build environment and ignores hostile host flags'
 
 test('rejects an existing unmarked output without changing its contents', (t) => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-output-ownership-')
+        path.join(os.tmpdir(), 'zenithplayer-output-ownership-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const outputPrefix = path.join(root, 'usr', 'local');
@@ -585,14 +585,14 @@ test('rejects an existing unmarked output without changing its contents', (t) =>
 
 test('atomically publishes only owned outputs and rolls back failures', (t) => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-output-publish-')
+        path.join(os.tmpdir(), 'zenithplayer-output-publish-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const outputPrefix = path.join(root, 'runtime');
     fs.mkdirSync(outputPrefix);
     fs.writeFileSync(
         path.join(outputPrefix, OUTPUT_OWNERSHIP_MARKER),
-        'iptvnator-embedded-mpv-linux-runtime-v1\n'
+        'zenithplayer-embedded-mpv-linux-runtime-v1\n'
     );
     fs.writeFileSync(path.join(outputPrefix, 'state'), 'previous');
 
@@ -652,7 +652,7 @@ test('atomically publishes only owned outputs and rolls back failures', (t) => {
             path.join(outputPrefix, OUTPUT_OWNERSHIP_MARKER),
             'utf8'
         ),
-        'iptvnator-embedded-mpv-linux-runtime-v1\n'
+        'zenithplayer-embedded-mpv-linux-runtime-v1\n'
     );
 });
 
@@ -688,7 +688,7 @@ test('uses fixed Linux x64 pkg-config directories without host discovery', () =>
     );
     assert.deepEqual(
         resolveSystemPkgConfigDirs({
-            IPTVNATOR_EMBEDDED_MPV_SYSTEM_PKG_CONFIG_DIRS:
+            zenithplayer_EMBEDDED_MPV_SYSTEM_PKG_CONFIG_DIRS:
                 '/opt/interfaces/pkgconfig:/usr/share/pkgconfig:/opt/interfaces/pkgconfig',
         }),
         ['/opt/interfaces/pkgconfig', '/usr/share/pkgconfig']
@@ -696,7 +696,7 @@ test('uses fixed Linux x64 pkg-config directories without host discovery', () =>
     assert.throws(
         () =>
             resolveSystemPkgConfigDirs({
-                IPTVNATOR_EMBEDDED_MPV_SYSTEM_PKG_CONFIG_DIRS:
+                zenithplayer_EMBEDDED_MPV_SYSTEM_PKG_CONFIG_DIRS:
                     'relative/pkgconfig',
             }),
         /must contain only absolute paths/
@@ -845,7 +845,7 @@ test('preserves relative library symlinks copied out of DESTDIR', async (t) => {
         pathToFileURL(builderScript).href
     );
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-destdir-links-')
+        path.join(os.tmpdir(), 'zenithplayer-destdir-links-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const sourceDirectory = path.join(root, 'destdir', 'lib');
@@ -1128,7 +1128,7 @@ test('parses readelf dynamic sections and validates an ORIGIN-only closure', () 
             { name: 'libmpv.so.2', ...mpvDynamic },
         ],
         runtimeFileNames: ['libavcodec.so.62', 'libmpv.so.2'],
-        buildPrefix: '/tmp/iptvnator-prefix',
+        buildPrefix: '/tmp/zenithplayer-prefix',
     });
     assert.deepEqual(closure.externalDependencies, [
         'libEGL.so.1',
@@ -1161,7 +1161,7 @@ test('parses readelf dynamic sections and validates an ORIGIN-only closure', () 
             },
         ],
         runtimeFileNames: ['libavcodec.so.62', 'libmpv.so', 'libmpv.so.2'],
-        buildPrefix: '/tmp/iptvnator-prefix',
+        buildPrefix: '/tmp/zenithplayer-prefix',
     });
     assert.equal(
         aliasClosure.entries.find(({ name }) => name === 'libmpv.so').soname,
@@ -1180,7 +1180,7 @@ test('parses readelf dynamic sections and validates an ORIGIN-only closure', () 
                     'libmpv.so',
                     'libmpv.so.2',
                 ],
-                buildPrefix: '/tmp/iptvnator-prefix',
+                buildPrefix: '/tmp/zenithplayer-prefix',
             }),
         /libmpv\.so must declare a versioned SONAME present in the runtime closure/
     );
@@ -1197,12 +1197,12 @@ test('parses readelf dynamic sections and validates an ORIGIN-only closure', () 
                     },
                 ],
                 runtimeFileNames: ['libmpv.so.2'],
-                buildPrefix: '/tmp/iptvnator-prefix',
+                buildPrefix: '/tmp/zenithplayer-prefix',
             }),
         /not bundled or allowlisted.*libsurprise\.so\.1/
     );
     for (const forbiddenRunpath of [
-        '/tmp/iptvnator-prefix/lib',
+        '/tmp/zenithplayer-prefix/lib',
         '/usr/local/lib',
         '$ORIGIN:/tmp/host-lib',
     ]) {
@@ -1218,7 +1218,7 @@ test('parses readelf dynamic sections and validates an ORIGIN-only closure', () 
                         },
                     ],
                     runtimeFileNames: ['libmpv.so.2'],
-                    buildPrefix: '/tmp/iptvnator-prefix',
+                    buildPrefix: '/tmp/zenithplayer-prefix',
                 }),
             /RUNPATH/
         );
@@ -1271,7 +1271,7 @@ test('retains only the reachable SONAME closure plus the libmpv linker alias', (
     ]);
 
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-runtime-prune-')
+        path.join(os.tmpdir(), 'zenithplayer-runtime-prune-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const libDir = path.join(root, 'lib');
@@ -1361,7 +1361,7 @@ test('inspects every retained runtime file for portable symbol versions', () => 
 
 test('materializes symlink aliases and hashes every runtime library', (t) => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-builder-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-builder-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const libDir = path.join(root, 'lib');
@@ -1399,7 +1399,7 @@ test('materializes symlink aliases and hashes every runtime library', (t) => {
 
 test('generates a hash-complete manifest accepted by the Linux validator', (t) => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-manifest-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-manifest-')
     );
     t.after(() => fs.rmSync(root, { recursive: true, force: true }));
     const libDir = path.join(root, 'lib');

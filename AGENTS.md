@@ -13,7 +13,7 @@ This file provides guidance to coding agents working in this repository.
 
 - In a fresh worktree, run `pnpm install --frozen-lockfile` before relying on Nx project discovery, lint, test, or build commands. Without `node_modules`, `pnpm nx show projects` will fail because the local Nx modules are unavailable.
 - After dependencies are installed, verify workspace discovery with `pnpm nx show projects`.
-- Use scoped path aliases from `tsconfig.base.json` such as `@iptvnator/services`, `@iptvnator/shared/interfaces`, and `@iptvnator/ui/components`. Do not add new imports from legacy bare aliases such as `services`, `shared-interfaces`, `components`, `m3u-state`, or `database`.
+- Use scoped path aliases from `tsconfig.base.json` such as `@zenithplayer/services`, `@zenithplayer/shared/interfaces`, and `@zenithplayer/ui/components`. Do not add new imports from legacy bare aliases such as `services`, `shared-interfaces`, `components`, `m3u-state`, or `database`.
 - Every Nx project should keep `scope:*`, `domain:*`, and `type:*` tags in `project.json` so `@nx/enforce-module-boundaries` remains useful for humans and agents.
 - See `docs/architecture/nx-workspace-boundaries.md` for the current Nx tag and alias policy.
 - Repository-specific skills are committed under `.codex/skills/`. If an external agent does not support skills, treat those files as concise ownership docs.
@@ -54,33 +54,33 @@ This file provides guidance to coding agents working in this repository.
 - Connect Chrome DevTools Protocol tools to: `127.0.0.1:9222`
 - For Electron automation/debugging tasks, use the `electron` skill
 - Do not auto-open DevTools during normal CDP automation. In development, DevTools is opt-in via `ELECTRON_OPEN_DEVTOOLS=1`.
-- If DevTools is open, `agent-browser --cdp 9222 ...` may attach to the DevTools page instead of the IPTVnator window. Symptoms: `tab list` shows `about:blank`, snapshots are empty, and screenshots are black.
-- If that happens, inspect targets with `curl http://127.0.0.1:9222/json/list` and connect directly to the IPTVnator page websocket from the `webSocketDebuggerUrl` field.
+- If DevTools is open, `agent-browser --cdp 9222 ...` may attach to the DevTools page instead of the Zenith Player window. Symptoms: `tab list` shows `about:blank`, snapshots are empty, and screenshots are black.
+- If that happens, inspect targets with `curl http://127.0.0.1:9222/json/list` and connect directly to the Zenith Player page websocket from the `webSocketDebuggerUrl` field.
 
 ### Trace / Debug Startup
 
 - Full startup tracing:
 
 ```bash
-IPTVNATOR_TRACE_STARTUP=1 nx serve electron-backend
+zenithplayer_TRACE_STARTUP=1 nx serve electron-backend
 ```
 
 - Narrower trace flags:
-    - `IPTVNATOR_TRACE_IPC=1` traces renderer `window.electron.*` bridge calls
-    - `IPTVNATOR_TRACE_DB=1` traces DB worker requests and request-scoped DB events
-    - `IPTVNATOR_TRACE_SQL=1` traces SQLite statements in the main process and DB worker
-    - `IPTVNATOR_TRACE_WINDOW=1` traces BrowserWindow lifecycle and unresponsive events
-    - `IPTVNATOR_TRACE_PLAYER=1` traces external-player activity and bounded Embedded MPV runtime-probe stderr
-    - `IPTVNATOR_TRACE_RENDERER_CONSOLE=1` mirrors renderer console output into the Electron terminal
+    - `zenithplayer_TRACE_IPC=1` traces renderer `window.electron.*` bridge calls
+    - `zenithplayer_TRACE_DB=1` traces DB worker requests and request-scoped DB events
+    - `zenithplayer_TRACE_SQL=1` traces SQLite statements in the main process and DB worker
+    - `zenithplayer_TRACE_WINDOW=1` traces BrowserWindow lifecycle and unresponsive events
+    - `zenithplayer_TRACE_PLAYER=1` traces external-player activity and bounded Embedded MPV runtime-probe stderr
+    - `zenithplayer_TRACE_RENDERER_CONSOLE=1` mirrors renderer console output into the Electron terminal
 
 - Settings, portal request/response, and trace payloads must use
-  `@iptvnator/shared/logging` or the redacting portal logger before reaching
+  `@zenithplayer/shared/logging` or the redacting portal logger before reaching
   `console.*`; never log raw credentials while debugging.
 
 - GPU/compositor debugging:
 
 ```bash
-IPTVNATOR_DISABLE_HARDWARE_ACCELERATION=1 nx serve electron-backend
+zenithplayer_DISABLE_HARDWARE_ACCELERATION=1 nx serve electron-backend
 ```
 
 - If local Nx state gets weird before a rerun:
@@ -95,7 +95,7 @@ pnpm nx reset
 agent-browser --cdp 9222 tab list
 agent-browser --cdp 9222 tab 1
 agent-browser --cdp 9222 snapshot -i -c -d 4
-agent-browser --cdp 9222 screenshot /tmp/iptvnator-cdp.png
+agent-browser --cdp 9222 screenshot /tmp/zenithplayer-cdp.png
 ```
 
 ### Fallback
@@ -109,8 +109,8 @@ npx --yes agent-browser --cdp 9222 tab list
 ```bash
 ELECTRON_OPEN_DEVTOOLS=1 nx serve electron-backend
 curl http://127.0.0.1:9222/json/list
-agent-browser connect ws://127.0.0.1:9222/devtools/page/<iptvnator-page-id>
-agent-browser screenshot /tmp/iptvnator-cdp.png
+agent-browser connect ws://127.0.0.1:9222/devtools/page/<zenithplayer-page-id>
+agent-browser screenshot /tmp/zenithplayer-cdp.png
 ```
 
 ## Radio / Audio Player
@@ -233,14 +233,14 @@ Key files:
       Pacman=`mpv,libglvnd,mesa`
     - `portable`: AppImage/Snap with the pinned LGPL-compatible closure
     - `flatpak`: Flatpak with the same pinned closure
-- Flatpak is an isolated packaging pass and keeps `iptvnator` as the real
+- Flatpak is an isolated packaging pass and keeps `zenithplayer` as the real
   Electron ELF so Electron Builder's `electron-wrapper` passes it directly to
-  Zypak. Other Linux targets retain the conditional `iptvnator` wrapper and
-  `iptvnator.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation.
+  Zypak. Other Linux targets retain the conditional `zenithplayer` wrapper and
+  `zenithplayer.bin`. Mixed Flatpak/non-Flatpak target sets fail before mutation.
 - The DEB system-runtime contract is Ubuntu 24.04+ (`libmpv2`). Ubuntu 22.04
   provides `libmpv1`, so use the x64 AppImage on Jammy instead of weakening the
   package dependency or advertising frame-copy without a compatible runtime.
-- Only `iptvnator_mpv_helper` may link libmpv. The Electron executable,
+- Only `zenithplayer_mpv_helper` may link libmpv. The Electron executable,
   Electron libraries, `embedded_mpv.node`, and
   `embedded_mpv_frame_reader.node` must not load or link it. Preserve this
   process-isolation contract in build, package, and smoke checks.
@@ -268,7 +268,7 @@ Key files:
   provider layouts: `/usr/share/libdrm` binds from
   `$SNAP/graphics/libdrm`, and `/usr/share/drirc.d` symlinks to
   `$SNAP/graphics/drirc.d`. The provider is external shared content, not part
-  of IPTVnator's package size, source archive, or notices. Installed-Snap CI
+  of Zenith Player's package size, source archive, or notices. Installed-Snap CI
   must prove controlled unavailable exit after disconnect, then reconnect and
   prove success. The helper links `libGL.so.1` rather than `libOpenGL.so.0`.
 - The probe and playback helper share one sanitized loader environment:
@@ -292,7 +292,7 @@ Key files:
   optional `helperDetail` must be 1–1024 printable ASCII characters. Invalid
   detail suppresses both helper fields. Every probe uses an explicit 16 MiB
   aggregate captured-output ceiling independent of tracing. With
-  `IPTVNATOR_TRACE_PLAYER=1`, a non-empty helper stderr capture is emitted
+  `zenithplayer_TRACE_PLAYER=1`, a non-empty helper stderr capture is emitted
   separately as one JSON-escaped stderr line whose `stderr` field is limited
   to 16,384 characters and whose `truncated` field is always explicit;
   trace-write failure cannot change the capability result. Installed-Snap CI
@@ -363,25 +363,25 @@ Key files:
 
 ## Repo Skills
 
-- `iptvnator-ui-design`
-  Repository-specific UI design guidance for IPTVnator.
+- `zenithplayer-ui-design`
+  Repository-specific UI design guidance for Zenith Player.
   Use when working on channel rows, EPG views, settings surfaces, shared selection styles, or light/dark theme consistency.
-  File: `.codex/skills/iptvnator-ui-design/SKILL.md`
+  File: `.codex/skills/zenithplayer-ui-design/SKILL.md`
 
-- `iptvnator-theme-style`
+- `zenithplayer-theme-style`
   Theme architecture, design token reference, shared SCSS library, portal header pattern, Electron drag region, and common styling mistakes.
   Use when adding/changing CSS tokens, styling portal headers or sidebars, using shared SCSS mixins (`portal-layout`, `content-grid`, `portal-sidebar`), or auditing cross-portal visual consistency.
-  File: `.codex/skills/iptvnator-theme-style/SKILL.md`
+  File: `.codex/skills/zenithplayer-theme-style/SKILL.md`
 
-- `iptvnator-nx-architecture`
+- `zenithplayer-nx-architecture`
   Repository-specific Nx monorepo structure, library placement rules, path alias guidance, and migration guardrails for portal/workspace/app code.
   Use when deciding where code belongs, extracting code into libs, choosing imports, or refactoring Xtream/Stalker/Workspace boundaries.
-  File: `.codex/skills/iptvnator-nx-architecture/SKILL.md`
+  File: `.codex/skills/zenithplayer-nx-architecture/SKILL.md`
 
-- `iptvnator-sqlite-db-worker`
+- `zenithplayer-sqlite-db-worker`
   Repository-specific guidance for the Electron non-EPG SQLite worker, including worker boundaries, request-scoped DB progress events, and validation steps for slow DB operations.
   Use when moving heavy database work off the main thread, adding worker-backed SQLite operations, or wiring loading/progress UI for Xtream and playlist DB flows.
-  File: `.codex/skills/iptvnator-sqlite-db-worker/SKILL.md`
+  File: `.codex/skills/zenithplayer-sqlite-db-worker/SKILL.md`
 
 - `stalker-portal`
   Repository-specific guidance for Stalker/Ministra catalogs, all three VOD/series modes, cross-surface `is_series` behavior, playback metadata, collections, EPG, and remote control.
@@ -389,7 +389,7 @@ Key files:
   File: `.codex/skills/stalker-portal/SKILL.md`
 
 - `xtream-electron`
-  Repository-specific guidance for IPTVnator's Electron-first Xtream implementation, including feature/data-access boundaries, worker-backed DB flows, and Xtream loading/progress UX expectations.
+  Repository-specific guidance for Zenith Player's Electron-first Xtream implementation, including feature/data-access boundaries, worker-backed DB flows, and Xtream loading/progress UX expectations.
   Use when working on Xtream routes, store/data-source logic, or Electron-backed Xtream import/search/delete behavior.
   File: `.codex/skills/xtream-electron/SKILL.md`
 

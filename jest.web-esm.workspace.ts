@@ -26,7 +26,7 @@ export default {
     snapshotSerializers: angularEsmPreset.snapshotSerializers,
     moduleNameMapper: {
         ...(angularEsmPreset.moduleNameMapper ?? {}),
-        '^@iptvnator/portal/xtream/feature$':
+        '^@zenithplayer/portal/xtream/feature$':
             '<rootDir>/apps/web/src/test-stubs/xtream-feature.stub.ts',
         tslib: 'tslib/tslib.es6.js',
         '^iptv-playlist-parser$':

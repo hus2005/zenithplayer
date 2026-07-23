@@ -10,14 +10,14 @@ const {
     validateFlatpakLauncher,
 } = require('./flatpak-launcher-validation.cjs');
 
-const executableName = 'iptvnator';
+const executableName = 'zenithplayer';
 const electronElf = Buffer.from([
     0x7f, 0x45, 0x4c, 0x46, 0x02, 0x01, 0x01, 0x00,
 ]);
 
 async function createFixture(t) {
     const appDir = await fs.mkdtemp(
-        path.join(os.tmpdir(), 'iptvnator-flatpak-launcher-')
+        path.join(os.tmpdir(), 'zenithplayer-flatpak-launcher-')
     );
     t.after(() => fs.rm(appDir, { recursive: true, force: true }));
 

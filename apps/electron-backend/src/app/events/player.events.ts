@@ -2,7 +2,7 @@ import { ipcMain } from 'electron';
 import {
     CLOSE_EXTERNAL_PLAYER_SESSION,
     PlayerContentInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     MPV_PLAYER_PATH,
     store,

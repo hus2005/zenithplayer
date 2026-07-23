@@ -3,7 +3,7 @@ import { OverlayRef } from '@angular/cdk/overlay';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
 import { of } from 'rxjs';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
 import {
     MultiEpgContainerComponent,
     isSelectedEpgDayToday,

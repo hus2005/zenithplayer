@@ -207,7 +207,7 @@ void updateSessionError(const std::shared_ptr<Session>& session, const std::stri
 
 bool isEmbeddedMpvTraceEnabled()
 {
-    const char* value = std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV");
+    const char* value = std::getenv("zenithplayer_TRACE_EMBEDDED_MPV");
     return value && value[0] != '\0' && std::string(value) != "0";
 }
 
@@ -232,7 +232,7 @@ std::string normalizeEnvValue(const char* value)
 RenderBackend requestedRenderBackend()
 {
     const std::string renderer =
-        normalizeEnvValue(std::getenv("IPTVNATOR_EMBEDDED_MPV_RENDERER"));
+        normalizeEnvValue(std::getenv("zenithplayer_EMBEDDED_MPV_RENDERER"));
     return renderer == "sw"
         ? RenderBackend::Software
         : RenderBackend::OpenGL;
@@ -1580,7 +1580,7 @@ Napi::Value CreateSession(const Napi::CallbackInfo& info)
         ? [[parentView window] contentView]
         : parentView;
     session->renderQueue = dispatch_queue_create(
-        "dev.iptvnator.embedded-mpv.render",
+        "dev.zenithplayer.embedded-mpv.render",
         DISPATCH_QUEUE_SERIAL
     );
     session->snapshot.volumePercent =

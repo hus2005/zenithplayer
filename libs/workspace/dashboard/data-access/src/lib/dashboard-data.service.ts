@@ -13,18 +13,18 @@ import {
     PlaylistActions,
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import { firstValueFrom, startWith } from 'rxjs';
 import {
     DatabaseService,
     GlobalRecentlyAddedKind,
     PlaylistsService,
     RuntimeCapabilitiesService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     XTREAM_DATA_SOURCE,
     XtreamContentItem,
-} from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/xtream/data-access';
 import {
     buildPlaylistRecentItems,
     Channel,
@@ -37,7 +37,7 @@ import {
     PortalFavoriteItem,
     PortalRecentItem,
     stalkerItemMatchesId,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     buildStalkerFavoriteItems,
     getActivityTypeLabelKey,
@@ -50,8 +50,8 @@ import {
 import {
     PORTAL_PLAYBACK_POSITIONS,
     WorkspaceNavigationTarget,
-} from '@iptvnator/portal/shared/util';
-import type { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/shared/util';
+import type { PlaybackPositionData } from '@zenithplayer/shared/interfaces';
 import {
     getGlobalFavoriteLink as getGlobalFavoriteLinkUtil,
     getGlobalFavoriteNavigationState as getGlobalFavoriteNavigationStateUtil,
@@ -99,11 +99,11 @@ function newestPlaybackPosition(
         : current;
 }
 
-/** @deprecated Use {@link PortalRecentItem} from `@iptvnator/shared/interfaces` instead. */
+/** @deprecated Use {@link PortalRecentItem} from `@zenithplayer/shared/interfaces` instead. */
 export type GlobalRecentItem = PortalRecentItem;
-/** @deprecated Use {@link PortalFavoriteItem} from `@iptvnator/shared/interfaces` instead. */
+/** @deprecated Use {@link PortalFavoriteItem} from `@zenithplayer/shared/interfaces` instead. */
 export type DashboardFavoriteItem = PortalFavoriteItem;
-/** @deprecated Use {@link PortalAddedItem} from `@iptvnator/shared/interfaces` instead. */
+/** @deprecated Use {@link PortalAddedItem} from `@zenithplayer/shared/interfaces` instead. */
 export type DashboardRecentlyAddedItem = PortalAddedItem;
 export type DashboardRecentlyAddedFilterKind = GlobalRecentlyAddedKind;
 

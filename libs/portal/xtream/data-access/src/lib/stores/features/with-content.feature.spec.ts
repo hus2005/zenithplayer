@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
-import { DatabaseService } from '@iptvnator/services';
+import { DatabaseService } from '@zenithplayer/services';
 import {
     XTREAM_DATA_SOURCE,
     XtreamPlaylistData,
@@ -9,7 +9,7 @@ import { XtreamApiService } from '../../services/xtream-api.service';
 import { PortalStatusType } from '../../xtream-state';
 import { withContent } from './with-content.feature';
 
-jest.mock('@iptvnator/portal/shared/util', () => ({
+jest.mock('@zenithplayer/portal/shared/util', () => ({
     createLogger: () => ({
         debug: jest.fn(),
         info: jest.fn(),

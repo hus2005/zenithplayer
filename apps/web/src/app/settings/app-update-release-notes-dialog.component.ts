@@ -23,7 +23,7 @@ import {
     ElectronBridgeAppUpdateReleaseNotes,
     ElectronBridgeAppUpdateReleaseNotesDirection,
     ElectronBridgeAppUpdateReleaseNotesRequest,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 const RELEASE_NOTES_IMAGE_CLASS = 'release-notes-dialog__image';
 

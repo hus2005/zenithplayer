@@ -12,12 +12,12 @@ import { MatIcon } from '@angular/material/icon';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatTooltip } from '@angular/material/tooltip';
 import { TranslatePipe } from '@ngx-translate/core';
-import { applyChannelNameStrip } from '@iptvnator/shared/m3u-utils';
-import { SettingsStore } from '@iptvnator/services';
+import { applyChannelNameStrip } from '@zenithplayer/shared/m3u-utils';
+import { SettingsStore } from '@zenithplayer/services';
 import {
     ProgressCapsuleComponent,
     WatchedBadgeComponent,
-} from '@iptvnator/ui/components';
+} from '@zenithplayer/ui/components';
 import { PlaylistErrorViewComponent } from '../playlist-error-view/playlist-error-view.component';
 
 interface GridListItem {

@@ -6,7 +6,7 @@ import {
     APP_UPDATE_GET_STATUS,
     APP_UPDATE_INSTALL,
     APP_UPDATE_STATUS_CHANGED,
-} from '@iptvnator/shared/interfaces/ipc-commands';
+} from '@zenithplayer/shared/interfaces/ipc-commands';
 import {
     attachEmbeddedMpvFrameView,
     detachEmbeddedMpvFrameView,
@@ -45,7 +45,7 @@ import type {
     TmdbCacheEntry,
     TmdbCacheMediaType,
     XtreamCategory,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     DEBUG_TRACE_EVENT_CHANNEL,
     isRendererApiTraceEnabled,

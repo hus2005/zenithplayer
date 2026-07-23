@@ -1,5 +1,5 @@
 import { Route } from '@angular/router';
-import { PORTAL_CATALOG_DETAIL_COMPONENT } from '@iptvnator/portal/shared/util';
+import { PORTAL_CATALOG_DETAIL_COMPONENT } from '@zenithplayer/portal/shared/util';
 import { StalkerCatalogDetailComponent } from './stalker-catalog-detail/stalker-catalog-detail.component';
 import { provideStalkerCatalogFacade } from './stalker-catalog-facade.service';
 import { provideStalkerWorkspaceRouteSession } from './stalker-workspace-route-session.service';
@@ -7,7 +7,7 @@ import { provideStalkerWorkspaceRouteSession } from './stalker-workspace-route-s
 type ComponentLoader = NonNullable<Route['loadComponent']>;
 
 const loadDownloadsComponent: ComponentLoader = () =>
-    import('@iptvnator/portal/downloads/feature').then(
+    import('@zenithplayer/portal/downloads/feature').then(
         (c) => c.DownloadsComponent
     );
 
@@ -17,7 +17,7 @@ const loadStalkerLiveStreamLayoutComponent: ComponentLoader = () =>
     );
 
 const loadCategoryContentViewComponent: ComponentLoader = () =>
-    import('@iptvnator/portal/catalog/feature').then(
+    import('@zenithplayer/portal/catalog/feature').then(
         (c) => c.CategoryContentViewComponent
     );
 

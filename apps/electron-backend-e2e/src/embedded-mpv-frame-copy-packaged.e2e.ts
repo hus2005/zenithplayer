@@ -28,8 +28,8 @@ import {
 } from './embedded-mpv-frame-copy-packaged-filesystem';
 
 const PACKAGED_FRAME_COPY_REQUIRED_ENV =
-    'IPTVNATOR_E2E_REQUIRE_PACKAGED_FRAME_COPY';
-const FRAME_COPY_OPT_IN_ENV = 'IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY';
+    'zenithplayer_E2E_REQUIRE_PACKAGED_FRAME_COPY';
+const FRAME_COPY_OPT_IN_ENV = 'zenithplayer_ENABLE_EMBEDDED_MPV_FRAME_COPY';
 const packagedExecutable = resolvePackagedLinuxExecutable();
 const packagedFrameCopyRequired = isTruthy(
     process.env[PACKAGED_FRAME_COPY_REQUIRED_ENV]
@@ -51,7 +51,7 @@ test.describe('Packaged Linux embedded MPV frame-copy runtime', () => {
     );
     test.skip(
         !packagedExecutable && !packagedFrameCopyRequired,
-        `Set IPTVNATOR_E2E_PACKAGED_EXECUTABLE or ${PACKAGED_FRAME_COPY_REQUIRED_ENV}=1 in the dedicated packaged-runtime job.`
+        `Set zenithplayer_E2E_PACKAGED_EXECUTABLE or ${PACKAGED_FRAME_COPY_REQUIRED_ENV}=1 in the dedicated packaged-runtime job.`
     );
 
     test('@critical @electron @embedded-mpv uses packaged frame-copy and fails closed to native-view', async ({
@@ -63,7 +63,7 @@ test.describe('Packaged Linux embedded MPV frame-copy runtime', () => {
         ).toBe('x64');
         expect(
             packagedExecutable,
-            `The dedicated packaged-runtime job must provide a real unpacked x64 executable with IPTVNATOR_E2E_PACKAGED_EXECUTABLE when ${PACKAGED_FRAME_COPY_REQUIRED_ENV}=1.`
+            `The dedicated packaged-runtime job must provide a real unpacked x64 executable with zenithplayer_E2E_PACKAGED_EXECUTABLE when ${PACKAGED_FRAME_COPY_REQUIRED_ENV}=1.`
         ).toBeTruthy();
 
         const sourceExecutablePath = packagedExecutable as string;
@@ -298,7 +298,7 @@ test.describe('Packaged Linux embedded MPV frame-copy runtime', () => {
             }, nativeSession.id);
             await expect
                 .poll(() => launchedFallbackApp.mainWindow.title())
-                .toContain('IPTVnator');
+                .toContain('Zenith Player');
         } finally {
             await cleanupPackagedFrameCopySmoke({
                 apps: [frameCopyApp, fallbackApp],

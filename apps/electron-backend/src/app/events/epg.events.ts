@@ -4,7 +4,7 @@ import {
     ElectronBridgeTrustOptions,
     EpgChannelMetadata,
     EpgProgram,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { getDatabase } from '../database/connection';
 import * as schema from '../database/schema';
 import { epgQueryService } from './epg-query.service';

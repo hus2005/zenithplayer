@@ -6,7 +6,7 @@ const postHtmlPath = new URL('../../dist/apps/website/blog/why-external-players-
 
 const expectedGiscusAttributes = {
   src: 'https://giscus.app/client.js',
-  'data-repo': '4gray/iptvnator',
+  'data-repo': 'hus2005/zenithplayer',
   'data-repo-id': 'MDEwOlJlcG9zaXRvcnkyMTMxOTQ3Mzg=',
   'data-category': 'Blog comments',
   'data-category-id': 'DIC_kwDODLUX8s4C9eBJ',

@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwUpdate } from '@angular/service-worker';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistActions } from '@iptvnator/m3u-state';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
 import {
     catchError,
     firstValueFrom,
@@ -13,7 +13,7 @@ import {
     switchMap,
     throwError,
 } from 'rxjs';
-import { DataService } from '@iptvnator/services';
+import { DataService } from '@zenithplayer/services';
 import {
     ERROR,
     Playlist,
@@ -23,7 +23,7 @@ import {
     XtreamCodeActions,
     XTREAM_REQUEST,
     XTREAM_RESPONSE,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { AppConfig } from '../../environments/environment';
 import {
     createPortalDebugErrorEvent,
@@ -32,7 +32,7 @@ import {
     logPortalDebugEvent,
     logPortalDebugRequest,
     createLogger,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import { getRuntimeBackendUrl } from './runtime-config';
 
 interface PwaXtreamResponse {

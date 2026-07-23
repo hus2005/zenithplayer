@@ -6,35 +6,35 @@
 
 #include <mpv/client.h>
 
-#ifdef IPTVNATOR_DYNAMIC_LIBMPV
-#ifndef IPTVNATOR_MPV_SELECTANY
+#ifdef zenithplayer_DYNAMIC_LIBMPV
+#ifndef zenithplayer_MPV_SELECTANY
 #ifdef MPV_SELECTANY
-#define IPTVNATOR_MPV_SELECTANY MPV_SELECTANY
+#define zenithplayer_MPV_SELECTANY MPV_SELECTANY
 #elif defined(_WIN32)
-#define IPTVNATOR_MPV_SELECTANY __declspec(selectany)
+#define zenithplayer_MPV_SELECTANY __declspec(selectany)
 #else
-#define IPTVNATOR_MPV_SELECTANY
+#define zenithplayer_MPV_SELECTANY
 #endif
 #endif
 
-#define IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(name) \
-    IPTVNATOR_MPV_SELECTANY decltype(&name) pfn_##name = nullptr;
+#define zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(name) \
+    zenithplayer_MPV_SELECTANY decltype(&name) pfn_##name = nullptr;
 
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_async)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_node_async)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_create)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_error_string)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_initialize)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_observe_property)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_request_log_messages)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_option_string)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_property)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_property_async)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_terminate_destroy)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_wait_event)
-IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_wakeup)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_async)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_command_node_async)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_create)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_error_string)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_initialize)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_observe_property)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_request_log_messages)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_option_string)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_property)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_set_property_async)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_terminate_destroy)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_wait_event)
+zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL(mpv_wakeup)
 
-#undef IPTVNATOR_DECLARE_MPV_DYNAMIC_SYMBOL
+#undef zenithplayer_DECLARE_MPV_DYNAMIC_SYMBOL
 
 #define mpv_command_async pfn_mpv_command_async
 #define mpv_command_node_async pfn_mpv_command_node_async
@@ -159,7 +159,7 @@ std::unordered_map<std::string, std::shared_ptr<Session>> gSessions;
 
 void traceMpvCommon(const std::string& message)
 {
-    if (!std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV")) {
+    if (!std::getenv("zenithplayer_TRACE_EMBEDDED_MPV")) {
         return;
     }
 
@@ -578,9 +578,9 @@ std::vector<std::string> buildLinuxMpvArguments(
         );
     }
 
-    if (std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV")) {
+    if (std::getenv("zenithplayer_TRACE_EMBEDDED_MPV")) {
         arguments.push_back("--msg-level=all=trace");
-        arguments.push_back("--log-file=/tmp/iptvnator-embedded-mpv.log");
+        arguments.push_back("--log-file=/tmp/zenithplayer-embedded-mpv.log");
     } else {
         arguments.push_back("--really-quiet");
     }
@@ -653,7 +653,7 @@ std::string buildLinuxIpcSocketPath(const std::shared_ptr<Session>& session)
         }
     }
 
-    return "/tmp/iptvnator-embedded-mpv-" +
+    return "/tmp/zenithplayer-embedded-mpv-" +
         std::to_string(static_cast<long>(getpid())) +
         "-" + safeSessionId +
         "-" + std::to_string(gNextLinuxIpcSocketId.fetch_add(1)) + ".sock";
@@ -1066,7 +1066,7 @@ pid_t spawnLinuxMpvProcess(
     }
     envp.push_back(nullptr);
 
-    const bool traceEnabled = std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV");
+    const bool traceEnabled = std::getenv("zenithplayer_TRACE_EMBEDDED_MPV");
     const pid_t processId = fork();
     if (processId != 0) {
         return processId;
@@ -1670,12 +1670,12 @@ Napi::Value CreateSession(const Napi::CallbackInfo& info)
     mpv_set_option_string(session->handle, "vo", "gpu");
     mpv_set_option_string(session->handle, "hwdec", "auto-safe");
 #endif
-    if (std::getenv("IPTVNATOR_TRACE_EMBEDDED_MPV")) {
+    if (std::getenv("zenithplayer_TRACE_EMBEDDED_MPV")) {
         mpv_set_option_string(session->handle, "msg-level", "all=trace");
         mpv_set_option_string(
             session->handle,
             "log-file",
-            "/tmp/iptvnator-embedded-mpv.log"
+            "/tmp/zenithplayer-embedded-mpv.log"
         );
     }
 

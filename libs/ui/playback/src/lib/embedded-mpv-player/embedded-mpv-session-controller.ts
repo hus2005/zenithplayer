@@ -12,7 +12,7 @@ import {
     EmbeddedMpvSession,
     EmbeddedMpvSupport,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { EmbeddedMpvCommandRunner } from './embedded-mpv-command-runner';
 import { measureBounds } from './embedded-mpv-format.utils';
 import {

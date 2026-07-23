@@ -1,4 +1,4 @@
-import { Channel, EpgProgram } from '@iptvnator/shared/interfaces';
+import { Channel, EpgProgram } from '@zenithplayer/shared/interfaces';
 import { EpgActions } from './actions';
 import { buildExternalPlayerPayload } from './external-player-payload.util';
 import { resolveActiveEpgProgramAction } from './resolve-active-epg-program.util';

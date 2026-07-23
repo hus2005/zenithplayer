@@ -1,6 +1,6 @@
 import { eq, inArray } from 'drizzle-orm';
-import * as schema from '@iptvnator/shared/database/schema';
-import type { Channel, M3uFavoriteChannel } from '@iptvnator/shared/interfaces';
+import * as schema from '@zenithplayer/shared/database/schema';
+import type { Channel, M3uFavoriteChannel } from '@zenithplayer/shared/interfaces';
 import type { AppDatabase } from '../database.types';
 import {
     checkpointOperation,

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { PortalStatusService } from '@iptvnator/services';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
+import { PortalStatusService } from '@zenithplayer/services';
 import { XtreamCodeImportComponent } from './xtream-code-import.component';
 
 describe('XtreamCodeImportComponent', () => {

@@ -3,7 +3,7 @@ import {
     EpgImportProgress,
     EpgRuntimeBridgeService,
 } from './epg-runtime-bridge.service';
-import { SettingsStore } from '@iptvnator/services';
+import { SettingsStore } from '@zenithplayer/services';
 import { EpgProgressService } from './epg-progress.service';
 
 describe('EpgProgressService', () => {

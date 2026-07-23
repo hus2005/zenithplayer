@@ -2,8 +2,8 @@ import { InjectionToken } from '@angular/core';
 import {
     ExternalPlayerSession,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
-import type { ExternalPlayerName } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
+import type { ExternalPlayerName } from '@zenithplayer/shared/interfaces';
 
 export interface PortalPlayer {
     isEmbeddedPlayer(): boolean;

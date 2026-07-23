@@ -1,6 +1,6 @@
 import { Store } from '@ngrx/store';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { PlaylistMeta, StalkerPortalItem } from '@iptvnator/shared/interfaces';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
+import { PlaylistMeta, StalkerPortalItem } from '@zenithplayer/shared/interfaces';
 import { normalizeStalkerEntityId } from '../../stalker-vod.utils';
 import {
     StalkerContentType,

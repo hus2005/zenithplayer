@@ -5,7 +5,7 @@ import {
     PortalAddedItem,
     PortalFavoriteItem,
     PortalRecentItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     buildStalkerDetailNavigationTarget,
     buildStalkerStateItem,
@@ -14,7 +14,7 @@ import {
     getRecentItemNavigation,
     WorkspaceNavigationTarget,
     type SeriesResumeTarget,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 
 /**
  * Pure navigation/link helpers for dashboard items.

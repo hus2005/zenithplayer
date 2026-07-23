@@ -10,5 +10,5 @@ export {
   closeDatabase,
   type DatabaseInstance,
   type DatabaseOptions,
-} from '@iptvnator/shared/database';
+} from '@zenithplayer/shared/database';
 

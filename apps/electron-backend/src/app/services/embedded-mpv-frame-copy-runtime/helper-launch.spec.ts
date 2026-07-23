@@ -16,10 +16,10 @@ describe('createLinuxFrameCopyHelperLaunch', () => {
     const helperArgs = ['--runtime-probe'];
 
     it.each([
-        ['system', '/opt/iptvnator/native/iptvnator_mpv_helper'],
+        ['system', '/opt/zenithplayer/native/zenithplayer_mpv_helper'],
         [
             'bundled',
-            '/tmp/.mount-IPTVnator/resources/app.asar.unpacked/electron-backend/native/iptvnator_mpv_helper',
+            '/tmp/.mount-Zenith Player/resources/app.asar.unpacked/electron-backend/native/zenithplayer_mpv_helper',
         ],
     ] as const)(
         'launches a non-Snap %s helper directly',
@@ -53,7 +53,7 @@ describe('createLinuxFrameCopyHelperLaunch', () => {
     );
 
     it('launches a trusted Snap helper through the connected provider wrapper', () => {
-        const snapRoot = '/snap/iptvnator/42';
+        const snapRoot = '/snap/zenithplayer/42';
         const nativeDir = path.join(
             snapRoot,
             'resources',
@@ -61,7 +61,7 @@ describe('createLinuxFrameCopyHelperLaunch', () => {
             'electron-backend',
             'native'
         );
-        const helperPath = path.join(nativeDir, 'iptvnator_mpv_helper');
+        const helperPath = path.join(nativeDir, 'zenithplayer_mpv_helper');
         const graphicsRoot = path.join(snapRoot, 'graphics');
         const wrapperPath = path.join(
             graphicsRoot,
@@ -118,7 +118,7 @@ describe('createLinuxFrameCopyHelperLaunch', () => {
     ] as const)(
         'fails closed for a trusted Snap with a %s',
         (_label, mountKind, wrapperKind) => {
-            const snapRoot = '/snap/iptvnator/42';
+            const snapRoot = '/snap/zenithplayer/42';
             const nativeDir = path.join(
                 snapRoot,
                 'resources',
@@ -126,7 +126,7 @@ describe('createLinuxFrameCopyHelperLaunch', () => {
                 'electron-backend',
                 'native'
             );
-            const helperPath = path.join(nativeDir, 'iptvnator_mpv_helper');
+            const helperPath = path.join(nativeDir, 'zenithplayer_mpv_helper');
             const graphicsRoot = path.join(snapRoot, 'graphics');
             const wrapperPath = path.join(
                 graphicsRoot,
@@ -166,7 +166,7 @@ describe('createLinuxFrameCopyHelperLaunch', () => {
     );
 
     it('fails closed when the provider wrapper is not executable', () => {
-        const snapRoot = '/var/lib/snapd/snap/iptvnator/42';
+        const snapRoot = '/var/lib/snapd/snap/zenithplayer/42';
         const nativeDir = path.join(
             snapRoot,
             'resources',
@@ -178,7 +178,7 @@ describe('createLinuxFrameCopyHelperLaunch', () => {
         expect(
             createLinuxFrameCopyHelperLaunch({
                 environment: { SNAP: snapRoot },
-                helperPath: path.join(nativeDir, 'iptvnator_mpv_helper'),
+                helperPath: path.join(nativeDir, 'zenithplayer_mpv_helper'),
                 helperArgs,
                 runtimeMode: 'bundled',
                 fileSystem: {

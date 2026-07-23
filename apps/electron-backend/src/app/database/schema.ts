@@ -37,4 +37,4 @@ export {
   type NewPlaybackPosition,
   type Download,
   type NewDownload,
-} from '@iptvnator/shared/database';
+} from '@zenithplayer/shared/database';

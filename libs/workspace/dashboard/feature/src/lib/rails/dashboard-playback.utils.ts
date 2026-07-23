@@ -1,4 +1,4 @@
-import type { GlobalRecentItem } from '@iptvnator/workspace/dashboard/data-access';
+import type { GlobalRecentItem } from '@zenithplayer/workspace/dashboard/data-access';
 
 export interface DashboardRemainingLabel {
     readonly key: string;

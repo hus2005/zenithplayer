@@ -56,10 +56,10 @@ function resolvePackagedExecutable() {
                 executable: path.join(
                     executablesRoot,
                     'mac',
-                    'IPTVnator.app',
+                    'Zenith Player.app',
                     'Contents',
                     'MacOS',
-                    'IPTVnator'
+                    'Zenith Player'
                 ),
             },
             {
@@ -67,10 +67,10 @@ function resolvePackagedExecutable() {
                 executable: path.join(
                     executablesRoot,
                     'mac-arm64',
-                    'IPTVnator.app',
+                    'Zenith Player.app',
                     'Contents',
                     'MacOS',
-                    'IPTVnator'
+                    'Zenith Player'
                 ),
             },
         ];
@@ -82,11 +82,11 @@ function resolvePackagedExecutable() {
     }
 
     if (currentPlatform === 'windows') {
-        return findUnpackedExecutable('win', ['IPTVnator.exe']);
+        return findUnpackedExecutable('win', ['Zenith Player.exe']);
     }
 
     if (currentPlatform === 'linux') {
-        return findUnpackedExecutable('linux', ['IPTVnator', 'iptvnator']);
+        return findUnpackedExecutable('linux', ['Zenith Player', 'zenithplayer']);
     }
 
     return undefined;

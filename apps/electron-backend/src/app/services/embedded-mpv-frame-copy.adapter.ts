@@ -5,7 +5,7 @@ import {
     EmbeddedMpvBounds,
     EmbeddedMpvFrameSource,
     ResolvedPortalPlayback,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { isFrameCopyPlatformSupported } from './embedded-mpv-frame-copy-platform.util';
 import { createLinuxFrameCopyHelperLaunch } from './embedded-mpv-frame-copy-runtime';
 import type {
@@ -19,7 +19,7 @@ import type {
 
 /**
  * Frame-copy engine adapter: implements the same surface as the native
- * embedded MPV addon, but backed by a per-session `iptvnator_mpv_helper`
+ * embedded MPV addon, but backed by a per-session `zenithplayer_mpv_helper`
  * process. The helper owns libmpv (decode, offscreen render at viewport
  * size, audio) and publishes BGRA frames into a shared-memory ring that the
  * preload frame pump uploads to a renderer canvas.
@@ -128,10 +128,10 @@ export class EmbeddedMpvFrameCopyAdapter implements NativeEmbeddedMpvAddon {
             // Lip-sync compensation for the video path's added latency
             // (~10 ms measured on M1 Pro); tunable until calibration
             // lands, see the architecture doc.
-            ...(process.env.IPTVNATOR_EMBEDDED_MPV_AUDIO_DELAY
+            ...(process.env.zenithplayer_EMBEDDED_MPV_AUDIO_DELAY
                 ? [
                       '--audio-delay',
-                      process.env.IPTVNATOR_EMBEDDED_MPV_AUDIO_DELAY,
+                      process.env.zenithplayer_EMBEDDED_MPV_AUDIO_DELAY,
                   ]
                 : []),
         ];

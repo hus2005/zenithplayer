@@ -91,7 +91,7 @@ jobs:
               with:
                   files: ./coverage/merged/lcov.info,./coverage/merged/cobertura-coverage.xml
                   flags: unit
-                  name: iptvnator-unit
+                  name: zenithplayer-unit
                   fail_ci_if_error: false
                   handle_no_reports_found: true
                   disable_search: true

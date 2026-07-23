@@ -1,5 +1,5 @@
-import { resolveM3uCatchupUrl } from '@iptvnator/shared/m3u-utils';
-import { Channel, EpgProgram } from '@iptvnator/shared/interfaces';
+import { resolveM3uCatchupUrl } from '@zenithplayer/shared/m3u-utils';
+import { Channel, EpgProgram } from '@zenithplayer/shared/interfaces';
 import { EpgActions } from './actions';
 
 /**

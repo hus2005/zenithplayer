@@ -1,4 +1,4 @@
-import { getExtensionFromUrl } from '@iptvnator/shared/m3u-utils';
+import { getExtensionFromUrl } from '@zenithplayer/shared/m3u-utils';
 
 import type {
     PlaybackSourceMetadata,
@@ -198,7 +198,7 @@ function getMediaExtensionFromQuery(
     queryKeys: readonly string[]
 ): string {
     try {
-        const parsedUrl = new URL(url, 'http://iptvnator.local');
+        const parsedUrl = new URL(url, 'http://zenithplayer.local');
         for (const key of queryKeys) {
             const declaredExtension = normalizeDeclaredMediaExtension(
                 parsedUrl.searchParams.get(key) ?? undefined

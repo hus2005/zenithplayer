@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 import { EpgListViewComponent } from './epg-list-view.component';

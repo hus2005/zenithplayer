@@ -219,12 +219,12 @@ export default [
                     paths: legacyBareAliases.map((name) => ({
                         name,
                         message:
-                            'Use the scoped @iptvnator/* path alias instead of the legacy bare alias.',
+                            'Use the scoped @zenithplayer/* path alias instead of the legacy bare alias.',
                     })),
                     patterns: legacyBareAliases.map((name) => ({
                         group: [`${name}/*`],
                         message:
-                            'Use the scoped @iptvnator/* path alias instead of the legacy bare alias.',
+                            'Use the scoped @zenithplayer/* path alias instead of the legacy bare alias.',
                     })),
                 },
             ],

@@ -130,7 +130,7 @@ export function createDisposablePackagedLinuxApp(
     const sourceExecutablePath = resolve(executablePath);
     const sourcePackageRoot = dirname(sourceExecutablePath);
     const temporaryRoot = mkdtempSync(
-        join(tmpdir(), 'iptvnator-packaged-frame-copy-')
+        join(tmpdir(), 'zenithplayer-packaged-frame-copy-')
     );
     const packageRoot = join(temporaryRoot, basename(sourcePackageRoot));
     let cleaned = false;

@@ -7,13 +7,13 @@ import {
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { firstValueFrom, pipe, switchMap, tap } from 'rxjs';
-import { DatabaseService, PlaylistsService } from '@iptvnator/services';
+import { DatabaseService, PlaylistsService } from '@zenithplayer/services';
 import {
     buildPlaylistRecentItems,
     Playlist,
     PortalRecentItem,
-} from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/shared/interfaces';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 import { XTREAM_DATA_SOURCE } from './data-sources/xtream-data-source.interface';
 
 export interface RecentlyViewedItem extends PortalRecentItem {

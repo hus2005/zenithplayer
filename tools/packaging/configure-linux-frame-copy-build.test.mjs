@@ -147,7 +147,7 @@ test('configures exactly one requested marker-only foreign DEB architecture', ()
 
 test('CLI writes an exact marker-only foreign DEB architecture', (t) => {
     const temporaryDirectory = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-linux-build-config-')
+        path.join(os.tmpdir(), 'zenithplayer-linux-build-config-')
     );
     t.after(() =>
         fs.rmSync(temporaryDirectory, { recursive: true, force: true })
@@ -409,18 +409,18 @@ test('Linux CI builds one cached source runtime and packages three isolated prof
     assert.ok(
         buildStep.indexOf('git clean -ffdqx') <
             buildStep.indexOf(
-                'cp -a "${IPTVNATOR_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources/libplacebo"'
+                'cp -a "${zenithplayer_EMBEDDED_MPV_LINUX_BUILD_ROOT}/sources/libplacebo"'
             )
     );
     assert.doesNotMatch(buildStep, /linux-frame-copy-runtime-sources\.tar\.xz/);
     assert.match(
         buildWorkflow,
-        /IPTVNATOR_LINUX_FRAME_COPY_PROFILE: \$\{\{ matrix\.linux_profile/
+        /zenithplayer_LINUX_FRAME_COPY_PROFILE: \$\{\{ matrix\.linux_profile/
     );
     const makeStep = workflowStep('Make Electron app');
     assert.match(
         makeStep,
-        /IPTVNATOR_LINUX_FRAME_COPY_PROFILE: \$\{\{ matrix\.linux_profile/
+        /zenithplayer_LINUX_FRAME_COPY_PROFILE: \$\{\{ matrix\.linux_profile/
     );
     assert.match(buildWorkflow, /linux-frame-copy-runtime-sources\.tar\.xz/);
     assert.match(buildWorkflow, /name: linux-frame-copy-runtime-sources/);
@@ -520,20 +520,20 @@ test('Linux CI verifies every package family and exercises intended environments
     assert.match(buildWorkflow, /archlinux:latest/);
     assert.match(
         buildWorkflow,
-        /snap run iptvnator --embedded-mpv-runtime-probe/
+        /snap run zenithplayer --embedded-mpv-runtime-probe/
     );
-    assert.doesNotMatch(buildWorkflow, /snap run --shell iptvnator/);
+    assert.doesNotMatch(buildWorkflow, /snap run --shell zenithplayer/);
     assert.match(
         buildWorkflow,
-        /flatpak run --command=sh com\.fourgray\.iptvnator/
+        /flatpak run --command=sh com\.fourgray\.zenithplayer/
     );
     assert.match(
         flatpakVerificationStep,
-        /flatpak run\s+\\\s+--env=LIBGL_ALWAYS_SOFTWARE=1\s+\\\s+com\.fourgray\.iptvnator\s+\\\s+--embedded-mpv-runtime-probe/
+        /flatpak run\s+\\\s+--env=LIBGL_ALWAYS_SOFTWARE=1\s+\\\s+com\.fourgray\.zenithplayer\s+\\\s+--embedded-mpv-runtime-probe/
     );
     assert.doesNotMatch(
         flatpakVerificationStep,
-        /HELPER_PATH=.*iptvnator_mpv_helper/
+        /HELPER_PATH=.*zenithplayer_mpv_helper/
     );
     assert.doesNotMatch(buildWorkflow, /\bldd\b/);
 });
@@ -546,12 +546,12 @@ test('Flatpak application runtime probe runs under an isolated D-Bus session', (
 
     assert.match(
         flatpakVerificationStep,
-        /xvfb-run -a dbus-run-session -- flatpak run\s+\\\s+--env=LIBGL_ALWAYS_SOFTWARE=1\s+\\\s+com\.fourgray\.iptvnator\s+\\\s+--embedded-mpv-runtime-probe/
+        /xvfb-run -a dbus-run-session -- flatpak run\s+\\\s+--env=LIBGL_ALWAYS_SOFTWARE=1\s+\\\s+com\.fourgray\.zenithplayer\s+\\\s+--embedded-mpv-runtime-probe/
     );
     assert.match(installStep, /^\s+dbus-daemon\s+\\$/m);
     assert.match(
         flatpakVerificationStep,
-        /xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=1\s+\\\s+flatpak run --command=sh com\.fourgray\.iptvnator/
+        /xvfb-run -a env LIBGL_ALWAYS_SOFTWARE=1\s+\\\s+flatpak run --command=sh com\.fourgray\.zenithplayer/
     );
 });
 
@@ -562,7 +562,7 @@ test('Flatpak CI verifies the direct Zypak ELF and preserves probe status', () =
 
     assert.match(
         flatpakVerificationStep,
-        /LAUNCHER_PATH="\$\(readlink -f \/app\/bin\/iptvnator\)"/
+        /LAUNCHER_PATH="\$\(readlink -f \/app\/bin\/zenithplayer\)"/
     );
     assert.match(
         flatpakVerificationStep,
@@ -582,7 +582,7 @@ test('Flatpak CI verifies the direct Zypak ELF and preserves probe status', () =
     );
     assert.doesNotMatch(
         flatpakVerificationStep,
-        /grep -q .*exec "\$SCRIPT_DIR\/iptvnator\.bin"/
+        /grep -q .*exec "\$SCRIPT_DIR\/zenithplayer\.bin"/
     );
 
     assert.match(
@@ -632,9 +632,9 @@ test('foreign DEB CI explicitly selects both marker-only ARM architectures', () 
         foreignDebStep,
         /mv "\$\{foreign_debs\[0\]\}" dist\/executables\//
     );
-    assert.match(foreignDebStep, /IPTVNATOR_LINUX_FRAME_COPY_PROFILE: ''/);
-    assert.match(foreignDebStep, /IPTVNATOR_REQUIRE_EMBEDDED_MPV: '1'/);
-    assert.doesNotMatch(foreignDebStep, /IPTVNATOR_REQUIRE_EMBEDDED_MPV: '0'/);
+    assert.match(foreignDebStep, /zenithplayer_LINUX_FRAME_COPY_PROFILE: ''/);
+    assert.match(foreignDebStep, /zenithplayer_REQUIRE_EMBEDDED_MPV: '1'/);
+    assert.doesNotMatch(foreignDebStep, /zenithplayer_REQUIRE_EMBEDDED_MPV: '0'/);
 });
 
 test('system package smoke environments install every direct helper runtime dependency', () => {
@@ -702,31 +702,31 @@ test('Snap verifier preserves fail-closed status while exposing captured diagnos
     );
     assert.match(
         snapStep,
-        /sudo snap connect iptvnator:graphics-core22 mesa-core22:graphics-core22/
+        /sudo snap connect zenithplayer:graphics-core22 mesa-core22:graphics-core22/
     );
     assert.match(
         snapStep,
-        /sudo snap connect iptvnator:gnome-3-28-1804 gnome-3-28-1804:gnome-3-28-1804/
+        /sudo snap connect zenithplayer:gnome-3-28-1804 gnome-3-28-1804:gnome-3-28-1804/
     );
     assert.match(
         snapStep,
-        /\$2 == "iptvnator:graphics-core22" && \$3 == "mesa-core22:graphics-core22"/
+        /\$2 == "zenithplayer:graphics-core22" && \$3 == "mesa-core22:graphics-core22"/
     );
     assert.match(
         snapStep,
-        /\$2 == "iptvnator:gnome-3-28-1804" && \$3 == "gnome-3-28-1804:gnome-3-28-1804"/
+        /\$2 == "zenithplayer:gnome-3-28-1804" && \$3 == "gnome-3-28-1804:gnome-3-28-1804"/
     );
     assert.match(
         snapStep,
-        /\$1 == "shared-memory" && \$2 == "iptvnator:shared-memory" && \$3 == ":shared-memory"/
+        /\$1 == "shared-memory" && \$2 == "zenithplayer:shared-memory" && \$3 == ":shared-memory"/
     );
     assert.match(
         snapStep,
-        /sudo snap disconnect iptvnator:graphics-core22 mesa-core22:graphics-core22/
+        /sudo snap disconnect zenithplayer:graphics-core22 mesa-core22:graphics-core22/
     );
     assert.match(
         snapStep,
-        /\$2 == "iptvnator:graphics-core22" && \$3 == "-" \{ found=1 \} END \{ exit !found \}/
+        /\$2 == "zenithplayer:graphics-core22" && \$3 == "-" \{ found=1 \} END \{ exit !found \}/
     );
     assert.match(snapStep, /disconnected_probe="\$\(/);
     assert.match(snapStep, /disconnected_status=\$\?/);
@@ -737,13 +737,13 @@ test('Snap verifier preserves fail-closed status while exposing captured diagnos
         )
     );
     const firstGraphicsConnect = snapStep.indexOf(
-        'sudo snap connect iptvnator:graphics-core22'
+        'sudo snap connect zenithplayer:graphics-core22'
     );
     const graphicsDisconnect = snapStep.indexOf(
-        'sudo snap disconnect iptvnator:graphics-core22'
+        'sudo snap disconnect zenithplayer:graphics-core22'
     );
     const secondGraphicsConnect = snapStep.indexOf(
-        'sudo snap connect iptvnator:graphics-core22',
+        'sudo snap connect zenithplayer:graphics-core22',
         firstGraphicsConnect + 1
     );
     assert.ok(firstGraphicsConnect < graphicsDisconnect);
@@ -753,19 +753,19 @@ test('Snap verifier preserves fail-closed status while exposing captured diagnos
             secondGraphicsConnect
     );
     const firstRuntimeProbe = snapStep.indexOf(
-        'snap run iptvnator --embedded-mpv-runtime-probe'
+        'snap run zenithplayer --embedded-mpv-runtime-probe'
     );
     const successfulRuntimeProbe = snapStep.lastIndexOf(
-        'snap run iptvnator --embedded-mpv-runtime-probe'
+        'snap run zenithplayer --embedded-mpv-runtime-probe'
     );
     const graphicsConnectionAssertion = snapStep.indexOf(
-        '$2 == "iptvnator:graphics-core22" && $3 == "mesa-core22:graphics-core22"'
+        '$2 == "zenithplayer:graphics-core22" && $3 == "mesa-core22:graphics-core22"'
     );
     const gnomeConnectionAssertion = snapStep.indexOf(
-        '$2 == "iptvnator:gnome-3-28-1804" && $3 == "gnome-3-28-1804:gnome-3-28-1804"'
+        '$2 == "zenithplayer:gnome-3-28-1804" && $3 == "gnome-3-28-1804:gnome-3-28-1804"'
     );
     const sharedMemoryConnectionAssertion = snapStep.indexOf(
-        '$1 == "shared-memory" && $2 == "iptvnator:shared-memory" && $3 == ":shared-memory"'
+        '$1 == "shared-memory" && $2 == "zenithplayer:shared-memory" && $3 == ":shared-memory"'
     );
     assert.ok(firstRuntimeProbe < secondGraphicsConnect);
     assert.ok(firstRuntimeProbe < successfulRuntimeProbe);
@@ -774,9 +774,9 @@ test('Snap verifier preserves fail-closed status while exposing captured diagnos
     assert.ok(graphicsConnectionAssertion < gnomeConnectionAssertion);
     assert.ok(gnomeConnectionAssertion < sharedMemoryConnectionAssertion);
     assert.ok(sharedMemoryConnectionAssertion < successfulRuntimeProbe);
-    assert.match(snapStep, /snap run iptvnator --embedded-mpv-runtime-probe/);
+    assert.match(snapStep, /snap run zenithplayer --embedded-mpv-runtime-probe/);
     for (const traceSelector of [
-        'IPTVNATOR_TRACE_PLAYER=1',
+        'zenithplayer_TRACE_PLAYER=1',
         'EGL_LOG_LEVEL=debug',
         'LIBGL_DEBUG=verbose',
     ]) {
@@ -808,7 +808,7 @@ test('Snap verifier preserves fail-closed status while exposing captured diagnos
         );
     }
     assert.doesNotMatch(snapStep, /snap run --shell/);
-    assert.doesNotMatch(snapStep, /iptvnator_mpv_helper/);
+    assert.doesNotMatch(snapStep, /zenithplayer_mpv_helper/);
     assert.doesNotMatch(snapStep, /LD_LIBRARY_PATH/);
 });
 
@@ -839,11 +839,11 @@ test('dedicated packaged x64 smoke cannot silently skip', () => {
     );
     assert.match(
         packagedSmoke,
-        /IPTVNATOR_E2E_REQUIRE_PACKAGED_FRAME_COPY: '1'/
+        /zenithplayer_E2E_REQUIRE_PACKAGED_FRAME_COPY: '1'/
     );
     assert.match(
         packagedSmoke,
-        /IPTVNATOR_E2E_PACKAGED_EXECUTABLE: \$\{\{ github\.workspace \}\}\/dist\/executables\/linux-unpacked\/iptvnator/
+        /zenithplayer_E2E_PACKAGED_EXECUTABLE: \$\{\{ github\.workspace \}\}\/dist\/executables\/linux-unpacked\/zenithplayer/
     );
     assert.match(
         packagedSmoke,
@@ -856,7 +856,7 @@ test('dedicated packaged x64 smoke cannot silently skip', () => {
     assert.match(hardwareDiagnostic, /\/dev\/dri\/renderD128/);
     assert.match(
         hardwareDiagnostic,
-        /IPTVNATOR_E2E_REQUIRE_PACKAGED_FRAME_COPY: '1'/
+        /zenithplayer_E2E_REQUIRE_PACKAGED_FRAME_COPY: '1'/
     );
     assert.doesNotMatch(hardwareDiagnostic, /LIBGL_ALWAYS_SOFTWARE/);
 });

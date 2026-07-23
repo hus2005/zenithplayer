@@ -47,7 +47,7 @@ const linuxFrameCopyArtifacts = Object.freeze({
         readable: true,
     }),
     helper: Object.freeze({
-        name: 'iptvnator_mpv_helper',
+        name: 'zenithplayer_mpv_helper',
         regularFile: true,
         readable: true,
         executable: true,
@@ -910,8 +910,8 @@ function validateNativeViewOnlyLinuxPackage(
         }
     }
     for (const artifactName of [
-        'iptvnator_mpv_helper',
-        'iptvnator_mpv_helper.exe',
+        'zenithplayer_mpv_helper',
+        'zenithplayer_mpv_helper.exe',
         'embedded_mpv_frame_reader.node',
     ]) {
         const artifactPath = path.join(nativeDir, artifactName);
@@ -1385,7 +1385,7 @@ function inspectLinuxElfIsolation(
     options,
     errors
 ) {
-    const executableName = options.executableName ?? 'iptvnator';
+    const executableName = options.executableName ?? 'zenithplayer';
     let launcherLayout;
     try {
         launcherLayout = resolveLinuxLauncherLayout(
@@ -1679,8 +1679,8 @@ function validateLinuxPackagedEmbeddedMpv(resourceDir, options) {
         if (pathExistsByLstat(nativeDir)) {
             for (const staleName of [
                 'embedded_mpv_frame_reader.node',
-                'iptvnator_mpv_helper',
-                'iptvnator_mpv_helper.exe',
+                'zenithplayer_mpv_helper',
+                'zenithplayer_mpv_helper.exe',
                 'embedded-mpv-runtime.json',
                 'embedded-mpv-unavailable.txt',
                 'lib',
@@ -1750,7 +1750,7 @@ function validateLinuxPackagedEmbeddedMpv(resourceDir, options) {
         errors,
         0o755
     );
-    const staleWindowsHelper = path.join(nativeDir, 'iptvnator_mpv_helper.exe');
+    const staleWindowsHelper = path.join(nativeDir, 'zenithplayer_mpv_helper.exe');
     if (pathExistsByLstat(staleWindowsHelper)) {
         errors.push(
             `Linux frame-copy package must not retain the Windows helper: ${staleWindowsHelper}`
@@ -1834,8 +1834,8 @@ function validatePackagedEmbeddedMpv(resourceDir, options = {}) {
         // it).
         const missingFrameCopyArtifacts = [
             platform === 'win32'
-                ? 'iptvnator_mpv_helper.exe'
-                : 'iptvnator_mpv_helper',
+                ? 'zenithplayer_mpv_helper.exe'
+                : 'zenithplayer_mpv_helper',
             'embedded_mpv_frame_reader.node',
         ]
             .map((name) => path.join(unpackedNativeDir, name))
@@ -1851,10 +1851,10 @@ function validatePackagedEmbeddedMpv(resourceDir, options = {}) {
             // The helper is a separate executable. Windows resolves its
             // imported libmpv DLL from the executable directory, so a copy
             // under native/lib may satisfy addon bookkeeping but cannot
-            // start iptvnator_mpv_helper.exe.
+            // start zenithplayer_mpv_helper.exe.
             const helperPath = path.join(
                 unpackedNativeDir,
-                'iptvnator_mpv_helper.exe'
+                'zenithplayer_mpv_helper.exe'
             );
             const helperRuntimeCandidates = windowsMpvRuntimeNames.map((name) =>
                 path.join(unpackedNativeDir, name)

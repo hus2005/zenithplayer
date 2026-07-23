@@ -1,9 +1,9 @@
 ---
-name: iptvnator-sqlite-db-worker
+name: zenithplayer-sqlite-db-worker
 description: Repository-specific guidance for Electron non-EPG SQLite worker boundaries, request-scoped DB progress events, and validation for slow DB operations.
 ---
 
-# IPTVnator SQLite DB Worker
+# Zenith Player SQLite DB Worker
 
 Use this skill when changing Electron SQLite operations, worker-backed database flows, DB progress events, or Xtream/playlist import/search/delete persistence.
 
@@ -28,4 +28,4 @@ Use this skill when changing Electron SQLite operations, worker-backed database 
 
 - Run `pnpm nx test electron-backend` for worker/client/operation changes.
 - Run targeted Electron E2E for import, search, delete, backup/restore, or downloads flows when touched.
-- Use `IPTVNATOR_TRACE_DB=1` or `IPTVNATOR_TRACE_SQL=1` for manual debugging.
+- Use `zenithplayer_TRACE_DB=1` or `zenithplayer_TRACE_SQL=1` for manual debugging.

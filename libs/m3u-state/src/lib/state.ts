@@ -1,7 +1,7 @@
-import { Channel } from '@iptvnator/shared/interfaces';
+import { Channel } from '@zenithplayer/shared/interfaces';
 import { initialPlaylistMetaState, PlaylistMetaState } from './playlists.state';
 
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
 
 export interface PlaylistState {
     active: Channel | undefined;

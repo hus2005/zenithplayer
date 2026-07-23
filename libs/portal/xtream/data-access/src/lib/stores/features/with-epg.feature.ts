@@ -6,14 +6,14 @@ import {
     withMethods,
     withState,
 } from '@ngrx/signals';
-import { buildXtreamEpgMappingKey, EpgItem } from '@iptvnator/shared/interfaces';
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+import { buildXtreamEpgMappingKey, EpgItem } from '@zenithplayer/shared/interfaces';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
 import {
     XtreamApiService,
     XtreamCredentials,
 } from '../../services/xtream-api.service';
 import { XtreamXmltvFallbackService } from '../../services/xtream-xmltv-fallback.service';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 
 /**
  * EPG state for managing Electronic Program Guide data

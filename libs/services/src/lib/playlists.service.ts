@@ -6,7 +6,7 @@ import {
     createFavoritesPlaylist,
     createPlaylistObject,
     resolvePlaylistEpgSourceState,
-} from '@iptvnator/shared/m3u-utils';
+} from '@zenithplayer/shared/m3u-utils';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import {
     combineLatest,
@@ -30,7 +30,7 @@ import {
     PlaylistUpdateState,
     StalkerPortalItem,
     normalizeStalkerDate,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { PLAYLIST_DELETE_CLEANUP } from './playlist-delete-cleanup.token';
 import { RuntimeCapabilitiesService } from './runtime-capabilities.service';
 

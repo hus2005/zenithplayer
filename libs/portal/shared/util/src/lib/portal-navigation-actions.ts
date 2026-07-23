@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import { Playlist } from '@iptvnator/shared/interfaces';
+import { Playlist } from '@zenithplayer/shared/interfaces';
 
 export interface PortalNavigationActions {
     openAccountInfo(): void;

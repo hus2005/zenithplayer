@@ -146,7 +146,7 @@ function ensureTools() {
 }
 
 function resolveParallelism(environment) {
-    const explicitJobs = environment.IPTVNATOR_EMBEDDED_MPV_JOBS;
+    const explicitJobs = environment.zenithplayer_EMBEDDED_MPV_JOBS;
     const makeJobs = environment.MAKEFLAGS?.match(
         /(?:^|\s)-j\s*(\d+)(?:\s|$)/
     )?.[1];
@@ -156,7 +156,7 @@ function resolveParallelism(environment) {
         String(os.availableParallelism?.() ?? os.cpus().length);
     if (!/^[1-9]\d*$/.test(value)) {
         throw new Error(
-            `IPTVNATOR_EMBEDDED_MPV_JOBS must be a positive integer; received ${value}.`
+            `zenithplayer_EMBEDDED_MPV_JOBS must be a positive integer; received ${value}.`
         );
     }
     return value;
@@ -339,7 +339,7 @@ function mesonSetupArgs(prefix, recipeArgs) {
 
 function mesonInstall(packageId, recipe, context) {
     const sourcePath = sourcePathFor(packageId, context.sourceRoot);
-    const buildPath = path.join(sourcePath, 'build-iptvnator');
+    const buildPath = path.join(sourcePath, 'build-zenithplayer');
     const buildEnvironment = resolveLinuxPackageBuildEnvironment(
         packageId,
         context
@@ -419,7 +419,7 @@ function installWithDestdir(packageId, context, install, externalPaths = []) {
 
 function fontconfigInstall(recipe, context) {
     const sourcePath = sourcePathFor('fontconfig', context.sourceRoot);
-    const buildPath = path.join(sourcePath, 'build-iptvnator');
+    const buildPath = path.join(sourcePath, 'build-zenithplayer');
     fs.rmSync(buildPath, { recursive: true, force: true });
     context.run(
         'meson',
@@ -459,7 +459,7 @@ function fontconfigInstall(recipe, context) {
 
 function cmakeInstall(packageId, recipe, context) {
     const sourcePath = sourcePathFor(packageId, context.sourceRoot);
-    const buildPath = path.join(sourcePath, 'build-iptvnator');
+    const buildPath = path.join(sourcePath, 'build-zenithplayer');
     fs.rmSync(buildPath, { recursive: true, force: true });
     context.run('cmake', [
         '-S',
@@ -763,10 +763,10 @@ function writeManifest(context, sourceRecords, runtimeMetadata) {
 
 function createBuildContext(prefix, environment) {
     const buildRoot = path.resolve(
-        environment.IPTVNATOR_EMBEDDED_MPV_LINUX_BUILD_ROOT ??
+        environment.zenithplayer_EMBEDDED_MPV_LINUX_BUILD_ROOT ??
             path.join(
                 os.tmpdir(),
-                'iptvnator-embedded-mpv-runtime',
+                'zenithplayer-embedded-mpv-runtime',
                 'linux-x64'
             )
     );

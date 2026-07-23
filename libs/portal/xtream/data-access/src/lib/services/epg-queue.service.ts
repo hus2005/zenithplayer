@@ -3,11 +3,11 @@ import { Subject } from 'rxjs';
 import {
     buildXtreamEpgMappingKey,
     EpgItem,
-} from '@iptvnator/shared/interfaces';
-import { SettingsStore } from '@iptvnator/services';
+} from '@zenithplayer/shared/interfaces';
+import { SettingsStore } from '@zenithplayer/services';
 import { XtreamApiService, XtreamCredentials } from './xtream-api.service';
 import { XtreamXmltvFallbackService } from './xtream-xmltv-fallback.service';
-import { createLogger } from '@iptvnator/portal/shared/util';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 
 interface CacheEntry {
     data: EpgItem[];

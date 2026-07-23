@@ -8,8 +8,8 @@ import {
     withState,
 } from '@ngrx/signals';
 import { TranslateService } from '@ngx-translate/core';
-import { createLogger } from '@iptvnator/portal/shared/util';
-import { DataService } from '@iptvnator/services';
+import { createLogger } from '@zenithplayer/portal/shared/util';
+import { DataService } from '@zenithplayer/services';
 import {
     StalkerCategoryItem,
     StalkerContentItem,

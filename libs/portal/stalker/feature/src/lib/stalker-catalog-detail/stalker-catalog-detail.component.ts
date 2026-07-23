@@ -15,7 +15,7 @@ import {
     PORTAL_PLAYBACK_POSITIONS,
     PORTAL_PLAYER,
     createLogger,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import {
     createPortalFavoritesResource,
     createRefreshTrigger,
@@ -24,23 +24,23 @@ import {
     normalizeStalkerEntityIdAsNumber,
     StalkerSelectedVodItem,
     toggleStalkerVodFavorite,
-} from '@iptvnator/portal/stalker/data-access';
+} from '@zenithplayer/portal/stalker/data-access';
 import {
     type PlaybackFallbackRequest,
     VodDetailsComponent,
-} from '@iptvnator/ui/playback';
+} from '@zenithplayer/ui/playback';
 import {
     DownloadsService,
     PlaybackPositionRuntimeBridgeService,
     PlaylistsService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     createStalkerVodItem,
     PlaybackPositionData,
     ResolvedPortalPlayback,
     StalkerVodDetails,
     VodDetailsItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { StalkerCatalogFacadeService } from '../stalker-catalog-facade.service';
 import { StalkerSeriesViewComponent } from '../stalker-series-view/stalker-series-view.component';
 

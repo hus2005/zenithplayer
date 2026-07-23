@@ -5,15 +5,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { TranslateService } from '@ngx-translate/core';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     PlaylistActions,
     selectActiveTypeFilters,
     selectAllPlaylistsMeta,
     selectPlaylistsLoadingFlag,
-} from '@iptvnator/m3u-state';
+} from '@zenithplayer/m3u-state';
 import { of } from 'rxjs';
-import { DialogService } from '@iptvnator/ui/components';
+import { DialogService } from '@zenithplayer/ui/components';
 import {
     DatabaseService,
     DataService,
@@ -25,8 +25,8 @@ import {
     SortBy,
     SortOrder,
     SortService,
-} from '@iptvnator/services';
-import { PLAYLIST_UPDATE, PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/services';
+import { PLAYLIST_UPDATE, PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import { RecentPlaylistsComponent } from './recent-playlists.component';
 
 function createDeferred<T>() {

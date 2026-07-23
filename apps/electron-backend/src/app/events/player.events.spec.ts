@@ -281,7 +281,7 @@ describe('player.events Flatpak launch helpers', () => {
         expect(parseExternalPlayerArguments('   \n  ')).toEqual([]);
     });
 
-    it('adds custom player arguments before IPTVnator runtime arguments', () => {
+    it('adds custom player arguments before Zenith Player runtime arguments', () => {
         expect(
             buildPlayerArgsWithCustomArguments(
                 '--screen=1\n--geometry=1280x720',

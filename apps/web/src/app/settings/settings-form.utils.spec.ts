@@ -1,5 +1,5 @@
 import { FormBuilder } from '@angular/forms';
-import { Settings } from '@iptvnator/shared/interfaces';
+import { Settings } from '@zenithplayer/shared/interfaces';
 import {
     createSettingsForm,
     createSettingsFromFormValue,

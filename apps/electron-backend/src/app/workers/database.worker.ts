@@ -6,7 +6,7 @@ import { parentPort } from 'worker_threads';
 import type {
     XtreamBackupFavoriteItem,
     XtreamBackupRecentlyViewedItem,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import type {
     DbOperationEvent,
     DbWorkerIncomingMessage,
@@ -89,7 +89,7 @@ import {
 
 const loggerLabel = '[DB Worker]';
 const batchDelayMs = Number.parseInt(
-    process.env['IPTVNATOR_DB_WORKER_BATCH_DELAY_MS'] ?? '0',
+    process.env['zenithplayer_DB_WORKER_BATCH_DELAY_MS'] ?? '0',
     10
 );
 

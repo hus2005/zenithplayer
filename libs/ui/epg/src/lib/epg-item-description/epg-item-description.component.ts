@@ -3,11 +3,11 @@ import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatIcon } from '@angular/material/icon';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
-import { normalizeDateLocale } from '@iptvnator/pipes';
+import { normalizeDateLocale } from '@zenithplayer/pipes';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { differenceInMinutes } from 'date-fns';
 import { startWith } from 'rxjs';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
 
 export type EpgItemDialogAction = 'live' | 'timeshift';
 

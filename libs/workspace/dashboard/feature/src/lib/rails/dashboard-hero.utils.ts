@@ -1,4 +1,4 @@
-import type { CollectionContentType } from '@iptvnator/portal/shared/util';
+import type { CollectionContentType } from '@zenithplayer/portal/shared/util';
 import type { DashboardRemainingLabel } from './dashboard-playback.utils';
 
 export interface DashboardHeroModel {

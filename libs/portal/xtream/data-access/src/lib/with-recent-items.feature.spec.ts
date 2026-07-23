@@ -2,11 +2,11 @@ import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { signalStore } from '@ngrx/signals';
 import { of } from 'rxjs';
-import { DatabaseService, PlaylistsService } from '@iptvnator/services';
+import { DatabaseService, PlaylistsService } from '@zenithplayer/services';
 import { XTREAM_DATA_SOURCE } from './data-sources/xtream-data-source.interface';
 import { withRecentItems } from './with-recent-items';
 
-jest.mock('@iptvnator/portal/shared/util', () => ({
+jest.mock('@zenithplayer/portal/shared/util', () => ({
     createLogger: () => ({
         debug: jest.fn(),
         info: jest.fn(),

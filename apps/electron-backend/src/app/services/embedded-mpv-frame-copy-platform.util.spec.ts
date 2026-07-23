@@ -67,8 +67,8 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
         // fixture must follow it for the spec to stay host-agnostic.
         const helperFileName = () =>
             process.platform === 'win32'
-                ? 'iptvnator_mpv_helper.exe'
-                : 'iptvnator_mpv_helper';
+                ? 'zenithplayer_mpv_helper.exe'
+                : 'zenithplayer_mpv_helper';
         const helperPath = () => path.join(releaseDir(), helperFileName());
         const readerPath = () =>
             path.join(releaseDir(), 'embedded_mpv_frame_reader.node');
@@ -128,7 +128,7 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
             chmodSync(helperPath(), 0o755);
             writeFileSync(readerPath(), 'reader');
             mockElectronApp.isPackaged = true;
-            const resourcesPath = path.join(tempDir, 'IPTVnator', 'Resources');
+            const resourcesPath = path.join(tempDir, 'Zenith Player', 'Resources');
             Object.defineProperty(process, 'resourcesPath', {
                 configurable: true,
                 value: resourcesPath,
@@ -162,7 +162,7 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
 
         it('limits packaged native-view addon discovery to package-owned paths', () => {
             mockElectronApp.isPackaged = true;
-            const resourcesPath = path.join(tempDir, 'IPTVnator', 'Resources');
+            const resourcesPath = path.join(tempDir, 'Zenith Player', 'Resources');
             Object.defineProperty(process, 'resourcesPath', {
                 configurable: true,
                 value: resourcesPath,
@@ -202,7 +202,7 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
         it('requires a successful Linux x64 runtime probe', () => {
             Object.defineProperty(process, 'platform', { value: 'linux' });
             Object.defineProperty(process, 'arch', { value: 'x64' });
-            const resolveHelper = jest.fn(() => '/native/iptvnator_mpv_helper');
+            const resolveHelper = jest.fn(() => '/native/zenithplayer_mpv_helper');
             const probeRuntime = jest.fn<
                 EmbeddedMpvFrameCopyRuntimeResult,
                 [string, EmbeddedMpvFrameCopyManifestContract]
@@ -218,7 +218,7 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
                 true
             );
             expect(probeRuntime).toHaveBeenCalledWith(
-                '/native/iptvnator_mpv_helper',
+                '/native/zenithplayer_mpv_helper',
                 'development'
             );
 
@@ -238,7 +238,7 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
             Object.defineProperty(process, 'platform', { value: 'linux' });
             Object.defineProperty(process, 'arch', { value: 'x64' });
             mockElectronApp.isPackaged = true;
-            const resolveHelper = jest.fn(() => '/native/iptvnator_mpv_helper');
+            const resolveHelper = jest.fn(() => '/native/zenithplayer_mpv_helper');
             const probeRuntime = jest.fn<
                 EmbeddedMpvFrameCopyRuntimeResult,
                 [string, EmbeddedMpvFrameCopyManifestContract]
@@ -254,7 +254,7 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
                 true
             );
             expect(probeRuntime).toHaveBeenCalledWith(
-                '/native/iptvnator_mpv_helper',
+                '/native/zenithplayer_mpv_helper',
                 'packaged'
             );
         });
@@ -270,7 +270,7 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
                 });
                 Object.defineProperty(process, 'arch', { value: arch });
                 const resolveHelper = jest.fn(
-                    () => '/native/iptvnator_mpv_helper'
+                    () => '/native/zenithplayer_mpv_helper'
                 );
                 const probeRuntime = jest.fn();
 
@@ -284,7 +284,7 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
         it('rejects Linux ARM before helper discovery or probing', () => {
             Object.defineProperty(process, 'platform', { value: 'linux' });
             Object.defineProperty(process, 'arch', { value: 'arm64' });
-            const resolveHelper = jest.fn(() => '/native/iptvnator_mpv_helper');
+            const resolveHelper = jest.fn(() => '/native/zenithplayer_mpv_helper');
             const probeRuntime = jest.fn();
 
             expect(isFrameCopyRuntimeUsable(resolveHelper, probeRuntime)).toBe(
@@ -297,7 +297,7 @@ describe('embedded-mpv-frame-copy-platform.util', () => {
         it('reports unsupported architecture for Intel macOS', () => {
             Object.defineProperty(process, 'platform', { value: 'darwin' });
             Object.defineProperty(process, 'arch', { value: 'x64' });
-            const resolveHelper = jest.fn(() => '/native/iptvnator_mpv_helper');
+            const resolveHelper = jest.fn(() => '/native/zenithplayer_mpv_helper');
             const probeRuntime = jest.fn();
 
             expect(

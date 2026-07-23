@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { SettingsStore } from '@iptvnator/services';
+import { SettingsStore } from '@zenithplayer/services';
 
 describe('app routes', () => {
     let workspaceRoute: import('@angular/router').Route | undefined;
@@ -18,7 +18,7 @@ describe('app routes', () => {
 
     beforeAll(async () => {
         jest.unstable_mockModule(
-            '@iptvnator/playlist/m3u/feature-player',
+            '@zenithplayer/playlist/m3u/feature-player',
             () => ({
                 createM3uWorkspaceRoutes: () => [
                     {

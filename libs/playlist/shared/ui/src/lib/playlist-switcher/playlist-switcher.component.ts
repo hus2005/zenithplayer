@@ -23,17 +23,17 @@ import { MatMenu, MatMenuModule, MatMenuTrigger } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Store } from '@ngrx/store';
-import { normalizeDateLocale } from '@iptvnator/pipes';
+import { normalizeDateLocale } from '@zenithplayer/pipes';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { DialogService } from '@iptvnator/ui/components';
-import { PlaylistActions } from '@iptvnator/m3u-state';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+import { DialogService } from '@zenithplayer/ui/components';
+import { PlaylistActions } from '@zenithplayer/m3u-state';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     PlaylistDeleteActionService,
     PortalStatus,
     PortalStatusService,
-} from '@iptvnator/services';
-import { PlaylistMeta } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/services';
+import { PlaylistMeta } from '@zenithplayer/shared/interfaces';
 import { startWith } from 'rxjs';
 import { PlaylistRefreshActionService } from '../playlist-refresh-action.service';
 import { PlaylistInfoComponent } from '../recent-playlists/playlist-info/playlist-info.component';

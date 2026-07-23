@@ -186,7 +186,7 @@ display-capable DC.
    exits on EOF) → SIGTERM(500 ms) → SIGKILL(2 s). The SERVICE also reaps
    all sessions on `render-process-gone`/`did-navigate` (renderer crash or
    hard reload never runs Angular teardown — without this, helpers leak).
-   Watch `ps | grep iptvnator_mpv_helper` during any manual test session.
+   Watch `ps | grep zenithplayer_mpv_helper` during any manual test session.
 8. **Stale opt-in**: `isFrameCopyEngineActive()` requires the helper binary
    on disk; missing helper = silent fallback to native, and the Settings
    checkbox stays visible while the saved value is true so it can always
@@ -204,13 +204,13 @@ display-capable DC.
 ## Testing recipes
 
 - **Helper standalone** (no Electron):
-  `(printf 'load\turl=av://lavfi:testsrc2=size=640x360:rate=30\n'; sleep 5; printf 'quit\n') | ./iptvnator_mpv_helper --shm-base /impv-t --width 1280 --height 720`
+  `(printf 'load\turl=av://lavfi:testsrc2=size=640x360:rate=30\n'; sleep 5; printf 'quit\n') | ./zenithplayer_mpv_helper --shm-base /impv-t --width 1280 --height 720`
   → expect `shm` generations, `snapshot` events at 4 Hz, aspect-fit
   generation after video loads.
 - **Reader probe** (any Node ≥18):
   `node -e "const r=require('.../embedded_mpv_frame_reader.node'); const i=r.open('/impv-t-g2'); ..."`
   → `latestSeq()` advancing + pixel min/max spread.
-- **In-app**: `IPTVNATOR_ENABLE_EMBEDDED_MPV_FRAME_COPY=1 pnpm run
+- **In-app**: `zenithplayer_ENABLE_EMBEDDED_MPV_FRAME_COPY=1 pnpm run
 serve:backend:embedded-mpv` or the Settings toggle (+restart). Second
   parallel instance for CDP testing: build, then run
   `electron dist/apps/electron-backend/main.js --remote-debugging-port=9223

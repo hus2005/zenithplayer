@@ -11,7 +11,7 @@ import { EMPTY } from 'rxjs';
 import {
     PLAYLIST_PARSE_BY_URL,
     PLAYLIST_UPDATE,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { PwaService } from './pwa.service';
 
 describe('PwaService', () => {

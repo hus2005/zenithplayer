@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import {
     EpgProgressService,
     EpgRuntimeBridgeService,
-} from '@iptvnator/epg/data-access';
+} from '@zenithplayer/epg/data-access';
 import { EpgSourceStatusComponent } from './epg-source-status.component';
 
 describe('EpgSourceStatusComponent', () => {

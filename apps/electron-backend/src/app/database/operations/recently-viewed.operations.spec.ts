@@ -11,7 +11,7 @@ jest.mock('./content-backdrop.operations', () => ({
     persistContentBackdropIfMissing: jest.fn().mockResolvedValue(undefined),
 }));
 
-import * as schema from '@iptvnator/shared/database/schema';
+import * as schema from '@zenithplayer/shared/database/schema';
 import { persistContentBackdropIfMissing } from './content-backdrop.operations';
 import {
     addRecentItem,

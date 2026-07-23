@@ -2,7 +2,7 @@ import {
     StalkerVodInfo,
     XtreamSerieInfo,
     XtreamVodInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     mergeSerieInfoWithTmdb,
     mergeStalkerInfoWithTmdb,

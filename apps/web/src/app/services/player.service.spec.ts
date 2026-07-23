@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material/dialog';
-import { DataService } from '@iptvnator/services';
-import { ExternalPlayerSession, VideoPlayer } from '@iptvnator/shared/interfaces';
+import { DataService } from '@zenithplayer/services';
+import { ExternalPlayerSession, VideoPlayer } from '@zenithplayer/shared/interfaces';
 import { SettingsStore } from './settings-store.service';
 import { PlayerService } from './player.service';
 
@@ -110,7 +110,7 @@ describe('PlayerService', () => {
             {
                 streamUrl: 'https://example.com/live.m3u8',
                 title: 'Example Live',
-                userAgent: 'IPTVnator Test',
+                userAgent: 'Zenith Player Test',
                 referer: 'https://referrer.example.com',
                 origin: 'https://origin.example.com',
             },
@@ -122,7 +122,7 @@ describe('PlayerService', () => {
             expect.objectContaining({
                 url: 'https://example.com/live.m3u8',
                 title: 'Example Live',
-                'user-agent': 'IPTVnator Test',
+                'user-agent': 'Zenith Player Test',
                 referer: 'https://referrer.example.com',
                 origin: 'https://origin.example.com',
             })

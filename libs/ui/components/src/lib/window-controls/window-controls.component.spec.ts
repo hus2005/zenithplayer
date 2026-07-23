@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ElectronBridgeWindowState } from '@iptvnator/shared/interfaces';
+import { ElectronBridgeWindowState } from '@zenithplayer/shared/interfaces';
 import { WindowControlsComponent } from './window-controls.component';
 
 describe('WindowControlsComponent', () => {

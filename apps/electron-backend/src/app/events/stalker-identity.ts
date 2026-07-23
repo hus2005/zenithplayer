@@ -2,7 +2,7 @@ import {
     buildStalkerSerialCfduid,
     LEGACY_DEFAULT_STALKER_SERIAL,
     normalizeStalkerSerialNumber,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 export { LEGACY_DEFAULT_STALKER_SERIAL };
 

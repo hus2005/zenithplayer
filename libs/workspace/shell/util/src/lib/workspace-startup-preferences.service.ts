@@ -1,9 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { PlaylistsService, SettingsStore } from '@iptvnator/services';
+import { PlaylistsService, SettingsStore } from '@zenithplayer/services';
 import {
     StartupBehavior,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { parseWorkspaceShellRoute } from './navigation/workspace-shell-route.utils';
 
 const LAST_RESTORABLE_ROUTE_STORAGE_KEY = 'workspace-last-restorable-route-v1';

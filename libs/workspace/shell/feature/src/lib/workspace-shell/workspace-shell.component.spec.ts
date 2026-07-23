@@ -11,7 +11,7 @@ import { By } from '@angular/platform-browser';
 import {
     WorkspacePortalContext,
     WorkspaceShellContextPanel,
-} from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/workspace/shell/util';
 import { WorkspaceShellComponent } from './workspace-shell.component';
 import {
     WorkspaceHeaderBulkAction,

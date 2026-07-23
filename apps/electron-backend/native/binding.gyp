@@ -64,7 +64,7 @@
               "src/embedded_mpv_linux.cc"
             ],
             "defines": [
-              "IPTVNATOR_DYNAMIC_LIBMPV"
+              "zenithplayer_DYNAMIC_LIBMPV"
             ],
             "libraries": [
               "-L<!(node -p \"process.env.LINUX_NATIVE_LIBRARY_DIR || '/usr/lib'\")",
@@ -103,7 +103,7 @@
       ]
     },
     {
-      "target_name": "iptvnator_mpv_helper",
+      "target_name": "zenithplayer_mpv_helper",
       "type": "none",
       "conditions": [
         [

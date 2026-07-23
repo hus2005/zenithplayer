@@ -14,20 +14,20 @@ import {
 } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
-import { EmptyStateComponent } from '@iptvnator/playlist/shared/ui';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
+import { selectAllPlaylistsMeta } from '@zenithplayer/m3u-state';
+import { EmptyStateComponent } from '@zenithplayer/playlist/shared/ui';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
 import {
     UnifiedCollectionDetailDirective,
     UnifiedCollectionPageComponent,
-} from '@iptvnator/portal/shared/ui';
+} from '@zenithplayer/portal/shared/ui';
 import {
     CollectionScope,
     PortalProvider,
     SeriesResumeTarget,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
-import { WORKSPACE_SHELL_ACTIONS } from '@iptvnator/workspace/shell/util';
+} from '@zenithplayer/portal/shared/util';
+import { WORKSPACE_SHELL_ACTIONS } from '@zenithplayer/workspace/shell/util';
 
 type UnifiedPortalType = 'm3u' | 'xtream' | 'stalker';
 type CollectionMode = 'favorites' | 'recent';
@@ -123,12 +123,12 @@ export class GlobalCollectionDetailHostComponent implements OnDestroy {
         sourceType: UnifiedCollectionItem['sourceType']
     ): Promise<Type<unknown> | null> {
         if (sourceType === 'xtream') {
-            const component = await import('@iptvnator/portal/xtream/feature');
+            const component = await import('@zenithplayer/portal/xtream/feature');
             return component.XtreamCollectionDetailComponent;
         }
 
         if (sourceType === 'stalker') {
-            const component = await import('@iptvnator/portal/stalker/feature');
+            const component = await import('@zenithplayer/portal/stalker/feature');
             return component.StalkerCollectionDetailComponent;
         }
 

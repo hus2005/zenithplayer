@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add a persisted experimental Playback checkbox that enables the existing shared controls for newly created HTML5, Video.js, and ArtPlayer sessions without restarting IPTVnator.
+**Goal:** Add a persisted experimental Playback checkbox that enables the existing shared controls for newly created HTML5, Video.js, and ArtPlayer sessions without restarting Zenith Player.
 
 **Architecture:** `SettingsStore` owns a default-off `webPlayerSharedControls` boolean and the Settings form exposes it only for the three web engines. `WebPlayerViewComponent` resolves the saved value into a component-scoped, immutable `WEB_PLAYER_SHARED_CONTROLS` snapshot, preserving each engine's construction-time legacy/shared split while leaving Embedded MPV and external players unchanged.
 
@@ -155,7 +155,7 @@ Add this property beside `player` in
 
 ```ts
 /**
- * Use IPTVnator's shared controls in HTML5, Video.js, and ArtPlayer.
+ * Use Zenith Player's shared controls in HTML5, Video.js, and ArtPlayer.
  * Missing values remain off for compatibility with older saved settings.
  */
 webPlayerSharedControls?: boolean;
@@ -439,24 +439,24 @@ Add `WEB_PLAYER_SHARED_CONTROLS` and
 
 | Locale | `WEB_PLAYER_SHARED_CONTROLS`                                           | `WEB_PLAYER_SHARED_CONTROLS_DESCRIPTION`                                                 |
 | ------ | ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `en`   | Unified controls for web players (experimental)                        | Use IPTVnator's shared controls in HTML5, Video.js, and ArtPlayer.                       |
-| `ru`   | Единые элементы управления для веб-плееров (экспериментально)          | Использовать общие элементы управления IPTVnator в HTML5, Video.js и ArtPlayer.          |
-| `de`   | Einheitliche Steuerung für Web-Player (experimentell)                  | Verwendet die gemeinsamen IPTVnator-Steuerelemente in HTML5, Video.js und ArtPlayer.     |
-| `es`   | Controles unificados para reproductores web (experimental)             | Usa los controles compartidos de IPTVnator en HTML5, Video.js y ArtPlayer.               |
-| `fr`   | Commandes unifiées pour les lecteurs web (expérimental)                | Utilise les commandes partagées d’IPTVnator dans HTML5, Video.js et ArtPlayer.           |
-| `it`   | Controlli unificati per i player web (sperimentale)                    | Usa i controlli condivisi di IPTVnator in HTML5, Video.js e ArtPlayer.                   |
-| `pt`   | Controlos unificados para leitores web (experimental)                  | Usa os controlos partilhados do IPTVnator em HTML5, Video.js e ArtPlayer.                |
-| `nl`   | Uniforme bediening voor webspelers (experimenteel)                     | Gebruik de gedeelde IPTVnator-bediening in HTML5, Video.js en ArtPlayer.                 |
-| `pl`   | Ujednolicone sterowanie odtwarzaczami internetowymi (eksperymentalne)  | Używaj wspólnych elementów sterowania IPTVnator w HTML5, Video.js i ArtPlayer.           |
-| `tr`   | Web oynatıcıları için birleşik kontroller (deneysel)                   | HTML5, Video.js ve ArtPlayer'da IPTVnator'ın ortak kontrollerini kullan.                 |
-| `el`   | Ενοποιημένα στοιχεία ελέγχου για web players (πειραματικό)             | Χρησιμοποιήστε τα κοινά στοιχεία ελέγχου του IPTVnator σε HTML5, Video.js και ArtPlayer. |
-| `ja`   | Webプレーヤーの統一コントロール（試験的）                              | HTML5、Video.js、ArtPlayerでIPTVnator共通のコントロールを使用します。                    |
-| `ko`   | 웹 플레이어 통합 컨트롤(실험적)                                        | HTML5, Video.js 및 ArtPlayer에서 IPTVnator 공통 컨트롤을 사용합니다.                     |
-| `zh`   | Web 播放器统一控件（实验性）                                           | 在 HTML5、Video.js 和 ArtPlayer 中使用 IPTVnator 的共享控件。                            |
-| `zhtw` | Web 播放器統一控制項（實驗性）                                         | 在 HTML5、Video.js 和 ArtPlayer 中使用 IPTVnator 的共用控制項。                          |
-| `ar`   | عناصر تحكم موحّدة لمشغلات الويب (تجريبي)                               | استخدم عناصر التحكم المشتركة في IPTVnator مع HTML5 وVideo.js وArtPlayer.                 |
-| `ary`  | عناصر تحكم موحدة لمشغلات الويب (تجريبية)                               | استعمل عناصر التحكم المشتركة ديال IPTVnator مع HTML5 وVideo.js وArtPlayer.               |
-| `by`   | Адзіныя элементы кіравання для вэб-прайгравальнікаў (эксперыментальна) | Выкарыстоўваць агульныя элементы кіравання IPTVnator у HTML5, Video.js і ArtPlayer.      |
+| `en`   | Unified controls for web players (experimental)                        | Use Zenith Player's shared controls in HTML5, Video.js, and ArtPlayer.                       |
+| `ru`   | Единые элементы управления для веб-плееров (экспериментально)          | Использовать общие элементы управления Zenith Player в HTML5, Video.js и ArtPlayer.          |
+| `de`   | Einheitliche Steuerung für Web-Player (experimentell)                  | Verwendet die gemeinsamen Zenith Player-Steuerelemente in HTML5, Video.js und ArtPlayer.     |
+| `es`   | Controles unificados para reproductores web (experimental)             | Usa los controles compartidos de Zenith Player en HTML5, Video.js y ArtPlayer.               |
+| `fr`   | Commandes unifiées pour les lecteurs web (expérimental)                | Utilise les commandes partagées d’Zenith Player dans HTML5, Video.js et ArtPlayer.           |
+| `it`   | Controlli unificati per i player web (sperimentale)                    | Usa i controlli condivisi di Zenith Player in HTML5, Video.js e ArtPlayer.                   |
+| `pt`   | Controlos unificados para leitores web (experimental)                  | Usa os controlos partilhados do Zenith Player em HTML5, Video.js e ArtPlayer.                |
+| `nl`   | Uniforme bediening voor webspelers (experimenteel)                     | Gebruik de gedeelde Zenith Player-bediening in HTML5, Video.js en ArtPlayer.                 |
+| `pl`   | Ujednolicone sterowanie odtwarzaczami internetowymi (eksperymentalne)  | Używaj wspólnych elementów sterowania Zenith Player w HTML5, Video.js i ArtPlayer.           |
+| `tr`   | Web oynatıcıları için birleşik kontroller (deneysel)                   | HTML5, Video.js ve ArtPlayer'da Zenith Player'ın ortak kontrollerini kullan.                 |
+| `el`   | Ενοποιημένα στοιχεία ελέγχου για web players (πειραματικό)             | Χρησιμοποιήστε τα κοινά στοιχεία ελέγχου του Zenith Player σε HTML5, Video.js και ArtPlayer. |
+| `ja`   | Webプレーヤーの統一コントロール（試験的）                              | HTML5、Video.js、ArtPlayerでZenith Player共通のコントロールを使用します。                    |
+| `ko`   | 웹 플레이어 통합 컨트롤(실험적)                                        | HTML5, Video.js 및 ArtPlayer에서 Zenith Player 공통 컨트롤을 사용합니다.                     |
+| `zh`   | Web 播放器统一控件（实验性）                                           | 在 HTML5、Video.js 和 ArtPlayer 中使用 Zenith Player 的共享控件。                            |
+| `zhtw` | Web 播放器統一控制項（實驗性）                                         | 在 HTML5、Video.js 和 ArtPlayer 中使用 Zenith Player 的共用控制項。                          |
+| `ar`   | عناصر تحكم موحّدة لمشغلات الويب (تجريبي)                               | استخدم عناصر التحكم المشتركة في Zenith Player مع HTML5 وVideo.js وArtPlayer.                 |
+| `ary`  | عناصر تحكم موحدة لمشغلات الويب (تجريبية)                               | استعمل عناصر التحكم المشتركة ديال Zenith Player مع HTML5 وVideo.js وArtPlayer.               |
+| `by`   | Адзіныя элементы кіравання для вэб-прайгравальнікаў (эксперыментальна) | Выкарыстоўваць агульныя элементы кіравання Zenith Player у HTML5, Video.js і ArtPlayer.      |
 
 - [ ] **Step 7: Validate locale parity and the full Settings project**
 
@@ -502,7 +502,7 @@ import { Component, input, output, signal } from '@angular/core';
 Import the store and rollout token:
 
 ```ts
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
 import { WEB_PLAYER_SHARED_CONTROLS } from '../player-controls';
 ```
 
@@ -577,7 +577,7 @@ Update the services import in
 `libs/ui/playback/src/lib/web-player-view/web-player-view.component.ts`:
 
 ```ts
-import { RuntimeCapabilitiesService, SettingsStore } from '@iptvnator/services';
+import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
 ```
 
 Import the rollout symbols:
@@ -778,7 +778,7 @@ git commit -m "test(playback): cover shared controls setting"
 Add this bullet under `README.md` → `Features` → `Playback`:
 
 ```md
-- Optional unified IPTVnator controls for HTML5, Video.js, and ArtPlayer, enabled in **Settings → Playback** _(experimental)_
+- Optional unified Zenith Player controls for HTML5, Video.js, and ArtPlayer, enabled in **Settings → Playback** _(experimental)_
 ```
 
 - [ ] **Step 2: Update the canonical controls contract**

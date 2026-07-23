@@ -2,7 +2,7 @@ import { and, eq, inArray, isNull, or, sql, type SQL } from 'drizzle-orm';
 import {
     EpgChannelMetadata,
     EpgProgram,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { getDatabase } from '../database/connection';
 import * as schema from '../database/schema';
 

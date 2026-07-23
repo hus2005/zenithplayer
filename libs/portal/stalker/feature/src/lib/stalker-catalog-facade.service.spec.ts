@@ -1,9 +1,9 @@
 import { signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
-import { PORTAL_PLAYBACK_POSITIONS } from '@iptvnator/portal/shared/util';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
+import { PORTAL_PLAYBACK_POSITIONS } from '@zenithplayer/portal/shared/util';
+import { PlaybackPositionRuntimeBridgeService } from '@zenithplayer/services';
+import { PlaybackPositionData } from '@zenithplayer/shared/interfaces';
 import { StalkerCatalogFacadeService } from './stalker-catalog-facade.service';
 
 describe('StalkerCatalogFacadeService', () => {

@@ -3,31 +3,31 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { PortalEmptyStateComponent } from '@iptvnator/portal/shared/ui';
+import { PortalEmptyStateComponent } from '@zenithplayer/portal/shared/ui';
 import {
     LIVE_EPG_PANEL_STATE_STORAGE_KEY,
     PORTAL_PLAYER,
     ResizableDirective,
-} from '@iptvnator/portal/shared/util';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
+} from '@zenithplayer/portal/shared/util';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
 import {
     EpgListViewComponent,
     EpgTimelineComponent,
-} from '@iptvnator/ui/epg';
-import { AudioPlayerComponent } from '@iptvnator/ui/playback';
+} from '@zenithplayer/ui/epg';
+import { AudioPlayerComponent } from '@zenithplayer/ui/playback';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { ChannelListItemComponent } from '@iptvnator/ui/components';
+import { ChannelListItemComponent } from '@zenithplayer/ui/components';
 import { MockPipe } from 'ng-mocks';
 import { of } from 'rxjs';
 import {
     PlaylistsService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
-import { EpgProgram } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/services';
+import { EpgProgram } from '@zenithplayer/shared/interfaces';
 import { MatDialog } from '@angular/material/dialog';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { WebPlayerViewComponent } from '@iptvnator/ui/playback';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
+import { WebPlayerViewComponent } from '@zenithplayer/ui/playback';
 import { StalkerLiveStreamLayoutComponent } from './stalker-live-stream-layout.component';
 
 @Component({

@@ -6,7 +6,7 @@ Electron and PWA paths.
 ## Connection Input
 
 Xtream server URLs are normalized through
-`normalizeXtreamServerUrl` from `@iptvnator/shared/interfaces`.
+`normalizeXtreamServerUrl` from `@zenithplayer/shared/interfaces`.
 
 Rules:
 
@@ -93,7 +93,7 @@ throwing during playback.
 
 ## Catch-Up Playback URLs
 
-Xtream-compatible portals differ on archive playback URL shape. IPTVnator
+Xtream-compatible portals differ on archive playback URL shape. Zenith Player
 supports these catch-up variants:
 
 1. REST-style `/timeshift/{username}/{password}/{duration}/{start}/{streamId}.ts`

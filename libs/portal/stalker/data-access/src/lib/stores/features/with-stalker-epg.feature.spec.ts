@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { signalStore, withState } from '@ngrx/signals';
-import { DataService, RuntimeCapabilitiesService } from '@iptvnator/services';
-import { EpgRuntimeBridgeService } from '@iptvnator/epg/data-access';
-import { EpgItem, Playlist } from '@iptvnator/shared/interfaces';
+import { DataService, RuntimeCapabilitiesService } from '@zenithplayer/services';
+import { EpgRuntimeBridgeService } from '@zenithplayer/epg/data-access';
+import { EpgItem, Playlist } from '@zenithplayer/shared/interfaces';
 import { StalkerSessionService } from '../../stalker-session.service';
 import { withStalkerEpg } from './with-stalker-epg.feature';
 
-jest.mock('@iptvnator/portal/shared/util', () => ({
+jest.mock('@zenithplayer/portal/shared/util', () => ({
     createLogger: () => ({
         debug: jest.fn(),
         info: jest.fn(),

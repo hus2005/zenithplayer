@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import {
     SeriesResumeTarget,
     UnifiedCollectionItem,
-} from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/portal/shared/util';
 import { GlobalCollectionDetailHostComponent } from './global-collection-route.component';
 
 @Component({
@@ -17,7 +17,7 @@ class MockXtreamCollectionDetailComponent {
     readonly closeRequested = output<void>();
 }
 
-jest.unstable_mockModule('@iptvnator/portal/xtream/feature', () => ({
+jest.unstable_mockModule('@zenithplayer/portal/xtream/feature', () => ({
     XtreamCollectionDetailComponent: MockXtreamCollectionDetailComponent,
 }));
 
@@ -79,7 +79,7 @@ describe('GlobalCollectionDetailHostComponent', () => {
     }
 
     it('mocks the xtream feature barrel', async () => {
-        const mod = await import('@iptvnator/portal/xtream/feature');
+        const mod = await import('@zenithplayer/portal/xtream/feature');
         expect(mod.XtreamCollectionDetailComponent).toBe(
             MockXtreamCollectionDetailComponent as never
         );

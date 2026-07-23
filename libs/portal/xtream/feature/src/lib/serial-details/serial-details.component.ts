@@ -22,23 +22,23 @@ import {
     SeasonContainerComponent,
     SeasonContainerPlaybackToggleRequest,
     SeasonContainerXtreamDownloadContext,
-} from '@iptvnator/ui/components';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/ui/components';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
 import {
     type PlaybackFallbackRequest,
     PortalInlinePlayerComponent,
-} from '@iptvnator/ui/playback';
+} from '@zenithplayer/ui/playback';
 import {
     TmdbEnrichedCastMember,
     XtreamSerieInfo,
     XtreamSerieEpisode,
     XtreamSerieDetails,
     normalizeTitleKeys,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import {
     CrossPortalSimilarItem,
     CrossPortalSimilarService,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     SerialDetailsPlaybackService,
     type XtreamSerieDetailsView,

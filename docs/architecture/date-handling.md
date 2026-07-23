@@ -25,7 +25,7 @@
 - Avoid new non-standard `Date.parse(...)` usage for provider formats; prefer explicit `date-fns` parsing when the input is not ISO.
 - Xtream `added` / `last_modified` values are provider-supplied epoch fields.
   Normalize them through `toXtreamRecentlyAddedTimestamp()` /
-  `toXtreamRecentlyAddedEpochSeconds()` from `@iptvnator/shared/interfaces`
+  `toXtreamRecentlyAddedEpochSeconds()` from `@zenithplayer/shared/interfaces`
   before ranking or storing recently-added content. Values more than 24 hours
   in the future are treated as invalid so provider placeholders such as
   `2030-01-01` cannot permanently pin the top of recently-added rails.

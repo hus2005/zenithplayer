@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { NavigationEnd, Router } from '@angular/router';
 import { of, Subject } from 'rxjs';
-import { ChannelActions, FavoritesActions } from '@iptvnator/m3u-state';
-import { PlaylistContextFacade } from '@iptvnator/playlist/shared/util';
-import { PlaylistsService } from '@iptvnator/services';
-import { Channel, Playlist } from '@iptvnator/shared/interfaces';
+import { ChannelActions, FavoritesActions } from '@zenithplayer/m3u-state';
+import { PlaylistContextFacade } from '@zenithplayer/playlist/shared/util';
+import { PlaylistsService } from '@zenithplayer/services';
+import { Channel, Playlist } from '@zenithplayer/shared/interfaces';
 import { Store } from '@ngrx/store';
 import { M3uWorkspaceRouteSession } from './m3u-workspace-route-session.service';
 

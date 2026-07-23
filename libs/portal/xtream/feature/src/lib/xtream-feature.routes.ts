@@ -5,7 +5,7 @@ import { provideXtreamWorkspaceRouteSession } from './xtream-workspace-route-ses
 type ComponentLoader = NonNullable<Route['loadComponent']>;
 
 const loadDownloadsComponent: ComponentLoader = () =>
-    import('@iptvnator/portal/downloads/feature').then(
+    import('@zenithplayer/portal/downloads/feature').then(
         (c) => c.DownloadsComponent
     );
 
@@ -20,7 +20,7 @@ const loadLiveStreamLayoutComponent: ComponentLoader = () =>
     );
 
 const loadCategoryContentViewComponent: ComponentLoader = () =>
-    import('@iptvnator/portal/catalog/feature').then(
+    import('@zenithplayer/portal/catalog/feature').then(
         (c) => c.CategoryContentViewComponent
     );
 

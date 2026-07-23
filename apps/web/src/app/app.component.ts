@@ -7,17 +7,17 @@ import { TranslateService } from '@ngx-translate/core';
 import {
     EpgRuntimeBridgeService,
     EpgService,
-} from '@iptvnator/epg/data-access';
-import { WORKSPACE_SHELL_ACTIONS } from '@iptvnator/workspace/shell/util';
-import { EpgProgressPanelComponent } from '@iptvnator/ui/epg/progress-panel';
-import { WindowControlsComponent } from '@iptvnator/ui/components';
-import { PlaylistActions, selectAllPlaylistsMeta } from '@iptvnator/m3u-state';
+} from '@zenithplayer/epg/data-access';
+import { WORKSPACE_SHELL_ACTIONS } from '@zenithplayer/workspace/shell/util';
+import { EpgProgressPanelComponent } from '@zenithplayer/ui/epg/progress-panel';
+import { WindowControlsComponent } from '@zenithplayer/ui/components';
+import { PlaylistActions, selectAllPlaylistsMeta } from '@zenithplayer/m3u-state';
 import { filter, take } from 'rxjs';
 import {
     DataService,
     RuntimeCapabilitiesService,
     SettingsStore,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     AUTO_UPDATE_PLAYLISTS,
     Language,
@@ -26,7 +26,7 @@ import {
     STORE_KEY,
     Theme,
     createDevLogger,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { SettingsService } from './services/settings.service';
 import { AppUpdateNotificationPanelComponent } from './app-update-notification-panel.component';
 
@@ -139,7 +139,7 @@ export class AppComponent implements OnInit {
                     // flash for non-English users.
                     try {
                         localStorage.setItem(
-                            'iptvnator:preferred-language',
+                            'zenithplayer:preferred-language',
                             resolvedLang
                         );
                     } catch {

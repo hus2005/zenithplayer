@@ -10,7 +10,7 @@ import { buildSettingsSectionNavItems } from './settings-options';
  * and falls through when no element is found).
  *
  * This bug bit the Remote section once already — its nav id was set to
- * the Nx library name (`@iptvnator/ui/remote-control`) instead of the
+ * the Nx library name (`@zenithplayer/ui/remote-control`) instead of the
  * template's `id="remote-control"`. The guard below catches future
  * rename/copy-paste regressions before they ship.
  */

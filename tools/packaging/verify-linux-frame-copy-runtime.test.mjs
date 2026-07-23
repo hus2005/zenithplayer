@@ -66,7 +66,7 @@ const SYSTEM_MANIFEST = {
             readable: true,
         },
         helper: {
-            name: 'iptvnator_mpv_helper',
+            name: 'zenithplayer_mpv_helper',
             regularFile: true,
             readable: true,
             executable: true,
@@ -221,12 +221,12 @@ function elfHeader(architecture) {
 
 function createSystemPayload({
     architecture = 'x64',
-    electronBinaryName = 'iptvnator.bin',
+    electronBinaryName = 'zenithplayer.bin',
 } = {}) {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-layout-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-layout-')
     );
-    const appDir = path.join(root, 'opt', 'IPTVnator');
+    const appDir = path.join(root, 'opt', 'Zenith Player');
     const resourceDir = path.join(appDir, 'resources');
     const nativeDir = path.join(
         resourceDir,
@@ -250,7 +250,7 @@ function createSystemPayload({
             { mode: 0o644 }
         );
         fs.writeFileSync(
-            path.join(nativeDir, 'iptvnator_mpv_helper'),
+            path.join(nativeDir, 'zenithplayer_mpv_helper'),
             'helper',
             { mode: 0o755 }
         );
@@ -271,7 +271,7 @@ function createSystemPayload({
 
 function validElfInspector(binaryPath) {
     const name = path.basename(binaryPath);
-    if (name === 'iptvnator_mpv_helper') {
+    if (name === 'zenithplayer_mpv_helper') {
         return {
             soname: null,
             needed: ['libc.so.6', 'libmpv.so.2'],
@@ -297,22 +297,22 @@ function successfulProbeRunner() {
 }
 
 test('detects every supported Linux package payload format', () => {
-    assert.equal(detectLinuxArtifactFormat('IPTVnator.AppImage'), 'appimage');
-    assert.equal(detectLinuxArtifactFormat('IPTVnator.deb'), 'deb');
-    assert.equal(detectLinuxArtifactFormat('IPTVnator.rpm'), 'rpm');
-    assert.equal(detectLinuxArtifactFormat('IPTVnator.pacman'), 'pacman');
-    assert.equal(detectLinuxArtifactFormat('IPTVnator.pkg.tar.zst'), 'pacman');
-    assert.equal(detectLinuxArtifactFormat('IPTVnator.snap'), 'snap');
-    assert.equal(detectLinuxArtifactFormat('IPTVnator.flatpak'), 'flatpak');
+    assert.equal(detectLinuxArtifactFormat('Zenith Player.AppImage'), 'appimage');
+    assert.equal(detectLinuxArtifactFormat('Zenith Player.deb'), 'deb');
+    assert.equal(detectLinuxArtifactFormat('Zenith Player.rpm'), 'rpm');
+    assert.equal(detectLinuxArtifactFormat('Zenith Player.pacman'), 'pacman');
+    assert.equal(detectLinuxArtifactFormat('Zenith Player.pkg.tar.zst'), 'pacman');
+    assert.equal(detectLinuxArtifactFormat('Zenith Player.snap'), 'snap');
+    assert.equal(detectLinuxArtifactFormat('Zenith Player.flatpak'), 'flatpak');
     assert.throws(
-        () => detectLinuxArtifactFormat('IPTVnator.tar.gz'),
+        () => detectLinuxArtifactFormat('Zenith Player.tar.gz'),
         /Unsupported Linux package artifact/
     );
 });
 
 test('parses the required artifact and profile arguments without evaluating paths', () => {
     const directory = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-args-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-args-')
     );
     const artifactPath = path.join(directory, 'package $(touch owned).deb');
     fs.writeFileSync(artifactPath, 'fixture');
@@ -375,7 +375,7 @@ test('parses the required artifact and profile arguments without evaluating path
 
 test('extracts every payload format with argument arrays and no shell', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-extract-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-extract-')
     );
     const invocations = [];
     const runCommand = (command, args, options = {}) => {
@@ -383,7 +383,7 @@ test('extracts every payload format with argument arrays and no shell', () => {
         if (command === 'ostree' && args[0] === 'refs') {
             return {
                 status: 0,
-                stdout: 'app/com.fourgray.iptvnator/x86_64/stable\n',
+                stdout: 'app/com.fourgray.zenithplayer/x86_64/stable\n',
                 stderr: '',
             };
         }
@@ -392,12 +392,12 @@ test('extracts every payload format with argument arrays and no shell', () => {
 
     try {
         for (const [format, fileName] of [
-            ['appimage', 'IPTVnator.AppImage'],
-            ['deb', 'IPTVnator.deb'],
-            ['rpm', 'IPTVnator.rpm'],
-            ['pacman', 'IPTVnator.pacman'],
-            ['snap', 'IPTVnator.snap'],
-            ['flatpak', 'IPTVnator.flatpak'],
+            ['appimage', 'Zenith Player.AppImage'],
+            ['deb', 'Zenith Player.deb'],
+            ['rpm', 'Zenith Player.rpm'],
+            ['pacman', 'Zenith Player.pacman'],
+            ['snap', 'Zenith Player.snap'],
+            ['flatpak', 'Zenith Player.flatpak'],
         ]) {
             const artifactPath = path.join(root, fileName);
             const destination = path.join(root, `${format}-payload`);
@@ -439,7 +439,7 @@ test('extracts every payload format with argument arrays and no shell', () => {
         );
         assert.deepEqual(invocations[1].args.slice(0, 2), [
             '--extract',
-            path.join(root, 'IPTVnator.deb'),
+            path.join(root, 'Zenith Player.deb'),
         ]);
         assert.deepEqual(invocations[2].args.slice(0, 2), [
             '--extract',
@@ -460,10 +460,10 @@ test('extracts every payload format with argument arrays and no shell', () => {
 
 test('gives unsquashfs a fresh destination for every AppImage and Snap extraction', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-unsquashfs-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-unsquashfs-')
     );
-    const appImagePath = path.join(root, 'IPTVnator.AppImage');
-    const snapPath = path.join(root, 'IPTVnator.snap');
+    const appImagePath = path.join(root, 'Zenith Player.AppImage');
+    const snapPath = path.join(root, 'Zenith Player.snap');
     const appImageDestination = path.join(root, 'appimage-payload');
     const snapDestination = path.join(root, 'snap-payload');
     fs.writeFileSync(
@@ -517,9 +517,9 @@ test('gives unsquashfs a fresh destination for every AppImage and Snap extractio
 
 test('initializes a user-checkout OSTree repository before importing Flatpak bundles', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-flatpak-repo-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-flatpak-repo-')
     );
-    const artifactPath = path.join(root, 'IPTVnator.flatpak');
+    const artifactPath = path.join(root, 'Zenith Player.flatpak');
     const destination = path.join(root, 'flatpak-payload');
     const invocations = [];
     let initializedRepository = null;
@@ -554,7 +554,7 @@ test('initializes a user-checkout OSTree repository before importing Flatpak bun
                 if (command === 'ostree' && args[0] === 'refs') {
                     return {
                         status: 0,
-                        stdout: 'app/com.fourgray.iptvnator/x86_64/stable\n',
+                        stdout: 'app/com.fourgray.zenithplayer/x86_64/stable\n',
                         stderr: '',
                     };
                 }
@@ -592,7 +592,7 @@ test('initializes a user-checkout OSTree repository before importing Flatpak bun
 
 test('locates AppImage SquashFS payloads without executing a foreign-arch runtime', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-appimage-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-appimage-')
     );
     const artifactPath = path.join(root, 'arm64.AppImage');
     fs.writeFileSync(
@@ -613,9 +613,9 @@ test('locates AppImage SquashFS payloads without executing a foreign-arch runtim
 
 test('finds one packaged native payload under arbitrary format roots', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-payload-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-payload-')
     );
-    const resourceDir = path.join(root, 'opt', 'IPTVnator', 'resources');
+    const resourceDir = path.join(root, 'opt', 'Zenith Player', 'resources');
     const nativeDir = path.join(
         resourceDir,
         'app.asar.unpacked',
@@ -646,7 +646,7 @@ test('finds one packaged native payload under arbitrary format roots', () => {
 
 test('reads x64, arm64, and armv7 ELF architectures without host execution', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-elf-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-elf-')
     );
     try {
         for (const architecture of ['x64', 'arm64', 'armv7l']) {
@@ -758,12 +758,12 @@ test('reads DEB and RPM metadata without shell pipelines', () => {
 
 test('reads Pacman architecture and dependencies from the extracted .PKGINFO', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-pacman-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-pacman-')
     );
     fs.writeFileSync(
         path.join(root, '.PKGINFO'),
         [
-            'pkgname = iptvnator',
+            'pkgname = zenithplayer',
             'arch = x86_64',
             'depend = mpv>=0.35',
             'depend = glibc',
@@ -817,7 +817,7 @@ test('validates an x64 system payload and executes one bounded helper probe', ()
         assert.equal(probeCalls.length, 1);
         assert.equal(
             probeCalls[0].command,
-            path.join(fixture.nativeDir, 'iptvnator_mpv_helper')
+            path.join(fixture.nativeDir, 'zenithplayer_mpv_helper')
         );
         assert.deepEqual(probeCalls[0].args, ['--runtime-probe']);
         assert.deepEqual(probeCalls[0].options, {
@@ -846,13 +846,13 @@ test('rejects any stale embedded MPV native payload hidden inside app.asar', () 
             probeRunner: successfulProbeRunner,
             asarListPackage: () => [
                 '/electron-backend/main.js',
-                '/electron-backend/native/iptvnator_mpv_helper',
+                '/electron-backend/native/zenithplayer_mpv_helper',
                 '/electron-backend/native/lib/libmpv.so.2',
             ],
         });
         assert.match(
             errors.join('\n'),
-            /app\.asar must not contain embedded MPV native payloads.*iptvnator_mpv_helper.*libmpv\.so\.2/s
+            /app\.asar must not contain embedded MPV native payloads.*zenithplayer_mpv_helper.*libmpv\.so\.2/s
         );
     } finally {
         fs.rmSync(fixture.root, { recursive: true, force: true });
@@ -1038,21 +1038,21 @@ test('rejects helper probes terminated by a signal or hard timeout', () => {
 
 test('requires exact Snap graphics layouts and plugs used by the app', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-snap-metadata-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-snap-metadata-')
     );
     const snapYamlPath = path.join(root, 'meta', 'snap.yaml');
     fs.mkdirSync(path.dirname(snapYamlPath), { recursive: true });
     fs.mkdirSync(path.join(root, 'graphics'));
 
     const validSnapYaml = [
-        'name: iptvnator',
+        'name: zenithplayer',
         'base: core22',
         'confinement: strict',
         'summary: "*literal &anchor !tag <<: is quoted"',
         '# *commented-alias &commented-anchor !commented-tag',
         'apps:',
-        '  iptvnator:',
-        '    command: iptvnator',
+        '  zenithplayer:',
+        '    command: zenithplayer',
         '    environment:',
         '      SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform',
         '    plugs:',
@@ -1419,15 +1419,15 @@ test('requires exact Snap graphics layouts and plugs used by the app', () => {
 });
 
 const SNAP_METADATA_WITH_LITERAL_HASHES = [
-    'name: iptvnator',
+    'name: zenithplayer',
     'base: core22',
     'confinement: strict',
     'summary: "quoted # is scalar data"',
     'description: | # block scalar header comment',
     '  Block scalar # stays literal.',
     'apps:',
-    '  iptvnator:',
-    '    command: iptvnator',
+    '  zenithplayer:',
+    '    command: zenithplayer',
     '    environment:',
     '      SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform',
     '    plugs:',
@@ -1474,7 +1474,7 @@ for (const [kind, mutate, expected] of [
 ]) {
     test(`rejects an extra Snap shared-memory ${kind} with a trailing comment`, () => {
         const root = fs.mkdtempSync(
-            path.join(os.tmpdir(), 'iptvnator-verifier-snap-comments-')
+            path.join(os.tmpdir(), 'zenithplayer-verifier-snap-comments-')
         );
         const snapYamlPath = path.join(root, 'meta', 'snap.yaml');
         fs.mkdirSync(path.dirname(snapYamlPath), { recursive: true });
@@ -1509,12 +1509,12 @@ test('artifact verification enforces Snap metadata for x64 and ARM payloads', ()
         fs.writeFileSync(
             snapYamlPath,
             [
-                'name: iptvnator',
+                'name: zenithplayer',
                 'base: core22',
                 'confinement: strict',
                 'apps:',
-                '  iptvnator:',
-                '    command: iptvnator',
+                '  zenithplayer:',
+                '    command: zenithplayer',
                 '    environment:',
                 '      SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform',
                 '    plugs:',
@@ -1579,9 +1579,9 @@ test('artifact verification enforces Snap metadata for x64 and ARM payloads', ()
 
 test('verifies an outer Flatpak artifact with an unwrapped Electron ELF', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-flatpak-artifact-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-flatpak-artifact-')
     );
-    const artifactPath = path.join(root, 'IPTVnator.flatpak');
+    const artifactPath = path.join(root, 'Zenith Player.flatpak');
     fs.writeFileSync(artifactPath, 'flatpak fixture');
 
     try {
@@ -1594,7 +1594,7 @@ test('verifies an outer Flatpak artifact with an unwrapped Electron ELF', () => 
                         destination,
                         'files',
                         'lib',
-                        'com.fourgray.iptvnator'
+                        'com.fourgray.zenithplayer'
                     );
                     const resourceDir = path.join(appDir, 'resources');
                     const nativeDir = path.join(
@@ -1605,7 +1605,7 @@ test('verifies an outer Flatpak artifact with an unwrapped Electron ELF', () => 
                     );
                     fs.mkdirSync(nativeDir, { recursive: true });
                     fs.writeFileSync(
-                        path.join(appDir, 'iptvnator'),
+                        path.join(appDir, 'zenithplayer'),
                         elfHeader('arm64')
                     );
                     fs.writeFileSync(
@@ -1725,14 +1725,14 @@ test('reports missing helper, wrong mode, wrong profile, isolation, and loader f
     const cases = [
         {
             mutate({ nativeDir }) {
-                fs.rmSync(path.join(nativeDir, 'iptvnator_mpv_helper'));
+                fs.rmSync(path.join(nativeDir, 'zenithplayer_mpv_helper'));
             },
             expected: /Missing embedded MPV frame-copy helper/,
         },
         {
             mutate({ nativeDir }) {
                 fs.chmodSync(
-                    path.join(nativeDir, 'iptvnator_mpv_helper'),
+                    path.join(nativeDir, 'zenithplayer_mpv_helper'),
                     0o644
                 );
             },
@@ -1842,7 +1842,7 @@ test('requires marker-only foreign packages, scans Electron, and never probes', 
             profileName: 'portable',
             packageDependencies: [],
             elfInspector(binaryPath) {
-                if (path.basename(binaryPath) === 'iptvnator.bin') {
+                if (path.basename(binaryPath) === 'zenithplayer.bin') {
                     return {
                         soname: null,
                         needed: ['/tmp/libmpv.so.2'],
@@ -1888,7 +1888,7 @@ test('requires marker-only foreign packages, scans Electron, and never probes', 
 test('validates a marker-only Flatpak with an unwrapped Electron ELF', () => {
     const fixture = createSystemPayload({
         architecture: 'arm64',
-        electronBinaryName: 'iptvnator',
+        electronBinaryName: 'zenithplayer',
     });
     try {
         assert.deepEqual(
@@ -1913,7 +1913,7 @@ test('validates a marker-only Flatpak with an unwrapped Electron ELF', () => {
 
 test('always removes its temporary extraction root after a verifier failure', () => {
     const root = fs.mkdtempSync(
-        path.join(os.tmpdir(), 'iptvnator-verifier-cleanup-parent-')
+        path.join(os.tmpdir(), 'zenithplayer-verifier-cleanup-parent-')
     );
     const artifactPath = path.join(root, 'package.deb');
     fs.writeFileSync(artifactPath, 'fixture');

@@ -11,15 +11,15 @@ import {
     XtreamLiveStream,
     XtreamSerieItem,
     XtreamVodStream,
-} from '@iptvnator/shared/interfaces';
-import { createLogger } from '@iptvnator/portal/shared/util';
+} from '@zenithplayer/shared/interfaces';
+import { createLogger } from '@zenithplayer/portal/shared/util';
 import {
     DatabaseService,
     DbOperationEvent,
     isDbAbortError,
     XtreamPendingRestoreService,
     XtreamImportStatus,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     DbCategoryType,
     XTREAM_DATA_SOURCE,

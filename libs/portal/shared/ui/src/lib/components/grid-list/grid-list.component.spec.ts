@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TranslatePipe } from '@ngx-translate/core';
 import { MockPipe } from 'ng-mocks';
-import { SettingsStore } from '@iptvnator/services';
+import { SettingsStore } from '@zenithplayer/services';
 import {
     formatGridRating,
     GridListComponent,

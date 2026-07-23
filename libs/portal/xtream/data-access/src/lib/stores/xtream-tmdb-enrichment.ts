@@ -4,12 +4,12 @@ import {
     mergeEpisodesWithTmdb,
     mergeSerieInfoWithTmdb,
     mergeVodInfoWithTmdb,
-} from '@iptvnator/services';
+} from '@zenithplayer/services';
 import {
     XtreamSerieDetails,
     XtreamVodDetails,
     getXtreamVodInfo,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 /**
  * Async TMDB enrichment of the currently selected Xtream detail item.

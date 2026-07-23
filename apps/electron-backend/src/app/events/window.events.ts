@@ -11,7 +11,7 @@ import {
     WINDOW_GET_STATE,
     WINDOW_MINIMIZE,
     WINDOW_TOGGLE_MAXIMIZE,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 
 interface WindowState {
     isMaximized: boolean;

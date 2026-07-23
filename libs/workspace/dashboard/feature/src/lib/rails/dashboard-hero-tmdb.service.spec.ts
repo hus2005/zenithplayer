@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { TmdbEnrichmentService } from '@iptvnator/services';
+import { TmdbEnrichmentService } from '@zenithplayer/services';
 import { DashboardHeroTmdbService } from './dashboard-hero-tmdb.service';
 
 describe('DashboardHeroTmdbService', () => {

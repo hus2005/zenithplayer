@@ -17,14 +17,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltip } from '@angular/material/tooltip';
 import { Router } from '@angular/router';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
-import { StalkerStore } from '@iptvnator/portal/stalker/data-access';
+import { StalkerStore } from '@zenithplayer/portal/stalker/data-access';
 import {
     PortalCategorySortMode,
     persistPortalCategorySortMode,
     restorePortalCategorySortMode,
     sortPortalCategoryItems,
-} from '@iptvnator/portal/shared/util';
-import { XtreamStore } from '@iptvnator/portal/xtream/data-access';
+} from '@zenithplayer/portal/shared/util';
+import { XtreamStore } from '@zenithplayer/portal/xtream/data-access';
 import { WorkspaceContextCategoryViewComponent } from './components/workspace-context-category-view.component';
 import { WorkspaceContextErrorViewComponent } from './components/workspace-context-error-view.component';
 import { hasActiveLiveCategoryRoute } from './workspace-context-panel-route.utils';
@@ -311,7 +311,7 @@ export class WorkspaceContextPanelComponent {
                   ? 'live'
                   : 'vod';
 
-        void import('@iptvnator/portal/xtream/feature').then(
+        void import('@zenithplayer/portal/xtream/feature').then(
             ({ CategoryManagementDialogComponent }) => {
                 const dialogRef = this.dialog.open(
                     CategoryManagementDialogComponent,

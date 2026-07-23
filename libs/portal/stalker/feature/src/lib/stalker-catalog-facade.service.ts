@@ -11,8 +11,8 @@ import {
     buildStalkerSelectedVodItem,
     StalkerStore,
     StalkerVodSource,
-} from '@iptvnator/portal/stalker/data-access';
-import { PlaybackPositionRuntimeBridgeService } from '@iptvnator/services';
+} from '@zenithplayer/portal/stalker/data-access';
+import { PlaybackPositionRuntimeBridgeService } from '@zenithplayer/services';
 import {
     PortalCatalogItemProgress,
     PortalCatalogPlaylistMeta,
@@ -20,8 +20,8 @@ import {
     PORTAL_CATALOG_FACADE,
     PORTAL_PLAYBACK_POSITIONS,
     StalkerPortalCatalogFacade,
-} from '@iptvnator/portal/shared/util';
-import { PlaybackPositionData } from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/portal/shared/util';
+import { PlaybackPositionData } from '@zenithplayer/shared/interfaces';
 
 function calculateProgress(position: PlaybackPositionData | undefined): number {
     if (!position || !position.durationSeconds) {

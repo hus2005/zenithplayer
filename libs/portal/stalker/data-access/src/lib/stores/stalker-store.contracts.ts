@@ -1,4 +1,4 @@
-import { PlaylistMeta, StalkerPortalItem } from '@iptvnator/shared/interfaces';
+import { PlaylistMeta, StalkerPortalItem } from '@zenithplayer/shared/interfaces';
 import {
     StalkerCategoryItem,
     StalkerContentItem,

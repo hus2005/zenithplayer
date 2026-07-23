@@ -2,11 +2,11 @@ import {
     TmdbMediaType,
     extractYear,
     normalizeTitle,
-} from '@iptvnator/shared/interfaces';
+} from '@zenithplayer/shared/interfaces';
 import { TmdbSearchResult } from './tmdb.types';
 
 // Re-exported for existing consumers of the tmdb barrel
-export { extractYear, normalizeTitle } from '@iptvnator/shared/interfaces';
+export { extractYear, normalizeTitle } from '@zenithplayer/shared/interfaces';
 
 /**
  * Title matching for TMDB search results. Provider titles are noisy
