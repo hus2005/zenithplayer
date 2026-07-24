@@ -11,7 +11,6 @@ import {
     untracked,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -25,14 +24,11 @@ import {
     VideoPlayer,
 } from '@zenithplayer/shared/interfaces';
 import type { ExternalPlayerName } from '@zenithplayer/shared/interfaces';
-import { RuntimeCapabilitiesService, SettingsStore } from '@zenithplayer/services';
+import { RuntimeCapabilitiesService } from '@zenithplayer/services';
 import { ArtPlayerComponent } from '../art-player/art-player.component';
 import { EmbeddedMpvPlayerComponent } from '../embedded-mpv-player/embedded-mpv-player.component';
 import { HtmlVideoPlayerComponent } from '../html-video-player/html-video-player.component';
-import {
-    WEB_PLAYER_SHARED_CONTROLS,
-    WEB_PLAYER_SHARED_CONTROLS_ENABLED,
-} from '../player-controls';
+import { WEB_PLAYER_SHARED_CONTROLS } from '../player-controls';
 import {
     type PlaybackDiagnostic,
     PlaybackDiagnosticCode,
@@ -48,11 +44,34 @@ type PlaybackDiagnosticDetail = {
     readonly value: string;
 };
 
+function useSingleConnectionXtreamLiveStream(
+    playback: ResolvedPortalPlayback
+): ResolvedPortalPlayback {
+    const isLive =
+        typeof playback.isLive === 'boolean'
+            ? playback.isLive
+            : !playback.contentInfo;
+    if (
+        !isLive ||
+        !/\/live\/[^?#]+\.m3u8(?=([?#]|$))/i.test(playback.streamUrl)
+    ) {
+        return playback;
+    }
+
+    return {
+        ...playback,
+        // Xtream accepts the same live endpoint as a continuous MPEG-TS
+        // stream. Unlike HLS this uses one socket rather than separate
+        // playlist and segment sockets.
+        streamUrl: playback.streamUrl.replace(
+            /(\.m3u8)(?=([?#]|$))/i,
+            '.ts'
+        ),
+    };
+}
+
 function resolveWebPlayerSharedControls(): boolean {
-    const storedValue = inject(SettingsStore).webPlayerSharedControls?.();
-    return typeof storedValue === 'boolean'
-        ? storedValue
-        : WEB_PLAYER_SHARED_CONTROLS_ENABLED;
+    return true;
 }
 
 @Component({
@@ -64,7 +83,6 @@ function resolveWebPlayerSharedControls(): boolean {
     },
     imports: [
         ArtPlayerComponent,
-        ClipboardModule,
         EmbeddedMpvPlayerComponent,
         HtmlVideoPlayerComponent,
         MatButtonModule,
@@ -135,15 +153,17 @@ export class WebPlayerViewComponent {
 
     readonly resolvedPlayback = computed<ResolvedPortalPlayback>(() => {
         const playback = this.playback();
-        if (playback) {
-            return playback;
-        }
+        const resolved =
+            playback ??
+            ({
+                streamUrl: this.streamUrl(),
+                title: this.title() || this.streamUrl(),
+                startTime: this.startTime(),
+            } satisfies ResolvedPortalPlayback);
 
-        return {
-            streamUrl: this.streamUrl(),
-            title: this.title() || this.streamUrl(),
-            startTime: this.startTime(),
-        };
+        return typeof window.electron?.createEmbeddedMpvSession === 'function'
+            ? useSingleConnectionXtreamLiveStream(resolved)
+            : resolved;
     });
     readonly resolvedIsLive = computed(() => {
         const playback = this.resolvedPlayback();
@@ -151,12 +171,20 @@ export class WebPlayerViewComponent {
             ? playback.isLive
             : !playback.contentInfo;
     });
-    readonly selectedPlayer = computed(
-        () =>
-            this.playerOverride() ??
-            this.settings()?.player ??
-            VideoPlayer.VideoJs
-    );
+    readonly selectedPlayer = computed(() => {
+        const override = this.playerOverride();
+        if (override) {
+            return override;
+        }
+
+        if (
+            typeof window.electron?.createEmbeddedMpvSession === 'function'
+        ) {
+            return VideoPlayer.EmbeddedMpv;
+        }
+
+        return this.settings()?.player ?? VideoPlayer.VideoJs;
+    });
     readonly recordingFolder = computed(() => this.settings()?.recordingFolder ?? '');
 
     constructor() {

@@ -45,7 +45,7 @@ The M3U playlist module provides:
 ## M3U Parsing (`iptv-playlist-parser` fork)
 
 All four parse call sites (Electron `playlist-source.ts` import, `playlist-refresh.worker.ts`, `web-backend` `/parse`, PWA `playlists.service.ts`) use the
-[4gray/iptv-playlist-parser](https://github.com/4gray/iptv-playlist-parser) fork, pinned by commit SHA in `package.json`. The fork tracks upstream
+[zenith/iptv-playlist-parser](https://github.com/zenith/iptv-playlist-parser) fork, pinned by commit SHA in `package.json`. The fork tracks upstream
 `freearhey/iptv-playlist-parser` (currently synced to v0.15.2) plus two deliberate deltas zenithplayer depends on:
 
 - **`radio` attribute** — `item.radio` (string, `'true'` triggers the radio player, EPG suppression, and external-player gating app-wide). Upstream does not have this field; it must survive every upstream sync.

@@ -14,28 +14,32 @@ import { MatInputModule } from '@angular/material/input';
 import { Store } from '@ngrx/store';
 import { TranslatePipe } from '@ngx-translate/core';
 import { PlaylistActions } from '@zenithplayer/m3u-state';
-import { PortalStatus, PortalStatusService } from '@zenithplayer/services';
 import {
-    extractXtreamCredentialsFromUrl,
+    DataService,
+    PortalStatus,
+    PortalStatusService,
+} from '@zenithplayer/services';
+import {
     normalizeXtreamServerUrl,
     Playlist,
 } from '@zenithplayer/shared/interfaces';
 import { v4 as uuid } from 'uuid';
 
-function xtreamServerUrlValidator(
+interface ServerCodeResponse {
+    success: boolean;
+    code?: string;
+    dns_url?: string;
+    message?: string;
+}
+
+function serverCodeValidator(
     control: AbstractControl
 ): ValidationErrors | null {
     const value = control.value;
     if (typeof value !== 'string' || value.trim().length === 0) {
         return null;
     }
-
-    try {
-        normalizeXtreamServerUrl(value);
-        return null;
-    } catch {
-        return { xtreamServerUrl: true };
-    }
+    return /^[a-zA-Z0-9_-]+$/.test(value.trim()) ? null : { serverCode: true };
 }
 
 @Component({
@@ -88,48 +92,41 @@ function xtreamServerUrlValidator(
 })
 export class XtreamCodeImportComponent {
     @Output() addClicked = new EventEmitter<void>();
-    URL_REGEX = /^\s*https?:\/\/[^ "]+\s*$/;
 
     form = new FormGroup({
         _id: new FormControl(uuid()),
         title: new FormControl('', [Validators.required]),
         password: new FormControl('', [Validators.required]),
         username: new FormControl('', [Validators.required]),
-        serverUrl: new FormControl('', [
+        serverCode: new FormControl('', [
             Validators.required,
-            Validators.pattern(this.URL_REGEX),
-            xtreamServerUrlValidator,
+            serverCodeValidator,
         ]),
         importDate: new FormControl(new Date().toISOString()),
     });
 
+    readonly dataService = inject(DataService);
     readonly store = inject(Store);
     readonly portalStatusService = inject(PortalStatusService);
 
     connectionStatus: PortalStatus | null = null;
     isTestingConnection = false;
+    resolveError = '';
 
     async testConnection(): Promise<void> {
         if (!this.form.valid) return;
 
-        const connection = this.getNormalizedConnection();
-        if (!connection) {
-            this.connectionStatus = 'unavailable';
-            return;
-        }
-
         this.isTestingConnection = true;
+        this.resolveError = '';
         try {
-            // User-initiated connection test — bypass the shared cache so the
-            // result reflects the portal's current state, not whatever was
-            // cached up to 30 s ago by another component.
-            this.connectionStatus =
-                await this.portalStatusService.checkPortalStatus(
-                    connection.serverUrl,
-                    connection.username,
-                    connection.password,
-                    { skipCache: true }
-                );
+            const connection = await this.resolveConnection();
+            this.connectionStatus = await this.checkConnection(connection);
+        } catch (error) {
+            this.connectionStatus = 'unavailable';
+            this.resolveError =
+                error instanceof Error
+                    ? error.message
+                    : 'Sunucu kodu çözümlenemedi.';
         } finally {
             this.isTestingConnection = false;
         }
@@ -153,67 +150,86 @@ export class XtreamCodeImportComponent {
             title: '',
             password: '',
             username: '',
-            serverUrl: '',
+            serverCode: '',
             importDate: new Date().toISOString(),
         });
         this.connectionStatus = null;
+        this.resolveError = '';
     }
 
-    addPlaylist() {
-        if (!this.form.valid) return;
+    async addPlaylist(): Promise<void> {
+        if (!this.form.valid || this.isTestingConnection) return;
 
-        const connection = this.getNormalizedConnection();
-        if (!connection) {
-            return;
-        }
-
-        this.store.dispatch(
-            PlaylistActions.addPlaylist({
-                playlist: {
-                    ...this.form.value,
-                    password: connection.password,
-                    serverUrl: connection.serverUrl,
-                    username: connection.username,
-                } as Playlist,
-            })
-        );
-        this.addClicked.emit();
-    }
-
-    extractParams(urlAsString: string): void {
-        if (
-            this.form.get('username')?.value !== '' ||
-            this.form.get('password')?.value !== ''
-        )
-            return;
+        this.isTestingConnection = true;
+        this.resolveError = '';
         try {
-            const credentials = extractXtreamCredentialsFromUrl(urlAsString);
-            if (!credentials) {
+            const connection = await this.resolveConnection();
+            this.connectionStatus = await this.checkConnection(connection);
+            if (this.connectionStatus !== 'active') {
                 return;
             }
 
-            this.form.get('username')?.setValue(credentials.username);
-            this.form.get('password')?.setValue(credentials.password);
+            const { serverCode: _serverCode, ...formValue } =
+                this.form.getRawValue();
+            this.store.dispatch(
+                PlaylistActions.addPlaylist({
+                    playlist: {
+                        ...formValue,
+                        password: connection.password,
+                        serverUrl: connection.serverUrl,
+                        username: connection.username,
+                    } as Playlist,
+                })
+            );
+            this.addClicked.emit();
         } catch (error) {
-            console.error('Invalid URL', error);
+            this.connectionStatus = 'unavailable';
+            this.resolveError =
+                error instanceof Error
+                    ? error.message
+                    : 'Sunucu kodu çözümlenemedi.';
+        } finally {
+            this.isTestingConnection = false;
         }
     }
 
-    private getNormalizedConnection(): {
+    private async resolveConnection(): Promise<{
         password: string;
         serverUrl: string;
         username: string;
-    } | null {
+    }> {
+        const code = this.form.controls.serverCode.value?.trim() ?? '';
+        const response =
+            await this.dataService.sendIpcEvent<ServerCodeResponse>(
+                'ZENITH_SERVER_CODE_RESOLVE',
+                code
+            );
+        if (!response.success || !response.dns_url) {
+            throw new Error(
+                response.message || 'Sunucu kodu geçersiz veya bulunamadı.'
+            );
+        }
         try {
             return {
-                password: (this.form.value.password as string).trim(),
-                serverUrl: normalizeXtreamServerUrl(
-                    this.form.value.serverUrl as string
-                ),
-                username: (this.form.value.username as string).trim(),
+                password: this.form.controls.password.value?.trim() ?? '',
+                serverUrl: normalizeXtreamServerUrl(response.dns_url),
+                username: this.form.controls.username.value?.trim() ?? '',
             };
         } catch {
-            return null;
+            throw new Error('Sunucu kodu geçersiz bir DNS adresi döndürdü.');
         }
+    }
+
+    private checkConnection(connection: {
+        password: string;
+        serverUrl: string;
+        username: string;
+    }): Promise<PortalStatus> {
+        return this.portalStatusService.checkPortalStatus(
+            connection.serverUrl,
+            connection.username,
+            connection.password,
+            { skipCache: true }
+        );
     }
 }

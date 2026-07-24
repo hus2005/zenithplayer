@@ -1112,4 +1112,29 @@ describe('EmbeddedMpvNativeService power blocker', () => {
             })
         );
     });
+
+    it('disposes every previous session before a replacement opens its stream', () => {
+        startSession('old-session', snapshot('playing'));
+        startSession('new-session', snapshot('idle'));
+        addon.getSessionSnapshot.mockReturnValue(snapshot('playing'));
+        addon.disposeSession.mockClear();
+        addon.loadPlayback.mockClear();
+
+        const playback: ResolvedPortalPlayback = {
+            streamUrl: 'http://example.test/movie/user/pass/2.mkv',
+            title: 'Replacement movie',
+            isLive: false,
+        };
+        service.loadPlayback('new-session', playback);
+
+        expect(addon.disposeSession).toHaveBeenCalledTimes(1);
+        expect(addon.disposeSession).toHaveBeenCalledWith('old-session');
+        expect(addon.disposeSession.mock.invocationCallOrder[0]).toBeLessThan(
+            addon.loadPlayback.mock.invocationCallOrder[0]
+        );
+        expect(addon.loadPlayback).toHaveBeenCalledWith(
+            'new-session',
+            playback
+        );
+    });
 });

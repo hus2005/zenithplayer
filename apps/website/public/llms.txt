@@ -11,8 +11,8 @@
 - Troubleshooting (macOS app damaged fix): https://hus2005.github.io/zenithplayer/blog/macos-arm-app-damaged-fix/
 - Source Code: https://github.com/hus2005/zenithplayer
 - Telegram: https://t.me/zenithplayer
-- GitHub Sponsors: https://github.com/sponsors/4gray
-- Ko-fi: https://ko-fi.com/4gray
+- GitHub Sponsors: https://github.com/sponsors/zenith
+- Ko-fi: https://ko-fi.com/zenith
 
 ## Product Scope
 

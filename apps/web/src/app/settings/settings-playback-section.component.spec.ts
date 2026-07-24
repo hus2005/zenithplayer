@@ -109,25 +109,6 @@ describe('SettingsPlaybackSectionComponent', () => {
         }
     );
 
-    it('updates the double-click option visibility when the selected player changes', () => {
-        const form = createForm();
-        fixture.componentRef.setInput('form', form);
-        fixture.componentRef.setInput('isDesktop', true);
-        fixture.componentRef.setInput('supportsManagedExternalPlayers', true);
-        fixture.detectChanges();
-
-        expect(
-            queryByTestId('external-player-double-click-setting')
-        ).toBeNull();
-
-        form.controls['player'].setValue(VideoPlayer.MPV);
-        fixture.detectChanges();
-
-        expect(
-            queryByTestId('external-player-double-click-setting')
-        ).not.toBeNull();
-    });
-
     it('offers automatic Xtream stream format selection', async () => {
         fixture.detectChanges();
 

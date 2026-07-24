@@ -9,6 +9,7 @@ import {
     importProvidersFrom,
     provideZoneChangeDetection,
 } from '@angular/core';
+import { Capacitor } from '@capacitor/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
@@ -32,6 +33,7 @@ import { DataService } from '@zenithplayer/services';
 import { dbConfig } from '@zenithplayer/shared/interfaces';
 import { AppConfig } from '../environments/environment';
 import { routes } from './app.routes';
+import { AndroidService } from './services/android.service';
 import { ElectronService } from './services/electron.service';
 import { ExternalPlaybackService } from './services/external-playback.service';
 import { PlayerService } from './services/player.service';
@@ -97,6 +99,12 @@ export function getInitialLanguage(): string {
 export function DataFactory() {
     if (window.electron) {
         return inject(ElectronService);
+    }
+    if (
+        Capacitor.isNativePlatform() &&
+        Capacitor.getPlatform() === 'android'
+    ) {
+        return inject(AndroidService);
     }
     return inject(PwaService);
 }

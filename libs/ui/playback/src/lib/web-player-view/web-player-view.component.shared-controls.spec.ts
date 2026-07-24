@@ -155,7 +155,7 @@ describe('WebPlayerViewComponent shared web controls metadata', () => {
         fixture.destroy();
     });
 
-    it('snapshots the shared controls setting for each player host', () => {
+    it('keeps shared controls enabled for every player host', () => {
         webPlayerSharedControls.set(true);
         fixture.detectChanges();
 
@@ -180,7 +180,7 @@ describe('WebPlayerViewComponent shared web controls metadata', () => {
 
         expect(
             fixture.debugElement.injector.get(WEB_PLAYER_SHARED_CONTROLS)
-        ).toBe(false);
+        ).toBe(true);
     });
 
     it.each([

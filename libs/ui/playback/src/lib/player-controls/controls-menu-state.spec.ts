@@ -82,8 +82,6 @@ describe('ControlsMenuState', () => {
 
     it.each([
         ['volume', { volume: false }, {}],
-        ['audio', {}, { audioTracks: [] }],
-        ['subtitle', {}, { subtitleTracks: [] }],
         ['speed', { playbackSpeed: false }, {}],
         ['aspect', { aspectRatio: false }, {}],
     ] as const)(

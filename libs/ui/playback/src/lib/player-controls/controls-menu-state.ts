@@ -22,14 +22,8 @@ function getControlsMenuAvailability(
 ): ControlsMenuAvailability {
     return {
         volume: showControls && capabilities.volume,
-        audio:
-            showControls &&
-            capabilities.audioTracks &&
-            state.audioTracks.length > 1,
-        subtitle:
-            showControls &&
-            capabilities.subtitles &&
-            state.subtitleTracks.length > 0,
+        audio: showControls,
+        subtitle: showControls,
         speed: showControls && capabilities.playbackSpeed,
         aspect: showControls && capabilities.aspectRatio,
     };

@@ -1436,6 +1436,10 @@ void runEventLoop(std::shared_ptr<Session> session)
                         *static_cast<double*>(property->data);
                 } else if (name == "pause" && property->format == MPV_FORMAT_FLAG) {
                     const bool paused = *static_cast<int*>(property->data) != 0;
+                    traceMpvCommon(
+                        std::string("property pause=") +
+                        (paused ? "yes" : "no")
+                    );
                     if (
                         session->snapshot.status != SessionStatus::Loading &&
                         session->snapshot.status != SessionStatus::Ended &&
@@ -1446,6 +1450,16 @@ void runEventLoop(std::shared_ptr<Session> session)
                             : SessionStatus::Playing;
                         session->snapshot.error.clear();
                     }
+                } else if (
+                    name == "paused-for-cache" &&
+                    property->format == MPV_FORMAT_FLAG
+                ) {
+                    const bool pausedForCache =
+                        *static_cast<int*>(property->data) != 0;
+                    traceMpvCommon(
+                        std::string("property paused-for-cache=") +
+                        (pausedForCache ? "yes" : "no")
+                    );
                 } else if (name == "eof-reached" && property->format == MPV_FORMAT_FLAG) {
                     const bool eofReached =
                         *static_cast<int*>(property->data) != 0;
@@ -1473,6 +1487,7 @@ void runEventLoop(std::shared_ptr<Session> session)
                     if (parseIntegerString(value, trackId)) {
                         session->snapshot.selectedAudioTrackId = trackId;
                     }
+                    traceMpvCommon("property aid=" + value);
                 } else if (name == "sid") {
                     const char* rawValue = property->format == MPV_FORMAT_STRING
                         ? *static_cast<char**>(property->data)
@@ -1484,6 +1499,7 @@ void runEventLoop(std::shared_ptr<Session> session)
                     } else {
                         session->snapshot.selectedSubtitleTrackId = -1;
                     }
+                    traceMpvCommon("property sid=" + value);
                 } else if (name == "speed" && property->format == MPV_FORMAT_DOUBLE) {
                     session->snapshot.playbackSpeed =
                         *static_cast<double*>(property->data);
@@ -1547,7 +1563,6 @@ void destroySession(const std::shared_ptr<Session>& session)
     }
     return;
 #endif
-    session->running.store(false);
     if (session->handle) {
         bool recordingActive = false;
         {
@@ -1563,6 +1578,35 @@ void destroySession(const std::shared_ptr<Session>& session)
                 const_cast<char**>(&disabledValue)
             );
         }
+
+        // Stop the active demuxer before tearing the client down. Calling
+        // mpv_terminate_destroy() directly closes the local socket, but some
+        // Xtream servers keep that abrupt VOD connection visible until their
+        // stale-session timeout. The synchronous stop command lets FFmpeg
+        // close the HTTP input normally and emits END_FILE/IDLE first.
+        const char* stopCommand[] = {"stop", nullptr};
+        mpv_command(session->handle, stopCommand);
+
+        const auto gracefulStopDeadline =
+            std::chrono::steady_clock::now() + std::chrono::milliseconds(500);
+        while (std::chrono::steady_clock::now() < gracefulStopDeadline) {
+            bool stopped = false;
+            {
+                std::lock_guard<std::mutex> lock(session->mutex);
+                stopped =
+                    session->snapshot.status == SessionStatus::Idle ||
+                    session->snapshot.status == SessionStatus::Ended ||
+                    session->snapshot.status == SessionStatus::Error;
+            }
+            if (stopped) {
+                break;
+            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        }
+    }
+
+    session->running.store(false);
+    if (session->handle) {
         mpv_wakeup(session->handle);
     }
 
@@ -1714,6 +1758,12 @@ Napi::Value CreateSession(const Napi::CallbackInfo& info)
         MPV_FORMAT_STRING
     );
     mpv_observe_property(session->handle, 11, "eof-reached", MPV_FORMAT_FLAG);
+    mpv_observe_property(
+        session->handle,
+        12,
+        "paused-for-cache",
+        MPV_FORMAT_FLAG
+    );
 
     session->running.store(true);
     session->eventThread = std::thread(runEventLoop, session);
@@ -1803,17 +1853,58 @@ Napi::Value LoadPlayback(const Napi::CallbackInfo& info)
     if (!referer.empty()) {
         options.emplace_back("referrer", referer);
     }
-    if (std::isfinite(startTime) && startTime >= 0) {
+    /*
+     * Do not freeze video while MPV primes a newly selected audio/subtitle
+     * decoder. The new track can become audible/visible as soon as it is ready
+     * while the current playback clock keeps advancing.
+     */
+    options.emplace_back("cache-pause", "no");
+    /*
+     * The default audio clock makes video wait while an audio decoder/output
+     * is replaced. Drive video from display timing and keep the audio device
+     * alive so track changes do not visibly freeze the picture.
+     */
+    options.emplace_back("video-sync", "display-resample");
+    options.emplace_back("gapless-audio", "yes");
+    options.emplace_back("audio-stream-silence", "yes");
+    options.emplace_back("audio-wait-open", "0");
+    if (std::isfinite(startTime) && startTime > 0) {
         std::ostringstream startValue;
         startValue << startTime;
         options.emplace_back("start", startValue.str());
     }
+    const bool isLive =
+        playback.Has("isLive") && playback.Get("isLive").IsBoolean() &&
+        playback.Get("isLive").As<Napi::Boolean>().Value();
+    if (!isLive) {
+        /*
+         * Keep FFmpeg HTTP requests serial for one-connection IPTV accounts,
+         * but leave seekability enabled. Explicitly forcing seekable=0 made
+         * VOD timeline/audio/subtitle operations ineffective.
+         */
+        options.emplace_back("curl-enabled", "no");
+        options.emplace_back(
+            "stream-lavf-o",
+            "multiple_requests=0"
+        );
+    }
+    std::string headerFields;
     if (playback.Has("headers") && playback.Get("headers").IsObject()) {
-        const auto headerFields =
+        headerFields =
             joinHeaderFields(playback.Get("headers").As<Napi::Object>());
+    }
+    if (!isLive) {
         if (!headerFields.empty()) {
-            options.emplace_back("http-header-fields", headerFields);
+            headerFields += ",";
         }
+        // Some Xtream reverse proxies do not retire their activity row when
+        // a reusable upstream HTTP connection disappears. Explicitly opt out
+        // of keep-alive for VOD so closing MPV produces a terminal response
+        // connection at every redirect/proxy hop.
+        headerFields += "Connection: close";
+    }
+    if (!headerFields.empty()) {
+        options.emplace_back("http-header-fields", headerFields);
     }
 
     std::vector<mpv_node> optionValues(options.size());
@@ -2024,7 +2115,7 @@ Napi::Value SetAudioTrack(const Napi::CallbackInfo& info)
     }
     const auto session =
         getSessionOrThrow(env, info[0].As<Napi::String>().Utf8Value());
-    int64_t trackId =
+    const int64_t trackId =
         static_cast<int64_t>(info[1].As<Napi::Number>().Int64Value());
 #ifdef __linux__
     std::string socketPath;
@@ -2042,15 +2133,22 @@ Napi::Value SetAudioTrack(const Napi::CallbackInfo& info)
     }
     return env.Undefined();
 #endif
+    const std::string value = std::to_string(trackId);
+    const char* rawValue = value.c_str();
+    traceMpvCommon("queue aid=" + value);
     const int result = mpv_set_property_async(
         session->handle,
         nextAsyncRequestId(),
         "aid",
-        MPV_FORMAT_INT64,
-        &trackId
+        MPV_FORMAT_STRING,
+        const_cast<char**>(&rawValue)
     );
     if (result < 0) {
         throw Napi::Error::New(env, mpv_error_string(result));
+    }
+    {
+        std::lock_guard<std::mutex> lock(session->mutex);
+        session->snapshot.selectedAudioTrackId = trackId;
     }
     return env.Undefined();
 }
@@ -2063,29 +2161,25 @@ Napi::Value SetAudioTrack(const Napi::CallbackInfo& info)
     }
     const auto session =
         getSessionOrThrow(env, info[0].As<Napi::String>().Utf8Value());
-    int64_t trackId =
+    const int64_t trackId =
         static_cast<int64_t>(info[1].As<Napi::Number>().Int64Value());
-    int result = 0;
-    if (trackId < 0) {
-        const char* disabledValue = "no";
-        result = mpv_set_property_async(
-            session->handle,
-            nextAsyncRequestId(),
-            "sid",
-            MPV_FORMAT_STRING,
-            const_cast<char**>(&disabledValue)
-        );
-    } else {
-        result = mpv_set_property_async(
-            session->handle,
-            nextAsyncRequestId(),
-            "sid",
-            MPV_FORMAT_INT64,
-            &trackId
-        );
-    }
+    const std::string value =
+        trackId < 0 ? std::string("no") : std::to_string(trackId);
+    const char* rawValue = value.c_str();
+    traceMpvCommon("queue sid=" + value);
+    const int result = mpv_set_property_async(
+        session->handle,
+        nextAsyncRequestId(),
+        "sid",
+        MPV_FORMAT_STRING,
+        const_cast<char**>(&rawValue)
+    );
     if (result < 0) {
         throw Napi::Error::New(env, mpv_error_string(result));
+    }
+    {
+        std::lock_guard<std::mutex> lock(session->mutex);
+        session->snapshot.selectedSubtitleTrackId = trackId;
     }
     return env.Undefined();
 }

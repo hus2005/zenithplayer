@@ -160,6 +160,11 @@ export class WorkspacePlayerCommandsContributor {
     }
 
     private isVisible(def: PlayerCommandDefinition): boolean {
+        // Desktop Zenith Player has one fixed bundled player. Do not expose
+        // legacy engine-switch commands through the command palette.
+        if (this.runtime.isElectron) {
+            return false;
+        }
         switch (def.requires) {
             case 'managed-external':
                 return this.runtime.supportsManagedExternalPlayers;

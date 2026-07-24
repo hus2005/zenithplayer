@@ -91,15 +91,6 @@
                 [activeSection]="activeSection()"
             />
 
-            <app-settings-backup-section
-                [activeSection]="activeSection()"
-                [isPwa]="isPwa"
-                [isRemovingAllPlaylists]="isRemovingAllPlaylists()"
-                [isExportingData]="isExportingData()"
-                (importData)="importData()"
-                (exportData)="exportData()"
-            />
-
             <app-settings-reset-section
                 [activeSection]="activeSection()"
                 [isRemovingAllPlaylists]="isRemovingAllPlaylists()"

@@ -121,6 +121,7 @@ export class EmbeddedMpvSessionController {
     ): () => void {
         let disposed = false;
         let activeSessionId: string | null = null;
+        const delayedBoundsSyncTimers: number[] = [];
 
         const syncBounds = () => {
             if (!activeSessionId) {
@@ -142,6 +143,38 @@ export class EmbeddedMpvSessionController {
                 this.boundsAnimationFrame = null;
                 syncBounds();
             });
+        };
+
+        const stabilizeBounds = (remainingFrames = 12) => {
+            if (disposed || remainingFrames <= 0) {
+                return;
+            }
+            if (this.boundsAnimationFrame !== null) {
+                cancelAnimationFrame(this.boundsAnimationFrame);
+            }
+            this.boundsAnimationFrame = requestAnimationFrame(() => {
+                this.boundsAnimationFrame = null;
+                syncBounds();
+                stabilizeBounds(remainingFrames - 1);
+            });
+        };
+
+        const scheduleDelayedBoundsSyncs = () => {
+            // Film/series detail views can keep moving after Angular's first
+            // paint while artwork, fonts and the surrounding route transition
+            // settle. ResizeObserver only reports size changes, not a host
+            // whose screen position changed. Re-measure at a few delayed
+            // checkpoints so the native child window starts aligned without
+            // waiting for the user's first scroll event.
+            for (const delay of [100, 250, 500, 1000, 2000]) {
+                delayedBoundsSyncTimers.push(
+                    window.setTimeout(() => {
+                        if (!disposed) {
+                            scheduleBoundsSync();
+                        }
+                    }, delay)
+                );
+            }
         };
 
         this.activeBoundsSync = scheduleBoundsSync;
@@ -215,6 +248,12 @@ export class EmbeddedMpvSessionController {
             activeSessionId = created.id;
             this.sessionId.set(created.id);
             this.session.set(created);
+            // Session state swaps the loading shell for the real player. That
+            // can move the host without changing its size, which does not
+            // notify ResizeObserver. Keep native bounds aligned while Angular
+            // and the control dock finish their initial layout.
+            stabilizeBounds();
+            scheduleDelayedBoundsSyncs();
             await electron.loadEmbeddedMpvPlayback(created.id, playback);
             if (disposed) {
                 return;
@@ -240,7 +279,8 @@ export class EmbeddedMpvSessionController {
                     );
                 }
             }
-            scheduleBoundsSync();
+            stabilizeBounds();
+            scheduleDelayedBoundsSyncs();
         };
 
         void create().catch((error) => {
@@ -264,6 +304,10 @@ export class EmbeddedMpvSessionController {
             window.removeEventListener('scroll', scheduleBoundsSync, true);
             detachDprWatch?.();
             detachDprWatch = null;
+            for (const timerId of delayedBoundsSyncTimers) {
+                window.clearTimeout(timerId);
+            }
+            delayedBoundsSyncTimers.length = 0;
 
             if (this.activeBoundsSync === scheduleBoundsSync) {
                 this.activeBoundsSync = null;

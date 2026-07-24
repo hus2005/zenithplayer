@@ -37,11 +37,6 @@ interface AccountDetailRow {
     translateValue?: boolean;
 }
 
-interface AccountPort {
-    labelKey: string;
-    value: string;
-}
-
 @Component({
     selector: 'app-account-info',
     imports: [MatButtonModule, MatDialogModule, MatIconModule, TranslatePipe],
@@ -79,14 +74,10 @@ export class AccountInfoComponent {
         return (
             playlist?.title ||
             playlist?.name ||
-            info?.server_info?.url ||
             info?.user_info?.username ||
             '-'
         );
     });
-    readonly serverHost = computed(
-        () => this.accountInfo()?.server_info?.url || '-'
-    );
     readonly activeConnections = computed(() =>
         this.parseNumber(this.accountInfo()?.user_info?.active_cons)
     );
@@ -118,24 +109,6 @@ export class AccountInfoComponent {
     readonly allowedFormats = computed(
         () => this.accountInfo()?.user_info?.allowed_output_formats ?? []
     );
-    readonly ports = computed<AccountPort[]>(() => {
-        const serverInfo = this.accountInfo()?.server_info;
-
-        return [
-            {
-                labelKey: 'XTREAM.ACCOUNT_INFO.HTTP_PORT',
-                value: serverInfo?.port || '-',
-            },
-            {
-                labelKey: 'XTREAM.ACCOUNT_INFO.HTTPS_PORT',
-                value: serverInfo?.https_port || '-',
-            },
-            {
-                labelKey: 'XTREAM.ACCOUNT_INFO.RTMP_PORT',
-                value: serverInfo?.rtmp_port || '-',
-            },
-        ];
-    });
     readonly heroStats = computed<AccountStat[]>(() => [
         {
             icon: 'bolt',
@@ -195,27 +168,6 @@ export class AccountInfoComponent {
             tone: this.isTrial() ? 'warning' : undefined,
         },
     ]);
-    readonly serverDetails = computed<AccountDetailRow[]>(() => [
-        {
-            labelKey: 'XTREAM.ACCOUNT_INFO.URL',
-            value: this.accountInfo()?.server_info?.url || '-',
-            mono: true,
-        },
-        {
-            labelKey: 'XTREAM.ACCOUNT_INFO.PROTOCOL',
-            value: this.accountInfo()?.server_info?.server_protocol || '-',
-        },
-        {
-            labelKey: 'XTREAM.ACCOUNT_INFO.TIMEZONE',
-            value: this.accountInfo()?.server_info?.timezone || '-',
-        },
-        {
-            labelKey: 'XTREAM.ACCOUNT_INFO.SERVER_TIME',
-            value: this.accountInfo()?.server_info?.time_now || '-',
-            mono: true,
-        },
-    ]);
-
     constructor() {
         void this.reload();
     }

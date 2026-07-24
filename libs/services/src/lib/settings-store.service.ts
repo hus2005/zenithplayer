@@ -24,8 +24,13 @@ import {
     normalizeDashboardRailsSettings,
 } from '@zenithplayer/shared/interfaces';
 
+const FIXED_PLAYER =
+    typeof window !== 'undefined' && window.electron
+        ? VideoPlayer.EmbeddedMpv
+        : VideoPlayer.VideoJs;
+
 const DEFAULT_SETTINGS: Settings = {
-    player: VideoPlayer.VideoJs,
+    player: FIXED_PLAYER,
     webPlayerSharedControls: false,
     streamFormat: StreamFormat.AutoStreamFormat,
     openStreamOnDoubleClick: false,
@@ -35,7 +40,7 @@ const DEFAULT_SETTINGS: Settings = {
     startupBehavior: StartupBehavior.FirstView,
     showExternalPlaybackBar: true,
     stripCountryPrefix: false,
-    theme: Theme.SystemTheme,
+    theme: Theme.DarkTheme,
     mpvPlayerPath: '',
     mpvPlayerArguments: '',
     mpvReuseInstance: false,
@@ -127,6 +132,11 @@ export const SettingsStore = signalStore(
                         patchState(store, {
                             ...DEFAULT_SETTINGS,
                             ...storedSettings,
+                            // Zenith Player desktop always uses the bundled
+                            // embedded MPV. Ignore legacy/user-written player
+                            // preferences so external/web engines cannot be
+                            // selected through stale storage or commands.
+                            player: FIXED_PLAYER,
                             webPlayerSharedControls:
                                 storedSettings.webPlayerSharedControls === true,
                             dashboardRails: normalizeDashboardRailsSettings(
@@ -154,6 +164,7 @@ export const SettingsStore = signalStore(
             async updateSettings(settings: Partial<Settings>) {
                 patchState(store, {
                     ...settings,
+                    player: FIXED_PLAYER,
                     ...(settings.webPlayerSharedControls !== undefined
                         ? {
                               webPlayerSharedControls:
@@ -185,7 +196,7 @@ export const SettingsStore = signalStore(
 
             getSettings() {
                 return {
-                    player: store.player(),
+                    player: FIXED_PLAYER,
                     webPlayerSharedControls:
                         store.webPlayerSharedControls?.() === true,
                     streamFormat: store.streamFormat(),
@@ -262,16 +273,11 @@ export const SettingsStore = signalStore(
             },
 
             getPlayer() {
-                return store.player();
+                return FIXED_PLAYER;
             },
 
             isEmbeddedPlayer() {
-                return (
-                    store.player() === VideoPlayer.VideoJs ||
-                    store.player() === VideoPlayer.Html5Player ||
-                    store.player() === VideoPlayer.ArtPlayer ||
-                    store.player() === VideoPlayer.EmbeddedMpv
-                );
+                return true;
             },
 
             async sanitizeEmbeddedMpvSelection() {

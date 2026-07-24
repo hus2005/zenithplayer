@@ -291,6 +291,109 @@ describe('WebPlayerViewComponent', () => {
         );
     });
 
+    it('uses embedded MPV for desktop playback so one native session owns the stream connection', () => {
+        const originalElectron = window.electron;
+        Object.defineProperty(window, 'electron', {
+            configurable: true,
+            value: {
+                ...originalElectron,
+                createEmbeddedMpvSession: jest.fn(),
+            },
+        });
+
+        try {
+            fixture.componentRef.setInput('playback', {
+                streamUrl: 'https://example.com/movie/123.mkv',
+                title: 'Multi-track Movie',
+                contentInfo: {
+                    playlistId: 'playlist-1',
+                    contentXtreamId: 123,
+                    contentType: 'vod',
+                },
+            });
+
+            fixture.detectChanges();
+
+            expect(component.selectedPlayer()).toBe(
+                VideoPlayer.EmbeddedMpv
+            );
+            expect(
+                fixture.debugElement.query(
+                    By.directive(StubEmbeddedMpvPlayerComponent)
+                )
+            ).not.toBeNull();
+        } finally {
+            Object.defineProperty(window, 'electron', {
+                configurable: true,
+                value: originalElectron,
+            });
+        }
+    });
+
+    it('uses embedded MPV for desktop live streams', () => {
+        const originalElectron = window.electron;
+        Object.defineProperty(window, 'electron', {
+            configurable: true,
+            value: {
+                ...originalElectron,
+                createEmbeddedMpvSession: jest.fn(),
+            },
+        });
+
+        try {
+            fixture.componentRef.setInput('playback', {
+                streamUrl: 'https://example.com/live/123.ts',
+                title: 'Live Channel',
+                isLive: true,
+            });
+            fixture.detectChanges();
+
+            expect(component.selectedPlayer()).toBe(
+                VideoPlayer.EmbeddedMpv
+            );
+            expect(
+                fixture.debugElement.query(
+                    By.directive(StubEmbeddedMpvPlayerComponent)
+                )
+            ).not.toBeNull();
+        } finally {
+            Object.defineProperty(window, 'electron', {
+                configurable: true,
+                value: originalElectron,
+            });
+        }
+    });
+
+    it('uses the single-connection MPEG-TS endpoint for desktop Xtream live streams', () => {
+        const originalElectron = window.electron;
+        Object.defineProperty(window, 'electron', {
+            configurable: true,
+            value: {
+                ...originalElectron,
+                createEmbeddedMpvSession: jest.fn(),
+            },
+        });
+
+        try {
+            fixture.componentRef.setInput('playback', {
+                streamUrl:
+                    'http://example.com:8080/live/user/pass/139.m3u8?token=x',
+                title: 'Live Channel',
+                isLive: true,
+            });
+            fixture.detectChanges();
+
+            expect(component.resolvedPlayback().streamUrl).toBe(
+                'http://example.com:8080/live/user/pass/139.ts?token=x'
+            );
+        } finally {
+            Object.defineProperty(window, 'electron', {
+                configurable: true,
+                value: originalElectron,
+            });
+        }
+    });
+
     it('preserves playback HTTP metadata for channel-based players', async () => {
         const streamUrl = 'https://example.com/live/channel.m3u8';
         fixture.componentRef.setInput(

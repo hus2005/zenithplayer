@@ -130,15 +130,60 @@ export class WebVideoSourceControlsBridge {
     }
 
     private getAudioTracks(): PlayerTrack[] {
-        return this.source?.kind === 'hls'
-            ? this.hlsControls.getAudioTracks()
-            : [];
+        if (this.source?.kind === 'hls') {
+            return this.hlsControls.getAudioTracks();
+        }
+        const tracks = this.readNativeAudioTracks();
+        return tracks.map((track, index) => ({
+            id: index,
+            label:
+                track.label || track.language || `Audio ${String(index + 1)}`,
+            selected: track.enabled,
+        }));
     }
 
     private setAudioTrack(id: number): void {
         if (this.source?.kind === 'hls') {
             this.hlsControls.setAudioTrack(id);
+            return;
         }
+        const tracks = this.readNativeAudioTracks();
+        if (id < 0 || id >= tracks.length) {
+            return;
+        }
+        tracks.forEach((track, index) => {
+            track.enabled = index === id;
+        });
+        this.config.adapter.refresh();
+    }
+
+    private readNativeAudioTracks(): Array<{
+        enabled: boolean;
+        label: string;
+        language: string;
+    }> {
+        const video = this.config.video as HTMLVideoElement & {
+            audioTracks?: {
+                readonly length: number;
+                [index: number]: {
+                    enabled: boolean;
+                    label: string;
+                    language: string;
+                };
+            };
+        };
+        const list = video.audioTracks;
+        if (!list) {
+            return [];
+        }
+        const tracks = [];
+        for (let index = 0; index < list.length; index += 1) {
+            const track = list[index];
+            if (track) {
+                tracks.push(track);
+            }
+        }
+        return tracks;
     }
 
     private getSubtitleTracks(): PlayerTrack[] {

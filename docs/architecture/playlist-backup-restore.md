@@ -5,11 +5,11 @@ settings screen.
 
 ## Entry Points
 
-- UI: `/Users/4gray/Code/zenithplayer/apps/web/src/app/settings/settings.component.ts`
-- Backup service: `/Users/4gray/Code/zenithplayer/libs/services/src/lib/playlist-backup.service.ts`
-- Manifest types: `/Users/4gray/Code/zenithplayer/libs/shared/interfaces/src/lib/playlist-backup.interface.ts`
+- UI: `/Users/zenith/Code/zenithplayer/apps/web/src/app/settings/settings.component.ts`
+- Backup service: `/Users/zenith/Code/zenithplayer/libs/services/src/lib/playlist-backup.service.ts`
+- Manifest types: `/Users/zenith/Code/zenithplayer/libs/shared/interfaces/src/lib/playlist-backup.interface.ts`
 - Xtream pending restore storage:
-  `/Users/4gray/Code/zenithplayer/libs/services/src/lib/xtream-pending-restore.service.ts`
+  `/Users/zenith/Code/zenithplayer/libs/services/src/lib/xtream-pending-restore.service.ts`
 
 ## Manifest Contract
 

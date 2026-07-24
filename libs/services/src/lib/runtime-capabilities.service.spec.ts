@@ -1,3 +1,4 @@
+import { Capacitor } from '@capacitor/core';
 import { RuntimeCapabilitiesService } from './runtime-capabilities.service';
 
 describe('RuntimeCapabilitiesService', () => {
@@ -8,16 +9,19 @@ describe('RuntimeCapabilitiesService', () => {
 
     afterEach(() => {
         testWindow.electron = originalElectron;
+        jest.restoreAllMocks();
     });
 
     it('reports browser PWA capabilities when the Electron bridge is absent', () => {
         testWindow.electron = undefined;
+        jest.spyOn(Capacitor, 'isNativePlatform').mockReturnValue(false);
 
         const service = new RuntimeCapabilitiesService();
 
         expect(service.environment).toBe('pwa');
         expect(service.isPwa).toBe(true);
         expect(service.isElectron).toBe(false);
+        expect(service.isAndroid).toBe(false);
         expect(service.platform).toBeUndefined();
         expect(service.isMacOS).toBe(false);
         expect(service.supportsEpg).toBe(false);
@@ -45,6 +49,21 @@ describe('RuntimeCapabilitiesService', () => {
         expect(service.supportsEpgDataManagement).toBe(false);
         expect(service.supportsEpgChannelBrowser).toBe(false);
         expect(service.supportsEpgProgramSearch).toBe(false);
+    });
+
+    it('reports Android separately from a browser PWA', () => {
+        testWindow.electron = undefined;
+        jest.spyOn(Capacitor, 'isNativePlatform').mockReturnValue(true);
+        jest.spyOn(Capacitor, 'getPlatform').mockReturnValue('android');
+
+        const service = new RuntimeCapabilitiesService();
+
+        expect(service.environment).toBe('android');
+        expect(service.isAndroid).toBe(true);
+        expect(service.isElectron).toBe(false);
+        expect(service.isPwa).toBe(false);
+        expect(service.platform).toBe('android');
+        expect(service.supportsXtreamSectionNavigation).toBe(true);
     });
 
     it('reports Electron capabilities from the available preload bridge methods', () => {
@@ -144,7 +163,7 @@ describe('RuntimeCapabilitiesService', () => {
         expect(service.supportsEpg).toBe(true);
         expect(service.supportsSqlite).toBe(true);
         expect(service.supportsXtreamSqliteDataSource).toBe(true);
-        expect(service.supportsDownloads).toBe(true);
+        expect(service.supportsDownloads).toBe(false);
         expect(service.supportsPortalActivityStorage).toBe(true);
         expect(service.supportsPlaybackPositionStorage).toBe(true);
         expect(service.supportsPlaybackPositionUpdates).toBe(true);
@@ -353,7 +372,7 @@ describe('RuntimeCapabilitiesService', () => {
         expect(service.supportsEpgProgramSearch).toBe(false);
     });
 
-    it('requires the complete downloads preload surface', () => {
+    it('keeps downloads disabled even when the preload surface is available', () => {
         testWindow.electron = {
             downloadsGetList: jest.fn(),
         };
@@ -378,7 +397,7 @@ describe('RuntimeCapabilitiesService', () => {
             onDownloadsUpdate: jest.fn(),
         };
 
-        expect(service.supportsDownloads).toBe(true);
+        expect(service.supportsDownloads).toBe(false);
     });
 
     it('requires both desktop file-save preload methods', () => {

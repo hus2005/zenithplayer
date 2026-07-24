@@ -43,10 +43,10 @@ create embedded UI.
 The repository now contains a first-pass native embedded MPV harness for Electron:
 
 - shared setting id: `embedded-mpv`
-- native addon owner: `/Users/4gray/Code/zenithplayer/apps/electron-backend/src/app/services/embedded-mpv-native.service.ts`
-- IPC bridge: `/Users/4gray/Code/zenithplayer/apps/electron-backend/src/app/events/embedded-mpv.events.ts`
-- renderer host: `/Users/4gray/Code/zenithplayer/libs/ui/playback/src/lib/embedded-mpv-player/embedded-mpv-player.component.ts`
-- native architecture and release-readiness details: `/Users/4gray/Code/zenithplayer/docs/architecture/embedded-mpv-native.md`
+- native addon owner: `/Users/zenith/Code/zenithplayer/apps/electron-backend/src/app/services/embedded-mpv-native.service.ts`
+- IPC bridge: `/Users/zenith/Code/zenithplayer/apps/electron-backend/src/app/events/embedded-mpv.events.ts`
+- renderer host: `/Users/zenith/Code/zenithplayer/libs/ui/playback/src/lib/embedded-mpv-player/embedded-mpv-player.component.ts`
+- native architecture and release-readiness details: `/Users/zenith/Code/zenithplayer/docs/architecture/embedded-mpv-native.md`
 
 Current contract:
 
@@ -137,23 +137,23 @@ or `TmdbEnrichmentService.getSeason` (Stalker).
 
 Shared detail layout shell:
 
-- `/Users/4gray/Code/zenithplayer/libs/ui/components/src/lib/portal-detail-shell/portal-detail-shell.component.ts`
+- `/Users/zenith/Code/zenithplayer/libs/ui/components/src/lib/portal-detail-shell/portal-detail-shell.component.ts`
 
 Shared inline player shell:
 
-- `/Users/4gray/Code/zenithplayer/libs/ui/playback/src/lib/portal-inline-player/portal-inline-player.component.ts`
+- `/Users/zenith/Code/zenithplayer/libs/ui/playback/src/lib/portal-inline-player/portal-inline-player.component.ts`
 
 Xtream detail hosts:
 
-- `/Users/4gray/Code/zenithplayer/libs/portal/xtream/feature/src/lib/vod-details/vod-details-route.component.ts`
-- `/Users/4gray/Code/zenithplayer/libs/portal/xtream/feature/src/lib/serial-details/serial-details.component.ts`
+- `/Users/zenith/Code/zenithplayer/libs/portal/xtream/feature/src/lib/vod-details/vod-details-route.component.ts`
+- `/Users/zenith/Code/zenithplayer/libs/portal/xtream/feature/src/lib/serial-details/serial-details.component.ts`
 
 Stalker detail hosts:
 
-- `/Users/4gray/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-catalog-detail/stalker-catalog-detail.component.ts`
-- `/Users/4gray/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-series-view/stalker-series-view.component.ts`
-- `/Users/4gray/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-collection-detail.component.ts`
-- `/Users/4gray/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-search/stalker-search.component.ts`
+- `/Users/zenith/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-catalog-detail/stalker-catalog-detail.component.ts`
+- `/Users/zenith/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-series-view/stalker-series-view.component.ts`
+- `/Users/zenith/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-collection-detail.component.ts`
+- `/Users/zenith/Code/zenithplayer/libs/portal/stalker/feature/src/lib/stalker-search/stalker-search.component.ts`
 
 Embedded playback does not have a fallback dialog path.
 `PlayerService.openResolvedPlayback(...)` remains the MPV/VLC external launch
@@ -161,8 +161,8 @@ entry point; for embedded players it returns without creating UI.
 
 Diagnostics and fallback UI:
 
-- `/Users/4gray/Code/zenithplayer/libs/ui/playback/src/lib/playback-diagnostics/playback-diagnostics.util.ts`
-- `/Users/4gray/Code/zenithplayer/libs/ui/playback/src/lib/web-player-view/web-player-view.component.ts`
+- `/Users/zenith/Code/zenithplayer/libs/ui/playback/src/lib/playback-diagnostics/playback-diagnostics.util.ts`
+- `/Users/zenith/Code/zenithplayer/libs/ui/playback/src/lib/web-player-view/web-player-view.component.ts`
 
 ## Playback Decision Rule
 
@@ -337,7 +337,7 @@ This keeps non-Flatpak behavior unchanged while allowing Flatpak builds to open 
 
 Shared playback payloads live in:
 
-- `/Users/4gray/Code/zenithplayer/libs/shared/interfaces/src/lib/portal-playback.interface.ts`
+- `/Users/zenith/Code/zenithplayer/libs/shared/interfaces/src/lib/portal-playback.interface.ts`
 
 Types introduced:
 

@@ -552,18 +552,17 @@ describe('PlaylistInfoComponent', () => {
         expect(component.playlistEpgSourceInputs.at(0).value).toBe('');
     });
 
-    it('shows a validation error for invalid playlist-local EPG source URLs', () => {
+    it('does not render provider URLs or credentials in playlist details', () => {
         createComponent();
         fixture.detectChanges();
 
-        component.playlistEpgSourceInputs.at(0).setValue('not a url');
-        component.savePlaylistEpgSources();
-        fixture.detectChanges();
+        const renderedHtml = fixture.nativeElement.innerHTML;
 
-        expect(store.dispatch).not.toHaveBeenCalled();
-        expect(fixture.nativeElement.textContent).toContain(
-            'SETTINGS.EPG_URL_ERROR'
-        );
+        expect(renderedHtml).not.toContain('formcontrolname="serverUrl"');
+        expect(renderedHtml).not.toContain('formcontrolname="url"');
+        expect(renderedHtml).not.toContain('formcontrolname="username"');
+        expect(renderedHtml).not.toContain('formcontrolname="password"');
+        expect(renderedHtml).not.toContain('EXPORT_PLAYLIST');
     });
 
     it('falls back to browser download when desktop file saving is unavailable', async () => {

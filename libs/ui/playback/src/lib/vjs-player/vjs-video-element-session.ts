@@ -38,8 +38,31 @@ export class VjsVideoElementSession {
             return;
         }
 
+        this.stopPlayback();
         this.detach();
         this.destroyed = true;
+    }
+
+    private stopPlayback(): void {
+        const video = this.currentVideo;
+        if (!video) {
+            return;
+        }
+
+        try {
+            video.pause();
+        } catch {
+            // Continue clearing the source even when pause is rejected.
+        }
+        video.removeAttribute('src');
+        for (const source of Array.from(video.querySelectorAll('source'))) {
+            source.remove();
+        }
+        try {
+            video.load();
+        } catch {
+            // Source removal is sufficient on an already detached element.
+        }
     }
 
     private detach(): void {

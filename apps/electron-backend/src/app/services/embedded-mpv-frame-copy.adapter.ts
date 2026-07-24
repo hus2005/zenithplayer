@@ -53,7 +53,6 @@ interface FrameCopyRuntimeSession {
     killTimers: NodeJS.Timeout[];
 }
 
-const HELPER_QUIT_GRACE_MS = 500;
 const HELPER_KILL_GRACE_MS = 2000;
 
 function encodeProtocolValue(value: string): string {
@@ -233,15 +232,37 @@ export class EmbeddedMpvFrameCopyAdapter implements NativeEmbeddedMpvAddon {
                 `opt.referrer=${encodeProtocolValue(playback.referer)}`
             );
         }
+        // MPV normally pauses playback while a newly selected audio/subtitle
+        // track primes its decoder cache. Keep video advancing during track
+        // switches instead of exposing that internal buffering pause to users.
+        fields.push(
+            'opt.cache-pause=no',
+            'opt.video-sync=display-resample',
+            'opt.gapless-audio=yes',
+            'opt.audio-stream-silence=yes',
+            'opt.audio-wait-open=0'
+        );
         if (
             typeof playback.startTime === 'number' &&
             Number.isFinite(playback.startTime) &&
-            playback.startTime >= 0
+            playback.startTime > 0
         ) {
             fields.push(`opt.start=${playback.startTime}`);
         }
-        if (playback.headers && Object.keys(playback.headers).length > 0) {
-            const headerFields = Object.entries(playback.headers)
+        if (playback.isLive !== true) {
+            fields.push(
+                'opt.curl-enabled=no',
+                'opt.stream-lavf-o=multiple_requests=0'
+            );
+        }
+        const playbackHeaders = {
+            ...(playback.headers ?? {}),
+            ...(playback.isLive !== true
+                ? { Connection: 'close' }
+                : {}),
+        };
+        if (Object.keys(playbackHeaders).length > 0) {
+            const headerFields = Object.entries(playbackHeaders)
                 .map(([key, value]) => `${key}: ${value}`)
                 .join(',');
             fields.push(
@@ -326,10 +347,13 @@ export class EmbeddedMpvFrameCopyAdapter implements NativeEmbeddedMpvAddon {
         } catch {
             // stdin may already be destroyed with the process
         }
+        // Do not leave an IPTV socket alive during the grace window while a
+        // replacement session is being created. The OS still gets a final
+        // SIGKILL fallback below if termination somehow stalls.
+        if (child.exitCode === null) {
+            child.kill('SIGTERM');
+        }
         session.killTimers.push(
-            setTimeout(() => {
-                if (child.exitCode === null) child.kill('SIGTERM');
-            }, HELPER_QUIT_GRACE_MS),
             setTimeout(() => {
                 if (child.exitCode === null) child.kill('SIGKILL');
             }, HELPER_KILL_GRACE_MS)

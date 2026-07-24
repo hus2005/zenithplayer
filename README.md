@@ -9,7 +9,7 @@
  <a href="https://github.com/hus2005/zenithplayer/actions/workflows/ci.yml"><img alt="CI status" src="https://img.shields.io/github/actions/workflow/status/hus2005/zenithplayer/ci.yml?branch=master&style=for-the-badge&logo=github&label=CI"></a> <a href="https://github.com/hus2005/zenithplayer/releases"><img src="https://img.shields.io/github/downloads/hus2005/zenithplayer/total?style=for-the-badge&logo=github" alt="Releases"></a> <a href="https://app.codecov.io/gh/hus2005/zenithplayer"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/hus2005/zenithplayer?branch=master&style=for-the-badge&logo=codecov&logoColor=white"></a> <a href="https://t.me/zenithplayer"><img src="https://img.shields.io/badge/telegram-zenithplayer-blue?logo=telegram&style=for-the-badge" alt="Telegram"></a> <a href="https://bsky.app/profile/zenithplayer.bsky.social"><img src="https://img.shields.io/badge/bluesky-zenithplayer-darkblue?logo=bluesky&style=for-the-badge" alt="Bluesky"></a>
 </p>
 
-🌐 **[Website](https://hus2005.github.io/zenithplayer/)** | <a href="https://t.me/zenithplayer">Telegram channel for discussions</a> | <a href="https://ko-fi.com/4gray" target="_blank">Buy me a coffee</a> | <a href="https://github.com/sponsors/4gray">GitHub Sponsors</a>
+🌐 **[Website](https://hus2005.github.io/zenithplayer/)** | <a href="https://t.me/zenithplayer">Telegram channel for discussions</a> | <a href="https://ko-fi.com/zenith" target="_blank">Buy me a coffee</a> | <a href="https://github.com/sponsors/zenith">GitHub Sponsors</a>
 
 **Zenith Player** is a video player application that provides support for IPTV playlist playback (m3u, m3u8). The application allows users to import playlists using remote URLs or by uploading files from the local file system. Additionally, it supports EPG information in XMLTV format which can be provided via URL.
 
@@ -188,8 +188,8 @@ the host `mpv` executable to the embedded backend by default.
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/zenithplayer)
 
-<a href="https://github.com/sponsors/4gray" target="_blank"><img src="https://img.shields.io/badge/GitHub%20Sponsors-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor on GitHub"></a>
-<a href="https://ko-fi.com/4gray" target="_blank"><img src="https://img.shields.io/badge/Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Support on Ko-fi"></a>
+<a href="https://github.com/sponsors/zenith" target="_blank"><img src="https://img.shields.io/badge/GitHub%20Sponsors-EA4AAA?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor on GitHub"></a>
+<a href="https://ko-fi.com/zenith" target="_blank"><img src="https://img.shields.io/badge/Ko--fi-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Support on Ko-fi"></a>
 
 ## Troubleshooting
 

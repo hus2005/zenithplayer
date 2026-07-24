@@ -1,6 +1,6 @@
 # Trademark Notice
 
-**Zenith Player** (the name) and the Zenith Player logo / icon artwork are trademarks of the Zenith Player project owner ([4gray](https://github.com/hus2005)). They are used as unregistered (common-law) trademarks to identify this project and its official builds.
+**Zenith Player** (the name) and the Zenith Player logo / icon artwork are trademarks of the Zenith Player project owner ([zenith](https://github.com/hus2005)). They are used as unregistered (common-law) trademarks to identify this project and its official builds.
 
 ## What the MIT License Covers
 

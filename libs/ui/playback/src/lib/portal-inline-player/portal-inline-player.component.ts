@@ -1,4 +1,3 @@
-import { ClipboardModule } from '@angular/cdk/clipboard';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -29,7 +28,6 @@ import type {
     templateUrl: './portal-inline-player.component.html',
     styleUrl: './portal-inline-player.component.scss',
     imports: [
-        ClipboardModule,
         MatButtonModule,
         MatIconModule,
         MatTooltipModule,
@@ -52,8 +50,7 @@ export class PortalInlinePlayerComponent {
     readonly title = computed(() =>
         applyChannelNameStrip(
             this.playback()?.title,
-            this.playback()?.isLive &&
-                this.settingsStore.stripCountryPrefix?.()
+            this.playback()?.isLive && this.settingsStore.stripCountryPrefix?.()
         )
     );
     readonly streamUrl = computed(() => this.playback()?.streamUrl ?? '');

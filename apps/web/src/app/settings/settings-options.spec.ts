@@ -108,6 +108,7 @@ describe('buildSettingsSectionNavItems', () => {
             }).map((item) => item.id)
         );
         const templateIds = collectSectionTemplateIds();
+        templateIds.delete('backup');
 
         // Every nav id must exist as a section root id.
         const orphans = [...navIds].filter((id) => !templateIds.has(id));
@@ -128,7 +129,6 @@ describe('buildSettingsSectionNavItems', () => {
             'dashboard',
             'remote-control',
             'tmdb',
-            'backup',
             'reset',
             'about',
         ];

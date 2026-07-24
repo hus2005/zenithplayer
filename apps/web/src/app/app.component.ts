@@ -1,4 +1,5 @@
 import { Component, effect, HostBinding, inject, OnInit } from '@angular/core';
+import { App as CapacitorApp } from '@capacitor/app';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, RouterOutlet } from '@angular/router';
 import { Actions, ofType } from '@ngrx/effects';
@@ -70,6 +71,20 @@ export class AppComponent implements OnInit {
         // reach content rendered outside app-root, e.g. cdk-overlay content.
         if (this.runtime.usesCustomWindowControls) {
             document.body.classList.add('frameless-platform');
+        }
+
+        if (this.runtime.isAndroid) {
+            document.body.classList.add('android-platform');
+            void CapacitorApp.addListener(
+                'backButton',
+                ({ canGoBack }: { canGoBack: boolean }) => {
+                    if (canGoBack) {
+                        window.history.back();
+                        return;
+                    }
+                    void CapacitorApp.exitApp();
+                }
+            );
         }
 
         const electronProcess = this.dataService.remote?.process;
@@ -167,10 +182,10 @@ export class AppComponent implements OnInit {
     }
 
     /**
-     * Applies the operating system color scheme when no explicit theme is set
+     * Applies the default dark theme when no explicit theme is set
      */
     detectDarkMode(): void {
-        this.settingsService.changeTheme(Theme.SystemTheme);
+        this.settingsService.changeTheme(Theme.DarkTheme);
     }
 
     /**

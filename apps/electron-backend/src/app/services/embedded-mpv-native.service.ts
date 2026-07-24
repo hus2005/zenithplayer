@@ -499,6 +499,19 @@ export class EmbeddedMpvNativeService {
 
     loadPlayback(sessionId: string, playback: ResolvedPortalPlayback): void {
         this.assertEmbeddedMpvEnabled();
+
+        // Enforce a single network-producing MPV session in the main process.
+        // Renderer teardown and a replacement component can race: the new
+        // session may reach this IPC handler before the old component's
+        // dispose invoke. Reap every other session synchronously before
+        // opening the new URL so one-account Xtream subscriptions never have
+        // two client connections in flight.
+        for (const existingSessionId of [...this.sessions.keys()]) {
+            if (existingSessionId !== sessionId) {
+                this.disposeSession(existingSessionId);
+            }
+        }
+
         const addon = this.getAddon();
         const session = this.getRuntimeSession(sessionId);
         session.title = playback.title ?? session.title;

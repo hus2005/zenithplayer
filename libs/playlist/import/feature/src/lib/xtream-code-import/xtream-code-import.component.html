@@ -6,20 +6,16 @@
         <input matInput type="text" id="title" formControlName="title" />
     </mat-form-field>
     <mat-form-field class="w-full" subscriptSizing="dynamic">
-        <mat-label for="serverUrl">{{
-            'HOME.XTREAM_PLAYLIST.SERVER_URL' | translate
-        }}</mat-label>
+        <mat-label for="serverCode">Sunucu kodu</mat-label>
         <input
             matInput
             type="text"
-            id="serverUrl"
-            formControlName="serverUrl"
-            (input)="extractParams(form.value.serverUrl ?? '')"
+            id="serverCode"
+            formControlName="serverCode"
+            autocomplete="off"
         />
-        <mat-hint>{{
-            'HOME.XTREAM_PLAYLIST.URL_VALIDATION_ERROR' | translate
-        }}</mat-hint>
-        <mat-error>{{ 'SETTINGS.EPG_URL_ERROR' | translate }}</mat-error>
+        <mat-hint>Zenith Panel tarafından verilen sunucu kodu</mat-hint>
+        <mat-error>Geçerli bir sunucu kodu girin</mat-error>
     </mat-form-field>
     <mat-form-field class="w-full">
         <mat-label for="username">{{
@@ -31,8 +27,21 @@
         <mat-label for="password">{{
             'HOME.XTREAM_PLAYLIST.PASSWORD' | translate
         }}</mat-label>
-        <input matInput type="text" id="password" formControlName="password" />
+        <input
+            matInput
+            type="password"
+            id="password"
+            formControlName="password"
+            autocomplete="current-password"
+        />
     </mat-form-field>
+
+    @if (resolveError) {
+        <div class="connection-status status-inactive">
+            <mat-icon>error</mat-icon>
+            <span>{{ resolveError }}</span>
+        </div>
+    }
 
     @if (connectionStatus) {
         <div class="connection-status">

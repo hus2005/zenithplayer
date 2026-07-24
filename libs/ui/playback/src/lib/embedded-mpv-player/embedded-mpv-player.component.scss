@@ -41,7 +41,19 @@
 
 .embedded-mpv-player:fullscreen .embedded-mpv-player__viewport,
 .embedded-mpv-player--fullscreen .embedded-mpv-player__viewport {
+    // Fullscreen controls are an overlay. Keeping the regular 64px dock
+    // reservation here leaves a visible empty strip at the screen edge.
+    inset: 0;
     background: #000;
+}
+
+.embedded-mpv-player:fullscreen .embedded-mpv-player__frame-canvas,
+.embedded-mpv-player--fullscreen .embedded-mpv-player__frame-canvas {
+    // Fill the physical display in fullscreen. The windowed player keeps
+    // `contain`, while fullscreen may crop a very small amount on displays
+    // whose aspect ratio differs from the stream instead of showing empty
+    // bars around the picture.
+    object-fit: cover;
 }
 
 .embedded-mpv-player__viewport {

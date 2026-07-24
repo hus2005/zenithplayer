@@ -25,7 +25,7 @@ export interface TmdbSettings {
 }
 
 export const DEFAULT_TMDB_SETTINGS: TmdbSettings = {
-    enabled: false,
+    enabled: true,
     apiKey: '',
 };
 
