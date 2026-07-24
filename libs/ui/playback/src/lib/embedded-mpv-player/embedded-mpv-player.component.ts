@@ -74,6 +74,15 @@ const RECORDING_MESSAGE_DISMISS_DELAY_MS = 5000;
 })
 export class EmbeddedMpvPlayerComponent implements OnDestroy {
     readonly playback = input.required<ResolvedPortalPlayback>();
+    /**
+     * Parents can emit a fresh playback object on every progress update.
+     * Treat that as the same native session while its stream URL is unchanged;
+     * otherwise every timeUpdate tears down and reconnects libmpv.
+     */
+    private readonly sessionPlayback = computed(() => this.playback(), {
+        equal: (previous, current) =>
+            previous.streamUrl === current.streamUrl,
+    });
     readonly showControls = input(true);
     readonly recordingFolder = input('');
     readonly seriesNavigation = input<SeriesPlaybackNavigation | null>(null);
@@ -411,7 +420,7 @@ export class EmbeddedMpvPlayerComponent implements OnDestroy {
 
         effect((onCleanup) => {
             const viewport = this.viewport();
-            const playback = this.playback();
+            const playback = this.sessionPlayback();
             const supported = this.isSupported();
             this.controller.retryToken();
 

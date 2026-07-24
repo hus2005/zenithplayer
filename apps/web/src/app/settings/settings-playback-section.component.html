@@ -16,32 +16,6 @@
 
     <div class="setting-item">
         <div class="setting-item__meta">
-            <h4>{{ 'SETTINGS.VIDEO_PLAYER_LABEL' | translate }}</h4>
-            <p>{{ 'SETTINGS.VIDEO_PLAYER_DESCRIPTION' | translate }}</p>
-        </div>
-        <div class="setting-item__control">
-            <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                <mat-label>{{
-                    'SETTINGS.VIDEO_PLAYER_PLACEHOLDER' | translate
-                }}</mat-label>
-                <mat-select
-                    formControlName="player"
-                    data-test-id="select-video-player"
-                >
-                    @for (player of players(); track player.id) {
-                        <mat-option
-                            [value]="player.id"
-                            [attr.data-test-id]="player.id"
-                            >{{ player.labelKey | translate }}
-                        </mat-option>
-                    }
-                </mat-select>
-            </mat-form-field>
-        </div>
-    </div>
-
-    <div class="setting-item">
-        <div class="setting-item__meta">
             <h4>{{ 'SETTINGS.STREAM_FORMAT' | translate }}</h4>
             <p>{{ 'SETTINGS.STREAM_FORMAT_DESCRIPTION' | translate }}</p>
         </div>

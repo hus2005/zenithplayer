@@ -530,8 +530,16 @@ const electronApi: ElectronBridgeApi = {
         ipcRenderer.invoke('EPG_MAPPING_GET', { channelKey }),
     getEpgMappingsBatch: (channelKeys: string[]) =>
         ipcRenderer.invoke('EPG_MAPPING_GET_BATCH', { channelKeys }),
-    setEpgMapping: (channelKey: string, epgChannelId: string, playlistId?: string) =>
-        ipcRenderer.invoke('EPG_MAPPING_SET', { channelKey, epgChannelId, playlistId }),
+    setEpgMapping: (
+        channelKey: string,
+        epgChannelId: string,
+        playlistId?: string
+    ) =>
+        ipcRenderer.invoke('EPG_MAPPING_SET', {
+            channelKey,
+            epgChannelId,
+            playlistId,
+        }),
     deleteEpgMapping: (channelKey: string) =>
         ipcRenderer.invoke('EPG_MAPPING_DELETE', { channelKey }),
     searchEpgChannels: (searchTerm: string, limit?: number) =>
@@ -562,6 +570,8 @@ const electronApi: ElectronBridgeApi = {
         ipcRenderer.invoke('XTREAM_CANCEL_SESSION', sessionId),
     xtreamProbeUrl: (url: string, method?: 'GET' | 'HEAD') =>
         ipcRenderer.invoke('XTREAM_PROBE_URL', { url, method }),
+    resolveServerCode: (code: string) =>
+        ipcRenderer.invoke('ZENITH_SERVER_CODE_RESOLVE', code),
     refreshPlaylist: (payload: PlaylistRefreshPayload) =>
         ipcRenderer.invoke('PLAYLIST:REFRESH', payload),
     cancelPlaylistRefresh: (operationId: string) =>

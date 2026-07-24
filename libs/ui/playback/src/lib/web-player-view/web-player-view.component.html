@@ -179,22 +179,6 @@
                 <button
                     class="web-player-diagnostic__utility-button"
                     type="button"
-                    [cdkCopyToClipboard]="resolvedPlayback().streamUrl"
-                    [matTooltip]="resolvedPlayback().streamUrl"
-                    data-test-id="playback-copy-url"
-                >
-                    <mat-icon aria-hidden="true">content_copy</mat-icon>
-                    {{ 'PLAYBACK_DIAGNOSTICS.ACTION_COPY_URL' | translate }}
-                </button>
-
-                <span
-                    class="web-player-diagnostic__divider"
-                    aria-hidden="true"
-                ></span>
-
-                <button
-                    class="web-player-diagnostic__utility-button"
-                    type="button"
                     data-test-id="playback-retry"
                     (click)="retryPlayback()"
                 >

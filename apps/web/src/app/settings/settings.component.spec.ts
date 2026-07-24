@@ -1399,15 +1399,17 @@ describe('SettingsComponent', () => {
         component.onSubmit();
         await fixture.whenStable();
 
-        expect(mockStore.updateSettings).toHaveBeenCalledWith({
+        const expectedSettings = {
             ...component.settingsForm.value,
+            player: VideoPlayer.EmbeddedMpv,
             trustedPrivateNetworkEpgUrls: [],
             trustedInsecureTlsHosts: [],
+        };
+        expect(mockStore.updateSettings).toHaveBeenCalledWith({
+            ...expectedSettings,
         });
         expect(updateSettings).toHaveBeenCalledWith({
-            ...component.settingsForm.value,
-            trustedPrivateNetworkEpgUrls: [],
-            trustedInsecureTlsHosts: [],
+            ...expectedSettings,
         });
     });
 

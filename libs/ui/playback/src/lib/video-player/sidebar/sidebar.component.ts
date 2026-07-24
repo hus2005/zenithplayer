@@ -43,8 +43,6 @@ export class SidebarComponent {
         return (
             playlist?.title ||
             playlist?.filename ||
-            playlist?.url ||
-            playlist?.portalUrl ||
             'Untitled playlist'
         );
     });

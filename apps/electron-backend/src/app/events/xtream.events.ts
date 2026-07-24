@@ -19,12 +19,48 @@ import { requestWithValidatedRedirects } from '../util/validated-axios';
 // challenge generic browser-looking User-Agents while allowlisting known
 // IPTV player clients. A VLC-style User-Agent reliably passes those checks.
 const XTREAM_CLIENT_USER_AGENT = 'VLC/3.0.18 LibVLC/3.0.18';
+const ZENITH_SERVER_CODE_API =
+    'https://windows.zenithpanel.xyz/api/resolve.php';
 
 export default class XtreamEvents {
     static bootstrapXtreamEvents(): Electron.IpcMain {
         return ipcMain;
     }
 }
+
+ipcMain.handle(
+    'ZENITH_SERVER_CODE_RESOLVE',
+    async (_event, rawCode: unknown) => {
+        const code = typeof rawCode === 'string' ? rawCode.trim() : '';
+        if (!/^[a-zA-Z0-9_-]+$/.test(code)) {
+            throw new Error('Geçersiz sunucu kodu.');
+        }
+
+        const response = await axios.get(ZENITH_SERVER_CODE_API, {
+            params: { code },
+            timeout: 15_000,
+            responseType: 'json',
+        });
+        const data = response.data as {
+            success?: unknown;
+            code?: unknown;
+            name?: unknown;
+            dns_url?: unknown;
+            message?: unknown;
+        };
+        return {
+            success: data.success === true,
+            ...(typeof data.code === 'string' ? { code: data.code } : {}),
+            ...(typeof data.name === 'string' ? { name: data.name } : {}),
+            ...(typeof data.dns_url === 'string'
+                ? { dns_url: data.dns_url }
+                : {}),
+            ...(typeof data.message === 'string'
+                ? { message: data.message }
+                : {}),
+        };
+    }
+);
 
 function formatXtreamError(
     error: unknown,

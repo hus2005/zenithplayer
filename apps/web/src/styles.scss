@@ -141,6 +141,32 @@ html {
     -moz-osx-font-smoothing: grayscale;
 }
 
+body.android-platform {
+    overscroll-behavior: none;
+    overflow: hidden;
+    padding:
+        env(safe-area-inset-top)
+        env(safe-area-inset-right)
+        env(safe-area-inset-bottom)
+        env(safe-area-inset-left);
+}
+
+body.android-tv-platform {
+    // Keep focus visible from viewing distance and content inside overscan.
+    padding: 24px;
+
+    :focus-visible {
+        outline: 3px solid var(--app-selection-border, #8ab4f8);
+        outline-offset: 3px;
+    }
+
+    button,
+    a,
+    [tabindex]:not([tabindex='-1']) {
+        scroll-margin: 48px;
+    }
+}
+
 // Re-enable context menu and text selection for input fields
 input,
 textarea {

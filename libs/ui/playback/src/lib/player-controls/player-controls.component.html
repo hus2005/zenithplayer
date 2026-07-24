@@ -246,7 +246,7 @@
                 </div>
             }
 
-            @if (hasAudioTracks()) {
+            @if (showControls()) {
                 <div class="player-controls__popover-anchor">
                     <button
                         mat-icon-button
@@ -279,6 +279,11 @@
                                 }}
                             </div>
                             <div class="player-controls__track-list">
+                                @if (state().audioTracks.length === 0) {
+                                    <div class="player-controls__menu-title">
+                                        Ses parçası bulunamadı
+                                    </div>
+                                }
                                 @for (
                                     track of state().audioTracks;
                                     track track.id
@@ -307,7 +312,7 @@
                 </div>
             }
 
-            @if (hasSubtitleTracks()) {
+            @if (showControls()) {
                 <div class="player-controls__popover-anchor">
                     <button
                         mat-icon-button
@@ -343,6 +348,11 @@
                                 }}
                             </div>
                             <div class="player-controls__track-list">
+                                @if (state().subtitleTracks.length === 0) {
+                                    <div class="player-controls__menu-title">
+                                        Altyazı parçası bulunamadı
+                                    </div>
+                                }
                                 <button
                                     type="button"
                                     role="menuitemradio"

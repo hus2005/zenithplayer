@@ -500,13 +500,11 @@ describe('EmbeddedMpvFrameCopyAdapter', () => {
         expect(snapshot?.error).toContain('exited unexpectedly');
     });
 
-    it('disposes with quit and escalates to SIGTERM', () => {
+    it('disposes with quit and terminates the helper immediately', () => {
         const sessionId = createSession();
         adapter.disposeSession(sessionId);
         expect(child.stdin.written.at(-1)).toBe('quit\n');
         expect(adapter.getSessionSnapshot(sessionId)).toBeNull();
-        child.exitCode = null; // helper ignored quit
-        jest.advanceTimersByTime(600);
         expect(child.kill).toHaveBeenCalledWith('SIGTERM');
     });
 

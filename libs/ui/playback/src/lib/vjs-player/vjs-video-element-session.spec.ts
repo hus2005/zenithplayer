@@ -51,6 +51,16 @@ describe('VjsVideoElementSession', () => {
         const clearPlaybackIssue = jest.fn();
         const emitPlaybackEnded = jest.fn();
         const video = document.createElement('video');
+        video.src = 'https://example.com/live/channel.ts';
+        const source = document.createElement('source');
+        source.src = 'https://example.com/live/channel-backup.ts';
+        video.appendChild(source);
+        const pause = jest
+            .spyOn(video, 'pause')
+            .mockImplementation(() => undefined);
+        const load = jest
+            .spyOn(video, 'load')
+            .mockImplementation(() => undefined);
         const removeEventListener = jest.spyOn(video, 'removeEventListener');
         const session = new VjsVideoElementSession({
             clearPlaybackIssue,
@@ -63,6 +73,10 @@ describe('VjsVideoElementSession', () => {
         video.dispatchEvent(new Event('loadeddata'));
         video.dispatchEvent(new Event('ended'));
 
+        expect(pause).toHaveBeenCalledTimes(1);
+        expect(load).toHaveBeenCalledTimes(1);
+        expect(video.hasAttribute('src')).toBe(false);
+        expect(video.querySelector('source')).toBeNull();
         expect(removeEventListener).toHaveBeenCalledTimes(3);
         expect(clearPlaybackIssue).not.toHaveBeenCalled();
         expect(emitPlaybackEnded).not.toHaveBeenCalled();

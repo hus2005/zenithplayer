@@ -30,7 +30,7 @@ export function createSettingsForm(
     supportsEpg: boolean
 ) {
     return formBuilder.group({
-        player: [VideoPlayer.VideoJs],
+        player: [VideoPlayer.EmbeddedMpv],
         webPlayerSharedControls: false,
         ...(supportsEpg
             ? { epgUrl: new FormArray<FormControl<string | null>>([]) }
@@ -56,7 +56,7 @@ export function createSettingsForm(
         startupBehavior: StartupBehavior.FirstView,
         showExternalPlaybackBar: true,
         stripCountryPrefix: false,
-        theme: Theme.SystemTheme,
+        theme: Theme.DarkTheme,
         mpvPlayerPath: '',
         mpvPlayerArguments: '',
         mpvReuseInstance: false,
@@ -115,7 +115,7 @@ export function createSettingsFromFormValue(
         : (currentSettings.epgUrl ?? []);
 
     return {
-        player: value.player ?? VideoPlayer.VideoJs,
+        player: VideoPlayer.EmbeddedMpv,
         webPlayerSharedControls: value.webPlayerSharedControls ?? false,
         streamFormat: value.streamFormat ?? StreamFormat.AutoStreamFormat,
         openStreamOnDoubleClick: value.openStreamOnDoubleClick ?? false,
@@ -126,7 +126,7 @@ export function createSettingsFromFormValue(
         startupBehavior: value.startupBehavior ?? StartupBehavior.FirstView,
         showExternalPlaybackBar: value.showExternalPlaybackBar ?? true,
         stripCountryPrefix: value.stripCountryPrefix ?? false,
-        theme: value.theme ?? Theme.SystemTheme,
+        theme: value.theme ?? Theme.DarkTheme,
         mpvPlayerPath: normalizeExternalPlayerPath(value.mpvPlayerPath),
         mpvPlayerArguments: normalizeExternalPlayerArguments(
             value.mpvPlayerArguments

@@ -95,6 +95,7 @@ struct HelperState {
 };
 
 HelperState g_state;
+std::atomic<uint64_t> g_nextAsyncRequestId{1};
 
 constexpr uint64_t SNAPSHOT_EMIT_INTERVAL_NS = 250ull * 1000 * 1000;
 
@@ -567,8 +568,15 @@ void handleCommand(const Command& command) {
         mpv_set_property(g_state.mpv, "volume", MPV_FORMAT_DOUBLE, &percent);
     } else if (command.name == "aid" || command.name == "sid") {
         const std::string value = command.get("value");
-        setPropertyString(command.name.c_str(),
-                          value == "-1" ? "no" : value);
+        const std::string resolvedValue = value == "-1" ? "no" : value;
+        const char* rawValue = resolvedValue.c_str();
+        mpv_set_property_async(
+            g_state.mpv,
+            g_nextAsyncRequestId.fetch_add(1),
+            command.name.c_str(),
+            MPV_FORMAT_STRING,
+            const_cast<char**>(&rawValue)
+        );
     } else if (command.name == "speed") {
         double speed = std::clamp(command.getDouble("value", 1), 0.25, 4.0);
         mpv_set_property(g_state.mpv, "speed", MPV_FORMAT_DOUBLE, &speed);

@@ -152,12 +152,6 @@ export function buildSettingsSectionNavItems({
             visible: true,
         },
         {
-            id: 'backup',
-            label: 'SETTINGS.NAV_BACKUP',
-            icon: 'backup',
-            visible: true,
-        },
-        {
             id: 'reset',
             label: 'SETTINGS.NAV_RESET',
             icon: 'delete_sweep',

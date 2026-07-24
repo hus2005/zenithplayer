@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Capacitor } from '@capacitor/core';
 import { ElectronBridgeApi } from '@zenithplayer/shared/interfaces';
 
-export type RuntimeEnvironment = 'electron' | 'pwa';
+export type RuntimeEnvironment = 'android' | 'electron' | 'pwa';
 
 type RuntimeElectronBridge = Partial<ElectronBridgeApi>;
 
@@ -18,7 +19,10 @@ const playbackPositionStorageMethods = [
 @Injectable({ providedIn: 'root' })
 export class RuntimeCapabilitiesService {
     get environment(): RuntimeEnvironment {
-        return this.isElectron ? 'electron' : 'pwa';
+        if (this.isElectron) {
+            return 'electron';
+        }
+        return this.isAndroid ? 'android' : 'pwa';
     }
 
     get isElectron(): boolean {
@@ -26,10 +30,20 @@ export class RuntimeCapabilitiesService {
     }
 
     get isPwa(): boolean {
-        return !this.isElectron;
+        return !this.isElectron && !this.isAndroid;
+    }
+
+    get isAndroid(): boolean {
+        return (
+            Capacitor.isNativePlatform() &&
+            Capacitor.getPlatform() === 'android'
+        );
     }
 
     get platform(): string | undefined {
+        if (this.isAndroid) {
+            return 'android';
+        }
         const platform = this.electronBridge?.['platform'];
         return typeof platform === 'string' ? platform : undefined;
     }
@@ -180,20 +194,7 @@ export class RuntimeCapabilitiesService {
     }
 
     get supportsDownloads(): boolean {
-        return [
-            'downloadsStart',
-            'downloadsCancel',
-            'downloadsRetry',
-            'downloadsRemove',
-            'downloadsGetList',
-            'downloadsGet',
-            'downloadsGetDefaultFolder',
-            'downloadsSelectFolder',
-            'downloadsRevealFile',
-            'downloadsPlayFile',
-            'downloadsClearCompleted',
-            'onDownloadsUpdate',
-        ].every((methodName) => this.hasElectronMethod(methodName));
+        return false;
     }
 
     get supportsPortalActivityStorage(): boolean {
@@ -268,7 +269,7 @@ export class RuntimeCapabilitiesService {
 
     get supportsXtreamSectionNavigation(): boolean {
         return (
-            this.isPwa ||
+            !this.isElectron ||
             this.supportsXtreamSqliteDataSource ||
             this.hasElectronMethod('xtreamRequest')
         );

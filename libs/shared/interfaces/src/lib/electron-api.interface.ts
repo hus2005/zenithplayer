@@ -251,6 +251,14 @@ export interface ElectronBridgeXtreamProbeResult {
     url: string;
 }
 
+export interface ElectronBridgeServerCodeResult {
+    success: boolean;
+    code?: string;
+    name?: string;
+    dns_url?: string;
+    message?: string;
+}
+
 export interface ElectronBridgeEpgFetchResult extends ElectronBridgeResult {
     message?: string;
     skipped?: string[];
@@ -665,6 +673,9 @@ export interface ElectronBridgeApi {
         url: string,
         method?: 'GET' | 'HEAD'
     ) => Promise<ElectronBridgeXtreamProbeResult>;
+    resolveServerCode: (
+        code: string
+    ) => Promise<ElectronBridgeServerCodeResult>;
     refreshPlaylist: (payload: PlaylistRefreshPayload) => Promise<Playlist>;
     cancelPlaylistRefresh: (
         operationId: string

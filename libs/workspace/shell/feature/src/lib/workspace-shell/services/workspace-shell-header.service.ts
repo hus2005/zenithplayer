@@ -56,8 +56,6 @@ export class WorkspaceShellHeaderService {
         return (
             playlist?.title ||
             playlist?.filename ||
-            playlist?.url ||
-            playlist?.portalUrl ||
             'Untitled playlist'
         );
     });

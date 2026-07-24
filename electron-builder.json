@@ -14,15 +14,22 @@
         "output": "dist/executables"
     },
     "files": [
+        "package.json",
         {
             "from": "dist/apps/remote-control-web",
             "to": "remote-control-web",
             "filter": ["**/*"]
         },
-        "electron-backend/**/*",
-        "!electron-backend/native{,/**/*}",
-        "web/**/*",
-        "!**/*.map"
+        {
+            "from": "dist/apps/electron-backend",
+            "to": "electron-backend",
+            "filter": ["**/*", "!native{,/**/*}", "!**/*.map"]
+        },
+        {
+            "from": "dist/apps/web",
+            "to": "web",
+            "filter": ["**/*", "!**/*.map"]
+        }
     ],
     "asarUnpack": [
         "**/better-sqlite3/**",
@@ -160,17 +167,22 @@
         }
     },
     "win": {
+        "executableName": "zenithplayer",
         "compression": "maximum",
         "target": [
             {
                 "target": "nsis",
-                "arch": ["x64", "ia32"]
+                "arch": ["x64"]
             }
         ],
-        "artifactName": "${name}-${version}-windows-${arch}-setup.${ext}",
-        "icon": "apps/web/src/assets/icons/icon.png"
+        "artifactName": "ZenithPlayer-Setup.${ext}",
+        "icon": "apps/web/src/assets/icons/logo.png"
     },
     "nsis": {
-        "artifactName": "${name}-${version}-windows-${arch}-setup.${ext}"
+        "artifactName": "ZenithPlayer-Setup.${ext}",
+        "shortcutName": "Zenith Player",
+        "createDesktopShortcut": "always",
+        "createStartMenuShortcut": false,
+        "deleteAppDataOnUninstall": false
     }
 }

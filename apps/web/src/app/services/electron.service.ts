@@ -150,6 +150,12 @@ export class ElectronService extends DataService {
             )) as T;
         }
 
+        if (type === 'ZENITH_SERVER_CODE_RESOLVE') {
+            return (await window.electron.resolveServerCode(
+                String(payload ?? '')
+            )) as T;
+        }
+
         if (type === 'STALKER_REQUEST') {
             return (await this.fetchStalkerData(
                 payload as {

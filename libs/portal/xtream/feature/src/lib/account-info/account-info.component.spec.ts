@@ -84,6 +84,17 @@ describe('AccountInfoComponent', () => {
         expect(component.playlistLabel()).toBe('Dialog Xtream');
     });
 
+    it('never renders the provider DNS or server URL', () => {
+        fixture.detectChanges();
+
+        const renderedText = fixture.nativeElement.textContent;
+        const renderedHtml = fixture.nativeElement.innerHTML;
+
+        expect(renderedText).not.toContain('dialog.example.test');
+        expect(renderedHtml).not.toContain('https://dialog.example.test');
+        expect(renderedHtml).not.toContain('XTREAM.ACCOUNT_INFO.SERVER_INFO');
+    });
+
     it('shows unknown content counts when dashboard does not supply them', () => {
         expect(component.heroStats().map((stat) => stat.value)).toEqual([
             '0/0',

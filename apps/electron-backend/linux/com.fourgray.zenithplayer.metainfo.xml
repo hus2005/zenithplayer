@@ -4,7 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <name>Zenith Player</name>
-  <developer_name>4gray</developer_name>
+  <developer_name>zenith</developer_name>
   <update_contact>fourgray@proton.me</update_contact>
   <summary>Open-source IPTV player for M3U, Xtream Codes, and Stalker portals</summary>
   <launchable type="desktop-id">com.fourgray.zenithplayer.desktop</launchable>
@@ -33,7 +33,7 @@
   <url type="homepage">https://hus2005.github.io/zenithplayer/</url>
   <url type="bugtracker">https://github.com/hus2005/zenithplayer/issues</url>
   <url type="help">https://hus2005.github.io/zenithplayer/blog/</url>
-  <url type="donation">https://github.com/sponsors/4gray</url>
+  <url type="donation">https://github.com/sponsors/zenith</url>
 
   <content_rating type="oars-1.0"/>
 

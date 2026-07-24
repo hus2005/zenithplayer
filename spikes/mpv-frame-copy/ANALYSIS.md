@@ -33,7 +33,7 @@ The series is really **two independent things**:
 2. **Immersive compositing** (native mpv surface `NSWindowBelow` the WebContents,
    `transparent:true` main window, structural CSS "tunnel" via
    `:has(app-embedded-mpv-player)`, backdrop-with-hole) — the risky part.
-   Two field bugs already found by 4gray in #1154:
+   Two field bugs already found by zenith in #1154:
    - opaque page wrappers painting black over the video (fixed structurally);
    - transparent "hole to the desktop" until the user scrolls — a Chromium
      compositor damage-tracking bug class, not fixable app-side.

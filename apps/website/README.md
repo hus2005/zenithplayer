@@ -18,7 +18,7 @@ If the category is recreated, query the new category id:
 
 ```bash
 gh api graphql \
-  -f owner=4gray \
+  -f owner=zenith \
   -f name=zenithplayer \
   -f query='query($owner:String!, $name:String!) { repository(owner:$owner, name:$name) { discussionCategories(first:25) { nodes { id name slug isAnswerable } } } }'
 ```

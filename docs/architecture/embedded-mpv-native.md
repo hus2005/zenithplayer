@@ -387,8 +387,11 @@ Rendering size: the helper renders at the **aspect-fit** size of the video
 (observed `dwidth`/`dheight`) inside the requested viewport and bumps a shm
 generation when it changes — letterbox bars are never baked into frames,
 frames stay as small as possible, and the canvas letterboxes with a
-transparent background (app surface shows at the sides; fullscreen keeps a
-black backdrop). Snapshots carry `videoWidth`/`videoHeight`.
+transparent background in the windowed player. In DOM fullscreen the canvas
+switches from `object-fit: contain` to `cover`, so the physical display is
+filled instead of retaining empty edge bars; streams whose aspect ratio
+differs from the display can be cropped slightly. Snapshots carry
+`videoWidth`/`videoHeight`.
 `zenithplayer_EMBEDDED_MPV_AUDIO_DELAY=<seconds>` passes through to mpv's
 `audio-delay` for lip-sync tuning until a calibration flow exists.
 
@@ -619,7 +622,9 @@ chips instead.
 The viewport DOM element reserves `--embedded-mpv-controls-height` (64 px;
 88 px under the narrow breakpoint) at the bottom when controls are enabled, so
 the controls strip — including the in-dock panels — is always DOM and always
-reachable for hover-to-reveal.
+reachable for hover-to-reveal. DOM fullscreen removes that reservation and
+uses the entire screen viewport; the controls remain accessible as an overlay
+above the video instead of leaving an empty strip at the bottom edge.
 
 For frame-copy, `boundsProvider` always returns the measured full host bounds:
 there is no `HIDDEN_BOUNDS` or reserved dock height. Dialogs

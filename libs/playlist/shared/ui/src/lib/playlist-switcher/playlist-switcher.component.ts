@@ -151,8 +151,6 @@ export class PlaylistSwitcherComponent {
             this.currentTitle() ||
             this.activePlaylist()?.title ||
             this.activePlaylist()?.filename ||
-            this.activePlaylist()?.url ||
-            this.activePlaylist()?.portalUrl ||
             'Untitled playlist'
         );
     });

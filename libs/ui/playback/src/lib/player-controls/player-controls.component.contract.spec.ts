@@ -188,7 +188,7 @@ describe('PlayerControlsComponent capability contract', () => {
         expect(fake.commands.seekBy).toHaveBeenCalledWith(5);
     });
 
-    it('closes menus when their runtime availability disappears', () => {
+    it('keeps track menus available and closes other unavailable menus', () => {
         const fake = createFakeController();
         const fixture = createControls(fake);
         const component = fixture.componentInstance;
@@ -213,7 +213,8 @@ describe('PlayerControlsComponent capability contract', () => {
             audioTracks: [{ id: 1, label: 'English', selected: true }],
         });
         fixture.detectChanges();
-        expect(component.anyMenuOpen()).toBe(false);
+        expect(component.menus.audioOpen()).toBe(true);
+        component.closePopovers();
 
         fake.capabilities.set({
             ...DEFAULT_PLAYER_CAPABILITIES,

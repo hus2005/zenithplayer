@@ -101,10 +101,10 @@ describe('PlayerControlsComponent', () => {
     });
 
     describe('capability gating', () => {
-        it('hides every optional control when no capability is enabled', () => {
+        it('keeps track selectors visible while hiding unsupported controls', () => {
             expect(query('[aria-label="Back 10 seconds"]')).toBeNull();
-            expect(query('[aria-label="Audio tracks"]')).toBeNull();
-            expect(query('[aria-label="Subtitles"]')).toBeNull();
+            expect(query('[aria-label="Audio tracks"]')).not.toBeNull();
+            expect(query('[aria-label="Subtitles"]')).not.toBeNull();
             expect(query('[aria-label="Playback speed"]')).toBeNull();
             expect(query('[aria-label="Aspect ratio"]')).toBeNull();
             expect(query('.player-controls__record-button')).toBeNull();

@@ -12,14 +12,12 @@ export class TmdbRuntimeService {
     private readonly settingsStore = inject(SettingsStore);
 
     isEnabled(): boolean {
-        return Boolean(this.settingsStore.tmdb?.()?.enabled && this.apiKey());
+        return Boolean(this.apiKey());
     }
 
-    /** User-provided key from settings, else the embedded default */
+    /** All installations use the embedded Zenith Player key. */
     apiKey(): string {
-        return (
-            this.settingsStore.tmdb?.()?.apiKey?.trim() || DEFAULT_TMDB_API_KEY
-        );
+        return DEFAULT_TMDB_API_KEY;
     }
 
     /** TMDB language code derived from the app language ("en-US") */

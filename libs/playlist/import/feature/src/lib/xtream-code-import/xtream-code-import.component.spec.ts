@@ -1,24 +1,34 @@
 import { TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 import { PlaylistActions } from '@zenithplayer/m3u-state';
-import { PortalStatusService } from '@zenithplayer/services';
+import { DataService, PortalStatusService } from '@zenithplayer/services';
 import { XtreamCodeImportComponent } from './xtream-code-import.component';
 
 describe('XtreamCodeImportComponent', () => {
     let component: XtreamCodeImportComponent;
+    let dataService: { sendIpcEvent: jest.Mock };
     let store: { dispatch: jest.Mock };
     let portalStatusService: { checkPortalStatus: jest.Mock };
 
     beforeEach(() => {
-        store = {
-            dispatch: jest.fn(),
+        dataService = {
+            sendIpcEvent: jest.fn().mockResolvedValue({
+                success: true,
+                code: '001',
+                dns_url: 'http://dns.example:8080',
+            }),
         };
+        store = { dispatch: jest.fn() };
         portalStatusService = {
             checkPortalStatus: jest.fn().mockResolvedValue('active'),
+            getStatusMessage: jest.fn(),
+            getStatusClass: jest.fn(),
+            getStatusIcon: jest.fn(),
         };
 
         TestBed.configureTestingModule({
             providers: [
+                { provide: DataService, useValue: dataService },
                 { provide: Store, useValue: store },
                 { provide: PortalStatusService, useValue: portalStatusService },
             ],
@@ -27,66 +37,64 @@ describe('XtreamCodeImportComponent', () => {
         component = TestBed.runInInjectionContext(
             () => new XtreamCodeImportComponent()
         );
-    });
-
-    it('rejects file URLs for Xtream portals', () => {
         component.form.patchValue({
-            title: 'Portal',
-            serverUrl: 'file://example.com/portal',
-            username: 'user',
-            password: 'pass',
-        });
-
-        expect(component.form.valid).toBe(false);
-    });
-
-    it('rejects URLs with inline credentials before add or test actions', async () => {
-        component.form.patchValue({
-            title: 'Portal',
-            serverUrl: 'https://user:pass@example.com',
-            username: 'user',
-            password: 'pass',
-        });
-
-        expect(component.form.valid).toBe(false);
-
-        await component.testConnection();
-        component.addPlaylist();
-
-        expect(component.isTestingConnection).toBe(false);
-        expect(portalStatusService.checkPortalStatus).not.toHaveBeenCalled();
-        expect(store.dispatch).not.toHaveBeenCalled();
-    });
-
-    it('extracts and trims username and password from a full Xtream URL', () => {
-        component.extractParams(
-            'https://example.com/get.php?username=%20user%20&password=%20pass%20&type=m3u_plus'
-        );
-
-        expect(component.form.get('username')?.value).toBe('user');
-        expect(component.form.get('password')?.value).toBe('pass');
-    });
-
-    it('normalizes full Xtream playlist URLs when adding a portal', () => {
-        component.form.patchValue({
-            title: 'Portal',
-            serverUrl:
-                ' https://example.com/base/get.php?username=user&password=pass&type=m3u_plus ',
+            title: 'Ev',
+            serverCode: '001',
             username: ' user ',
             password: ' pass ',
         });
+    });
 
-        component.addPlaylist();
+    it('resolves the server code before testing Xtream credentials', async () => {
+        await component.testConnection();
+
+        expect(dataService.sendIpcEvent).toHaveBeenCalledWith(
+            'ZENITH_SERVER_CODE_RESOLVE',
+            '001'
+        );
+        expect(portalStatusService.checkPortalStatus).toHaveBeenCalledWith(
+            'http://dns.example:8080',
+            'user',
+            'pass',
+            { skipCache: true }
+        );
+        expect(component.connectionStatus).toBe('active');
+    });
+
+    it('adds only an active account using the resolved DNS URL', async () => {
+        await component.addPlaylist();
 
         expect(store.dispatch).toHaveBeenCalledWith(
             PlaylistActions.addPlaylist({
                 playlist: expect.objectContaining({
                     password: 'pass',
-                    serverUrl: 'https://example.com/base',
-                    title: 'Portal',
+                    serverUrl: 'http://dns.example:8080',
+                    title: 'Ev',
                     username: 'user',
                 }),
             })
         );
+    });
+
+    it('does not add an inactive IPTV account', async () => {
+        portalStatusService.checkPortalStatus.mockResolvedValue('inactive');
+
+        await component.addPlaylist();
+
+        expect(store.dispatch).not.toHaveBeenCalled();
+        expect(component.connectionStatus).toBe('inactive');
+    });
+
+    it('rejects an unknown server code response', async () => {
+        dataService.sendIpcEvent.mockResolvedValue({
+            success: false,
+            message: 'Kod bulunamadı',
+        });
+
+        await component.addPlaylist();
+
+        expect(store.dispatch).not.toHaveBeenCalled();
+        expect(component.connectionStatus).toBe('unavailable');
+        expect(component.resolveError).toBe('Kod bulunamadı');
     });
 });

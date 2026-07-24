@@ -1,7 +1,7 @@
 import { parse } from 'iptv-playlist-parser';
 
 /**
- * Contract tests for the 4gray/iptv-playlist-parser fork (jest maps the
+ * Contract tests for the zenith/iptv-playlist-parser fork (jest maps the
  * module to the real parser source via test-stubs/iptv-playlist-parser.mjs).
  * Guards the fork-specific behaviors zenithplayer depends on:
  * - no URL length/format validation (issue #1189: Pluto JWT URLs > 2084 chars)
@@ -9,7 +9,7 @@ import { parse } from 'iptv-playlist-parser';
  * - the fork-only `radio` attribute survives upstream syncs
  * - `url` is stripped at the first '|' while pipe params land in `http.*`
  */
-describe('iptv-playlist-parser contract (4gray fork)', () => {
+describe('iptv-playlist-parser contract (zenith fork)', () => {
     const plutoUrl = (id: string) =>
         `https://cfd-v4-service-channel-stitcher-use1-1.prd.pluto.tv/v2/stitch/hls/channel/${id}/master.m3u8?jwt=${'e'.repeat(2100)}&masterJWTPassthrough=true`;
 

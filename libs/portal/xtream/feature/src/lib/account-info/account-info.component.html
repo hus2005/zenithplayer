@@ -171,42 +171,6 @@
                 </div>
             </section>
 
-            <section class="account-panel">
-                <div class="account-panel__header">
-                    <p class="account-panel__eyebrow">
-                        {{ 'XTREAM.ACCOUNT_INFO.SERVER_INFO' | translate }}
-                    </p>
-                    <h3>{{ serverHost() }}</h3>
-                </div>
-
-                <dl class="account-detail-list">
-                    @for (row of serverDetails(); track row.labelKey) {
-                        <div class="account-detail-row">
-                            <dt>{{ row.labelKey | translate }}</dt>
-                            <dd
-                                [class.account-detail-row__value--mono]="
-                                    row.mono
-                                "
-                            >
-                                {{ row.value }}
-                            </dd>
-                        </div>
-                    }
-                </dl>
-
-                <div class="account-chip-section">
-                    <p class="account-chip-section__label">
-                        {{ 'XTREAM.ACCOUNT_INFO.PORTS' | translate }}
-                    </p>
-                    <div class="account-chip-group">
-                        @for (port of ports(); track port.labelKey) {
-                            <span class="account-chip account-chip--mono">
-                                {{ port.labelKey | translate }} {{ port.value }}
-                            </span>
-                        }
-                    </div>
-                </div>
-            </section>
         </div>
     }
 </mat-dialog-content>
